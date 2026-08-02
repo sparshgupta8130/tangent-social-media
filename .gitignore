@@ -1,0 +1,11 @@
+# Python
+__pycache__/
+*.pyc
+
+# Video exports and heavy media inside pipeline items (masters live outside git)
+ops/pipeline/*/exports/
+*.mp4
+*.mov
+
+# Local scratch
+*.tmp

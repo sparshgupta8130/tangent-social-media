@@ -1,0 +1,6 @@
+pyyaml>=6.0
+
+# yt-dlp is only needed by verify_stats.py (the second-source stat check).
+# Every other tool works without it; verify_stats.py detects its absence and
+# prints an install hint (exit code 2) instead of crashing.
+yt-dlp>=2024.1.0

@@ -1,0 +1,263 @@
+# brand/kit.yaml — Tangent's machine-readable brand tokens.
+#
+# Hard constraints, not prose. The rationale/voice lives in `knowledge/brand/tangent-voice.md`
+# and cross-references back here (SYSTEM_DESIGN_V2_PROPOSAL.md principle 5, §4.1). Every
+# production skill (`/script`, `/produce`, `/publish`) injects this file; `tools/brandkit_check.py`
+# validates exports against it deterministically. Owner: brand-director (`ops/ROLES.md`).
+#
+# TODO convention: a field awaiting Sparsh's real-world input is either (a) YAML `null` when no
+# placeholder is safe to guess (handles, asset paths), or (b) a clearly-flagged placeholder value
+# when one was requested (the palette hex below). Either way, the field's dotted path MUST have a
+# matching entry in `meta.todo_sparsh` below — `tools/brandkit_check.py validate` enforces this
+# and fails if a null path has no matching TODO entry, or if a declared TODO path doesn't exist in
+# this file (typo/rot guard). Never invent a hex code or a handle to fill a gap silently.
+
+identity:
+  brand_name: "Tangent"
+  surfaces:
+    gallery:
+      domain: "tangent.gallery"
+      role: >-
+        proof surface -- the finished, static, standing evidence, the brand's quality anchor
+        (`brand/tangent-voice.md` Relationship between surfaces)
+    instagram:
+      handle: "tangentideas.ai"
+      account_type: >-
+        Creator, not Business -- Business accounts lose trending-audio library access
+        (`platform/instagram.md` §6)
+      role: "the demo, the reach engine, in motion (`brand/tangent-voice.md`)"
+    youtube:
+      handle: null   # TODO-sparsh -- see meta.todo_sparsh
+      role: "deepens -- long-form spectacle, the 35+ demographic hedge (`brand/tangent-voice.md`)"
+    series_channel:
+      handle: null   # TODO-sparsh -- see meta.todo_sparsh
+      role: >-
+        web-series lane (SYSTEM_DESIGN_V2_PROPOSAL.md §5, the PVC campaign) -- not yet activated,
+        no channel exists yet
+
+verbal:
+  # Reused verbatim, never paraphrased -- distinctive asset #2 (`marketing/distinctive-assets.md`).
+  tagline: "Machine craft, human taste."
+
+  disclosure_lines:
+    instagram_caption:
+      standard: >-
+        Claude drove every adjustment here -- I set the brief, the critic rejected two passes
+        before this one shipped.
+      # Verbatim example from `audience/positioning.md` Disclosure doctrine. Per-post specifics
+      # (what actually got rejected, what the brief actually was) should replace the back half --
+      # the doctrine wants a *real*, checkable claim, not this exact sentence reused blindly. The
+      # deterministic anchor `brandkit_check.py caption` checks for is naming Claude AND the
+      # critic's role; that frame must survive whatever specifics replace it.
+      required_keywords: ["Claude", "critic"]
+      placement: >-
+        inside the visible pre-"more"-tap portion of the caption (`craft/reels/scripting-voice.md`
+        first-125-char rule) -- never buried in a hashtag block
+    youtube_description:
+      standard: >-
+        Claude drove every edit in this video -- I set the brief, the critic gated what shipped,
+        and every frame is my own raw footage.
+      # Parallel construction of the IG caption line, sized for description-length copy. Same
+      # anchor terms and same per-post-specifics caveat as above.
+      required_keywords: ["Claude", "critic"]
+      placement: "visible in the description body itself, not only in an end-card or pinned comment"
+    on_screen:
+      standard: "Claude-driven edit -- human-graded, my own raws."
+      # Condensed from the tangentideas.ai bio draft's "Every edit: Claude-driven, human-graded,
+      # my own raws." (`brand/tangent-voice.md` Bio drafts), shortened for on-screen legibility.
+      required_keywords: ["Claude"]
+      placement: >-
+        at least one visible on-screen beat showing the human gate in action -- the critic's
+        verdict, a rejected pass, the brief being set (`audience/positioning.md`); not a
+        disclaimer bolted on, it is the content
+    gen_asset_note: >-
+      Any [GEN]-tagged asset (Veo/Flow b-roll, TTS) carries the STRICTER rule in
+      `production/genvideo-playbook.md` §6 -- always visibly flagged as generated, never passed as
+      captured footage or a human voice. The three lines above cover ordinary human-edited-content
+      disclosure; they do not by themselves satisfy the GEN-asset rule.
+
+  banned_words:
+    starter_list:   # verbatim -- `craft/reels/scripting-voice.md` "Banned-words starter list"
+      - "insane"
+      - "mind-blowing"
+      - "you won't believe"
+      - "game-changer"
+      - "crazy"
+      - "unreal"
+      - "literally broke the internet"
+      - "this changes everything"
+      - "no cap"
+      - "obsessed"
+      - "hits different"
+      - "the internet is losing it"
+    kit_additions:
+      # Extends the starter list's own stated category (hype vocabulary / youth-coded slang,
+      # `craft/reels/scripting-voice.md`) with more common creator-economy terms. This is a policy
+      # extension in the same spirit, not an independent research claim -- owned by brand-director,
+      # revisited at the quarterly audit like any other `marketing/`-owned list.
+      - "epic"
+      - "unbelievable"
+      - "next level"
+      - "life-changing"
+      - "must-see"
+      - "you need to see this"
+      - "iconic"
+      - "absolutely wild"
+      - "mind blown"
+      - "out of this world"
+      - "this is fire"
+      - "goated"
+      - "no way"
+      - "viral"
+      - "going viral"
+
+  caption_footer:
+    position: "after the CTA line, at the very end of the caption body"
+    rules:
+      - "max 5 hashtags (`platform/instagram.md` §3)"
+      - "no URL shorteners (bit.ly etc.) -- Meta deboosts/flags these in 2026 (`platform/instagram.md` §8)"
+      - >-
+        if a licensed track is used, credit it here -- silence on attribution is a hygiene-lens
+        issue, not a taste one (`brand/tangent-voice.md` Sound identity)
+      - >-
+        the keyword-DM CTA, if this post carries one, sits on its own short line separate from the
+        hook line, so truncation never hides it (`craft/reels/scripting-voice.md` Caption structure)
+
+visual:
+  palette:
+    gallery_white:
+      hex: "#FAFAFA"   # TODO-sparsh placeholder -- see meta.todo_sparsh
+      role: >-
+        background default, or the graded photograph itself -- never a colored gradient template
+        behind text (`brand/tangent-voice.md`)
+    ink:
+      hex: null   # TODO-sparsh -- see meta.todo_sparsh
+      role: >-
+        text/foreground neutral (black/white/gallery-white) -- text never competes with the
+        image's color (`brand/tangent-voice.md`)
+    accent_rule: >-
+      no fixed brand-color chip -- accent always comes from the photograph in frame, the image is
+      always the richest color in the frame (`brand/tangent-voice.md`)
+
+  type:
+    display_face: "Fraunces"
+    ui_face: "Inter"
+    rules:
+      - >-
+        Fraunces used sparingly, for the single load-bearing line per beat (a hook statement, a
+        critic verdict) -- never dense captions (`brand/tangent-voice.md`)
+      - >-
+        Inter for supporting text -- captions, UI labels, disclosure lines; legible at small
+        sizes, sound-off-test-friendly (`brand/tangent-voice.md`)
+
+  frame_never_use:
+    # `brand/tangent-voice.md` Frame aesthetic -- the visual register of the "AI slop"/
+    # hype-creator aesthetic the positioning is built against.
+    - "meme fonts"
+    - "red circle/arrow call-out graphics"
+    - "shocked-face reaction thumbnails"
+    - "countdown-timer urgency graphics"
+    - "neon drop-shadow text"
+
+  logo:
+    wordmark_path: null   # TODO-sparsh -- see meta.todo_sparsh
+    mark_path: null   # TODO-sparsh -- see meta.todo_sparsh
+
+  safe_zone_1080x1920:   # `platform/instagram.md` §3, [MED]
+    frame: "1080x1920"
+    top_px: 250
+    bottom_px: 350
+    right_pct: 10
+    center_safe: "1010x1440"
+    grid_crop_note: >-
+      2026 grid crop moved to ~3:4 rectangular -- keep critical cover elements in the middle ~60%
+      (`platform/instagram.md` §3, [MED])
+
+distinctive_assets:
+  # The machine-checkable subset of `marketing/distinctive-assets.md`'s 7-asset register --
+  # assets #4/#5/#6, the three with a concrete, describable production rule. #1 (name/wordmark)
+  # and #2 (the tagline) are covered above under `identity`/`verbal`; #3 (palette/type) is covered
+  # under `visual`; #7 (Sparsh's builder-voice) stays prose-only in that file -- it isn't
+  # machine-checkable.
+  critic_rejection_card:
+    asset_register_ref: "marketing/distinctive-assets.md #4 -- the critic-as-character"
+    rule: >-
+      on-screen critic verdicts must be genuine G1/G2 rejections, never staged or fabricated -- a
+      fabricated rejection is a disclosure violation, not just a brand risk
+    enforced: true
+    machine_checkable: false   # Phase R2 -- see checkable_note
+    checkable_note: >-
+      the claim-vs-repo-record half (does an item that stages an on-screen critic beat have a
+      matching real critiques/*.md file?) is deterministically checkable today via pipeline data,
+      but `brandkit_check.py export` does not implement it yet; the visual on-screen-rendering
+      half needs frame/text detection, Phase R2.
+  before_after_snap:
+    asset_register_ref: "marketing/distinctive-assets.md #5"
+    rule: >-
+      always a hard cut/wipe transition, never a slow fade; never juice the "before" to look
+      worse than shot
+    enforced: true
+    machine_checkable: false   # Phase R2 -- needs frame-level transition detection
+  sliders_visible:
+    asset_register_ref: "marketing/distinctive-assets.md #6 -- the literal, filmable pipeline signature"
+    rule: >-
+      always genuine screen capture, never mocked/recreated; never speed-ramped or cut around in
+      a way that reads as staged
+    enforced: true
+    machine_checkable: false   # Phase R2 -- needs screen-capture authenticity detection
+
+per_vertical:
+  reels:
+    status: "ACTIVE"
+    duration_bands:   # mirrors tools/hygiene_check.py PLATFORM_SPECS
+      ig: {hard_min_s: 3, hard_max_s: 180, warn_min_s: 20, warn_max_s: 45}
+      yt: {hard_min_s: 1, hard_max_s: 180, warn_min_s: 20, warn_max_s: 60}
+    caption_rules:
+      - >-
+        first ~125 characters carry the hook's textual echo, not just disclosure/hashtags
+        (`craft/reels/scripting-voice.md`)
+      - >-
+        disclosure line visible pre-"more"-tap wherever load-bearing -- per CLAUDE.md
+        non-negotiable #2, always (`craft/reels/scripting-voice.md`)
+      - "keyword-DM CTA on its own line, separate from the hook line (`craft/reels/scripting-voice.md`)"
+      - "verbal.banned_words (above) apply to on-screen text AND captions"
+  longform:
+    status: "pack pending activation"
+    note: "craft pack built on lane activation, never speculatively (SYSTEM_DESIGN_V2_PROPOSAL.md §4.6 item 3)"
+  podcast:
+    status: "pack pending activation"
+    note: "craft pack built on lane activation, never speculatively (SYSTEM_DESIGN_V2_PROPOSAL.md §4.6 item 3)"
+  music:
+    status: "pack pending activation"
+    note: "craft pack built on lane activation, never speculatively (SYSTEM_DESIGN_V2_PROPOSAL.md §4.6 item 3)"
+  app:
+    status: "pack pending activation"
+    note: "craft pack built on lane activation, never speculatively (SYSTEM_DESIGN_V2_PROPOSAL.md §4.6 item 3)"
+  image:
+    status: "pack pending activation"
+    note: "craft pack built on lane activation, never speculatively (SYSTEM_DESIGN_V2_PROPOSAL.md §4.6 item 3)"
+  newsletter:
+    status: "pack pending activation"
+    note: "craft pack built on lane activation, never speculatively (SYSTEM_DESIGN_V2_PROPOSAL.md §4.6 item 3)"
+
+meta:
+  built: "2026-08-02"
+  status: >-
+    DRAFT -- Phase R1 build (SYSTEM_DESIGN_V2_PROPOSAL.md §4.1/§7). Owner: brand-director
+    (`ops/ROLES.md`).
+  schema_version: 1
+  validated_by: "tools/brandkit_check.py validate"
+  todo_sparsh:
+    - >-
+      visual.palette.gallery_white.hex: placeholder #FAFAFA used -- `brand/tangent-voice.md`
+      names "gallery-white" descriptively, never an exact hex; confirm/replace with
+      tangent.gallery's actual token
+    - >-
+      visual.palette.ink.hex: no value exists anywhere in the knowledge bank; provide the actual
+      dark/text color hex
+    - "visual.logo.wordmark_path: no wordmark asset built yet; provide the file path once it exists"
+    - "visual.logo.mark_path: no standalone mark/icon asset built yet; provide the file path once it exists"
+    - "identity.surfaces.youtube.handle: YouTube channel not yet created/named"
+    - >-
+      identity.surfaces.series_channel.handle: web-series channel TBD -- PVC campaign timing
+      itself is an open decision (SYSTEM_DESIGN_V2_PROPOSAL.md §8 item 4)
