@@ -222,8 +222,37 @@ per_vertical:
       - "keyword-DM CTA on its own line, separate from the hook line (`craft/reels/scripting-voice.md`)"
       - "verbal.banned_words (above) apply to on-screen text AND captions"
   longform:
-    status: "pack pending activation"
-    note: "craft pack built on lane activation, never speculatively (SYSTEM_DESIGN_V2_PROPOSAL.md §4.6 item 3)"
+    status: "ACTIVE"   # pack built 2026-08-02 on lane activation (BET-4/BET-5) -- knowledge/craft/longform/
+    duration_bands:   # mirrors tools/hygiene_check.py PLATFORM_SPECS "yt-long"; warn band is policy pending [OWN-DATA], not a researched sweet spot (craft/longform/structure-and-retention.md "Pacing bands")
+      yt_long: {hard_min_s: 60, hard_max_s: 3600, warn_min_s: 480, warn_max_s: 1200}
+    packaging_rules:
+      - >-
+        title+thumbnail drafted as a unit at script time, 3 variants per HERO long-form,
+        Test & compare at publish (`craft/longform/packaging.md` Testing doctrine)
+      - >-
+        thumbnail obeys visual.palette.accent_rule + visual.frame_never_use above; text is
+        Fraunces, one load-bearing line max, legible at grid size (`craft/longform/packaging.md`)
+      - >-
+        title sells the story, never the AI; verbal.banned_words apply to titles verbatim;
+        episode number at the title tail, never the head (`craft/longform/packaging.md`)
+      - >-
+        thumbnail must be a true frame/still of the work -- a promise the video never shows
+        escalates to critique lens 8 (`craft/longform/packaging.md`)
+    disclosure_placement:
+      - >-
+        verbal.disclosure_lines.youtube_description line in the description body, visible
+        without expansion, plus the sourcing-basis line on series episodes
+        (`craft/longform/series-doctrine.md` Disclosure placement)
+      - >-
+        on-screen human-gate beat per verbal.disclosure_lines.on_screen; on PVC tribute
+        episodes the process proof lives in C8 making-of content, never interrupting the
+        tribute (`craft/longform/series-doctrine.md`)
+      - >-
+        every [GEN]-tagged upload self-declares via YouTube's Altered-content toggle
+        (`platform/youtube.md` §8; verbal.disclosure_lines.gen_asset_note above)
+      - >-
+        PVC episodes additionally carry on-screen dramatization markers per
+        `craft/longform/series-doctrine.md` -- tribute-integrity checklist is binding at G2
   podcast:
     status: "pack pending activation"
     note: "craft pack built on lane activation, never speculatively (SYSTEM_DESIGN_V2_PROPOSAL.md §4.6 item 3)"

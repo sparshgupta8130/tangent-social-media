@@ -9,8 +9,15 @@ Subcommands
 -----------
     new "<title>" --pillar HERO|WORKHORSE|FILLER --platform ig,yt
         Creates ops/pipeline/NNN-slug/ (NNN = next zero-padded 3-digit id)
-        with item.yaml (stage=IDEA) + brief.md + script.md (copied from
-        templates/ if present, else stub files with a heading).
+        with item.yaml (stage=IDEA, parent_id=null) + brief.md + script.md
+        (copied from templates/ if present, else stub files with a heading).
+
+    derive PARENT_NNN --title "..." --platform ig,yt [--vertical V] [--pillar P]
+        Creates a child item exactly like `new`, but with `parent_id` set to
+        PARENT_NNN, `pillar`/`vertical` defaulting to the parent's when not
+        given explicitly, and `next_action` prefilled "derivative spec from
+        parent NNN". Errors if the parent item doesn't exist or is KILLED.
+        (Repurposing Engine — ops/pipeline/README.md "Derivative gate policy".)
 
     stage NNN STAGE [--due YYYY-MM-DD] [--next-action TEXT]
                     [--next-action-owner OWNER] [--plane-issue ID]
@@ -100,6 +107,7 @@ def cmd_new(args: argparse.Namespace) -> int:
         "pillar": args.pillar,
         "platforms": platforms,
         "vertical": args.vertical,
+        "parent_id": None,
         "stage": "IDEA",
         "created": c.today_iso(),
         "due": args.due,
@@ -127,6 +135,94 @@ def cmd_new(args: argparse.Namespace) -> int:
 
 
 # ---------------------------------------------------------------------------
+# derive — Repurposing Engine child items (ops/pipeline/README.md "Derivative
+# gate policy")
+# ---------------------------------------------------------------------------
+
+def cmd_derive(args: argparse.Namespace) -> int:
+    root = c.get_repo_root()
+    try:
+        _parent_folder, parent = c.load_item(args.parent_id, root)
+    except FileNotFoundError as exc:
+        _err(str(exc))
+        return 2
+    if parent.get("stage") == "KILLED":
+        _err(f"parent item {args.parent_id:03d} is KILLED; cannot derive a child from a killed item")
+        return 1
+
+    platforms = [p.strip() for p in args.platform.split(",") if p.strip()]
+    if not platforms:
+        _err("--platform must list at least one of: " + ", ".join(c.PLATFORMS))
+        return 1
+    for p in platforms:
+        if p not in c.PLATFORMS:
+            _err(f"unknown platform '{p}' (allowed: {', '.join(c.PLATFORMS)})")
+            return 1
+
+    if args.due is not None and not c.is_valid_iso_date(args.due):
+        _err(f"--due must be an ISO date (YYYY-MM-DD), got '{args.due}'")
+        return 1
+
+    if args.next_action_owner not in c.OWNERS:
+        _err(f"--next-action-owner must be one of: {', '.join(c.OWNERS)}")
+        return 1
+
+    pillar = args.pillar or parent.get("pillar")
+    if pillar not in c.PILLARS:
+        _err(f"pillar '{pillar}' not in {c.PILLARS} (from --pillar, or inherited from parent)")
+        return 1
+
+    vertical = args.vertical or parent.get("vertical")
+    if vertical not in c.VERTICALS:
+        _err(f"vertical '{vertical}' not in {c.VERTICALS} (from --vertical, or inherited from parent)")
+        return 1
+
+    item_id = c.next_item_id(root)
+    slug = c.slugify(args.title)
+    folder_name = f"{item_id:03d}-{slug}"
+    folder = c.pipeline_dir(root) / folder_name
+
+    if folder.exists():
+        _err(f"{folder} already exists")
+        return 1
+
+    folder.mkdir(parents=True)
+
+    data = {
+        "id": item_id,
+        "slug": slug,
+        "title": args.title,
+        "pillar": pillar,
+        "platforms": platforms,
+        "vertical": vertical,
+        "parent_id": args.parent_id,
+        "stage": "IDEA",
+        "created": c.today_iso(),
+        "due": args.due,
+        "next_action": f"derivative spec from parent {args.parent_id:03d}",
+        "next_action_owner": args.next_action_owner,
+        "plane_issue": args.plane_issue,
+        "approved_by_sparsh": None,
+        "published": {},
+        "kill_reason": None,
+    }
+    c.save_item(folder, data)
+
+    templates_dir = root / "templates"
+    for fname, heading in (("brief.md", f"# Brief — {args.title}"),
+                           ("script.md", f"# Script — {args.title}")):
+        dest = folder / fname
+        src = templates_dir / fname
+        if src.is_file():
+            shutil.copyfile(src, dest)
+        else:
+            dest.write_text(heading + "\n", encoding="utf-8", newline="\n")
+
+    print(f"created {folder_name} (id={item_id}, stage=IDEA, parent_id={args.parent_id:03d})")
+    return 0
+
+
+# ---------------------------------------------------------------------------
 # stage
 # ---------------------------------------------------------------------------
 
@@ -149,17 +245,38 @@ def _g3_error(folder: Path) -> str | None:
              "recorded in a G3-brand-r2.md)")
 
 
-def _gate_check(current: str, target: str, folder: Path) -> str | None:
+def _gate_check(current: str, target: str, folder: Path, item: dict) -> str | None:
     """Returns an error message if the gate for current->target isn't met,
-    else None."""
+    else None.
+
+    Derivative gate policy (ops/pipeline/README.md): an item with a non-null
+    `parent_id` skips G1 IF EITHER a critiques/G1-script.md SHIP verdict OR a
+    derivative-spec.md file (exact filename, item-folder root) is present —
+    the parent's own G1 already validated the source material; the
+    derivative-spec.md documents the source beats used, the platform
+    re-grammar applied, and the native changes made. A non-derivative item
+    (parent_id is null) always needs the full G1 SHIP verdict; derivatives
+    still face FULL G2 and G3/SHIP like any item (no change below for those
+    transitions)."""
     if current == "SCRIPTED" and target == "PRODUCING":
         g1 = folder / "critiques" / "G1-script.md"
-        if not g1.is_file():
-            return ("G1 gate not met: critiques/G1-script.md does not exist "
-                     "(run /critique for the script gate first)")
-        text = g1.read_text(encoding="utf-8", errors="replace")
-        if not any(line.strip() == "VERDICT: SHIP" for line in text.splitlines()):
-            return "G1 gate not met: critiques/G1-script.md has no 'VERDICT: SHIP' line"
+        g1_ship = False
+        if g1.is_file():
+            text = g1.read_text(encoding="utf-8", errors="replace")
+            g1_ship = any(line.strip() == "VERDICT: SHIP" for line in text.splitlines())
+
+        if item.get("parent_id") is not None:
+            deriv_spec = folder / "derivative-spec.md"
+            if not g1_ship and not deriv_spec.is_file():
+                return ("G1 gate not met: this is a derivative item (parent_id is set) — needs "
+                         "EITHER critiques/G1-script.md with a 'VERDICT: SHIP' line OR a "
+                         "derivative-spec.md file in the item folder (neither was found)")
+        else:
+            if not g1.is_file():
+                return ("G1 gate not met: critiques/G1-script.md does not exist "
+                         "(run /critique for the script gate first)")
+            if not g1_ship:
+                return "G1 gate not met: critiques/G1-script.md has no 'VERDICT: SHIP' line"
     if current == "CUT" and target == "READY":
         critiques_dir = folder / "critiques"
         candidates = sorted(critiques_dir.glob("G2-cut*.md")) if critiques_dir.is_dir() else []
@@ -218,7 +335,7 @@ def cmd_stage(args: argparse.Namespace) -> int:
             hint = f" (next legal stage is {next_legal})" if next_legal else " (no forward stage remains)"
             _err(f"illegal transition '{current}' -> '{target}'{hint}")
             return 1
-        gate_error = _gate_check(current, target, folder)
+        gate_error = _gate_check(current, target, folder, item)
         if gate_error:
             _err(gate_error)
             return 1
@@ -290,9 +407,13 @@ def cmd_board(args: argparse.Namespace) -> int:
     for folder, item in items:
         overdue = "OVERDUE" if _is_overdue(item) else ""
         item_id = item.get("id")
+        slug = item.get("slug", folder.name)
+        parent_id = item.get("parent_id")
+        if isinstance(parent_id, int):
+            slug = f"{slug} ^{parent_id:03d}"  # derivative annotation (Repurposing Engine)
         rows.append([
             f"{item_id:03d}" if isinstance(item_id, int) else "?",
-            item.get("slug", folder.name),
+            slug,
             item.get("pillar", ""),
             item.get("stage", ""),
             item.get("next_action_owner", ""),
@@ -411,15 +532,15 @@ def cmd_publish(args: argparse.Namespace) -> int:
 # validate
 # ---------------------------------------------------------------------------
 
-def _validate_item(folder: Path, item: dict) -> list[str]:
+def _validate_item(folder: Path, item: dict, root: Path) -> list[str]:
     violations = []
     prefix = f"[{folder.name}]"
 
     if "__yaml_error__" in item:
         return [f"{prefix} invalid YAML: {item['__yaml_error__']}"]
 
-    required = ("id", "slug", "title", "pillar", "platforms", "vertical", "stage", "created",
-                "due", "next_action", "next_action_owner", "plane_issue",
+    required = ("id", "slug", "title", "pillar", "platforms", "vertical", "parent_id", "stage",
+                "created", "due", "next_action", "next_action_owner", "plane_issue",
                 "approved_by_sparsh", "published", "kill_reason")
     for key in required:
         if key not in item:
@@ -458,6 +579,16 @@ def _validate_item(folder: Path, item: dict) -> list[str]:
     if item.get("vertical") not in c.VERTICALS:
         violations.append(f"{prefix} vertical '{item.get('vertical')}' not in {c.VERTICALS}")
 
+    parent_id = item.get("parent_id")
+    if parent_id is not None:
+        if not isinstance(parent_id, int):
+            violations.append(f"{prefix} parent_id must be an int or null, got {parent_id!r}")
+        elif parent_id == item.get("id"):
+            violations.append(f"{prefix} parent_id cannot reference itself")
+        elif c.item_folder_for_id(parent_id, root) is None:
+            violations.append(f"{prefix} parent_id {parent_id} does not reference an existing "
+                               f"item (orphan derivative)")
+
     if item["next_action_owner"] not in c.OWNERS:
         violations.append(f"{prefix} next_action_owner '{item['next_action_owner']}' not in {c.OWNERS}")
 
@@ -491,7 +622,7 @@ def cmd_validate(args: argparse.Namespace) -> int:
     n = 0
     for folder, item in c.iter_items(root):
         n += 1
-        all_violations.extend(_validate_item(folder, item))
+        all_violations.extend(_validate_item(folder, item, root))
 
     if all_violations:
         for v in all_violations:
@@ -527,6 +658,20 @@ def build_parser() -> argparse.ArgumentParser:
                         dest="next_action_owner")
     p_new.add_argument("--plane-issue", default=None, dest="plane_issue")
     p_new.set_defaults(func=cmd_new)
+
+    p_derive = sub.add_parser("derive", help="create a child derivative item linked to a parent")
+    p_derive.add_argument("parent_id", type=int)
+    p_derive.add_argument("--title", required=True, help="derivative title")
+    p_derive.add_argument("--platform", required=True, help="comma-separated, e.g. ig,yt")
+    p_derive.add_argument("--vertical", default=None, choices=c.VERTICALS,
+                           help="content vertical (default: parent's vertical)")
+    p_derive.add_argument("--pillar", default=None, choices=c.PILLARS,
+                           help="content pillar (default: parent's pillar)")
+    p_derive.add_argument("--due", default=None, help="ISO date YYYY-MM-DD")
+    p_derive.add_argument("--next-action-owner", default="story-lead", dest="next_action_owner",
+                           help="who writes the derivative-spec.md (default: story-lead)")
+    p_derive.add_argument("--plane-issue", default=None, dest="plane_issue")
+    p_derive.set_defaults(func=cmd_derive)
 
     p_stage = sub.add_parser("stage", help="transition (or touch) an item's stage")
     p_stage.add_argument("id", type=int)

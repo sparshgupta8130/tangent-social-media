@@ -3,7 +3,7 @@
 **Status: APPROVED by Sparsh 2026-08-02 (structure + Phase R1; first-product decision
 deferred to a dedicated session; campaign decisions queued post-build). Where this document
 and `SYSTEM_DESIGN.md` (V1) disagree, THIS document wins; V1 remains the detailed reference
-for everything V2 doesn't amend. Phase R1 delivered 2026-08-02; R2/R3 pending.** Evidence base: the four August-2026
+for everything V2 doesn't amend. Phase R1 delivered 2026-08-02. R2 delivered 2026-08-02 (repurposing engine + longform craft pack + Hedra vendor memo at research/briefs/hedra_eval_2026-08.md — verdict: no vendor, Flow-only; podcast/music/app packs deliberately deferred until their lanes activate). R3 half-delivered 2026-08-02 (ingest_stats.py built against documented formats — first-real-export reconciliation via `inspect` is mandatory before trust; publishing automation remains BLOCKED on accounts/handles/tokens that don't yet exist).** Evidence base: the four August-2026
 research briefs at `research/briefs/revamp-2026-08/` (products teardown, architecture
 patterns, monetization economics, subscription inventory) — cited below as [TEARDOWN],
 [ARCH], [MONEY], [SUBS].

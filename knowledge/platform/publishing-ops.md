@@ -99,6 +99,16 @@ Cloud Console before depending on this figure**].
   written down — >10% divergence = `FAILED-VERIFICATION`, must be resolved before the postmortem
   ships. This exists because the corpus's own browser-scraped instrument was wrong on likes
   ~45% of the time (1.8x-453x off) — a documented failure mode, not a hypothetical one.
+- **Weekly `posts.csv` update flow, as of `tools/ingest_stats.py` (Phase R3)**: export the
+  platform's content analytics (Meta Business Suite Insights → Content → Export Data for IG;
+  YouTube Studio → Analytics → Advanced Mode / Content export for YT) → run
+  `tools/ingest_stats.py ig|yt <file> --followers N` to map it into `ops/calendar/posts.csv`
+  (dedup-by-url, warns rather than silently lowers a number on a decrease) → spot-check the
+  appended rows → `tools/metrics.py report`. **`ingest_stats.py`'s column mappings are built
+  against documented export formats, not a real export seen by this tool** — running
+  `tools/ingest_stats.py inspect <file>` on the first real export of each platform and
+  reconciling any mismatch (via `--mapping`) is mandatory before trusting batch ingestion on
+  that platform going forward.
 
 ## 4. DM automation setup
 

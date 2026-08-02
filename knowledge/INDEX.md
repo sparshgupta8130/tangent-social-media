@@ -9,9 +9,12 @@ this file is the map.
 
 | File | What's in it | Read before |
 |---|---|---|
-| `craft/hooks.md` | Hook classes ranked by corpus win-rate, verbatim examples, the 1s/3s gate, first-frame test, anti-patterns | Scripting any hook; G1 critique lens 1 |
-| `craft/structure-and-retention.md` | Loop discipline, escalating listicles, pacing, length bands, demo-in-motion beat rules | Scripting the body of any piece; G1 lens 2 |
-| `craft/scripting-voice.md` | One-idea rule, sound-off legibility, caption/text rules, jargon bans, 35+ tone standard | Scripting VO/captions; G1 lens 4 |
+| `craft/reels/hooks.md` | Hook classes ranked by corpus win-rate, verbatim examples, the 1s/3s gate, first-frame test, anti-patterns | Scripting any hook; G1 critique lens 1 |
+| `craft/reels/structure-and-retention.md` | Loop discipline, escalating listicles, pacing, length bands, demo-in-motion beat rules | Scripting the body of any piece; G1 lens 2 |
+| `craft/reels/scripting-voice.md` | One-idea rule, sound-off legibility, caption/text rules, jargon bans, 35+ tone standard | Scripting VO/captions; G1 lens 4 |
+| `craft/longform/structure-and-retention.md` | First-30s contract, act/chapter structure, nested loops + re-hooks, pacing bands, endings/serialization handoff, the AI-generation constraint layer (8s clips, ~60s shots, credit ceiling) | Scripting any long-form; G1/G2 lens 2 on `vertical: longform` |
+| `craft/longform/packaging.md` | Title+thumbnail doctrine (the long-form/Shorts inversion), CTR+retention interplay, Test & compare protocol, sell-the-story title rules, episode numbering, browse-vs-suggested | Packaging any long-form; G1/G2 lens 1 on `vertical: longform` |
+| `craft/longform/series-doctrine.md` | Episode/season arcs, serialization mechanics (ep2 doctrine), PVC layer: Gazette-first accuracy workflow, dramatization marking, disclosure placement, family-consultation checkpoint, tribute-integrity G2 checklist | Any series/BET-5 item at ideation, script, or critique |
 | `virality/laws.md` | The measurement layer (Law 0.1/0.2) + 11 mechanics laws, each with evidence + operational test | Any critique; any postmortem |
 | `virality/failure-modes.md` | The 7-mode failure catalog, named cases, early warnings | Postmortems; weekly-review pivot checks |
 | `platform/instagram.md` | Ranking signals w/ evidence tiers, official penalty list, engagement-bait line (THE LINE), specs, funnel mechanics | Any IG script/critique/publish |
@@ -27,6 +30,12 @@ this file is the map.
 | `production/workload-router.md` | Claude-vs-Google job routing, tooling matrix per vertical, the three binding caps, re-verification protocol | Any heavy production run; campaign planning |
 | `benchmarks.md` | Metric definitions (matching `tools/metrics.py`), healthy bands, our medians (analyst-owned) | Any postmortem; any weekly-review |
 | `pattern-library.md` | Distilled 18-dossier corpus: verbatim hooks, structure templates, archetype cards, funnel evidence, failure catalog | Ideation; differentiation checks (G1/G2 lens 7) |
+
+**Craft packs** (`SYSTEM_DESIGN_V2_PROPOSAL.md` §4.3): per-vertical doctrine lives under
+`craft/<vertical>/`; `item.yaml`'s `vertical` field selects which pack the critic and producer
+load. Built on lane activation, never speculatively — **existing packs: `craft/reels/`
+(corpus-built, 2026-07) and `craft/longform/` (BET-4/BET-5 activation, 2026-08-02)**; podcast/
+music/games-apps packs do not exist yet. `brand/kit.yaml` `per_vertical` mirrors pack status.
 
 ### Brand Office domain (`SYSTEM_DESIGN.md` §12.2)
 

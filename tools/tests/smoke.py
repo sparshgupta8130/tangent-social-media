@@ -9,9 +9,23 @@ Covers:
     - pipeline.py: new / legal stage transitions / an illegal transition
       rejected / both gate checks (G1, G2, SHIP) blocking and then passing /
       kill / publish + repost guard / board / blocked / validate (clean and
-      with an injected violation)
+      with an injected violation) / derive (Repurposing Engine: a linked
+      child item, parent-not-found and parent-KILLED rejection, the G1 skip
+      via derivative-spec.md, a non-derivative item still requiring the full
+      G1 SHIP verdict, the board `^NNN` annotation, and validate catching an
+      orphaned parent_id)
     - metrics.py: likerate, all five decompose quadrants, efficiency,
       funnel, report (against an inline CSV fixture)
+    - ingest_stats.py: inspect against synthetic IG + YT fixtures written by
+      this file (documented-format column names, 3 rows each); ig/yt
+      --dry-run mapping correctness (incl. the yt video-id -> watch-url
+      derivation and IG funnel-url flagging); a real append that produces a
+      posts.csv consumable by `metrics.py report`; dedup-by-url update
+      warning on a decreased number while accruing an increase; a
+      --mapping override recovering from headers the built-in mapping can't
+      read; and the openpyxl-availability branch for .xlsx (present in this
+      dev environment -> real xlsx read exercised; would degrade to a clean
+      exit-2 + install hint if absent, like verify_stats.py/hygiene_check.py)
     - verify_stats.py: dependency-detection path (yt-dlp not installed in
       this environment -> clean exit 2)
     - hygiene_check.py: dependency-detection path (ffprobe not installed in
@@ -211,6 +225,63 @@ def test_pipeline(env: dict, tmp: str) -> None:
     check("board_lists_open_items", "001" in r.stdout and "004" in r.stdout, r.stdout)
     check("board_excludes_killed", "003" not in r.stdout, r.stdout)
 
+    print("\n-- pipeline.py derive (Repurposing Engine) --")
+
+    # item 1 is PUBLISHED (a valid derive trigger per /repurpose); item 3 is
+    # KILLED (must be rejected).
+    r = run("pipeline.py", ["derive", "1", "--title", "Hero Shorts Recut", "--platform", "yt"], env)
+    check("derive_creates_child_exit0", r.returncode == 0, r.stderr)
+    item5, folder5 = read_item(tmp, 5)
+    check("derive_sets_parent_id", item5.get("parent_id") == 1, str(item5.get("parent_id")))
+    check("derive_inherits_pillar", item5.get("pillar") == "HERO", str(item5.get("pillar")))
+    check("derive_inherits_vertical", item5.get("vertical") == "reels", str(item5.get("vertical")))
+    check("derive_stage_is_idea", item5.get("stage") == "IDEA", str(item5.get("stage")))
+    check("derive_next_action_prefilled",
+          item5.get("next_action") == "derivative spec from parent 001", str(item5.get("next_action")))
+    check("derive_creates_script_stub", (folder5 / "script.md").is_file())
+
+    r = run("pipeline.py", ["derive", "999", "--title", "Orphan", "--platform", "ig"], env)
+    check("derive_missing_parent_exit2", r.returncode == 2, f"exit={r.returncode} stderr={r.stderr}")
+
+    r = run("pipeline.py", ["derive", "3", "--title", "From Killed Parent", "--platform", "ig"], env)
+    check("derive_killed_parent_rejected", r.returncode != 0, "expected non-zero, got 0")
+
+    r = run("pipeline.py", ["stage", "5", "BRIEFED"], env)
+    check("derivative_to_briefed", r.returncode == 0, r.stderr)
+    r = run("pipeline.py", ["stage", "5", "SCRIPTED"], env)
+    check("derivative_to_scripted", r.returncode == 0, r.stderr)
+
+    r = run("pipeline.py", ["stage", "5", "PRODUCING"], env)
+    check("derivative_g1_blocked_without_spec_or_ship", r.returncode != 0, "expected non-zero, got 0")
+    check("derivative_gate_error_names_both_options",
+          "derivative-spec.md" in r.stderr and "G1-script.md" in r.stderr, r.stderr)
+
+    (folder5 / "derivative-spec.md").write_text(
+        "# Derivative Spec\n"
+        "Source beats used: hook + payoff beat from parent 001.\n"
+        "Platform re-grammar applied: knowledge/virality/laws.md law 10.\n"
+        "Native changes: recut to 45s vertical, new on-screen text.\n",
+        encoding="utf-8",
+    )
+    r = run("pipeline.py", ["stage", "5", "PRODUCING"], env)
+    check("derivative_g1_skipped_with_spec", r.returncode == 0, r.stderr)
+
+    # A non-derivative item still needs the full G1 SHIP verdict -- a bare
+    # derivative-spec.md must NOT unlock the gate when parent_id is null.
+    r = run("pipeline.py", ["new", "Non Derivative Item", "--pillar", "FILLER", "--platform", "ig"], env)
+    check("new_sixth_item", r.returncode == 0, r.stderr)
+    r = run("pipeline.py", ["stage", "6", "BRIEFED"], env)
+    check("item6_to_briefed", r.returncode == 0, r.stderr)
+    r = run("pipeline.py", ["stage", "6", "SCRIPTED"], env)
+    check("item6_to_scripted", r.returncode == 0, r.stderr)
+    _, folder6 = read_item(tmp, 6)
+    (folder6 / "derivative-spec.md").write_text("not a real derivative\n", encoding="utf-8")
+    r = run("pipeline.py", ["stage", "6", "PRODUCING"], env)
+    check("non_derivative_ignores_derivative_spec", r.returncode != 0, "expected non-zero, got 0")
+
+    r = run("pipeline.py", ["board"], env)
+    check("board_shows_child_annotation", "^001" in r.stdout, r.stdout)
+
     r = run("pipeline.py", ["validate"], env)
     check("validate_clean_state_exit0", r.returncode == 0, r.stderr + r.stdout)
 
@@ -221,6 +292,14 @@ def test_pipeline(env: dict, tmp: str) -> None:
     r = run("pipeline.py", ["validate"], env)
     check("validate_catches_injected_violation", r.returncode != 0, "expected non-zero, got 0")
     check("validate_violation_mentions_pillar", "pillar" in r.stdout, r.stdout)
+
+    item5, folder5 = read_item(tmp, 5)
+    item5["parent_id"] = 999
+    with (folder5 / "item.yaml").open("w", encoding="utf-8") as fh:
+        yaml.safe_dump(item5, fh, sort_keys=False, allow_unicode=True)
+    r = run("pipeline.py", ["validate"], env)
+    check("validate_catches_orphan_parent_id", r.returncode != 0, "expected non-zero, got 0")
+    check("validate_violation_mentions_parent_id", "parent_id" in r.stdout, r.stdout)
 
 
 def test_metrics(env: dict, tmp: str) -> None:
@@ -287,6 +366,202 @@ def test_metrics(env: dict, tmp: str) -> None:
         out = json.loads(r.stdout)
         check("report_has_3_rows", len(out["rows"]) == 3, str(len(out["rows"])))
         check("report_has_summary", "summary" in out and "early_warning_triad" in out["summary"])
+
+
+def test_ingest_stats(env: dict, tmp: str) -> None:
+    """Writes synthetic IG + YT export fixtures itself (documented-format
+    column names per tools/ingest_stats.py's IG_DEFAULT_MAPPING /
+    YT_DEFAULT_MAPPING, 3 rows each -- no real export exists yet, see the
+    tool's HONEST CONSTRAINT), then exercises inspect, both dry-run mapping
+    paths, a real append consumable by `metrics.py report`, the dedup
+    update/warn-on-decrease rule, and the --mapping override escape hatch."""
+    print("\n-- ingest_stats.py --")
+
+    ig_path = Path(tmp) / "ig_export_fixture.csv"
+    ig_fieldnames = ["Post Date", "Post Text", "Permalink", "Views", "Likes",
+                      "Comments", "Shares", "Saves"]
+    ig_rows = [
+        {"Post Date": "2026-07-01", "Post Text": "Fixture caption one #process",
+         "Permalink": "https://instagram.com/p/aaa111", "Views": "12000", "Likes": "450",
+         "Comments": "80", "Shares": "20", "Saves": "35"},
+        {"Post Date": "2026-07-05", "Post Text": "Fixture caption two #process",
+         "Permalink": "https://instagram.com/p/bbb222", "Views": "8000", "Likes": "300",
+         "Comments": "150", "Shares": "10", "Saves": "12"},
+        {"Post Date": "2026-07-10", "Post Text": "Fixture caption three #process",
+         "Permalink": "https://instagram.com/p/ccc333", "Views": "4000", "Likes": "150",
+         "Comments": "20", "Shares": "5", "Saves": "5"},
+    ]
+    with ig_path.open("w", encoding="utf-8", newline="") as fh:
+        writer = csv.DictWriter(fh, fieldnames=ig_fieldnames)
+        writer.writeheader()
+        writer.writerows(ig_rows)
+
+    yt_path = Path(tmp) / "yt_export_fixture.csv"
+    yt_fieldnames = ["Video ID", "Video title", "Video publish time", "Views",
+                      "Likes", "Comments added", "Shares"]
+    yt_rows = [
+        {"Video ID": "vid001", "Video title": "Ep 1", "Video publish time": "2026-07-02",
+         "Views": "5000", "Likes": "200", "Comments added": "40", "Shares": "8"},
+        {"Video ID": "vid002", "Video title": "Ep 2", "Video publish time": "2026-07-09",
+         "Views": "9000", "Likes": "500", "Comments added": "90", "Shares": "15"},
+        {"Video ID": "vid003", "Video title": "Ep 3", "Video publish time": "2026-07-16",
+         "Views": "3000", "Likes": "100", "Comments added": "10", "Shares": "3"},
+    ]
+    with yt_path.open("w", encoding="utf-8", newline="") as fh:
+        writer = csv.DictWriter(fh, fieldnames=yt_fieldnames)
+        writer.writeheader()
+        writer.writerows(yt_rows)
+
+    ig_url_bbb = "https://instagram.com/p/bbb222"
+
+    # -- inspect --
+    r = run("ingest_stats.py", ["inspect", str(ig_path), "--platform", "ig"], env)
+    check("inspect_ig_runs_exit0", r.returncode == 0, r.stderr)
+    check("inspect_ig_maps_permalink", "'Permalink' -> url" in r.stdout, r.stdout)
+    check("inspect_ig_drops_post_text", "DROP" in r.stdout and "'Post Text'" in r.stdout, r.stdout)
+    check("inspect_ig_no_missing", "all expected 'ig' columns found." in r.stdout, r.stdout)
+
+    r = run("ingest_stats.py", ["inspect", str(yt_path), "--platform", "yt"], env)
+    check("inspect_yt_runs_exit0", r.returncode == 0, r.stderr)
+    check("inspect_yt_maps_video_id", "'Video ID' -> video_id" in r.stdout, r.stdout)
+    check("inspect_yt_no_missing", "all expected 'yt' columns found." in r.stdout, r.stdout)
+
+    r = run("ingest_stats.py", ["inspect", str(ig_path)], env)
+    check("inspect_default_shows_both_platforms",
+          "'ig' mapping" in r.stdout and "'yt' mapping" in r.stdout, r.stdout)
+    check("inspect_default_flags_missing_yt_columns", "MISSING" in r.stdout, r.stdout)
+
+    # -- ig dry-run maps correctly (incl. funnel-url flagging) --
+    r = run("ingest_stats.py", ["ig", str(ig_path), "--followers", "5000",
+                                 "--funnel-urls", ig_url_bbb, "--dry-run"], env)
+    check("ig_dry_run_exit0", r.returncode == 0, r.stderr)
+    posts_path = Path(tmp) / "ops" / "calendar" / "posts.csv"
+    check("ig_dry_run_writes_nothing", not posts_path.exists(), "posts.csv should not exist yet")
+    bbb_line = next((ln for ln in r.stdout.splitlines() if ig_url_bbb in ln), "")
+    check("ig_dry_run_funnel_flagged", "funnel=1" in bbb_line, bbb_line)
+    aaa_line = next((ln for ln in r.stdout.splitlines() if "aaa111" in ln), "")
+    check("ig_dry_run_non_funnel_row", "funnel=0" in aaa_line, aaa_line)
+    check("ig_dry_run_views_mapped", "views=12000" in aaa_line, aaa_line)
+
+    # -- yt dry-run maps correctly (incl. video-id -> watch-url derivation, never funnel) --
+    r = run("ingest_stats.py", ["yt", str(yt_path), "--followers", "8000", "--dry-run"], env)
+    check("yt_dry_run_exit0", r.returncode == 0, r.stderr)
+    vid001_line = next((ln for ln in r.stdout.splitlines() if "vid001" in ln), "")
+    check("yt_dry_run_derives_watch_url",
+          "url=https://www.youtube.com/watch?v=vid001" in vid001_line, vid001_line)
+    check("yt_dry_run_views_mapped", "views=5000" in vid001_line, vid001_line)
+    check("yt_dry_run_never_funnel_flagged",
+          all("funnel=1" not in ln for ln in r.stdout.splitlines()), r.stdout)
+
+    # -- real ingest: ig then yt, feeding the same posts.csv --
+    r = run("ingest_stats.py", ["ig", str(ig_path), "--followers", "5000",
+                                 "--funnel-urls", ig_url_bbb], env)
+    check("ig_ingest_exit0", r.returncode == 0, r.stderr)
+    check("ig_ingest_appended_3", "3 row(s) appended, 0 row(s) updated" in r.stdout, r.stdout)
+    check("ig_ingest_reminder_printed", "second-source rule" in r.stdout, r.stdout)
+    check("posts_csv_created", posts_path.is_file())
+
+    r = run("ingest_stats.py", ["yt", str(yt_path), "--followers", "8000"], env)
+    check("yt_ingest_exit0", r.returncode == 0, r.stderr)
+    check("yt_ingest_appended_3", "3 row(s) appended, 0 row(s) updated" in r.stdout, r.stdout)
+    check("yt_ingest_reminder_printed", "second-source rule" in r.stdout, r.stdout)
+
+    with posts_path.open(encoding="utf-8", newline="") as fh:
+        all_rows = list(csv.DictReader(fh))
+    check("posts_csv_has_6_rows", len(all_rows) == 6, str(len(all_rows)))
+    check("posts_csv_has_ig_and_yt",
+          any(rr["platform"] == "ig" for rr in all_rows) and
+          any(rr["platform"] == "yt" for rr in all_rows), str(all_rows))
+
+    # -- the ingested posts.csv is consumable by metrics.py report --
+    r = run("metrics.py", ["report", "--csv", str(posts_path), "--followers", "5000", "--json"], env)
+    check("ingested_posts_csv_report_runs_exit0", r.returncode == 0, r.stderr)
+    if r.returncode == 0:
+        out = json.loads(r.stdout)
+        check("ingested_posts_csv_report_has_6_rows", len(out["rows"]) == 6, str(len(out["rows"])))
+
+    # -- dedup update: warns on a decrease, accrues on an increase, in the same row --
+    update_path = Path(tmp) / "ig_export_update.csv"
+    with update_path.open("w", encoding="utf-8", newline="") as fh:
+        writer = csv.DictWriter(fh, fieldnames=["Post Date", "Permalink", "Views", "Likes",
+                                                  "Comments", "Shares", "Saves"])
+        writer.writeheader()
+        writer.writerow({"Post Date": "2026-07-01", "Permalink": "https://instagram.com/p/aaa111",
+                          "Views": "9000", "Likes": "500", "Comments": "80", "Shares": "20",
+                          "Saves": "35"})
+
+    r = run("ingest_stats.py", ["ig", str(update_path), "--followers", "5000"], env)
+    check("dedup_update_exit0", r.returncode == 0, r.stderr)
+    check("dedup_update_warns_on_decrease",
+          "WARNING" in r.stdout and "views" in r.stdout and "aaa111" in r.stdout, r.stdout)
+    check("dedup_update_reports_0_appended_1_updated",
+          "0 row(s) appended, 1 row(s) updated" in r.stdout, r.stdout)
+
+    with posts_path.open(encoding="utf-8", newline="") as fh:
+        updated_rows = {rr["url"]: rr for rr in csv.DictReader(fh)}
+    aaa_row = updated_rows.get("https://instagram.com/p/aaa111", {})
+    check("dedup_keeps_higher_stored_views_not_lowered", aaa_row.get("views") == "12000", str(aaa_row))
+    check("dedup_accrues_higher_likes", aaa_row.get("likes") == "500", str(aaa_row))
+    check("posts_csv_still_6_rows_after_update", len(updated_rows) == 6, str(len(updated_rows)))
+
+    # -- mapping-override escape hatch --
+    weird_path = Path(tmp) / "ig_export_weird_headers.csv"
+    with weird_path.open("w", encoding="utf-8", newline="") as fh:
+        writer = csv.DictWriter(fh, fieldnames=["date_col", "link_col", "view_col",
+                                                  "like_col", "comment_col"])
+        writer.writeheader()
+        writer.writerow({"date_col": "2026-07-20", "link_col": "https://instagram.com/p/weird1",
+                          "view_col": "7000", "like_col": "300", "comment_col": "50"})
+
+    r = run("ingest_stats.py", ["ig", str(weird_path), "--followers", "5000", "--dry-run"], env)
+    check("default_mapping_fails_on_weird_headers", r.returncode == 1, r.stdout + r.stderr)
+
+    mapping_path = Path(tmp) / "ig_mapping_override.json"
+    mapping_path.write_text(json.dumps({
+        "date_col": "date", "link_col": "url", "view_col": "views",
+        "like_col": "likes", "comment_col": "comments",
+    }), encoding="utf-8")
+
+    r = run("ingest_stats.py", ["ig", str(weird_path), "--followers", "5000",
+                                 "--mapping", str(mapping_path), "--dry-run"], env)
+    check("mapping_override_exit0", r.returncode == 0, r.stderr)
+    check("mapping_override_maps_correctly",
+          "url=https://instagram.com/p/weird1" in r.stdout and "views=7000" in r.stdout, r.stdout)
+
+    with posts_path.open(encoding="utf-8", newline="") as fh:
+        final_rows = list(csv.DictReader(fh))
+    check("posts_csv_unaffected_by_dry_run_override", len(final_rows) == 6, str(len(final_rows)))
+
+
+def test_ingest_stats_xlsx(env: dict, tmp: str) -> None:
+    """openpyxl availability varies by environment; branch on it exactly
+    like verify_stats.py/hygiene_check.py branch on yt-dlp/ffmpeg -- present
+    in this dev environment (tools/README.md), so the real .xlsx read path
+    is exercised here; a clean exit-2 + install hint is asserted otherwise."""
+    print("\n-- ingest_stats.py (xlsx path) --")
+    try:
+        import openpyxl
+        have_openpyxl = True
+    except ImportError:
+        have_openpyxl = False
+
+    xlsx_path = Path(tmp) / "ig_export_fixture.xlsx"
+    if have_openpyxl:
+        wb = openpyxl.Workbook()
+        ws = wb.active
+        ws.append(["Post Date", "Permalink", "Views", "Likes", "Comments", "Shares", "Saves"])
+        ws.append(["2026-07-01", "https://instagram.com/p/xlsx1", 6000, 220, 30, 4, 9])
+        wb.save(xlsx_path)
+        wb.close()
+        r = run("ingest_stats.py", ["inspect", str(xlsx_path), "--platform", "ig"], env)
+        check("inspect_xlsx_runs_exit0", r.returncode == 0, r.stderr)
+        check("inspect_xlsx_reads_headers", "'Permalink' -> url" in r.stdout, r.stdout)
+    else:
+        xlsx_path.write_bytes(b"not a real xlsx, just bytes")
+        r = run("ingest_stats.py", ["inspect", str(xlsx_path)], env)
+        check("inspect_xlsx_missing_openpyxl_exit2", r.returncode == 2,
+              f"exit={r.returncode} stderr={r.stderr}")
+        check("inspect_xlsx_install_hint", "pip install openpyxl" in r.stderr, r.stderr)
 
 
 def test_verify_stats(env: dict) -> None:
@@ -393,6 +668,8 @@ def main() -> int:
 
         test_pipeline(env, tmp)
         test_metrics(env, tmp)
+        test_ingest_stats(env, tmp)
+        test_ingest_stats_xlsx(env, tmp)
         test_verify_stats(env)
         test_hygiene_check(env, tmp)
         test_calendar(env)
