@@ -1,29 +1,24 @@
-# 01 Guru Rinpoche and Paro Taktsang: research BLOCKED, NOT A DOSSIER
+# 01 Guru Rinpoche and Paro Taktsang: research dossier (DRAFT 1, in progress)
 
-Status as of 2026-11-11: the research session could not open any source page. Under the source rules (no citing from search snippets, nothing filled from memory), no claim below is verified. Do not use this file for scripting.
+Status 2026-11-11: DRAFT 1. Pages actually opened and read so far: Ardussi 1999 (JBS 1:1, full text via pdftotext), Kinga 2019 (JBS 40, full text via pdftotext), Rubin/Project Himalayan Art essays and item 731, Wikipedia (Paro Taktsang, Padmasambhava; leads only). Blocked (HTTP 403): Treasury of Lives, Britannica, Rigpa Wiki, Tsadra rywiki. More sections to be filled in.
+All access dates 2026-11-11.
 
-## Fetch failures (all `getaddrinfo ENOTFOUND`, i.e. host not in the session's allowed network domains)
-- https://treasuryoflives.org/biographies/view/Padmasambhava/TBRC_P2MS14
-- https://en.wikipedia.org/wiki/Paro_Taktsang
-- https://paro.gov.bt/religious-site/taktshang-tiger-nest-monastery/
-- https://www.himalayanart.org/search/set.cfm?setID=2860
-- https://commons.wikimedia.org/wiki/Category:Paro_Taktsang
+## Summary (draft)
+1. Taktsang's own history: the temple (Guru Tsengye Lhakhang) was founded 1692 by Gyalse Tenzin Rabgye and completed ~1694; Ardussi concludes all present construction dates from 1692 onward.
+2. The tigress is DISPUTED even inside Bhutanese scholarship: Yeshe Tsogyal (popular), Tashi Khyidren (Karma Phuntsho; Dowman's Yeshe Tsogyal biography), Monmo Tashi Khyidren daughter of Sindhu Raja (a minority view), Mandarava (Himalayan Art item 731).
+3. "Subdued" = spirits, gods and demons bound to serve the dharma; "Rudra" not found in any opened source on Taktsang.
+4. "Founded the monastery" is INCORRECT: tradition says he blessed/practised at the cave; the temple was built 900 years later.
+5. 1998 fire 19 April; reconsecrated March 2005 (per Himalayan Art snippet and Wikipedia; page to be confirmed).
 
-Not attempted (the tool advised stopping once several hosts failed): Kuensel, tourism.gov.bt, Journal of Bhutan Studies, Mandala Collections (UVA), Rigpa Wiki, museum open-access sites.
+## Claim verdicts (draft; to be finished)
+| Claim | Verdict | Evidence |
+|---|---|---|
+| a. "Padmasambhava" is his Hindi name | INCORRECT (Sanskrit) | Wikipedia lead only: "Padmasambhava ... Sanskrit पद्मसम्भव, Tibetan pad+ma 'byung gnas" https://en.wikipedia.org/wiki/Padmasambhava. Rubin: name "means 'Lotus-Born.'" https://rubinmuseum.org/projecthimalayanart/essays/padmasambhava-and-his-manifestations/ |
+| b. First Buddhist monk to migrate to Bhutan | UNKNOWN / PARTLY (not a monk, a tantric master who visited) | Kinga 2019: Guru Rinpoche came at invitation of Sendha Gyalp of Bumthang in the 8th century "to subdue Shelging Karpo". https://www.bhutanstudies.org.bt/ (JBS 40 PDF, see sources) |
+| c. One of three deities in most temples | UNKNOWN so far | Only a search snippet; not yet read. |
+| d. Flew in "Rudra form" | INCORRECT as stated; the form is Dorje Drolo (Trollo) | Kinga 2019, Rubin item 731 |
+| e. Subdued a demon | PARTLY: gods, demons and spirits, many, bound as dharma servants | Kinga 2019 quoting Dowman 1996 |
+| f. Meditated in a cave | CORRECT by tradition | Ardussi 1999: "cliff-side meditation cave connected by ancient tradition with Padma Sambhava" |
+| g. Founded the monastery | INCORRECT | Ardussi 1999; Rubin essay |
 
-## Claim verdicts
-All five claims: UNVERIFIED (no page opened). Search-snippet leads only, not citable:
-1. Name: lead only; UNKNOWN until a page is read.
-2. "First Buddhist to bring Buddhism": UNKNOWN.
-3. "One of three deities in most temples": UNKNOWN.
-4. "Rudra form": snippets mention the wrathful form Dorje Drolo; UNKNOWN whether Rudra has any link.
-5. Subdued a spirit, meditated in a cave, founded the monastery: snippets suggest the site was blessed by him, but the claim that he "founded the monastery" looks doubtful (a snippet credits Gyalse Tenzin Rabgye with building the temple in 1692). Unverified.
-
-## Search-snippet leads (from a web search, pages not opened, URL access date 2026-11-11)
-- Tigress ridden by Guru Rinpoche, spirit "Singye Samdrup", 3 years of meditation, Dorje Drolo, tigress as Yeshe Tsogyal in some tellings: aggregator/travel results (e.g. https://drukasia.com/bhutan/paro/taktsang-monastery, https://neykor.com/taktsang-monastery). Travel-blog grade; must be confirmed.
-- Temple built 1692 by Gyalse Tenzin Rabgye, Paro Penlop: snippet only.
-- A competing "1508, Sonam Gyaltshen" date appears in one snippet: source unknown. This is a genuine possible disagreement to resolve.
-- 1998 fire, restoration, Bumthang first visit, Sindhu Raja/Kurjey, pronunciation, depictions with licences: nothing found.
-
-## To unblock
-Allow in the session network settings: treasuryoflives.org, en.wikipedia.org, commons.wikimedia.org, www.himalayanart.org, paro.gov.bt, plus kuensel.bt, tourism.gov.bt, bhutanstudies.org.bt, www.rigpawiki.org, library.bhutan.shanti.virginia.edu. Then re-run.
+(Detailed sections 3 to 10 to follow in the next revision.)
