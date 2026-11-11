@@ -72,7 +72,7 @@ Footnotes: [1] KINGA p.4. [2] ARD pp.12-14. [3] TEXTBOOK pp.1-9. [4] KINGA p.8. 
 | 1649 (1st month, Earth Ox) | First Punakha Domchoe held in thanks | KINGA p.7 |
 | 1651 | Zhabdrung dies (10th day, 3rd month; at Punakha Dzong) | TEXTBOOK/ARD year; date from BBS (https://www.bbs.bt/?p=147792); Machen: bhutanpilgrimage (lead) |
 | 1651-c.1705 | Death concealed ("54 years") | ARD p.18 "more than fifty years"; 54 and "1705" from WP and bhutanpilgrimage (leads) |
-| 1952 | Textbook: Je Khenpo / Druk Desi system long outlives him; Desi position "drifted" to independence | ARD p.18 |
+| after 1651 | The Desi post "began a long evolutionary drift towards greater independence" because his line ended and his death was kept secret | ARD p.18 |
 
 ## 5. Variants and disagreements
 
