@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Panditji launch</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@400;500;600&family=Noto+Serif+Devanagari:wght@400;500&display=swap">
+<style>
+  :root { --bg:#100f0d; --text:#ece7de; --muted:#9b948a; --line:#29261f; --card:#171613; --warm:#e9a23b; --cream:#fef7ea; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); font-family: Inter, sans-serif; color: var(--text); }
+  #stage { position: absolute; inset: 0; overflow: hidden; }
+  .bg { position: absolute; inset: 0; background: radial-gradient(1200px 900px at 50% 120%, #1c1712 0%, var(--bg) 60%); }
+  .glow { position: absolute; width: 1400px; height: 1400px; left: -160px; top: 500px; border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(233,162,59,.26), rgba(233,162,59,.08) 55%, transparent 75%); }
+  .vignette { position: absolute; inset: 0; background: radial-gradient(1300px 1700px at 50% 50%, transparent 55%, rgba(0,0,0,.55)); pointer-events: none; }
+  .grain { position: absolute; inset: -40px; background-image: url(grain.png); opacity: .07; mix-blend-mode: screen; pointer-events: none; }
+
+  /* phone */
+  #cam { position: absolute; left: 260px; top: 640px; width: 560px; height: 1175px; transform-origin: 0 0; }
+  #tilt { width: 100%; height: 100%; transform-style: preserve-3d; }
+  .phone { position: relative; width: 560px; height: 1175px; border-radius: 86px; padding: 16px;
+    background: linear-gradient(145deg, #2a2723, #0d0c0b 40%, #1d1b18);
+    box-shadow: 0 0 0 2px #3b372f inset, 0 50px 120px rgba(0,0,0,.65), 0 0 90px rgba(233,162,59,.10); }
+  .screen { position: relative; width: 528px; height: 1143px; border-radius: 70px; overflow: hidden; background: var(--cream); }
+  .island { position: absolute; z-index: 20; top: 30px; left: 50%; width: 132px; height: 38px; margin-left: -66px; border-radius: 20px; background: #000; }
+  .page { position: absolute; inset: 0; background: var(--cream); overflow: hidden; }
+  .scroller { position: absolute; left: 0; top: 0; width: 528px; will-change: transform; }
+  .scroller img { display: block; width: 528px; }
+  .nav { position: absolute; z-index: 10; left: 0; bottom: 0; width: 528px; height: 100px; }
+  .nav img { position: absolute; inset: 0; width: 528px; }
+  .ring { position: absolute; z-index: 11; border: 4px solid var(--warm); border-radius: 22px; box-shadow: 0 0 0 0 rgba(233,162,59,.5), 0 0 30px rgba(233,162,59,.6); opacity: 0; }
+  .cover { position: absolute; background: rgb(254,247,234); z-index: 5; }
+
+  /* text */
+  .topfade { position: absolute; left: 0; right: 0; top: 0; height: 760px; z-index: 30;
+    background: linear-gradient(to bottom, var(--bg) 0%, var(--bg) 62%, rgba(16,15,13,0) 100%); }
+  .blk { position: absolute; z-index: 40; left: 96px; right: 96px; top: 270px; }
+  .kick { font-size: 27px; letter-spacing: .16em; text-transform: uppercase; color: var(--warm); font-weight: 500; }
+  .h { font-family: Fraunces, serif; font-weight: 400; letter-spacing: -0.015em; line-height: 1.04; color: var(--text); text-wrap: balance; }
+  .h em { font-style: italic; color: var(--warm); }
+  .h1 { font-size: 122px; }
+  .h2 { font-size: 92px; margin-top: 26px; }
+  .sub { font-size: 40px; line-height: 1.38; color: #cfc8bc; margin-top: 26px; }
+  .w { display: inline-block; overflow: hidden; vertical-align: top; padding: 0 .02em .14em; margin-bottom: -.14em; }
+  .wi { display: inline-block; will-change: transform; }
+
+  .chip { position: absolute; z-index: 45; display: flex; align-items: center; gap: 16px; max-width: 520px;
+    padding: 20px 26px; border-radius: 26px; background: rgba(23,22,19,.92); border: 1px solid #4a3f2c;
+    box-shadow: 0 20px 50px rgba(0,0,0,.5); font-size: 31px; line-height: 1.3; color: var(--text); opacity: 0; }
+  .chip i { flex: none; width: 14px; height: 14px; border-radius: 50%; background: var(--warm); box-shadow: 0 0 16px var(--warm); }
+
+  .icon { position: absolute; z-index: 35; left: 405px; top: 900px; width: 270px; height: 270px; border-radius: 64px; overflow: hidden; opacity: 0;
+    box-shadow: 0 30px 100px rgba(233,162,59,.35); }
+  .icon img { width: 100%; display: block; }
+  .deva { font-family: "Noto Serif Devanagari", serif; font-size: 116px; color: var(--warm); text-align: center; line-height: 1.2; }
+  .say { font-size: 34px; color: var(--muted); text-align: center; margin-top: 8px; }
+  .say b { color: var(--text); font-weight: 500; }
+
+  .roll { height: 150px; overflow: hidden; position: relative; }
+  #b-trad .h2 { font-size: 80px; }
+  .roll div { position: absolute; left: 0; top: 0; font-family: Fraunces, serif; font-style: italic; font-size: 130px; line-height: 1.05; color: var(--warm); }
+
+  .items { margin-top: 70px; display: grid; gap: 44px; }
+  .item { display: grid; grid-template-columns: 96px 1fr; gap: 28px; align-items: start; padding-bottom: 40px; border-bottom: 1px solid var(--line); }
+  .item .n { width: 84px; height: 84px; border-radius: 50%; border: 2px solid var(--warm); color: var(--warm); display: grid; place-items: center;
+    font-family: Fraunces, serif; font-size: 44px; }
+  .item h3 { font-size: 46px; font-weight: 600; letter-spacing: -0.01em; }
+  .item p { font-size: 32px; line-height: 1.4; color: var(--muted); margin-top: 8px; }
+
+  .url { display: inline-flex; align-items: center; margin-top: 64px; height: 120px; padding: 0 44px; border-radius: 30px; background: var(--warm);
+    color: #17120a; font-weight: 600; font-size: 60px; letter-spacing: -0.01em; white-space: nowrap; }
+  .caret { display: inline-block; width: 5px; height: 64px; background: #17120a; margin-left: 4px; }
+  .steps { margin-top: 64px; display: grid; gap: 30px; }
+  .step { display: flex; gap: 24px; align-items: center; font-size: 38px; color: #d6cfc3; }
+  .step span { flex: none; width: 58px; height: 58px; border-radius: 50%; border: 2px solid var(--warm); color: var(--warm); display: grid; place-items: center; font-weight: 600; font-size: 28px; }
+  .step b { color: var(--text); font-weight: 600; }
+  .fine { margin-top: 44px; font-size: 30px; color: var(--muted); }
+
+  .mark { width: 200px; height: 200px; color: var(--text); }
+  .links { margin-top: 64px; display: grid; gap: 26px; }
+  .lnk { display: flex; align-items: center; gap: 30px; padding: 30px 36px; border: 1px solid #3a3326; border-radius: 28px; background: var(--card); }
+  .lnk svg { width: 70px; height: 70px; color: var(--warm); flex: none; }
+  .lnk span { display: block; font-size: 28px; color: var(--muted); }
+  .lnk b { display: block; font-size: 44px; font-weight: 600; margin-top: 4px; }
+  .center { text-align: center; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="bg"></div>
+  <div class="glow" id="glow"></div>
+
+  <!-- the phone: one object for the whole film -->
+  <div id="cam"><div id="tilt"><div class="phone"><div class="screen" id="screen">
+    <div class="island"></div>
+    <div class="page" id="pg-today0"><div class="scroller"><img src="today-labs.webp" style="width:528px"></div></div>
+    <div class="page" id="pg-today"><div class="scroller"><img src="today.png"></div></div>
+    <div class="page" id="pg-plan"><div class="scroller"><img src="plan.png"></div><div class="ring" id="ring-day"></div></div>
+    <div class="page" id="pg-ask"><div class="scroller"><img src="ask-top.webp" style="width:528px"></div>
+      <div class="cover" id="cv-q"></div><div class="cover" id="cv-a"></div></div>
+    <div class="page" id="pg-vedic"><div class="scroller"><img src="chart-vedic.png"></div></div>
+    <div class="page" id="pg-western"><div class="scroller"><img src="chart-western.png"></div></div>
+    <div class="page" id="pg-match"><div class="scroller"><img src="match.png"></div><div class="ring" id="ring-score"></div></div>
+    <div class="page" id="pg-limits"><div class="scroller"><img src="ask-limits.webp" style="width:528px"></div>
+      <div class="cover" id="cv-l1"></div><div class="cover" id="cv-l2"></div></div>
+    <div class="nav" id="nav"><img id="nav-today" src="nav-today.png"><img id="nav-plan" src="nav-plan.png"><img id="nav-chart" src="nav-chart.png"></div>
+  </div></div></div></div>
+
+  <div class="topfade" id="topfade"></div>
+  <div class="icon" id="icon"><img src="icon-512.png"></div>
+
+  <!-- 0 hook -->
+  <div class="blk" id="b-hook" style="top:520px">
+    <div class="kick">A free app · Tangent Labs</div>
+    <div class="h h1" style="margin-top:34px">Every family had <em>someone</em> to ask.</div>
+    <div class="sub" style="margin-top:60px; font-size:46px">
+      <div class="li">When to travel.</div><div class="li">When to sign the lease.</div><div class="li">When to begin something new.</div>
+    </div>
+  </div>
+  <!-- 1 the gap -->
+  <div class="blk" id="b-gap" style="top:330px">
+    <div class="h h2" id="gap-h">Many of us now live far from the Panditji <em>we grew up with.</em></div>
+    <div class="sub" id="gap-s">So I built one for your phone, with an AI guide.</div>
+  </div>
+  <div class="blk" id="b-name" style="top:1230px">
+    <div class="deva">पंडितजी</div>
+    <div class="say"><b>pun-dith-jee</b> · a learned person a family trusts</div>
+  </div>
+  <!-- 2 meet -->
+  <div class="blk" id="b-meet"><div class="kick">A free astrology app</div><div class="h h1" style="margin-top:22px">Meet <em>Panditji.</em></div></div>
+  <!-- 3 today -->
+  <div class="blk" id="b-today"><div class="kick">Today</div><div class="h h2">Your day, <em>in plain words.</em></div></div>
+  <!-- 4 plan -->
+  <div class="blk" id="b-plan"><div class="kick">Good times</div><div class="h h2">It finds the best hours <em>to begin.</em></div></div>
+  <!-- 5 ask -->
+  <div class="blk" id="b-ask"><div class="kick">Ask</div><div class="h h2">Ask in your own words. <em>It answers from your chart.</em></div></div>
+  <!-- 6 vedic / western -->
+  <div class="blk" id="b-trad" style="top:250px"><div class="roll"><div id="r-v">Vedic.</div><div id="r-w">Western.</div></div><div class="h h2" style="margin-top:6px">Your chart, read <em>your way.</em></div></div>
+  <!-- 7 match -->
+  <div class="blk" id="b-match"><div class="kick">Match</div><div class="h h2">Two charts. <em>One plain verdict.</em></div></div>
+  <!-- 8 says no -->
+  <div class="blk" id="b-no" style="top:420px">
+    <div class="h h2" id="no-1">It won’t tell you when you’ll die.</div>
+    <div class="h h2" id="no-2" style="margin-top:20px">Or which coin <em>will 10x.</em></div>
+    <div class="sub" id="no-3" style="color:var(--muted)">Death, money advice and gambling get a gentle no.</div>
+  </div>
+  <!-- 9 trust -->
+  <div class="blk" id="b-trust" style="top:360px">
+    <div class="h h2" style="font-size:100px">The AI isn’t allowed <em>to guess.</em></div>
+    <div class="items">
+      <div class="item"><div class="n">1</div><div><h3>Your phone does the maths.</h3><p>Checked against NASA’s JPL and the Swiss Ephemeris.</p></div></div>
+      <div class="item"><div class="n">2</div><div><h3>The AI only explains it.</h3><p>It can be wrong. For reflection, not advice.</p></div></div>
+      <div class="item"><div class="n">3</div><div><h3>Your chart stays on your phone.</h3><p>No ads. Nothing for sale.</p></div></div>
+    </div>
+  </div>
+  <!-- 10 get it -->
+  <div class="blk" id="b-get" style="top:420px">
+    <div class="kick">Get it</div>
+    <div class="h h2">Free. No app store <em>needed.</em></div>
+    <div class="url" id="url"><span id="url-t"></span><i class="caret" id="caret"></i></div>
+    <div class="steps">
+      <div class="step"><span>1</span><div>Type it into <b>Safari</b> or <b>Chrome</b>.</div></div>
+      <div class="step"><span>2</span><div><b>Add to Home Screen</b>, or <b>Install app</b>.</div></div>
+      <div class="step"><span>3</span><div>Your code arrives by email in a minute.</div></div>
+    </div>
+    <div class="fine" id="get-fine">For adults 18+.</div>
+  </div>
+  <!-- 11 end -->
+  <div class="blk" id="b-end" style="top:380px">
+    <svg class="mark" id="mark" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+      <path d="M 52.26 25.06 A 25 25 0 1 1 45.45 26.5" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+      <line x1="24" y1="82" x2="116.2" y2="62.4" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="59.2" cy="74.5" r="4.045" fill="currentColor"/>
+    </svg>
+    <div class="h h2" id="end-h" style="margin-top:56px">Small AI apps for the small problems of <em>everyday life.</em></div>
+    <div class="sub" id="end-s">More are on the way. Come along for the next one.</div>
+    <div class="links">
+      <div class="lnk" id="l-yt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg><div><span>Subscribe on YouTube</span><b>youtube.com/@tangentideasai</b></div></div>
+      <div class="lnk" id="l-ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg><div><span>Follow on Instagram</span><b>@tangentideas.ai</b></div></div>
+    </div>
+  </div>
+
+  <div class="chip" id="chip-diya" style="left:70px; top:820px"><i></i>A diya stays lit for every day you come back.</div>
+  <div class="chip" id="chip-dial" style="left:420px; top:1520px"><i></i>Your whole day, hour by hour.</div>
+  <div class="chip" id="chip-day" style="left:560px; top:1560px"><i></i>The best day, starred.</div>
+
+  <div class="vignette"></div>
+  <div class="grain" id="grain"></div>
+</div>
+
+<script src="node_modules/gsap/dist/gsap.min.js"></script>
+<script>
+const SC = 528 / 780;      // full-page captures (780 px wide) -> screen
+const AS = 528 / 640;      // Labs screenshots (640 px wide) -> screen
+const BEAT = 0.625, BAR = 2.5;
+const $ = s => document.querySelector(s);
+
+// ---- split headlines into masked words, keeping <em> ----
+function split(el) {
+  const walk = node => {
+    [...node.childNodes].forEach(n => {
+      if (n.nodeType === 3) {
+        const frag = document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(part => {
+          if (!part) return;
+          if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
+          const w = document.createElement('span'); w.className = 'w';
+          const wi = document.createElement('span'); wi.className = 'wi'; wi.textContent = part;
+          w.appendChild(wi); frag.appendChild(w);
+        });
+        n.replaceWith(frag);
+      } else if (n.nodeType === 1) walk(n);
+    });
+  };
+  walk(el);
+  return el.querySelectorAll('.wi');
+}
+document.querySelectorAll('.h').forEach(split);
+
+// ---- page geometry ----
+const pages = ['today0', 'today', 'plan', 'ask', 'vedic', 'western', 'match', 'limits'];
+const scroller = p => $(`#pg-${p} .scroller`);
+const setScroll = (p, y, k = SC) => gsap.set(scroller(p), { y: -y * k });
+gsap.set(pages.map(p => `#pg-${p}`).join(','), { autoAlpha: 0 });
+gsap.set('#pg-today0', { autoAlpha: 1 });
+gsap.set('#nav', { autoAlpha: 0 });
+gsap.set('#nav-plan, #nav-chart', { autoAlpha: 0 });
+// rings (screen coords). Plan: "Mon 16" tile x322-458, y1450-1620. Match: score ring centre (390, 825).
+const PLAN_SCROLL = 1180, MATCH_SCROLL = 360;
+gsap.set('#ring-day', { left: 316 * SC, top: (1444 - PLAN_SCROLL) * SC, width: 148 * SC, height: 182 * SC });
+gsap.set('#ring-score', { left: (390 - 185) * SC, top: (825 - 185 - MATCH_SCROLL) * SC, width: 370 * SC, height: 370 * SC, borderRadius: '50%' });
+// ask reveal covers (Labs screenshot coords)
+gsap.set('#cv-q', { left: 105 * AS, top: 118 * AS, width: 510 * AS, height: 145 * AS });
+gsap.set('#cv-a', { left: 30 * AS, top: 280 * AS, width: 590 * AS, height: (1056 - 280) * AS, transformOrigin: '50% 100%' });
+gsap.set('#cv-l1', { left: 30 * AS, top: 185 * AS, width: 590 * AS, height: (525 - 185) * AS, transformOrigin: '50% 100%' });
+gsap.set('#cv-l2', { left: 30 * AS, top: 540 * AS, width: 590 * AS, height: (1032 - 540) * AS, transformOrigin: '50% 100%' });
+
+// camera: point (sx, sy) on the screen -> canvas (cx, cy) at scale s
+const CAM = { left: 260, top: 640 };
+const focus = (sx, sy, s, cx = 540, cy = 1180) => ({ x: cx - CAM.left - s * (16 + sx), y: cy - CAM.top - s * (16 + sy), scale: s });
+
+// all text blocks hidden at start except the hook
+const blocks = ['gap', 'name', 'meet', 'today', 'plan', 'ask', 'trad', 'match', 'no', 'trust', 'get', 'end'];
+gsap.set(blocks.map(b => `#b-${b}`).join(','), { autoAlpha: 0 });
+gsap.set('#cam', { y: 1400 });
+gsap.set('#tilt', { transformPerspective: 2400, rotateX: 0, rotateY: 0 });
+gsap.set('#topfade', { autoAlpha: 0 });
+
+const tl = gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } });
+const show = (b, at) => tl.set(`#b-${b}`, { autoAlpha: 1 }, at);
+const words = (sel, at, stagger = 0.045, dur = 0.7) => tl.fromTo(`${sel} .wi`, { yPercent: 115 }, { yPercent: 0, duration: dur, stagger }, at);
+const kick = (sel, at) => tl.fromTo(`${sel} .kick`, { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5 }, at);
+const out = (sel, at, d = 0.4) => tl.to(sel, { autoAlpha: 0, y: -40, duration: d, ease: 'power2.in' }, at);
+const swapPage = (from, to, at, dir = 1, dur = 0.5) => {
+  tl.set(`#pg-${to}`, { autoAlpha: 1, xPercent: 100 * dir }, at);
+  tl.to(`#pg-${to}`, { xPercent: 0, duration: dur, ease: 'power3.inOut' }, at);
+  tl.to(`#pg-${from}`, { xPercent: -35 * dir, duration: dur, ease: 'power3.inOut' }, at);
+  tl.set(`#pg-${from}`, { autoAlpha: 0, xPercent: 0 }, at + dur);
+};
+const nav = (which, at) => {
+  ['today', 'plan', 'chart'].forEach(n => tl.to(`#nav-${n}`, { autoAlpha: n === which ? 1 : 0, duration: 0.25 }, at));
+  tl.to('#nav', { autoAlpha: which ? 1 : 0, duration: 0.25 }, at);
+};
+const pulse = (sel, at) => {
+  tl.fromTo(sel, { autoAlpha: 0, scale: 1.25 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: 'back.out(2)' }, at);
+  tl.to(sel, { boxShadow: '0 0 0 18px rgba(233,162,59,0), 0 0 50px rgba(233,162,59,.9)', duration: 0.6, repeat: 1, yoyo: true }, at + 0.45);
+};
+
+// ===== 0. HOOK (0 - 5): legible on frame 0 =====
+tl.fromTo('#b-hook', { scale: 1 }, { scale: 1.035, duration: 4.6, ease: 'none', transformOrigin: '0 50%' }, 0);
+tl.fromTo('#b-hook .li', { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.55, stagger: BEAT }, 1.875);
+tl.fromTo('#glow', { y: 300, scale: 0.8 }, { y: 0, scale: 1, duration: 5, ease: 'sine.inOut' }, 0);
+tl.to('#b-hook', { autoAlpha: 0, filter: 'blur(14px)', y: -60, duration: 0.55, ease: 'power2.in' }, 4.45);
+
+// ===== 1. THE GAP (5 - 10) =====
+show('gap', 5.0); words('#gap-h', 5.0, 0.06, 0.8);
+tl.fromTo('#gap-s', { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.6 }, 6.9);
+tl.fromTo('#icon', { autoAlpha: 0, scale: 0.4, y: 40 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.8, ease: 'back.out(1.8)' }, 7.5);
+tl.fromTo('#glow', { scale: 1 }, { scale: 1.25, duration: 0.6, yoyo: true, repeat: 1, ease: 'sine.inOut' }, 7.5);
+show('name', 8.1); tl.fromTo('#b-name', { y: 30 }, { y: 0, duration: 0.7 }, 8.1); tl.fromTo('#b-name', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 8.1);
+out('#b-gap', 9.2, 0.45); out('#b-name', 9.2, 0.45);
+// icon dives into the phone as the phone rises
+tl.to('#icon', { scale: 0.32, y: 140, autoAlpha: 0, duration: 0.8, ease: 'power3.in' }, 9.2);
+tl.to('#cam', { y: 0, duration: 0.85, ease: 'power3.out' }, 9.15);
+tl.fromTo('#tilt', { rotateX: 38 }, { rotateX: 0, duration: 0.95, ease: 'power3.out' }, 9.15);
+tl.fromTo('#cam', { scale: 1.06 }, { scale: 1, duration: 0.5, ease: 'power2.out' }, 10.0);
+tl.to('#topfade', { autoAlpha: 1, duration: 0.3 }, 9.6);
+
+// ===== 2. MEET (10 - 12.5) =====
+show('meet', 10.0); kick('#b-meet', 10.0); words('#b-meet .h', 10.1, 0.08, 0.7);
+out('#b-meet', 12.05);
+
+// ===== 3. TODAY (12.5 - 17.5) =====
+nav('today', 14.3);
+show('today', 12.5); kick('#b-today', 12.5); words('#b-today .h', 12.55);
+tl.fromTo('#chip-diya', { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5 }, 13.1);
+tl.to('#chip-diya', { autoAlpha: 0, x: -30, duration: 0.3 }, 14.3);
+setScroll('today', 1560);
+tl.set('#pg-today', { autoAlpha: 1, yPercent: 100 }, 14.3);
+tl.to('#pg-today', { yPercent: 0, duration: 0.55, ease: 'power3.inOut' }, 14.3);
+tl.to('#pg-today0', { yPercent: -60, duration: 0.55, ease: 'power3.inOut' }, 14.3);
+tl.set('#pg-today0', { autoAlpha: 0 }, 14.85);
+tl.to(scroller('today'), { y: -1830 * SC, duration: 1.2, ease: 'power2.out' }, 14.85);
+tl.to('#cam', { ...focus(264, 640, 1.16, 540, 1240), duration: 1.6, ease: 'power2.inOut' }, 15.0);
+tl.fromTo('#chip-dial', { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 15.6);
+tl.to('#chip-dial', { autoAlpha: 0, duration: 0.3 }, 17.0);
+tl.to('#cam', { x: 0, y: 0, scale: 1, duration: 0.6, ease: 'power2.inOut' }, 16.95);
+out('#b-today', 17.1);
+
+// ===== 4. GOOD TIMES (17.5 - 22.5) =====
+show('plan', 17.5); kick('#b-plan', 17.5); words('#b-plan .h', 17.55);
+setScroll('plan', 0);
+swapPage('today', 'plan', 17.45); nav('plan', 17.5);
+tl.to(scroller('plan'), { y: -PLAN_SCROLL * SC, duration: 1.0, ease: 'power2.inOut' }, 18.1);
+tl.to('#cam', { ...focus(390 * SC, (1535 - PLAN_SCROLL) * SC, 1.55, 540, 1150), duration: 1.0, ease: 'power3.inOut' }, 19.0);
+pulse('#ring-day', 19.9);
+tl.fromTo('#chip-day', { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.45 }, 20.0);
+tl.to('#chip-day', { autoAlpha: 0, duration: 0.3 }, 21.2);
+tl.to('#ring-day', { autoAlpha: 0, duration: 0.3 }, 21.2);
+tl.to('#cam', { x: 0, y: 0, scale: 1, duration: 0.9, ease: 'power3.inOut' }, 21.2);
+tl.to(scroller('plan'), { y: -1880 * SC, duration: 1.0, ease: 'power2.inOut' }, 21.3);
+out('#b-plan', 22.1);
+
+// ===== 5. ASK (22.5 - 27.5) =====
+show('ask', 22.5); kick('#b-ask', 22.5); words('#b-ask .h', 22.55, 0.04);
+tl.set('#pg-ask', { autoAlpha: 1, scale: 1.08, opacity: 0 }, 22.45);
+tl.to('#pg-ask', { scale: 1, opacity: 1, duration: 0.5, ease: 'power3.out' }, 22.45);
+tl.set('#pg-plan', { autoAlpha: 0 }, 22.95);
+nav(null, 22.45);
+tl.to('#cv-q', { autoAlpha: 0, duration: 0.35 }, 23.2);
+tl.fromTo('#cv-a', { scaleY: 1 }, { scaleY: 0, duration: 2.6, ease: 'steps(18)' }, 23.9);
+tl.to('#cam', { ...focus(264, 520, 1.1, 540, 1180), duration: 4.0, ease: 'sine.inOut' }, 23.0);
+tl.to('#cam', { x: 0, y: 0, scale: 1, duration: 0.5, ease: 'power2.inOut' }, 27.0);
+out('#b-ask', 27.1);
+
+// ===== 6. VEDIC / WESTERN (27.5 - 32.5) =====
+show('trad', 27.5); words('#b-trad .h', 27.6);
+tl.fromTo('#r-v', { yPercent: 110 }, { yPercent: 0, duration: 0.6 }, 27.5);
+setScroll('vedic', 2814); setScroll('western', 420);
+tl.set('#pg-vedic', { autoAlpha: 1, yPercent: 100 }, 27.45);
+tl.to('#pg-vedic', { yPercent: 0, duration: 0.55, ease: 'power3.inOut' }, 27.45);
+tl.set('#pg-ask', { autoAlpha: 0 }, 28.0);
+nav('chart', 27.6);
+tl.to('#cam', { ...focus(264, 560, 1.08, 540, 1200), duration: 1.6, ease: 'sine.inOut' }, 27.9);
+// the turn: phone swings edge-on, the screen changes tradition, swings back
+tl.to('#tilt', { rotateY: 90, duration: 0.42, ease: 'power2.in' }, 29.58);
+tl.set('#pg-vedic', { autoAlpha: 0 }, 30.0); tl.set('#pg-western', { autoAlpha: 1 }, 30.0);
+tl.fromTo('#tilt', { rotateY: -90 }, { rotateY: 0, duration: 0.5, ease: 'power2.out', immediateRender: false }, 30.0);
+tl.to('#r-v', { yPercent: -110, duration: 0.45, ease: 'power3.inOut' }, 29.8);
+tl.fromTo('#r-w', { yPercent: 110 }, { yPercent: 0, duration: 0.5, ease: 'power3.out' }, 30.0);
+tl.to('#cam', { ...focus(264, 520, 1.16, 540, 1200), duration: 1.6, ease: 'sine.inOut' }, 30.5);
+tl.to('#cam', { x: 0, y: 0, scale: 1, duration: 0.45, ease: 'power2.inOut' }, 32.1);
+out('#b-trad', 32.1);
+
+// ===== 7. MATCH (32.5 - 37.5) =====
+show('match', 32.5); kick('#b-match', 32.5); words('#b-match .h', 32.55);
+setScroll('match', 0);
+swapPage('western', 'match', 32.45); nav('plan', 32.5);
+tl.to(scroller('match'), { y: -MATCH_SCROLL * SC, duration: 0.9, ease: 'power2.inOut' }, 33.0);
+tl.to('#cam', { ...focus(390 * SC, (825 - MATCH_SCROLL) * SC, 1.45, 540, 1170), duration: 1.0, ease: 'power3.inOut' }, 33.9);
+pulse('#ring-score', 34.9);
+tl.to('#ring-score', { autoAlpha: 0, duration: 0.3 }, 36.3);
+tl.to('#cam', { x: 0, y: 0, scale: 1, duration: 0.7, ease: 'power3.inOut' }, 36.3);
+out('#b-match', 37.05);
+
+// ===== 8. IT SAYS NO (37.5 - 42.5): the break =====
+tl.to('#cam', { y: 1500, duration: 0.6, ease: 'power3.in' }, 37.1);
+tl.to('#glow', { autoAlpha: 0.35, duration: 0.6 }, 37.3);
+tl.to('#topfade', { autoAlpha: 0, duration: 0.3 }, 37.6);
+show('no', 37.6); words('#no-1', 37.65, 0.07, 0.8); words('#no-2', 39.3, 0.08, 0.8);
+tl.set('#pg-match', { autoAlpha: 0 }, 37.8); tl.set('#pg-limits', { autoAlpha: 1 }, 37.8); nav(null, 37.8);
+tl.to('#b-no', { y: -110, duration: 0.6, ease: 'power2.inOut' }, 40.1);
+tl.fromTo('#no-3', { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 40.5);
+tl.set('#cam', { rotation: -3 }, 40.0);
+tl.to('#cam', { y: 330, scale: 0.86, duration: 0.8, ease: 'power3.out' }, 40.1);
+tl.fromTo('#cv-l1', { scaleY: 1 }, { scaleY: 0, duration: 0.7, ease: 'steps(8)' }, 40.7);
+tl.fromTo('#cv-l2', { scaleY: 1 }, { scaleY: 0, duration: 0.8, ease: 'steps(10)' }, 41.4);
+tl.to('#b-no', { autoAlpha: 0, duration: 0.25 }, 42.25);
+tl.to('#cam', { y: 1500, duration: 0.35, ease: 'power3.in' }, 42.15);
+
+// ===== 9. TRUST (42.5 - 47.5): the drop =====
+tl.fromTo('#glow', { autoAlpha: 1, scale: 1.5 }, { scale: 1, duration: 1.2, ease: 'power2.out' }, 42.5);
+show('trust', 42.5); words('#b-trust .h', 42.5, 0.06, 0.6);
+tl.fromTo('#b-trust .item', { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.55, stagger: 2 * BEAT }, 43.4);
+tl.fromTo('#b-trust .item .n', { scale: 0.3 }, { scale: 1, duration: 0.5, ease: 'back.out(2.5)', stagger: 2 * BEAT }, 43.4);
+out('#b-trust', 47.1);
+
+// ===== 10. GET IT (47.5 - 52.5) =====
+show('get', 47.5); kick('#b-get', 47.5); words('#b-get .h', 47.55);
+tl.fromTo('#url', { autoAlpha: 0, scale: 0.85, transformOrigin: '0 50%' }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: 'back.out(1.7)' }, 48.2);
+const URL_TXT = 'panditji-seven.vercel.app';
+const typer = { n: 0 };
+tl.to(typer, { n: URL_TXT.length, duration: 1.25, ease: 'none', onUpdate: () => { $('#url-t').textContent = URL_TXT.slice(0, Math.round(typer.n)); } }, 48.45);
+tl.fromTo('#b-get .step', { autoAlpha: 0, y: 26 }, { autoAlpha: 1, y: 0, duration: 0.45, stagger: BEAT }, 49.9);
+tl.fromTo('#get-fine', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 51.4);
+out('#b-get', 52.1);
+
+// ===== 11. END (52.5 - 58) =====
+show('end', 52.5);
+tl.fromTo('#mark', { autoAlpha: 0 }, { autoAlpha: 1, duration: 1.3, ease: 'sine.inOut' }, 52.5);   // the mark only ever fades
+words('#end-h', 53.1, 0.05, 0.75);
+tl.fromTo('#end-s', { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 54.3);
+tl.fromTo('#l-yt, #l-ig', { autoAlpha: 0, y: 50 }, { autoAlpha: 1, y: 0, duration: 0.6, stagger: 0.3 }, 54.9);
+tl.to('#glow', { y: -200, duration: 5.5, ease: 'sine.inOut' }, 52.5);
+tl.to({}, { duration: 0.01 }, 58);
+
+window.TOTAL = 58;
+window.render = (t) => {
+  tl.seek(t, false);
+  // film grain: a new offset each frame, deterministic in t
+  const f = Math.round(t * 30);
+  $('#grain').style.transform = `translate(${(f * 37) % 40 - 20}px, ${(f * 53) % 40 - 20}px)`;
+};
+render(0);
+</script>
+</body>
+</html>
