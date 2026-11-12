@@ -96,3 +96,10 @@ Links (IG allows up to 5): 1) panditji-seven.vercel.app titled "Panditji, free a
 - Risk: sign-ups have a daily cap (Labs page). A post that lands could hit "full, try tomorrow".
 - Gates still owed before posting: G2 critique + G3 brand review (non-negotiable 7), then Sparsh's SHIP.
   The `app` vertical has no craft pack yet, so the critic would grade on the general lenses.
+
+## Round 5 (2026-11-12): square
+Sparsh asked for 1:1 so the carousel doesn't need the crop toggle. Square set: `carousel/out-square/`
+(source `carousel/src/slides-square.html` = the 4:5 source + a square override block; screenshot slides go
+two-column, text left / phone right). The 4:5 set stays in `carousel/out/`. Trade-off flagged: square is ~20%
+shorter in feed than 4:5, and the 3:4 profile grid trims a square cover's sides. Note for next time: the
+carousel ratio is set once by the crop toggle on the first image and applies to every slide.
