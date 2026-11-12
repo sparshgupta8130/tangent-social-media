@@ -31,21 +31,21 @@ Slides 7-10 below are now 8-11.
 Story shape: a relatable gap (1-2) → four things it does, each one screen (3-6) → the shareable twist (7)
 → why you can trust it, which is also the AI disclosure (8) → how to get it (9) → follow (10).
 
-## Caption (draft)
+## Caption (final draft, round 6, 2026-11-12)
 ```
 Many families once had a Panditji to ask when to travel or when to begin. I built one for your phone, with an AI guide.
 
-It reads your day, finds good hours to begin, matches two charts for marriage and answers your questions. Your phone works out the chart from real astronomy; the AI only puts it into words, and it turns down questions about death, health and money.
+Panditji reads your day in plain words, finds good hours to begin and ones to avoid, matches two charts for marriage, and answers your questions from your own birth chart. Vedic or Western, in English or हिंदी.
 
-Install it free at panditji-seven.vercel.app (link in bio). Open it in Safari or Chrome rather than inside Instagram, then add it to your home screen. Your access code arrives by email in about a minute.
+Your phone works out the chart from real astronomy. The AI only puts it into words, and it turns down questions about death, health and money.
 
-No ads, nothing for sale. Adults 18+. English and हिंदी, Vedic or Western.
+To install it, open panditji-seven.vercel.app (link in bio) in Safari or Chrome rather than inside Instagram, then add it to your home screen. Your access code arrives by email in about a minute.
 
-#astrology #vedicastrology #kundli #panchang #jyotish
+Free, no ads, nothing for sale. For adults 18+.
+
+#astrology #vedicastrology #kundli #kundlimatching #panchang
 ```
-First line = 119 chars, so the hook and the AI disclosure both show before "more".
-The kit's `instagram_caption` disclosure line (names Claude + the critic) is written for photo edits;
-it does not describe how this app works, so it is deliberately not used here.
+First line 119 chars: hook + AI disclosure before "more". 5 hashtags.
 
 ## Bio (draft, Instagram limit 150 chars)
 Round 1 (lists "AI apps" + "photographs") rejected by Sparsh 2026-11-12: jarring; don't call out the
