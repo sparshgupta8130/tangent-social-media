@@ -49,7 +49,23 @@ it does not describe how this app works, so it is deliberately not used here.
 Round 1 (lists "AI apps" + "photographs") rejected by Sparsh 2026-11-12: jarring; don't call out the
 verticals, borrow the general definition of a tangent from the hub (tangentideas.ai) instead.
 
-Round 2, recommended (144 chars):
+Round 2 rejected 2026-11-12: too abstract, reads like a maths definition; must say how it relates to
+Sparsh and carry the official tangentideas.ai link.
+
+Round 3, recommended (146 chars), builds on the hub's own opening ("AI, off the clock."):
+```
+AI, off the clock.
+I'm Sparsh. Every project here is a tangent: an idea that slipped out of my daily routine and went its own way.
+New: Panditji ↓
+```
+Alternatives: (137) "I'm Sparsh. Life runs in a circle: work, sleep, repeat. / These are my tangents, ideas I follow with AI
+wherever they lead. / New: Panditji ↓" · (120) "AI, off the clock. / I'm Sparsh, and I follow my curiosity with AI.
+Each idea that gets made is a tangent. / New: Panditji ↓"
+Links field: 1) https://tangentideas.ai titled "Tangent Ideas" 2) https://panditji-seven.vercel.app titled
+"Panditji, free astrology app". Day job deliberately left out (tangent-sites rule: it appears only on the hub).
+Slide headers round 3: "What it does · Today / Good times / Ask / Your chart" (Sparsh disliked "n of 4").
+
+Round 2 drafts (rejected), kept for the record (144 chars):
 ```
 A tangent touches a circle at one point, then goes its own way.
 Everyday life is the circle. These are the ideas that leave it.
