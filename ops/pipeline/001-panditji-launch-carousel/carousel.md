@@ -9,7 +9,7 @@ panditji-seven.vercel.app, and ends on "follow tangentideas.ai / link in bio". P
 @tangentideas.ai in the spirit of @travelandleisure.
 
 ## Files
-- `carousel/out/panditji-01.png` … `panditji-10.png`: 1080×1350 (4:5), upload in this order.
+- `carousel/out/panditji-01.png` … `panditji-11.png`: 1080×1350 (4:5), upload in this order.
 - `carousel/src/slides.html`: source. Re-render: `node carousel/src/render.js carousel/src/slides.html carousel/out`.
 - Screens are the real app's screenshots from `tangent-sites/labs/assets/panditji/` (sample user "Asha",
   labelled "sample profile" on every phone slide).
@@ -21,6 +21,8 @@ panditji-seven.vercel.app, and ends on "follow tangentideas.ai / link in bio". P
 4. What it does · 2 of 4: "It finds good hours to begin, and ones to avoid." + Timing screen (day strip, starred Wednesday, day dial).
 5. What it does · 3 of 4: "It answers your questions, from your own chart." Ask about work, marriage or a move in your own words.
 6. What it does · 4 of 4: "Vedic or Western, it reads your chart your way." Two phones side by side, same sample profile: Vedic kundli (Labs screenshot) and Western birth chart (shot 2026-11-12 from a local build of panditji main, `img/chart-western.webp`).
+6b → slide 7 (added round 4, 2026-11-12, Sparsh: "no slide on compatibility match"). What it does · Match: "It matches two charts for marriage, verdict first." Pick any two people you've saved; Vedic = 36-point Gun Milan, Western = how the two charts meet. Real Match screen (Asha + Rohan fixture, Vedic) shot from a local build of panditji main; Western synastry shot saved as `img/match-western.webp`, unused.
+Slides 7-10 below are now 8-11.
 7. It knows when to say no: "It won't tell you when you'll die. Or which coin will 10x." + the real refusal screen.
 8. How it works: "The AI isn't allowed to guess." Phone does the maths (checked vs NASA JPL, Swiss Ephemeris, Drik Panchang) · the AI only explains it and can be wrong · your chart stays on your phone, no ads.
 9. Get it: "Free. No app store needed." panditji-seven.vercel.app · Safari/Chrome · Add to Home Screen / Install app · Get a code by email · open in your browser, not inside Instagram · 18+.
@@ -33,7 +35,7 @@ Story shape: a relatable gap (1-2) → four things it does, each one screen (3-6
 ```
 Many families once had a Panditji to ask when to travel or when to begin. I built one for your phone, with an AI guide.
 
-Your phone works out your chart from real astronomy. The AI only puts it into words, and it turns down questions about death, health and money.
+It reads your day, finds good hours to begin, matches two charts for marriage and answers your questions. Your phone works out the chart from real astronomy; the AI only puts it into words, and it turns down questions about death, health and money.
 
 Install it free at panditji-seven.vercel.app (link in bio). Open it in Safari or Chrome rather than inside Instagram, then add it to your home screen. Your access code arrives by email in about a minute.
 
