@@ -10,7 +10,9 @@ video with a background score.
   pages, the camera pushes in on the starred day and the Gun Milan score, it turns edge-on to change from the
   Vedic kundli to the Western wheel, drops away for the "it says no" break and comes back tilted.
 - Kinetic type: masked word-by-word headline reveals, a rolling "Vedic. / Western." word, a typed URL.
-- Score: `score.py`, an original piece synthesised from scratch (tanpura drone, Karplus-Strong santoor in
+- Score: `score_v2.py` (v2.2, 2026-11-12): upbeat bhangra-pop, dhol chaal + tumbi riff from frame 0, four-on-the-floor
+  kick, offbeat bass and stabs from the phone landing, half-time break, final hit on bar 22. v1 (`score.py`) was rejected as
+  too mellow. v1 was an original piece synthesised from scratch (tanpura drone, Karplus-Strong santoor in
   Raag Bhupali, pad, sub, kick, shaker, claps, risers, impacts). 96 BPM; every scene change sits on a bar line
   (bar = 2.5 s). No samples, no licensed audio.
 
@@ -30,7 +32,7 @@ video with a background score.
 1. `node capture.mjs <dir>` with the panditji build served on :4173 (`npx vite preview --port 4173`).
 2. Put the captures, the Labs images, `grain.png`, `icon-512.png` and gsap@3.12.5 (`npm i gsap@3.12.5`) next to `launch.html`.
 3. `node render_video.js launch.html frames 30` (frame-accurate: `render(t)` seeks a paused GSAP timeline).
-4. `python score.py score_raw.wav`; `ffmpeg -i score_raw.wav -af loudnorm=I=-14:TP=-1.5:LRA=11,volume=-1.2dB score.wav`.
+4. `python score_v2.py score_raw.wav`; `ffmpeg -i score_raw.wav -af loudnorm=I=-14:TP=-1.0:LRA=9 score.wav` (lands at about -13.3 LUFS).
 5. `ffmpeg -framerate 30 -i frames/f%05d.png -i score.wav -c:v libx264 -preset slow -crf 16 -pix_fmt yuv420p -c:a aac -b:a 192k -shortest -movflags +faststart out.mp4`.
 
 ## Limits, stated plainly
