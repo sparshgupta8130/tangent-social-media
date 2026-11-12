@@ -16,11 +16,11 @@ panditji-seven.vercel.app, and ends on "follow tangentideas.ai / link in bio". P
 
 ## Slide copy (every claim sourced from the owner-approved Labs page, labs.tangentideas.ai/panditji)
 1. Cover. "Every family had someone to ask." / When to travel, when to sign the lease, when to begin something new. / Meet Panditji · Swipe
-2. पंडितजी · pun-dith-jee · A learned person a family trusts and turns to. / "Many of us now live far from that phone number." / So I built Panditji, an astrology app with an AI guide. It doesn't replace him. It keeps you company when he's far away.
-3. Today: "Your day, in plain words." + Today screen.
-4. Good times: "Hours to start, hours to avoid." + Timing screen (day strip, starred Wednesday, day dial).
-5. Ask: "Ask in your own words." Answers from your own chart; tap a planet to see the numbers.
-6. Your chart: "Your kundli, a house at a time." Vedic or Western, English or हिंदी.
+2. पंडितजी · pun-dith-jee · A learned person a family trusts and turns to. / "Many of us now live far from the Panditji we grew up with." / So I built one for your phone: an astrology app with an AI guide that reads your chart and answers your questions, any time of day. / "Here's what it does for you →"
+3. What it does · 1 of 4: "It reads your day, in plain words." + Today screen.
+4. What it does · 2 of 4: "It finds good hours to begin, and ones to avoid." + Timing screen (day strip, starred Wednesday, day dial).
+5. What it does · 3 of 4: "It answers your questions, from your own chart." Ask about work, marriage or a move in your own words.
+6. What it does · 4 of 4: "Vedic or Western, it reads your chart your way." Two phones side by side, same sample profile: Vedic kundli (Labs screenshot) and Western birth chart (shot 2026-11-12 from a local build of panditji main, `img/chart-western.webp`).
 7. It knows when to say no: "It won't tell you when you'll die. Or which coin will 10x." + the real refusal screen.
 8. How it works: "The AI isn't allowed to guess." Phone does the maths (checked vs NASA JPL, Swiss Ephemeris, Drik Panchang) · the AI only explains it and can be wrong · your chart stays on your phone, no ads.
 9. Get it: "Free. No app store needed." panditji-seven.vercel.app · Safari/Chrome · Add to Home Screen / Install app · Get a code by email · open in your browser, not inside Instagram · 18+.
@@ -46,17 +46,28 @@ The kit's `instagram_caption` disclosure line (names Claude + the critic) is wri
 it does not describe how this app works, so it is deliberately not used here.
 
 ## Bio (draft, Instagram limit 150 chars)
-Recommended, B (144 chars):
+Round 1 (lists "AI apps" + "photographs") rejected by Sparsh 2026-11-12: jarring; don't call out the
+verticals, borrow the general definition of a tangent from the hub (tangentideas.ai) instead.
+
+Round 2, recommended (144 chars):
 ```
-AI apps for the small problems of everyday life.
-Photographs an AI agent edits; I choose what ships.
-Machine craft, human taste.
+A tangent touches a circle at one point, then goes its own way.
+Everyday life is the circle. These are the ideas that leave it.
 New: Panditji ↓
 ```
-Alternatives: A (148) leads with the tagline; C (121) "Ideas that leave the circle." leads with the name's story.
+Alternatives:
+- (127) "Everyday life is a circle, left a little open so new ideas can get in. / This is where they set off on their own. / New: Panditji ↓"
+- (132) "Work, sleep, repeat: that's the circle. / A tangent touches it once and sets off on its own. / Here's where my ideas go. / New: Panditji ↓"
+Name field (searchable, separate from the bio): "Tangent Ideas · Sparsh Gupta".
 Links (IG allows up to 5): 1) panditji-seven.vercel.app titled "Panditji, free astrology app";
 2) tangentideas.ai. Do NOT link tangent.gallery (retired per tangent-sites/CLAUDE.md; the bio drafts in
 `knowledge/brand/tangent-voice.md` still point there and are stale).
+
+## Round 1 feedback (Sparsh, 2026-11-12), all taken
+- Slide 2 "phone number" line and "doesn't replace him / keeps you company" were confusing → rewritten.
+- 2→3 jump into screenshots had no setup → bridge line on slide 2 + "What it does · n of 4" kickers on 3-6.
+- Slide 5 "tap one to see the numbers" confusing → removed.
+- Slide 6 languages irrelevant and Vedic-only → Vedic + Western side by side, "your way" headline.
 
 ## Decisions + open questions
 - Frame is the dark Tangent world (sites palette #100f0d / #ece7de, Fraunces + Inter); the app keeps its

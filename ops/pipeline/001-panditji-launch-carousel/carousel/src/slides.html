@@ -42,6 +42,15 @@
   .crop-low img { margin-top: -330px; }
   #s2 { padding-bottom: 110px; }
   #s2 .rule { margin-top: auto; }
+  .next { margin-top: 44px; font-size: 30px; font-weight: 500; color: var(--warm); letter-spacing: .01em; }
+  .pair { display: flex; gap: 36px; justify-content: center; margin-top: 44px; }
+  .pair .lbl { font-size: 24px; letter-spacing: .12em; text-transform: uppercase; color: var(--warm); font-weight: 500; text-align: center; margin-bottom: 18px; }
+  .phone.sm { width: 420px; margin-top: 0; border-radius: 48px; padding: 12px; }
+  .phone.sm .screen { border-radius: 38px; }
+  .zoom { height: 610px; }
+  .zoom img { max-width: none; }
+  .zoom .zv { width: 445px; margin: -228px 0 0 -24px; }
+  .zoom .zw { width: 441px; margin: -248px 0 0 -23px; }
 
   /* cover */
   .cover { display: flex; flex-direction: column; padding-bottom: 96px; }
@@ -112,44 +121,48 @@
   <div class="say"><b>pun-dith-jee</b></div>
   <div class="say">A learned person a family trusts and turns to.</div>
   <div class="rule"></div>
-  <h2>Many of us now live far from that <em>phone number.</em></h2>
-  <p class="body">So I built Panditji, an astrology app with an AI guide. It doesn’t replace him. It keeps you company when he’s far away.</p>
+  <h2>Many of us now live far from the Panditji <em>we grew up with.</em></h2>
+  <p class="body">So I built one for your phone: an astrology app with an AI guide that reads your chart and answers your questions, any time of day.</p>
+  <div class="next">Here’s what it does for you<span class="arrow"></span></div>
 </section>
 
 <!-- 3 · today -->
 <section class="slide" id="s3">
-  <div class="top"><span class="k">Today</span><span class="num">03 / 10</span></div>
-  <h2>Your day, in <em>plain words.</em></h2>
-  <p class="body">A short reading of where the Moon and planets stand against your chart. A little diya stays lit for every day you come back.</p>  <div class="tag">The real app · sample profile</div>
-
+  <div class="top"><span class="k">What it does · 1 of 4</span><span class="num">03 / 10</span></div>
+  <h2>It reads your day, <em>in plain words.</em></h2>
+  <p class="body">A short daily reading from where the Moon and planets stand against your chart. A little diya stays lit for every day you come back.</p>
+  <div class="tag">The real app · sample profile</div>
   <div class="phone"><div class="screen"><img src="img/today.webp" alt=""></div></div>
 </section>
 
 <!-- 4 · good times -->
 <section class="slide" id="s4">
-  <div class="top"><span class="k">Good times</span><span class="num">04 / 10</span></div>
-  <h2>Hours to start, hours <em>to avoid.</em></h2>
-  <p class="body">Pick what it’s for, like travel or a new home, and it stars the best windows for your city.</p>  <div class="tag">The real app · sample profile</div>
-
+  <div class="top"><span class="k">What it does · 2 of 4</span><span class="num">04 / 10</span></div>
+  <h2>It finds good hours to begin, <em>and ones to avoid.</em></h2>
+  <p class="body">Pick what it’s for, like travel or a new home, and it stars the best windows for your city.</p>
+  <div class="tag">The real app · sample profile</div>
   <div class="phone"><div class="screen crop-low"><img src="img/timing.webp" alt=""></div></div>
 </section>
 
 <!-- 5 · ask -->
 <section class="slide" id="s5">
-  <div class="top"><span class="k">Ask</span><span class="num">05 / 10</span></div>
-  <h2>Ask in your <em>own words.</em></h2>
-  <p class="body">Panditji answers from your own chart and shows the planets behind each answer. Tap one to see the numbers.</p>  <div class="tag">The real app · sample profile</div>
-
+  <div class="top"><span class="k">What it does · 3 of 4</span><span class="num">05 / 10</span></div>
+  <h2>It answers your questions, <em>from your own chart.</em></h2>
+  <p class="body">Ask about work, marriage or a move in your own words, and Panditji answers from your birth chart.</p>
+  <div class="tag">The real app · sample profile</div>
   <div class="phone"><div class="screen"><img src="img/ask-top.webp" alt=""></div></div>
 </section>
 
-<!-- 6 · chart -->
+<!-- 6 · vedic or western -->
 <section class="slide" id="s6">
-  <div class="top"><span class="k">Your chart</span><span class="num">06 / 10</span></div>
-  <h2>Your kundli, a house <em>at a time.</em></h2>
-  <p class="body">Tap a house to see what part of life it governs. Vedic or Western, English or हिंदी.</p>  <div class="tag">The real app · sample profile</div>
-
-  <div class="phone"><div class="screen"><img src="img/chart.webp" alt=""></div></div>
+  <div class="top"><span class="k">What it does · 4 of 4</span><span class="num">06 / 10</span></div>
+  <h2>Vedic or Western, it reads your chart <em>your way.</em></h2>
+  <p class="body">Whichever tradition you follow, Panditji draws your chart in it and explains it in plain words.</p>
+  <div class="tag">The real app · the same sample profile, both ways</div>
+  <div class="pair">
+    <div><div class="lbl">Vedic kundli</div><div class="phone sm"><div class="screen zoom"><img class="zv" src="img/chart.webp" alt=""></div></div></div>
+    <div><div class="lbl">Western birth chart</div><div class="phone sm"><div class="screen zoom"><img class="zw" src="img/chart-western.webp" alt=""></div></div></div>
+  </div>
 </section>
 
 <!-- 7 · says no -->
