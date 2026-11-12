@@ -29,7 +29,8 @@
   .nav { position: absolute; z-index: 10; left: 0; bottom: 0; width: 528px; height: 100px; }
   .nav img { position: absolute; inset: 0; width: 528px; }
   .ring { position: absolute; z-index: 11; border: 4px solid var(--warm); border-radius: 22px; box-shadow: 0 0 0 0 rgba(233,162,59,.5), 0 0 30px rgba(233,162,59,.6); opacity: 0; }
-  .cover { position: absolute; background: rgb(254,247,234); z-index: 5; }
+  .cover { position: absolute; background: rgb(255,247,234); z-index: 5; }
+  .cover.white { background: #fff; }
 
   /* text */
   .topfade { position: absolute; left: 0; right: 0; top: 0; height: 760px; z-index: 30;
@@ -96,13 +97,14 @@
     <div class="page" id="pg-today0"><div class="scroller"><img src="today-labs.webp" style="width:528px"></div></div>
     <div class="page" id="pg-today"><div class="scroller"><img src="today.png"></div></div>
     <div class="page" id="pg-plan"><div class="scroller"><img src="plan.png"></div><div class="ring" id="ring-day"></div></div>
-    <div class="page" id="pg-ask"><div class="scroller"><img src="ask-top.webp" style="width:528px"></div>
-      <div class="cover" id="cv-q"></div><div class="cover" id="cv-a"></div></div>
+    <div class="page" id="pg-ask0"><div class="scroller"><img src="ask-empty.png"></div></div>
+    <div class="page" id="pg-ask1"><div class="scroller"><img src="ask-thinking.png"></div></div>
+    <div class="page" id="pg-ask"><div class="scroller"><img src="ask-career.png"></div><div class="cover white" id="cv-a"></div></div>
     <div class="page" id="pg-vedic"><div class="scroller"><img src="chart-vedic.png"></div></div>
     <div class="page" id="pg-western"><div class="scroller"><img src="chart-western.png"></div></div>
     <div class="page" id="pg-match"><div class="scroller"><img src="match.png"></div><div class="ring" id="ring-score"></div></div>
-    <div class="page" id="pg-limits"><div class="scroller"><img src="ask-limits.webp" style="width:528px"></div>
-      <div class="cover" id="cv-l1"></div><div class="cover" id="cv-l2"></div></div>
+    <div class="page" id="pg-limits"><div class="scroller"><img src="ask-limits-live.png"></div>
+      <div class="cover" id="cv-l1"></div><div class="cover" id="cv-lq"></div><div class="cover" id="cv-l2"></div></div>
     <div class="nav" id="nav"><img id="nav-today" src="nav-today.png"><img id="nav-plan" src="nav-plan.png"><img id="nav-chart" src="nav-chart.png"></div>
   </div></div></div></div>
 
@@ -133,7 +135,7 @@
   <!-- 4 plan -->
   <div class="blk" id="b-plan"><div class="kick">Good times</div><div class="h h2">It finds the best hours <em>to begin.</em></div></div>
   <!-- 5 ask -->
-  <div class="blk" id="b-ask"><div class="kick">Ask</div><div class="h h2">Ask in your own words. <em>It answers from your chart.</em></div></div>
+  <div class="blk" id="b-ask"><div class="kick">Ask · sample conversation</div><div class="h h2">Ask in your own words. <em>It answers from your chart.</em></div></div>
   <!-- 6 vedic / western -->
   <div class="blk" id="b-trad" style="top:250px"><div class="roll"><div id="r-v">Vedic.</div><div id="r-w">Western.</div></div><div class="h h2" style="margin-top:6px">Your chart, read <em>your way.</em></div></div>
   <!-- 7 match -->
@@ -218,7 +220,7 @@ function split(el) {
 document.querySelectorAll('.h').forEach(split);
 
 // ---- page geometry ----
-const pages = ['today0', 'today', 'plan', 'ask', 'vedic', 'western', 'match', 'limits'];
+const pages = ['today0', 'today', 'plan', 'ask0', 'ask1', 'ask', 'vedic', 'western', 'match', 'limits'];
 const scroller = p => $(`#pg-${p} .scroller`);
 const setScroll = (p, y, k = SC) => gsap.set(scroller(p), { y: -y * k });
 gsap.set(pages.map(p => `#pg-${p}`).join(','), { autoAlpha: 0 });
@@ -230,10 +232,10 @@ const PLAN_SCROLL = 1180, MATCH_SCROLL = 360;
 gsap.set('#ring-day', { left: 316 * SC, top: (1444 - PLAN_SCROLL) * SC, width: 148 * SC, height: 182 * SC });
 gsap.set('#ring-score', { left: (390 - 185) * SC, top: (825 - 185 - MATCH_SCROLL) * SC, width: 370 * SC, height: 370 * SC, borderRadius: '50%' });
 // ask reveal covers (Labs screenshot coords)
-gsap.set('#cv-q', { left: 105 * AS, top: 118 * AS, width: 510 * AS, height: 145 * AS });
-gsap.set('#cv-a', { left: 30 * AS, top: 280 * AS, width: 590 * AS, height: (1056 - 280) * AS, transformOrigin: '50% 100%' });
-gsap.set('#cv-l1', { left: 30 * AS, top: 185 * AS, width: 590 * AS, height: (525 - 185) * AS, transformOrigin: '50% 100%' });
-gsap.set('#cv-l2', { left: 30 * AS, top: 540 * AS, width: 590 * AS, height: (1032 - 540) * AS, transformOrigin: '50% 100%' });
+gsap.set('#cv-a', { left: 185 * SC, top: 362 * SC, width: 545 * SC, height: (1262 - 362) * SC, transformOrigin: '50% 100%' });
+gsap.set('#cv-l1', { left: 20 * SC, top: 288 * SC, width: 745 * SC, height: (724 - 288) * SC });
+gsap.set('#cv-lq', { left: 20 * SC, top: 722 * SC, width: 745 * SC, height: (905 - 722) * SC });
+gsap.set('#cv-l2', { left: 20 * SC, top: 905 * SC, width: 745 * SC, height: (1300 - 905) * SC });
 
 // camera: point (sx, sy) on the screen -> canvas (cx, cy) at scale s
 const CAM = { left: 260, top: 640 };
@@ -321,15 +323,21 @@ tl.to('#cam', { x: 0, y: 0, scale: 1, duration: 0.9, ease: 'power3.inOut' }, 21.
 tl.to(scroller('plan'), { y: -1880 * SC, duration: 1.0, ease: 'power2.inOut' }, 21.3);
 out('#b-plan', 22.1);
 
-// ===== 5. ASK (22.5 - 27.5) =====
+// ===== 5. ASK (22.5 - 27.5): a sample conversation in the live app =====
 show('ask', 22.5); kick('#b-ask', 22.5); words('#b-ask .h', 22.55, 0.04);
-tl.set('#pg-ask', { autoAlpha: 1, scale: 1.08, opacity: 0 }, 22.45);
-tl.to('#pg-ask', { scale: 1, opacity: 1, duration: 0.5, ease: 'power3.out' }, 22.45);
+tl.set('#pg-ask0', { autoAlpha: 1, scale: 1.08, opacity: 0 }, 22.45);
+tl.to('#pg-ask0', { scale: 1, opacity: 1, duration: 0.5, ease: 'power3.out' }, 22.45);
 tl.set('#pg-plan', { autoAlpha: 0 }, 22.95);
 nav(null, 22.45);
-tl.to('#cv-q', { autoAlpha: 0, duration: 0.35 }, 23.2);
-tl.fromTo('#cv-a', { scaleY: 1 }, { scaleY: 0, duration: 2.6, ease: 'steps(18)' }, 23.9);
-tl.to('#cam', { ...focus(264, 520, 1.1, 540, 1180), duration: 4.0, ease: 'sine.inOut' }, 23.0);
+// the question goes up, Panditji thinks
+tl.set('#pg-ask1', { autoAlpha: 1, opacity: 0, y: 30 }, 23.6);
+tl.to('#pg-ask1', { opacity: 1, y: 0, duration: 0.3, ease: 'power2.out' }, 23.6);
+tl.set('#pg-ask0', { autoAlpha: 0 }, 23.95);
+// the answer writes itself in, line by line
+tl.set('#pg-ask', { autoAlpha: 1 }, 24.55);
+tl.set('#pg-ask1', { autoAlpha: 0 }, 24.6);
+tl.fromTo('#cv-a', { scaleY: 1 }, { scaleY: 0, duration: 1.9, ease: 'steps(17)', immediateRender: false }, 24.6);
+tl.to('#cam', { ...focus(264, 470, 1.12, 540, 1180), duration: 3.6, ease: 'sine.inOut' }, 23.4);
 tl.to('#cam', { x: 0, y: 0, scale: 1, duration: 0.5, ease: 'power2.inOut' }, 27.0);
 out('#b-ask', 27.1);
 
@@ -373,8 +381,10 @@ tl.to('#b-no', { y: -110, duration: 0.6, ease: 'power2.inOut' }, 40.1);
 tl.fromTo('#no-3', { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 40.5);
 tl.set('#cam', { rotation: -3 }, 40.0);
 tl.to('#cam', { y: 330, scale: 0.86, duration: 0.8, ease: 'power3.out' }, 40.1);
-tl.fromTo('#cv-l1', { scaleY: 1 }, { scaleY: 0, duration: 0.7, ease: 'steps(8)' }, 40.7);
-tl.fromTo('#cv-l2', { scaleY: 1 }, { scaleY: 0, duration: 0.8, ease: 'steps(10)' }, 41.4);
+tl.to('#cv-l1', { autoAlpha: 0, duration: 0.25 }, 40.75);
+tl.fromTo('#pg-limits .scroller', { y: 0 }, { y: 0 }, 40.0);
+tl.to('#cv-lq', { autoAlpha: 0, duration: 0.25 }, 41.3);
+tl.to('#cv-l2', { autoAlpha: 0, duration: 0.25 }, 41.75);
 tl.to('#b-no', { autoAlpha: 0, duration: 0.25 }, 42.25);
 tl.to('#cam', { y: 1500, duration: 0.35, ease: 'power3.in' }, 42.15);
 

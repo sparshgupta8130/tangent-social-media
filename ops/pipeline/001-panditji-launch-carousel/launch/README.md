@@ -17,9 +17,14 @@ video with a background score.
 ## Screens (all real)
 - Live captures from a local build of panditji main (Asha + Rohan fixture, API mocked offline):
   `capture.mjs` → today, plan, chart-vedic, chart-western, match (full-length), and the tab bars.
-- Labs screenshots (real app, real AI replies): today-labs (the reading), ask-top, ask-limits.
-  The Ask screens can't be captured locally because the AI relay is offline here.
-- Ask replies are revealed top-to-bottom with a cream mask over the real screenshot (no text is drawn).
+- Labs screenshot (real app, real AI reply): today-labs (the daily reading).
+- Ask (v2.1, Sparsh 2026-11-12: "just mock it up with a sample"): `capture_ask.mjs` runs the live build with
+  `/api/agent` mocked. The career answer is a written SAMPLE (the on-screen kicker says "Ask · sample
+  conversation", as the Labs page labels its own); its first turn calls the real engine tools (get_dasha_at,
+  get_chart), so the app computes Asha's actual values and draws its own "How I worked this out" row. Facts in
+  the sample match those values (Saturn Mahadasha, Jupiter antardasha to Mar 2029, Saturn in own sign).
+  The two refusals use the server's real canned replies from api/_lib/guard.ts, sent as `deflected` events.
+- Replies are revealed top-to-bottom with a mask over the real screenshot (no text is drawn).
 
 ## Rebuild
 1. `node capture.mjs <dir>` with the panditji build served on :4173 (`npx vite preview --port 4173`).
@@ -32,4 +37,4 @@ video with a background score.
 - The score was checked by spectrogram and loudness curve, not by ear (no audio playback in this environment).
   It is an original synthesised track, not a produced one; a Lyria/Flow Music pass (workload-router) or a
   track from YouTube's audio library is the upgrade path if it doesn't land.
-- Mixed builds: Labs screenshots (Oct, tab named "Timing") and live captures (Nov, tab named "Plan").
+- One Labs screenshot remains (Today's reading, Oct build, tab named "Timing"); everything else is the Nov build ("Plan").
