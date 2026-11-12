@@ -103,3 +103,15 @@ Sparsh asked for 1:1 so the carousel doesn't need the crop toggle. Square set: `
 two-column, text left / phone right). The 4:5 set stays in `carousel/out/`. Trade-off flagged: square is ~20%
 shorter in feed than 4:5, and the 3:4 profile grid trims a square cover's sides. Note for next time: the
 carousel ratio is set once by the crop toggle on the first image and applies to every slide.
+
+## Round 7 (2026-11-12): YouTube Short
+`carousel/video/panditji-short.mp4`: 1080×1920, 30 fps, 54.5 s, H.264 + silent AAC track.
+Source `carousel/src/short.html` (4:5 source + 9:16 overrides + a deterministic `render(t)` timeline);
+frames via `node carousel/src/render_video.js carousel/src/short.html <framesDir> 30`, then
+`ffmpeg -framerate 30 -i f%05d.png -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=48000 -shortest
+-c:v libx264 -preset slow -crf 17 -pix_fmt yuv420p -c:a aac -movflags +faststart`.
+Short-only changes (Sparsh): last slide drops "Link in bio" for two invitations, Subscribe on YouTube
+(youtube.com/@tangentideasai) and Follow on Instagram (@tangentideas.ai). Also: slide numbers and "Swipe"
+removed; slide-10 note now "Type the address into Safari or Chrome" (no clickable links in a Short).
+Cover fully legible on frame 0 (youtube.md §1 hook rule); text kept in the top 270 px / bottom ~400 px safe band.
+Slide timings (s): 3, 5, 4.5, 4.5, 4.5, 4.5, 5, 5, 6.5, 6.5, 5.5. No music: silent by design, no licensed track chosen.

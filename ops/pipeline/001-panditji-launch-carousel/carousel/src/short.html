@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Panditji carousel</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@400;500;600&family=Noto+Serif+Devanagari:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #100f0d; --text: #ece7de; --muted: #9b948a; --line: #29261f; --card: #171613;
+    --warm: #e9a23b; /* Panditji's saffron, taken from the app itself */
+    --cream: #fff6e8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #333; font-family: Inter, sans-serif; color: var(--text); }
+  .slide {
+    width: 1080px; height: 1350px; position: relative; overflow: hidden;
+    background: var(--bg); margin: 0 auto 40px; padding: 96px 96px 0; display: flex; flex-direction: column;
+    background-image: radial-gradient(1100px 700px at 50% 115%, rgba(233,162,59,.10), transparent 70%);
+  }
+  .top { display: flex; justify-content: space-between; align-items: center;
+    font-size: 24px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+  .top .k { color: var(--warm); }
+  .num { font-variant-numeric: tabular-nums; letter-spacing: .08em; }
+  h1, h2 { text-wrap: balance; font-family: Fraunces, serif; font-weight: 400; letter-spacing: -0.015em; color: var(--text); }
+  h1 { font-size: 104px; line-height: 1.02; }
+  h2 { font-size: 76px; line-height: 1.06; margin-top: 44px; }
+  h2 em, h1 em { font-style: italic; color: var(--warm); }
+  p.body { font-size: 33px; line-height: 1.42; color: #cfc8bc; margin-top: 26px; max-width: 860px; }
+  .fine { font-size: 22px; color: var(--muted); }
+
+  /* phone rising from the bottom edge */
+  .phone {
+    align-self: center; flex-shrink: 0; margin-top: 52px;
+    width: 600px; border-radius: 64px; padding: 16px;
+    background: #1d1b18; border: 2px solid #3a362e;
+    box-shadow: 0 -20px 80px rgba(0,0,0,.55), 0 0 0 10px rgba(255,255,255,.015);
+  }
+  .phone .screen { border-radius: 50px; overflow: hidden; background: var(--cream); }
+  .phone img { display: block; width: 100%; }
+  .tag { margin-top: 18px; font-size: 21px; color: var(--muted); letter-spacing: .02em; }
+  .crop img { margin-top: -80px; }
+  .crop-low img { margin-top: -330px; }
+  .crop-match img { margin-top: -110px; }
+  #s2 { padding-bottom: 110px; }
+  #s2 .rule { margin-top: auto; }
+  .next { margin-top: 44px; font-size: 30px; font-weight: 500; color: var(--warm); letter-spacing: .01em; }
+  .pair { display: flex; gap: 36px; justify-content: center; margin-top: 44px; }
+  .pair .lbl { font-size: 24px; letter-spacing: .12em; text-transform: uppercase; color: var(--warm); font-weight: 500; text-align: center; margin-bottom: 18px; }
+  .phone.sm { width: 420px; margin-top: 0; border-radius: 48px; padding: 12px; }
+  .phone.sm .screen { border-radius: 38px; }
+  .zoom { height: 610px; }
+  .zoom img { max-width: none; }
+  .zoom .zv { width: 445px; margin: -228px 0 0 -24px; }
+  .zoom .zw { width: 441px; margin: -248px 0 0 -23px; }
+
+  /* cover */
+  .cover { display: flex; flex-direction: column; padding-bottom: 96px; }
+  .cover .icon { width: 340px; height: 340px; border-radius: 72px; overflow: hidden; margin-top: 80px;
+    box-shadow: 0 30px 90px rgba(233,162,59,.18); }
+  .cover .icon img { width: 100%; display: block; }
+  .cover h1 { margin-top: 80px; font-size: 118px; }
+  .cover p.body { font-size: 38px; }
+  .swipe { margin-top: auto; display: flex; justify-content: space-between; align-items: center;
+    font-size: 26px; color: var(--muted); letter-spacing: .06em; }
+  .swipe b { color: var(--text); font-weight: 500; }
+  .arrow { display: inline-block; width: 64px; height: 2px; background: var(--warm); position: relative; vertical-align: middle; margin-left: 18px; }
+  .arrow::after { content: ""; position: absolute; right: 0; top: -7px; width: 14px; height: 14px;
+    border-top: 2px solid var(--warm); border-right: 2px solid var(--warm); transform: rotate(45deg); }
+
+  /* name slide */
+  .deva { font-family: "Noto Serif Devanagari", serif; font-size: 150px; line-height: 1.2; color: var(--warm); margin-top: 80px; }
+  .say { font-size: 34px; color: var(--muted); margin-top: 6px; letter-spacing: .02em; }
+  .say b { color: var(--text); font-weight: 500; }
+  .rule { height: 1px; background: var(--line); margin: 64px 0 0; }
+
+  /* trust slide */
+  .rows { margin-top: 64px; border-top: 1px solid var(--line); }
+  .row { display: grid; grid-template-columns: 90px 1fr; gap: 24px; padding: 40px 0; border-bottom: 1px solid var(--line); }
+  .row .n { font-family: Fraunces, serif; font-size: 44px; color: var(--warm); line-height: 1.1; }
+  .row h3 { font-family: Inter; font-weight: 600; font-size: 34px; color: var(--text); }
+  .row p { font-size: 29px; line-height: 1.42; color: #c4bdb1; margin-top: 10px; }
+
+  /* get-it slide */
+  .url { margin-top: 56px; font-family: Inter; font-weight: 600; font-size: 56px; letter-spacing: -0.01em;
+    color: var(--bg); background: var(--warm); display: inline-block; padding: 22px 34px; border-radius: 22px; }
+  .steps { margin-top: 56px; display: grid; gap: 30px; }
+  .step { display: grid; grid-template-columns: 64px 1fr; gap: 22px; align-items: start; font-size: 31px; line-height: 1.4; color: #d6cfc3; }
+  .step .d { width: 54px; height: 54px; border-radius: 50%; border: 2px solid var(--warm); color: var(--warm);
+    display: grid; place-items: center; font-weight: 600; font-size: 26px; }
+  .step b { color: var(--text); font-weight: 600; }
+  .note { margin-top: 52px; padding: 26px 30px; border: 1px solid var(--line); border-radius: 20px; background: var(--card);
+    font-size: 26px; line-height: 1.45; color: var(--muted); }
+  .note b { color: var(--text); font-weight: 500; }
+
+  /* end slide */
+  .end { align-items: flex-start; padding-bottom: 96px; }
+  .end .mark { margin-top: auto !important; }
+  .end .pill { margin-bottom: auto; }
+  .end .mark { width: 220px; height: 220px; color: var(--text); margin-top: 90px; }
+  .end h2 { font-size: 84px; margin-top: 70px; }
+  .handle { margin-top: 64px; font-size: 40px; color: var(--muted); }
+  .handle b { color: var(--text); font-weight: 600; }
+  .pill { margin-top: 40px; display: inline-flex; align-items: center; gap: 18px; font-size: 32px; font-weight: 500;
+    padding: 20px 34px; border-radius: 999px; border: 2px solid var(--warm); color: var(--warm); }
+</style>
+
+<style>
+  /* ---- YouTube Short (1080x1920) overrides ---- */
+  html, body { margin: 0; background: #100f0d; }
+  body { width: 1080px; height: 1920px; position: relative; overflow: hidden; }
+  .slide { position: absolute; top: 0; left: 0; margin: 0; height: 1920px; padding: 270px 96px 0; }
+  .num { display: none; }
+  .top { font-size: 26px; }
+  h2 { font-size: 80px; }
+  p.body { font-size: 36px; }
+  .tag { font-size: 23px; }
+  .phone { width: 660px; margin-top: 64px; }
+  .crop-low img { margin-top: 0; }
+  .crop-match img { margin-top: -118px; }
+  .crop img { margin-top: -86px; }
+
+  .cover { padding-bottom: 420px; }
+  .cover .icon { margin-top: auto; width: 360px; height: 360px; }
+  .cover h1 { font-size: 124px; }
+  .cover p.body { font-size: 42px; }
+  .swipe { margin-top: 70px; margin-bottom: auto; font-size: 32px; }
+
+  #s2 { padding-bottom: 420px; }
+  .deva { margin-top: 90px; font-size: 170px; }
+  .say { font-size: 38px; }
+  .next { font-size: 34px; margin-top: 52px; }
+
+  .pair { margin-top: 56px; gap: 32px; }
+  .pair .lbl { font-size: 26px; }
+  .phone.sm { width: 440px; }
+  .zoom { height: 880px; }
+  .zoom .zv, .zoom .zw { width: 416px; margin: 0; }
+
+  #s6 { padding-bottom: 380px; }
+  #s6 h2 { margin-top: auto; }
+  #s6 .pair { margin-bottom: auto; }
+  #s9, #s10 { padding-bottom: 400px; }
+  #s9 h2, #s10 h2 { margin-top: auto; }
+  #s9 .rows, #s10 .note { margin-bottom: auto; }
+  .row { padding: 44px 0; }
+  .row h3 { font-size: 38px; }
+  .row p { font-size: 32px; }
+  .url { font-size: 58px; }
+  .step { font-size: 35px; }
+  .note { font-size: 30px; }
+
+  .end { padding-bottom: 420px; }
+  .end h2 { font-size: 88px; }
+  .handle { font-size: 38px; line-height: 1.4; color: #cfc8bc; max-width: 860px; }
+  .links { margin-top: 56px; margin-bottom: auto; display: grid; gap: 24px; width: 100%; }
+  .lnk { display: flex; align-items: center; gap: 30px; padding: 28px 34px; border: 1px solid var(--line); border-radius: 26px; background: var(--card); }
+  .lnk svg { width: 64px; height: 64px; color: var(--warm); flex: none; }
+  .lnk span { display: block; font-size: 26px; color: var(--muted); letter-spacing: .02em; }
+  .lnk b { display: block; font-size: 40px; font-weight: 600; color: var(--text); margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<!-- 1 · cover -->
+<section class="slide cover" id="s1">
+  <div class="top"><span class="k">A free app · Tangent Labs</span><span class="num">01 / 11</span></div>
+  <div class="icon"><img src="img/icon-512.png" alt=""></div>
+  <h1>Every family had <em>someone</em> to ask.</h1>
+  <p class="body">When to travel, when to sign the lease, when to begin something new.</p>
+  <div class="swipe"><span>Meet <b>Panditji</b></span></div>
+</section>
+
+<!-- 2 · the name and the why -->
+<section class="slide" id="s2">
+  <div class="top"><span class="k">The name</span><span class="num">02 / 11</span></div>
+  <div class="deva">पंडितजी</div>
+  <div class="say"><b>pun-dith-jee</b></div>
+  <div class="say">A learned person a family trusts and turns to.</div>
+  <div class="rule"></div>
+  <h2>Many of us now live far from the Panditji <em>we grew up with.</em></h2>
+  <p class="body">So I built one for your phone: an astrology app with an AI guide that reads your chart and answers your questions, any time of day.</p>
+  <div class="next">Here’s what it does for you<span class="arrow"></span></div>
+</section>
+
+<!-- 3 · today -->
+<section class="slide" id="s3">
+  <div class="top"><span class="k">What it does · Today</span><span class="num">03 / 11</span></div>
+  <h2>It reads your day, <em>in plain words.</em></h2>
+  <p class="body">A short daily reading from where the Moon and planets stand against your chart. A little diya stays lit for every day you come back.</p>
+  <div class="tag">The real app · sample profile</div>
+  <div class="phone"><div class="screen"><img src="img/today.webp" alt=""></div></div>
+</section>
+
+<!-- 4 · good times -->
+<section class="slide" id="s4">
+  <div class="top"><span class="k">What it does · Good times</span><span class="num">04 / 11</span></div>
+  <h2>It finds good hours to begin, <em>and ones to avoid.</em></h2>
+  <p class="body">Pick what it’s for, like travel or a new home, and it stars the best windows for your city.</p>
+  <div class="tag">The real app · sample profile</div>
+  <div class="phone"><div class="screen crop-low"><img src="img/timing.webp" alt=""></div></div>
+</section>
+
+<!-- 5 · ask -->
+<section class="slide" id="s5">
+  <div class="top"><span class="k">What it does · Ask</span><span class="num">05 / 11</span></div>
+  <h2>It answers your questions, <em>from your own chart.</em></h2>
+  <p class="body">Ask about work, marriage or a move in your own words, and Panditji answers from your birth chart.</p>
+  <div class="tag">The real app · sample profile</div>
+  <div class="phone"><div class="screen"><img src="img/ask-top.webp" alt=""></div></div>
+</section>
+
+<!-- 6 · vedic or western -->
+<section class="slide" id="s6">
+  <div class="top"><span class="k">What it does · Your chart</span><span class="num">06 / 11</span></div>
+  <h2>Vedic or Western, it reads your chart <em>your way.</em></h2>
+  <p class="body">Whichever tradition you follow, Panditji draws your chart in it and explains it in plain words.</p>
+  <div class="tag">The real app · the same sample profile, both ways</div>
+  <div class="pair">
+    <div><div class="lbl">Vedic kundli</div><div class="phone sm"><div class="screen zoom"><img class="zv" src="img/chart.webp" alt=""></div></div></div>
+    <div><div class="lbl">Western birth chart</div><div class="phone sm"><div class="screen zoom"><img class="zw" src="img/chart-western.webp" alt=""></div></div></div>
+  </div>
+</section>
+
+<!-- 6b · match -->
+<section class="slide" id="s7">
+  <div class="top"><span class="k">What it does · Match</span><span class="num">07 / 11</span></div>
+  <h2>It matches two charts for marriage, <em>verdict first.</em></h2>
+  <p class="body">Pick any two people you’ve saved. Vedic readers get the 36-point Gun Milan; Western readers see how the two charts meet.</p>
+  <div class="tag">The real app · two sample profiles</div>
+  <div class="phone"><div class="screen crop-match"><img src="img/match-vedic.webp" alt=""></div></div>
+</section>
+
+<!-- 7 · says no -->
+<section class="slide" id="s8">
+  <div class="top"><span class="k">It knows when to say no</span><span class="num">08 / 11</span></div>
+  <h2>It won’t tell you when you’ll die. Or which coin <em>will 10x.</em></h2>
+  <p class="body">Death, medical and money advice, and gambling get a gentle no, and a better question to ask.</p>  <div class="tag">The real app, turning down two questions</div>
+
+  <div class="phone"><div class="screen crop"><img src="img/ask-limits.webp" alt=""></div></div>
+</section>
+
+<!-- 8 · trust -->
+<section class="slide" id="s9">
+  <div class="top"><span class="k">How it works</span><span class="num">09 / 11</span></div>
+  <h2>The AI isn’t allowed <em>to guess.</em></h2>
+  <div class="rows">
+    <div class="row"><div class="n">1</div><div><h3>Your phone does the maths.</h3><p>It works out your chart from real astronomy. Planet positions are checked against NASA’s JPL and the Swiss Ephemeris; Vedic timings against Drik Panchang.</p></div></div>
+    <div class="row"><div class="n">2</div><div><h3>The AI only explains it.</h3><p>The guide is an AI. It puts the computed numbers into words, and it can be wrong. For reflection and tradition, not advice.</p></div></div>
+    <div class="row"><div class="n">3</div><div><h3>Your chart stays on your phone.</h3><p>Birth details, chats and notes live on your device. No ads, nothing for sale.</p></div></div>
+  </div>
+</section>
+
+<!-- 9 · get it -->
+<section class="slide" id="s10">
+  <div class="top"><span class="k">Get it</span><span class="num">10 / 11</span></div>
+  <h2>Free. No app store <em>needed.</em></h2>
+  <div class="url">panditji-seven.vercel.app</div>
+  <div class="steps">
+    <div class="step"><div class="d">1</div><div>Open it in <b>Safari</b> on iPhone or <b>Chrome</b> on Android.</div></div>
+    <div class="step"><div class="d">2</div><div>iPhone: <b>Share › Add to Home Screen.</b><br>Android: <b>⋮ › Install app.</b></div></div>
+    <div class="step"><div class="d">3</div><div>Tap <b>Get a code.</b> It arrives by email in about a minute.</div></div>
+  </div>
+  <div class="note"><b>Type the address into Safari or Chrome.</b> The install option only appears there. For adults 18+.</div>
+</section>
+
+<!-- 10 · follow -->
+<section class="slide end" id="s11">
+  <div class="top" style="width:100%"><span class="k">Tangent Labs</span><span class="num">11 / 11</span></div>
+  <svg class="mark" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+    <path d="M 52.26 25.06 A 25 25 0 1 1 45.45 26.5" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+    <line x1="24" y1="82" x2="116.2" y2="62.4" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="59.2" cy="74.5" r="4.045" fill="currentColor"/>
+  </svg>
+  <h2>Small AI apps for the small problems of <em>everyday life.</em></h2>
+  <div class="handle">More small apps are on the way. Come along for the next one.</div>
+  <div class="links">
+    <div class="lnk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg><div><span>Subscribe on YouTube</span><b>youtube.com/@tangentideasai</b></div></div>
+    <div class="lnk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg><div><span>Follow on Instagram</span><b>@tangentideas.ai</b></div></div>
+  </div>
+</section>
+
+
+<script>
+// Deterministic timeline: render(t) poses every element for time t (seconds). No CSS animations.
+const DUR = [3.0, 5.0, 4.5, 4.5, 4.5, 4.5, 5.0, 5.0, 6.5, 6.5, 5.5];
+const FADE = 0.3;
+const slides = [...document.querySelectorAll('section.slide')];
+const START = DUR.reduce((a, d, i) => (a.push(i ? a[i - 1] + DUR[i - 1] : 0), a), []);
+window.TOTAL = DUR.reduce((a, b) => a + b, 0);
+const targets = slides.map(sl => {
+  const out = [];
+  for (const el of sl.children) {
+    if (el.classList.contains('rows') || el.classList.contains('steps') || el.classList.contains('links') || el.classList.contains('pair')) out.push(...el.children);
+    else out.push(el);
+  }
+  return out;
+});
+const clamp = x => Math.max(0, Math.min(1, x));
+const ease = x => 1 - Math.pow(1 - x, 3);
+window.render = (t) => {
+  slides.forEach((sl, i) => {
+    const lt = t - START[i];
+    const last = i === slides.length - 1;
+    const on = lt >= 0 && (lt < DUR[i] || (last && lt <= DUR[i] + 1));
+    sl.style.display = on ? 'flex' : 'none';
+    if (!on) return;
+    const fin = i === 0 ? 1 : clamp(lt / FADE);
+    const fout = last ? 1 : clamp((DUR[i] - lt) / FADE);
+    sl.style.opacity = Math.min(fin, fout);
+    targets[i].forEach((el, k) => {
+      const isPhone = el.classList.contains('phone') || el.querySelector?.('.phone');
+      if (i === 0) {           // the hook is fully legible on frame 0; only a slow push-in
+        el.style.opacity = 1;
+        el.style.transform = `scale(${1 + 0.012 * lt})`;
+        el.style.transformOrigin = 'left center';
+        return;
+      }
+      const delay = 0.2 + 0.14 * k;
+      const p = ease(clamp((lt - delay) / (isPhone ? 0.9 : 0.6)));
+      const rise = isPhone ? 180 : 30;
+      const drift = isPhone ? -10 * Math.max(0, lt - delay) : 0;
+      el.style.opacity = isPhone ? 1 : p;
+      el.style.transform = `translateY(${(1 - p) * rise + drift}px)`;
+    });
+  });
+};
+render(0);
+</script>
+</body>
+</html>
