@@ -10,7 +10,10 @@ video with a background score.
   pages, the camera pushes in on the starred day and the Gun Milan score, it turns edge-on to change from the
   Vedic kundli to the Western wheel, drops away for the "it says no" break and comes back tilted.
 - Kinetic type: masked word-by-word headline reveals, a rolling "Vedic. / Western." word, a typed URL.
-- Score: `score_v3.py` (v2.3, 2026-11-12): upbeat but smooth. v2 was rejected as "too jarring". Measured vs v1/v2:
+- Score (v2.4, 2026-11-13): `music/score_lyria.wav`, generated with Google Lyria RealTime (models/lyria-realtime-exp) by a
+  separate session (branch music-panditji-launch, commit 25febb2; 14 candidates and full notes there and in `music/NOTES.md`).
+  Pick t13, bansuri lead, 96 BPM, D major, downbeat at t=0, -13.9 LUFS. v3 below was rejected as "too Chinese".
+  AI-generated music: disclose it (e.g. "Music generated with Google Lyria"). Earlier, `score_v3.py` (v2.3): upbeat but smooth. v2 was rejected as "too jarring". Measured vs v1/v2:
   beat-pulse depth 14.2 dB (v1 2.8, v2 15.0); 3-10 kHz share 0.2% (v1 0.2, v2 1.0). Santoor hook + 16th arpeggio,
   rounded kick, soft snaps, pumping pad, 8th bass, gentle limiting. Previous, `score_v2.py`: upbeat bhangra-pop, dhol chaal + tumbi riff from frame 0, four-on-the-floor
   kick, offbeat bass and stabs from the phone landing, half-time break, final hit on bar 22. v1 (`score.py`) was rejected as
