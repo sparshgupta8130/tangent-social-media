@@ -11,7 +11,7 @@ const path = require('path');
   const ids = await page.$$eval('section.slide', els => els.map(e => e.id));
   for (const id of ids) {
     const n = id.replace('s', '').padStart(2, '0');
-    await page.locator('#' + id).screenshot({ path: path.join(out, `${process.argv[4] || "slide"}-${n}.png`) });
+    await page.locator('#' + id).screenshot({ path: path.join(out, `${process.argv[5] || "slide"}-${n}.png`) });
   }
   const fonts = await page.evaluate(() => [...document.fonts].filter(f => f.status === 'loaded').map(f => f.family));
   console.log('rendered', ids.length, 'fonts loaded:', [...new Set(fonts)].join(', '));

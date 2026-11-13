@@ -1,45 +1,198 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><title>One fast model vs an ensemble</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"><link rel="stylesheet" href="blog.css"></head><body>
-<section class="slide" id="s1"><div class="top"><span class="k">Building Pai-Pai</span><span>1 / 6</span></div><div class="main">
-<div class="h h1" style="font-size:86px">One fast model beat a 3-model ensemble <em>at one-tenth the cost.</em></div>
-<div class="stats" style="margin-top:44px">
-  <div class="stat"><div class="v" style="font-size:66px">$0.44</div><div class="t">per 1,000 calls: <b>one model</b>, a better prompt.</div></div>
-  <div class="stat"><div class="v" style="font-size:66px; color:var(--rose)">$4.44</div><div class="t">per 1,000 calls: <b>three models voting</b>.</div></div>
-</div></div><div class="foot"><span>Tangent Labs · <b>Writing</b></span><span>Swipe →</span></div></section>
-<section class="slide" id="s2"><div class="top"><span class="k">Ensembles</span><span>2 / 6</span></div><div class="main">
-<div class="h h2">More models, <em>more hesitation.</em></div>
-<div class="list">
-  <div class="li"><div class="n">1</div><div>Three models voting got <b>78.1%</b> right, still behind one bigger model alone (<b>82.4%</b>).</div></div>
-  <div class="li"><div class="n">2</div><div>Making two models agree cut silent errors to 1.9%, but it asked a question on <b>38% of clear notes</b>.</div></div>
-  <div class="li"><div class="n">3</div><div>Models rated their own confidence <b>“high” on 97–100%</b> of replies, even when the money was wrong.</div></div>
-</div></div><div class="foot"><span>Tangent Labs · <b>Writing</b></span><span></span></div></section>
-<section class="slide" id="s3"><div class="top"><span class="k">Experiments</span><span>3 / 6</span></div><div class="main">
-<div class="h h2">Every prompt change, <em>tested as an experiment.</em></div>
-<div class="stats">
-  <div class="stat"><div class="v" style="color:var(--rose)">−2.8</div><div class="t">Points from wrapping the <b>same words in XML tags</b>.</div></div>
-  <div class="stat"><div class="v" style="color:var(--muted)">+0.8</div><div class="t">From a generic <b>“step by step”</b> checklist: noise.</div></div>
-  <div class="stat"><div class="v">80.9%</div><div class="t">With <b>40 worked examples</b> and a headcount field, up from 74.3%.</div></div>
-</div></div><div class="foot"><span>Tangent Labs · <b>Writing</b></span><span></span></div></section>
-<section class="slide" id="s4"><div class="top"><span class="k">The decision order</span><span>4 / 6</span></div><div class="main">
-<div class="h h2">Ask only when the answer <em>changes the money.</em></div>
-<div class="list" style="gap:20px; margin-top:36px">
-  <div class="li"><div class="n">1</div><div>Not an expense or a payment: <b>out of scope</b>.</div></div>
-  <div class="li"><div class="n">2</div><div>The numbers contradict each other: <b>reject</b>.</div></div>
-  <div class="li"><div class="n">3</div><div>Two readings give someone a different balance: <b>ask</b>.</div></div>
-  <div class="li"><div class="n">4</div><div>Otherwise: <b>answer</b>, with the usual defaults.</div></div>
-</div>
-<div class="note">The decision order added <b>5.1 points</b>, to 86.1% on the validation set.</div></div><div class="foot"><span>Tangent Labs · <b>Writing</b></span><span></span></div></section>
-<section class="slide" id="s5"><div class="top"><span class="k">The result</span><span>5 / 6</span></div><div class="main">
-<div class="h h2">On 7,588 sentences <em>it had never seen.</em></div>
-<div class="stats">
-  <div class="stat"><div class="v">84.4%</div><div class="t">Right outcomes, up from <b>65.3%</b> for the same model before.</div></div>
-  <div class="stat"><div class="v">12.8%</div><div class="t">Needless questions, down from <b>42.2%</b>.</div></div>
-  <div class="stat"><div class="v">$0.44</div><div class="t">Per 1,000 calls. It beat the bigger model by <b>10.2 points at one-fifth the cost</b>.</div></div>
-</div></div><div class="foot"><span>Tangent Labs · <b>Writing</b></span><span></span></div></section>
-<section class="slide" id="s6"><div class="top"><span class="k">Building Pai-Pai</span><span>6 / 6</span></div><div class="main"><svg class="icon" viewBox="0 0 120 120" fill="none" aria-hidden="true"><rect x="28" y="44" width="64" height="50" rx="15" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><line x1="60" y1="44" x2="60" y2="30" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><circle cx="60" cy="24" r="4.045" fill="currentColor"/><circle cx="47" cy="67" r="4.045" fill="currentColor"/><circle cx="73" cy="67" r="4.045" fill="currentColor"/></svg>
-<div class="h h2" style="margin-top:40px">Read the full post, and follow <em>for more.</em></div>
-<div class="links">
-  <div class="lnk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H2z"/><path d="M22 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8z"/></svg><div><span>The whole story, with the data</span><b>labs.tangentideas.ai/writing</b></div></div>
-  <div class="lnk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg><div><span>Follow on Instagram</span><b>@tangentideas.ai</b></div></div>
-  <div class="lnk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg><div><span>Subscribe on YouTube</span><b>youtube.com/@tangentideasai</b></div></div>
-</div></div><div class="foot"><span>Tangent Labs · <b>Writing</b></span><span></span></div></section>
-</body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>One fast model vs an ensemble: the lab notebook</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+  /* Post 3 · "How a single fast model beat a 3-model ensemble" · a lab notebook on graph paper: the post is a run of experiments */
+  :root { --paper: #fbfbf8; --grid: #e4e8ec; --grid2: #d3d9df; --ink: #1d2430; --muted: #66707c; --rose: #c0564a; --green: #1f6b4a; --amber: #c08a2c; --grey: #9aa3ad; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #333; font-family: Inter, sans-serif; color: var(--ink); }
+  .slide { width: 1080px; height: 1080px; position: relative; overflow: hidden; margin: 0 auto 40px; background-color: var(--paper);
+    background-image: linear-gradient(var(--grid2) 1px, transparent 1px), linear-gradient(90deg, var(--grid2) 1px, transparent 1px),
+      linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px; background-position: -1px -1px; }
+  .k { position: absolute; left: 80px; top: 64px; font-family: "JetBrains Mono", monospace; font-size: 22px; font-weight: 700; color: var(--green); background: var(--paper); padding: 0 6px; margin-left: -6px; }
+  .pg { position: absolute; right: 80px; top: 64px; font-family: "JetBrains Mono", monospace; font-size: 22px; color: var(--muted); background: var(--paper); padding: 0 6px; }
+  .src { position: absolute; left: 80px; bottom: 50px; font-family: "JetBrains Mono", monospace; font-size: 19px; color: var(--muted); background: var(--paper); padding: 0 6px; margin-left: -6px; }
+  .h { font-family: Fraunces, serif; font-weight: 400; letter-spacing: -0.015em; line-height: 1.05; text-wrap: balance; background: rgba(251,251,248,.86); }
+  .h em { font-style: italic; color: var(--green); }
+  .panel { background: rgba(255,255,255,.94); border: 1.5px solid var(--grid2); border-radius: 12px; }
+  p { font-size: 28px; line-height: 1.42; color: #2f3846; }
+  p b { font-weight: 700; color: var(--ink); }
+  svg text { font-family: Inter, sans-serif; }
+  .mono { font-family: "JetBrains Mono", monospace; }
+</style>
+</head>
+<body>
+
+<!-- 1 · cover: cost vs accuracy, the shipped prompt alone in the best corner -->
+<section class="slide" id="s1">
+  <div class="k">BUILDING PAI-PAI</div><div class="pg">1 / 6</div>
+  <div class="h" style="position:absolute; left:80px; top:124px; width:920px; font-size:74px">One fast model beat a 3-model ensemble <em>at one-tenth the cost.</em></div>
+  <div class="panel" style="position:absolute; left:80px; right:80px; top:400px; height:580px; padding:20px">
+    <svg viewBox="0 0 880 540" style="width:880px; height:540px">
+      <!-- x: cost per 1,000 calls, log scale $0.30-$5; y: right outcome 60-90% (validation set) -->
+      <line x1="60" y1="480" x2="860" y2="480" stroke="#1d2430" stroke-width="2"/>
+      <line x1="60" y1="24" x2="60" y2="480" stroke="#1d2430" stroke-width="2"/>
+      <text x="460" y="526" text-anchor="middle" font-size="20" fill="#66707c">cost per 1,000 calls (log scale) →</text>
+      <text x="70" y="14" font-size="20" fill="#66707c">↑ right outcomes</text>
+      <g id="pts"></g>
+    </svg>
+  </div>
+  <div class="src">Tangent Labs · Writing · validation set · swipe →</div>
+</section>
+
+<!-- 2 · more models, more hesitation -->
+<section class="slide" id="s2">
+  <div class="k">ENSEMBLES</div><div class="pg">2 / 6</div>
+  <div class="h" style="position:absolute; left:80px; top:124px; font-size:76px">More models, <em>more hesitation.</em></div>
+  <div class="panel" style="position:absolute; left:80px; right:80px; top:280px; padding:30px 34px">
+    <svg viewBox="0 0 860 250" style="width:860px; height:250px">
+      <circle cx="40" cy="125" r="10" fill="#1d2430"/><text x="40" y="165" text-anchor="middle" font-size="20" fill="#66707c">note</text>
+      <path d="M50 125 C 150 125, 150 45, 250 45 M50 125 H250 M50 125 C 150 125, 150 205, 250 205" stroke="#9aa3ad" stroke-width="3" fill="none"/>
+      <g font-size="24" font-weight="600">
+        <rect x="250" y="22" width="150" height="46" rx="23" fill="#fff" stroke="#9aa3ad" stroke-width="2"/><text x="325" y="53" text-anchor="middle">Flash</text>
+        <rect x="250" y="102" width="150" height="46" rx="23" fill="#fff" stroke="#9aa3ad" stroke-width="2"/><text x="325" y="133" text-anchor="middle">Haiku</text>
+        <rect x="250" y="182" width="150" height="46" rx="23" fill="#fff" stroke="#9aa3ad" stroke-width="2"/><text x="325" y="213" text-anchor="middle">Flash-Lite</text>
+      </g>
+      <path d="M400 45 C 500 45, 500 125, 590 125 M400 125 H590 M400 205 C 500 205, 500 125, 590 125" stroke="#c0564a" stroke-width="3" fill="none" stroke-dasharray="8 7"/>
+      <text x="470" y="85" font-size="20" fill="#c0564a">ask?</text><text x="470" y="185" font-size="20" fill="#c0564a">ask?</text>
+      <circle cx="600" cy="125" r="11" fill="#c0564a"/>
+      <text x="630" y="118" font-size="40" font-weight="700" fill="#c0564a">78.1%</text>
+      <text x="630" y="150" font-size="21" fill="#66707c">at $4.44 per 1,000 calls</text>
+    </svg>
+    <p style="font-size:26px; margin-top:8px">Three models voting still trailed one bigger model alone (<b>82.4%</b>). Making two models agree asked a question on <b>38% of clear notes</b>.</p>
+  </div>
+  <div class="panel" style="position:absolute; left:80px; right:80px; top:720px; padding:26px 34px">
+    <div style="display:flex; align-items:baseline; gap:20px"><div class="h" style="font-size:60px; color:var(--rose); background:none; white-space:nowrap">97–100%</div><p style="font-size:26px">of replies, each model rated its own confidence <b>“high”</b>, even when the money was wrong.</p></div>
+  </div>
+  <div class="src">Tangent Labs · Writing · validation set</div>
+</section>
+
+<!-- 3 · the experiments, as a forest plot -->
+<section class="slide" id="s3">
+  <div class="k">EXPERIMENTS</div><div class="pg">3 / 6</div>
+  <div class="h" style="position:absolute; left:80px; top:124px; width:920px; font-size:70px">Every prompt change, <em>scored like an experiment.</em></div>
+  <div class="panel" style="position:absolute; left:80px; right:80px; top:360px; padding:26px 30px 20px">
+    <svg viewBox="0 0 860 470" style="width:860px; height:470px" id="forest"></svg>
+  </div>
+  <div class="src" style="width:920px">Tangent Labs · Writing · change in right outcomes, with 95% intervals</div>
+</section>
+
+<!-- 4 · the decision order -->
+<section class="slide" id="s4">
+  <div class="k">THE DECISION ORDER</div><div class="pg">4 / 6</div>
+  <div class="h" style="position:absolute; left:80px; top:124px; width:920px; font-size:70px">Ask only when the answer <em>changes the money.</em></div>
+  <div style="position:absolute; left:80px; top:350px; width:440px; display:grid; gap:14px">
+    <div class="panel" style="padding:18px 24px"><span class="mono" style="color:var(--green); font-weight:700">1 ·</span> <b style="font-size:27px">Not an expense?</b><div style="font-size:23px; color:#66707c">out of scope</div></div>
+    <div class="panel" style="padding:18px 24px"><span class="mono" style="color:var(--green); font-weight:700">2 ·</span> <b style="font-size:27px">Numbers contradict?</b><div style="font-size:23px; color:#66707c">reject</div></div>
+    <div class="panel" style="padding:18px 24px; border-color:var(--green); border-width:2.5px"><span class="mono" style="color:var(--green); font-weight:700">3 ·</span> <b style="font-size:27px">Balances differ?</b><div style="font-size:23px; color:#66707c">ask one question</div></div>
+    <div class="panel" style="padding:18px 24px"><span class="mono" style="color:var(--green); font-weight:700">4 ·</span> <b style="font-size:27px">Otherwise</b><div style="font-size:23px; color:#66707c">answer, with the usual defaults</div></div>
+  </div>
+  <div style="position:absolute; left:560px; right:80px; top:350px; display:grid; gap:18px">
+    <div class="panel" style="padding:22px 24px">
+      <div class="mono" style="font-size:28px; font-weight:700">asha gave me 1000</div>
+      <p style="font-size:23px; margin-top:8px">Repayment or a new loan, Asha’s balance moves <b>₹1,000 either way</b>.</p>
+      <div class="mono" style="margin-top:10px; font-size:22px; color:var(--green); font-weight:700">→ ANSWER</div>
+    </div>
+    <div class="panel" style="padding:22px 24px">
+      <div class="mono" style="font-size:28px; font-weight:700">riya paid 500</div>
+      <p style="font-size:23px; margin-top:8px">In a group of three: a shared bill is <b>₹166.67</b>, cash she handed you is <b>₹500</b>.</p>
+      <div class="mono" style="margin-top:10px; font-size:22px; color:var(--rose); font-weight:700">→ ASK</div>
+    </div>
+    <div style="font-size:24px; color:#2f3846; background:rgba(251,251,248,.9)">This order added <b>5.1 points</b>, to 86.1%.</div>
+  </div>
+  <div class="src">Tangent Labs · Writing · validation set</div>
+</section>
+
+<!-- 5 · held-out result -->
+<section class="slide" id="s5">
+  <div class="k">THE RESULT</div><div class="pg">5 / 6</div>
+  <div class="h" style="position:absolute; left:80px; top:124px; font-size:72px">On 7,588 sentences <em>it had never seen.</em></div>
+  <div class="panel" style="position:absolute; left:80px; right:80px; top:300px; padding:34px 34px 26px">
+    <svg viewBox="0 0 852 400" style="width:852px; height:400px" id="dumb"></svg>
+  </div>
+  <p style="position:absolute; left:80px; right:80px; top:780px; font-size:27px; background:rgba(251,251,248,.9)">Same model, better prompt, at <b>$0.44 per 1,000 calls</b>. It also beat the bigger model (74.2%) by <b>10.2 points at one-fifth the cost</b>.</p>
+  <div class="src">Tangent Labs · Writing · held-out test set, run once</div>
+</section>
+
+<!-- 6 · follow -->
+<section class="slide" id="s6">
+  <div class="k">BUILDING PAI-PAI</div><div class="pg">6 / 6</div>
+  <div class="h" style="position:absolute; left:80px; top:150px; width:920px; font-size:70px">Get one model right <em>before you build an ensemble.</em></div>
+  <div class="links" style="position:absolute; left:80px; right:80px; top:460px; display:grid; gap:16px"></div>
+  <div class="src">Tangent Labs · Writing</div>
+</section>
+
+<script>
+// ---- cover scatter (validation set, from the post's table) ----
+const X = c => 60 + 800 * Math.log(c / 0.3) / Math.log(5 / 0.3);
+const Y = v => 480 - (v - 60) * 15.33;
+const pts = [
+  ['Flash-Lite', 1.27, 63.4, '#9aa3ad', 'r'], ['Haiku', 0.37, 73.8, '#9aa3ad', 'r'], ['Flash', 2.80, 82.4, '#9aa3ad', 'b'],
+  ['Two must agree', 3.18, 71.8, '#c0564a', 'l'], ['Three voting', 4.44, 78.1, '#c0564a', 'l'], ['Haiku, then Flash', 1.98, 82.4, '#c0564a', 't'],
+];
+let g = '';
+[65, 70, 75, 80, 85, 90].forEach(v => g += `<line x1="60" y1="${Y(v)}" x2="860" y2="${Y(v)}" stroke="#e4e8ec"/><text x="52" y="${Y(v) + 7}" text-anchor="end" font-size="18" fill="#66707c">${v}%</text>`);
+[0.5, 1, 2, 4].forEach(c => g += `<text x="${X(c)}" y="502" text-anchor="middle" font-size="18" fill="#66707c">$${c}</text>`);
+pts.forEach(([n, c, v, col, side]) => {
+  const x = X(c), y = Y(v);
+  g += `<circle cx="${x}" cy="${y}" r="10" fill="${col}"/>`;
+  const tx = side === 'l' ? x - 18 : x + 18, anchor = side === 'l' ? 'end' : 'start', ty = side === 't' ? y - 18 : side === 'b' ? y + 34 : y + 7;
+  g += `<text x="${side === 't' || side === 'b' ? x : tx}" y="${ty}" text-anchor="${side === 't' || side === 'b' ? 'middle' : anchor}" font-size="21" fill="${col === '#9aa3ad' ? '#66707c' : col}">${n} ${v}%</text>`;
+});
+const sx = X(0.44), sy = Y(86.1);
+g += `<circle cx="${sx}" cy="${sy}" r="16" fill="#1f6b4a"/><circle cx="${sx}" cy="${sy}" r="26" fill="none" stroke="#1f6b4a" stroke-width="2.5"/>`;
+g += `<text x="${sx + 36}" y="${sy - 4}" font-size="25" font-weight="700" fill="#1f6b4a">One fast model, better prompt: 86.1%</text><text x="${sx + 36}" y="${sy + 26}" font-size="21" fill="#1f6b4a">$0.44 per 1,000 calls</text>`;
+g += `<text x="${X(4.44)}" y="${Y(78.1) + 36}" text-anchor="end" font-size="19" fill="#c0564a">$4.44</text>`;
+document.getElementById('pts').innerHTML = g;
+
+// ---- forest plot (paired deltas on the validation set, from the post) ----
+const F = d => 360 + (d + 6) * 31;   // -6..+8 points
+const rows = [
+  ['Same words, in XML tags', -2.8, -5.0, -0.7, '#c0564a'],
+  ['A generic “step by step” list', 0.8, null, null, '#9aa3ad'],
+  ['25 worked examples', 2.9, 0.9, 5.0, '#5f8f74'],
+  ['40 examples + a headcount field', 2.0, 0.0, 3.8, '#5f8f74'],
+  ['A four-step decision order', 5.1, 3.1, 7.3, '#1f6b4a'],
+];
+let f = `<line x1="${F(0)}" y1="10" x2="${F(0)}" y2="420" stroke="#1d2430" stroke-width="2"/>`;
+[-4, 0, 4, 8].forEach(v => f += `<text x="${F(v)}" y="452" text-anchor="middle" font-size="19" fill="#66707c">${v > 0 ? '+' : ''}${v}</text>`);
+f += `<text x="${F(0) - 10}" y="22" text-anchor="end" font-size="18" fill="#c0564a">worse</text><text x="${F(0) + 10}" y="22" font-size="18" fill="#1f6b4a">better</text>`;
+rows.forEach(([n, d, lo, hi, col], i) => {
+  const y = 72 + i * 84;
+  f += `<text x="0" y="${y + 8}" font-size="25" font-weight="${i === 4 ? 700 : 500}" fill="#1d2430">${n}</text>`;
+  if (lo !== null) f += `<line x1="${F(lo)}" y1="${y}" x2="${F(hi)}" y2="${y}" stroke="${col}" stroke-width="5" stroke-linecap="round"/>`;
+  f += `<circle cx="${F(d)}" cy="${y}" r="${i === 4 ? 13 : 10}" fill="${col}"/>`;
+  f += d < 0 ? `<text x="${F(lo) - 16}" y="${y + 8}" text-anchor="end" font-size="24" font-weight="700" fill="${col}">−${Math.abs(d)}</text>` : `<text x="${F(Math.max(d, hi ?? d)) + 16}" y="${y + 8}" font-size="24" font-weight="700" fill="${col}">+${d.toFixed(1)}${lo === null ? ' (noise)' : ''}</text>`;
+});
+document.getElementById('forest').innerHTML = f;
+
+// ---- held-out dumbbells: unoptimized Haiku -> shipped ----
+const D = v => 300 + v * 5.2;   // 0..100% across 520px
+const dd = [['Right outcomes', 65.3, 84.4, true], ['Needless questions', 42.2, 12.8, false]];
+let h = '';
+dd.forEach(([n, a, b, up], i) => {
+  const y = 90 + i * 190;
+  h += `<text x="0" y="${y + 9}" font-size="28" font-weight="700" fill="#1d2430">${n}</text>`;
+  h += `<line x1="300" y1="${y}" x2="820" y2="${y}" stroke="#e4e8ec" stroke-width="12" stroke-linecap="round"/>`;
+  h += `<line x1="${D(a)}" y1="${y}" x2="${D(b)}" y2="${y}" stroke="#1f6b4a" stroke-width="6"/>`;
+  h += `<circle cx="${D(a)}" cy="${y}" r="13" fill="#9aa3ad"/><circle cx="${D(b)}" cy="${y}" r="16" fill="#1f6b4a"/>`;
+  h += `<text x="${D(a)}" y="${y + 52}" text-anchor="middle" font-size="22" fill="#66707c">${a}%</text>`;
+  h += `<text x="${D(b)}" y="${y - 30}" text-anchor="middle" font-size="34" font-weight="700" fill="#1f6b4a">${b}%</text>`;
+});
+h += `<circle cx="310" cy="372" r="9" fill="#9aa3ad"/><text x="328" y="379" font-size="20" fill="#66707c">before: same model, plain prompt</text>`;
+h += `<circle cx="740" cy="372" r="10" fill="#1f6b4a"/><text x="758" y="379" font-size="20" fill="#1f6b4a">shipped</text>`;
+document.getElementById('dumb').innerHTML = h;
+
+// ---- follow links ----
+const YT = '<path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/>';
+const IG = '<rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>';
+const BK = '<path d="M2 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H2z"/><path d="M22 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8z"/>';
+const row = (icon, a, b) => `<div class="panel" style="display:flex;align-items:center;gap:26px;padding:22px 30px"><svg viewBox="0 0 24 24" fill="none" stroke="#1f6b4a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:54px;height:54px;flex:none">${icon}</svg><div><div style="font-size:22px;color:#66707c">${a}</div><div class="mono" style="font-size:34px;font-weight:700;margin-top:2px">${b}</div></div></div>`;
+document.querySelector('#s6 .links').innerHTML = row(BK, 'Every experiment, with the tables', 'labs.tangentideas.ai/writing') + row(IG, 'Follow for more', '@tangentideas.ai') + row(YT, 'Subscribe on YouTube', 'youtube.com/@tangentideasai');
+</script>
+</body>
+</html>

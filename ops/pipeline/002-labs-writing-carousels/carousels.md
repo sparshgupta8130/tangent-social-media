@@ -6,10 +6,19 @@ Ask (Sparsh, 2026-11-13): one short "key highlights" carousel per published Labs
 plus a 6th "follow for more" with Instagram, YouTube and the Labs Writing section. Square (1080×1080), as
 Sparsh asked for the Panditji carousel.
 
-Files: `out/<slug>/<slug>-01.png … -06.png` (upload in order). Source: `src/build.py` + `src/blog.css`
-(render: `node src/render.js src/<slug>.html out/<slug> 1 <slug>`). Palette and type follow the Labs Writing
-pages (rose = the old approach, sage = the model, warm = labels). The zodiac rings on post 1's cover are cropped
-from that post's own figure. Every number is copied from the post in tangent-sites/writing/<slug>.md.
+Round 1 (one shared template for all three) rejected by Sparsh 2026-11-13: "Don't templatize these carousels. Each
+carousel should be the best representation of the corresponding post." Round 2: three separate designs.
+
+| Post | Design idea | Signature visuals |
+|---|---|---|
+| deterministic-logic-first (Panditji) | a night sky: the post is astronomy done exactly | Saturn between two zodiac rings; the 24° offset drawn; phone-computes / model-explains; 1″, a 28-dot grid (27 exact, one 6 s), the 11-day error on a line; 427 prompts as a dot field (113 ordinary in green) |
+| model-first-code-second (Pai-Pai) | an audit file, in Pai-Pai's own paper and green | a v1 report with a "TOO GOOD?" stamp; Exhibits A-D incl. commit c7ea64e; the rebuild with real notes from the post; a slope chart of the same readers on both tests (exact match); the real Pai-Pai expense card |
+| single-fast-model-vs-ensemble (Pai-Pai) | a lab notebook on graph paper: the post is a run of experiments | cost-vs-accuracy scatter (log $), the voting diagram, a forest plot of each prompt change with its 95% interval, the four gates with "asha gave me 1000" / "riya paid 500", held-out dumbbells |
+
+Shared on purpose: square 1080×1080, Fraunces headlines (the brand's display face), slide 6 links (Writing, Instagram,
+YouTube) with each post's own closing line. Files: `out/<slug>/<slug>-01.png … -06.png`; source `src/<slug>.html`
+(render: `node src/render.js src/<slug>.html out/<slug> 1 <slug>`). Every number is from the post in
+tangent-sites/writing/<slug>.md; the 28-dot grid and the 427-dot field are drawn to the post's counts.
 
 ## Captions (drafts)
 
