@@ -1,0 +1,44 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Deterministic logic first</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"><link rel="stylesheet" href="blog.css"></head><body>
+<section class="slide" id="s1"><div class="top"><span class="k">Building Panditji</span><span>1 / 6</span></div><div class="main">
+<div style="display:grid; grid-template-columns: 1fr 380px; gap: 30px; align-items:center; margin-top: 40px">
+  <div class="h" style="font-size:80px">The AI kept moving Saturn. So I took the maths <em>away from it.</em></div>
+  <img src="rings.png" style="width:380px; border-radius: 24px">
+</div>
+<p class="lede">Building an astrology guide that cannot guess: the key points from my post.</p></div><div class="foot"><span>Tangent Labs · <b>Writing</b></span><span>Swipe →</span></div></section>
+<section class="slide" id="s2"><div class="top"><span class="k">Why it guessed</span><span>2 / 6</span></div><div class="main">
+<div class="h h2">Two zodiacs, <em>24° apart.</em></div>
+<p class="lede">Models learn from astrology text that mixes two systems. Asked from memory, a model blurred them: it put Saturn in one sign, then the next sign over, and invented a date that was off by months.</p>
+<div class="stats" style="margin-top:40px">
+  <div class="stat"><div class="v" style="color:var(--rose); font-size:60px">Western</div><div class="t">Counts the signs from the <b>spring equinox</b>.</div></div>
+  <div class="stat"><div class="v" style="color:var(--sage); font-size:60px">Vedic</div><div class="t">Counts them from the <b>fixed stars</b>, about 24° further round.</div></div>
+</div></div><div class="foot"><span>Tangent Labs · <b>Writing</b></span><span></span></div></section>
+<section class="slide" id="s3"><div class="top"><span class="k">The fix</span><span>3 / 6</span></div><div class="main">
+<div class="h h2">The phone does the maths. <em>The model only explains it.</em></div>
+<div class="list">
+  <div class="li"><div class="n">1</div><div>Every position, timing window and calendar lookup runs in <b>deterministic code on the phone</b>.</div></div>
+  <div class="li"><div class="n">2</div><div>The model is told <b>“this is the only chart you know”</b>. It reads it through tools filtered by tradition, at most four steps a question.</div></div>
+  <div class="li"><div class="n">3</div><div>Every answer carries <b>source badges</b> that open the exact numbers behind it.</div></div>
+</div></div><div class="foot"><span>Tangent Labs · <b>Writing</b></span><span></span></div></section>
+<section class="slide" id="s4"><div class="top"><span class="k">The proof</span><span>4 / 6</span></div><div class="main">
+<div class="h h2">Checked against outside references, <em>not its own tests.</em></div>
+<div class="stats">
+  <div class="stat"><div class="v">1″</div><div class="t">Planet positions within <b>1 arcsecond</b> of NASA JPL and the Swiss Ephemeris.</div></div>
+  <div class="stat"><div class="v">27<small> of 28</small></div><div class="t">Almanac transitions at the <b>exact printed minute</b>. The 28th within 6 seconds.</div></div>
+  <div class="stat"><div class="v">11 <small>days</small></div><div class="t">The error an <b>AI-written commit</b> had added. A published almanac caught it.</div></div>
+</div></div><div class="foot"><span>Tangent Labs · <b>Writing</b></span><span></span></div></section>
+<section class="slide" id="s5"><div class="top"><span class="k">Safety</span><span>5 / 6</span></div><div class="main">
+<div class="h h2">It also knows <em>what not to answer.</em></div>
+<div class="stats" style="margin-top:36px">
+  <div class="stat"><div class="v">427</div><div class="t">Red-team prompts in <b>English, Hinglish and Hindi</b>.</div></div>
+  <div class="stat"><div class="v">100%</div><div class="t">Of <b>crisis messages</b> caught.</div></div>
+  <div class="stat"><div class="v">0</div><div class="t">False blocks on <b>113 ordinary questions</b>.</div></div>
+</div>
+<div class="note">The lesson: when the input is physics, <b>compute every value before the model sees the prompt.</b></div></div><div class="foot"><span>Tangent Labs · <b>Writing</b></span><span></span></div></section>
+<section class="slide" id="s6"><div class="top"><span class="k">Building Panditji</span><span>6 / 6</span></div><div class="main"><svg class="icon" viewBox="0 0 120 120" fill="none" aria-hidden="true"><rect x="28" y="44" width="64" height="50" rx="15" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><line x1="60" y1="44" x2="60" y2="30" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><circle cx="60" cy="24" r="4.045" fill="currentColor"/><circle cx="47" cy="67" r="4.045" fill="currentColor"/><circle cx="73" cy="67" r="4.045" fill="currentColor"/></svg>
+<div class="h h2" style="margin-top:40px">Read the full post, and follow <em>for more.</em></div>
+<div class="links">
+  <div class="lnk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H2z"/><path d="M22 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8z"/></svg><div><span>The whole story, with the data</span><b>labs.tangentideas.ai/writing</b></div></div>
+  <div class="lnk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg><div><span>Follow on Instagram</span><b>@tangentideas.ai</b></div></div>
+  <div class="lnk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg><div><span>Subscribe on YouTube</span><b>youtube.com/@tangentideasai</b></div></div>
+</div></div><div class="foot"><span>Tangent Labs · <b>Writing</b></span><span></span></div></section>
+</body></html>

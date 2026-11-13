@@ -1,0 +1,45 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>One fast model vs an ensemble</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"><link rel="stylesheet" href="blog.css"></head><body>
+<section class="slide" id="s1"><div class="top"><span class="k">Building Pai-Pai</span><span>1 / 6</span></div><div class="main">
+<div class="h h1" style="font-size:86px">One fast model beat a 3-model ensemble <em>at one-tenth the cost.</em></div>
+<div class="stats" style="margin-top:44px">
+  <div class="stat"><div class="v" style="font-size:66px">$0.44</div><div class="t">per 1,000 calls: <b>one model</b>, a better prompt.</div></div>
+  <div class="stat"><div class="v" style="font-size:66px; color:var(--rose)">$4.44</div><div class="t">per 1,000 calls: <b>three models voting</b>.</div></div>
+</div></div><div class="foot"><span>Tangent Labs · <b>Writing</b></span><span>Swipe →</span></div></section>
+<section class="slide" id="s2"><div class="top"><span class="k">Ensembles</span><span>2 / 6</span></div><div class="main">
+<div class="h h2">More models, <em>more hesitation.</em></div>
+<div class="list">
+  <div class="li"><div class="n">1</div><div>Three models voting got <b>78.1%</b> right, still behind one bigger model alone (<b>82.4%</b>).</div></div>
+  <div class="li"><div class="n">2</div><div>Making two models agree cut silent errors to 1.9%, but it asked a question on <b>38% of clear notes</b>.</div></div>
+  <div class="li"><div class="n">3</div><div>Models rated their own confidence <b>“high” on 97–100%</b> of replies, even when the money was wrong.</div></div>
+</div></div><div class="foot"><span>Tangent Labs · <b>Writing</b></span><span></span></div></section>
+<section class="slide" id="s3"><div class="top"><span class="k">Experiments</span><span>3 / 6</span></div><div class="main">
+<div class="h h2">Every prompt change, <em>tested as an experiment.</em></div>
+<div class="stats">
+  <div class="stat"><div class="v" style="color:var(--rose)">−2.8</div><div class="t">Points from wrapping the <b>same words in XML tags</b>.</div></div>
+  <div class="stat"><div class="v" style="color:var(--muted)">+0.8</div><div class="t">From a generic <b>“step by step”</b> checklist: noise.</div></div>
+  <div class="stat"><div class="v">80.9%</div><div class="t">With <b>40 worked examples</b> and a headcount field, up from 74.3%.</div></div>
+</div></div><div class="foot"><span>Tangent Labs · <b>Writing</b></span><span></span></div></section>
+<section class="slide" id="s4"><div class="top"><span class="k">The decision order</span><span>4 / 6</span></div><div class="main">
+<div class="h h2">Ask only when the answer <em>changes the money.</em></div>
+<div class="list" style="gap:20px; margin-top:36px">
+  <div class="li"><div class="n">1</div><div>Not an expense or a payment: <b>out of scope</b>.</div></div>
+  <div class="li"><div class="n">2</div><div>The numbers contradict each other: <b>reject</b>.</div></div>
+  <div class="li"><div class="n">3</div><div>Two readings give someone a different balance: <b>ask</b>.</div></div>
+  <div class="li"><div class="n">4</div><div>Otherwise: <b>answer</b>, with the usual defaults.</div></div>
+</div>
+<div class="note">The decision order added <b>5.1 points</b>, to 86.1% on the validation set.</div></div><div class="foot"><span>Tangent Labs · <b>Writing</b></span><span></span></div></section>
+<section class="slide" id="s5"><div class="top"><span class="k">The result</span><span>5 / 6</span></div><div class="main">
+<div class="h h2">On 7,588 sentences <em>it had never seen.</em></div>
+<div class="stats">
+  <div class="stat"><div class="v">84.4%</div><div class="t">Right outcomes, up from <b>65.3%</b> for the same model before.</div></div>
+  <div class="stat"><div class="v">12.8%</div><div class="t">Needless questions, down from <b>42.2%</b>.</div></div>
+  <div class="stat"><div class="v">$0.44</div><div class="t">Per 1,000 calls. It beat the bigger model by <b>10.2 points at one-fifth the cost</b>.</div></div>
+</div></div><div class="foot"><span>Tangent Labs · <b>Writing</b></span><span></span></div></section>
+<section class="slide" id="s6"><div class="top"><span class="k">Building Pai-Pai</span><span>6 / 6</span></div><div class="main"><svg class="icon" viewBox="0 0 120 120" fill="none" aria-hidden="true"><rect x="28" y="44" width="64" height="50" rx="15" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><line x1="60" y1="44" x2="60" y2="30" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><circle cx="60" cy="24" r="4.045" fill="currentColor"/><circle cx="47" cy="67" r="4.045" fill="currentColor"/><circle cx="73" cy="67" r="4.045" fill="currentColor"/></svg>
+<div class="h h2" style="margin-top:40px">Read the full post, and follow <em>for more.</em></div>
+<div class="links">
+  <div class="lnk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H2z"/><path d="M22 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8z"/></svg><div><span>The whole story, with the data</span><b>labs.tangentideas.ai/writing</b></div></div>
+  <div class="lnk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg><div><span>Follow on Instagram</span><b>@tangentideas.ai</b></div></div>
+  <div class="lnk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg><div><span>Subscribe on YouTube</span><b>youtube.com/@tangentideasai</b></div></div>
+</div></div><div class="foot"><span>Tangent Labs · <b>Writing</b></span><span></span></div></section>
+</body></html>
