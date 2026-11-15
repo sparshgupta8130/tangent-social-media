@@ -16,10 +16,21 @@ separately measured checkpoint [RESEARCH-BACKED: research/03 §2.1.3]. Corpus co
 top performer across all 8 YT dossiers names or shows the payoff in second 0–1, zero preamble,
 zero branding [CORPUS: synthesis/01 Part 1 §1].
 
+## Plain hooks only (2026-11 revamp)
+
+A hook stops the thumb by naming a concrete thing or a surprising claim in plain words. It
+never works by withholding what the post is about. Riddle hooks, metaphor titles and coined
+words fail. The weakest videos in the 2026-11 harvest opened with "Use AI as a Sparring
+Partner for Your Thinking" (3.8K views) or a name chain. Every hook below must also pass
+`knowledge/craft/clarity.md`: a stranger can say what it means from the hook alone. A
+curiosity gap is fine, but only inside a plain statement ("This camera lets you see sound"
+makes you want to see it).
+
 ## The first-frame test (procedure — run at G1 and every script review)
 
 1. Describe frame 0 in one sentence, with no context from the rest of the script.
-2. Ask: "would a cold scroller — no prior exposure to Tangent — stop on this frame alone?"
+2. Ask: "would a cold scroller — no prior exposure to Tangent — stop on this frame alone, AND
+   could they say what the video is about?" Both must be yes.
 3. If the answer needs the caption, the audio, or "well, then it explains..." — it fails. The
    frame must carry the stop unaided [RESEARCH-BACKED: research/03 §1.2.1, §2.1.3].
 4. Check for non-payoff material before the promise resolves (logo, "hey guys," branding) — any
@@ -124,8 +135,10 @@ Our hook surfaces (map a concept to one of these before scripting):
   shown (demo-in-motion/result-first class).
 - **Sliders-moving-by-themselves** — Lightroom UI with visible, cursor-less adjustment, the
   agent's hand made legible without narration (demo-in-motion class; BET-3, `strategy/BETS.md`).
-- **Critic-rejection moment** — the critic's on-screen verdict/one-liner as the cold open
-  (bold-claim-adjacent; also brand differentiation — nobody else in the corpus shows a rejection
-  on-screen).
+- **Critic-rejection moment** — the critic's on-screen verdict as the cold open, written
+  plainly ("Rejected: the faces are too dark.") (bold-claim-adjacent; also brand
+  differentiation — nobody else in the corpus shows a rejection on-screen).
+- **"I built this"** — the finished app working on a phone in frame 0, plus the plain line
+  "I built an app that [does what]. I can't code." (Riley Brown's result-first build hook).
 - **Before/after snap** — hard cut, no transition, raw vs. graded (bold-claim class; the
   corpus's most portable, lowest-production-cost hook surface).

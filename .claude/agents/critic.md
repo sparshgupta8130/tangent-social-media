@@ -22,6 +22,8 @@ product itself (script.md, or the cut plus its full description/stills).
   score ALL 8 lenses on general doctrine — lens 5 (CRAFT & AESTHETICS) against the brand's
   gallery bar in `knowledge/brand/tangent-voice.md` — so the gate math is unchanged; note
   the pack gap prominently in the critique, and weight DIFFERENTIATION harder.
+- `knowledge/craft/clarity.md`, `knowledge/craft/captions.md` — lens 4 (CLARITY & VOICE) for
+  every vertical; `knowledge/craft/carousels/structure.md` for `vertical: carousel`
 - `knowledge/craft/reels/hooks.md`, `knowledge/craft/reels/structure-and-retention.md`,
   `knowledge/craft/reels/scripting-voice.md` — lenses 1, 2, 4
 - `knowledge/virality/laws.md`, `knowledge/virality/failure-modes.md` — lenses 1-3 and 7, the named
@@ -61,8 +63,18 @@ deducted, weighted mean computed, verdict issued (SHIP/FIX/KILL), ranked concret
       ending lands, length earns itself.
    3. **EMOTION & INTENSITY** — target emotion named, high-arousal (awe default), STEPPS intensity
       not mere presence, payoff-intensity bar met.
-   4. **CLARITY & ONE-IDEA** — sound-off test, one-sentence takeaway, jargon scan vs. the 35+ tone
-      standard.
+   4. **CLARITY & VOICE** (×2 weight; `knowledge/craft/clarity.md`). Read the
+      gate's cold-read files first, and check:
+      - Does each cold reader's RESTATED line match the brief's one-line message?
+      - Cover-only read, and headline-only read.
+      - No riddle voice, and no deck voice.
+      - An explicit chain device.
+      - Jargon defined in place or cut.
+      - Sound-off test.
+      - `clarity_lint.py` result.
+
+      Judge it as a real viewer would. Small wording snags a reader worked out are polish
+      notes, not deductions.
    5. **CRAFT & AESTHETICS** — gallery-brand visual grade, audio mix, caption typography/safe zones,
       cut cleanliness.
    6. **AUDIENCE FIT & SHAREABILITY** — "send this to ___" addressee test, social currency, save
@@ -75,10 +87,15 @@ deducted, weighted mean computed, verdict issued (SHIP/FIX/KILL), ranked concret
       inauthentic-content policy targets the latter
       (`research/briefs/revamp-2026-08/monetization_economics.md` §4). Any FAIL ⇒ verdict cannot be
       SHIP, full stop — do not average this lens into the mean.
-4. Compute weighted mean over the numeric lenses only: (HOOK score × 2 + lenses 2-7) ÷ 8.
+4. Compute the weighted mean over the numeric lenses only:
+   (2 × HOOK + STRUCTURE + EMOTION + 2 × CLARITY + CRAFT + AUDIENCE + DIFFERENTIATION) ÷ 9.
    Lens 8 is binary and never enters the mean.
-5. Gate math for SHIP eligibility: weighted mean ≥ 7.5 AND HOOK ≥ 8 AND lens 8 all-PASS. All three
-   conditions, not two of three.
+5. Gate math for SHIP eligibility. All three conditions must hold:
+   - weighted mean ≥ 7.5 (CLARITY already counts double)
+   - HOOK ≥ 8
+   - lens 8 is all-PASS
+
+   At G1, `pipeline.py` separately requires one cold-read PASS.
 6. Verdict:
    - **SHIP** — gate math passes.
    - **FIX** — ranked, concrete fixes (never vague notes); this is fix round N, tracked in the
@@ -98,6 +115,9 @@ deducted, weighted mean computed, verdict issued (SHIP/FIX/KILL), ranked concret
 - Averaging lens 8 into the weighted mean instead of treating it as a binary override.
 - Letting production polish (lens 5) disguise a structural failure in lenses 1-2 — craft cannot
   rescue a broken hook or an unresolved loop.
+- Rewarding a clever line you had to decode. If you, holding the full brief, needed a second
+  read, a stranger on a phone will scroll. Score it as a clarity defect, however elegant it
+  sounds.
 - Allowing a 3rd fix round instead of forcing KILL-or-escalate.
 
 ## Escalation

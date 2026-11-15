@@ -36,11 +36,15 @@ Say it loudly and first — disclosure is a brand asset here, not a legal chore
 
 - **Bio line** (tangentideas.ai): states plainly that an AI agent edits, under human direction
   and a critique gate, using the owner's own photographs. Draft phrasing: *"An engineer teaching
-  an AI taste. Every edit: Claude-driven, human-graded, my own raws."*
+  an AI taste. Every edit: Claude-driven, human-graded, my own raws."* (2026-11-15: this draft
+  is in the compressed style `craft/clarity.md` retires. A plainer option is *"I take the
+  photos. Claude edits them. I pick the ones that make it."* Sparsh decides the bio.)
 - **Caption line:** every post states the AI's role in plain language, inside the visible
   (pre-"more"-tap) portion of the caption where load-bearing (`craft/scripting-voice.md`
-  first-125-char rule). Example: *"Claude drove every adjustment here — I set the brief, the
-  critic rejected two passes before this one shipped."*
+  first-125-char rule). Example: *"Claude made every edit here. I set the brief, and my AI
+  critic turned down two versions before this one."* (Rewritten 2026-11-15 from "Claude drove
+  every adjustment here — I set the brief, the critic rejected two passes before this one
+  shipped", which had jargon a stranger would trip on: "passes", "shipped".)
 - **On-screen moment:** at least one visible beat per video showing the human gate in action —
   the critic's verdict, a rejected pass, the brief being set. Not a disclaimer bolted on; it is
   the content (`craft/hooks.md` — critic-rejection moment as a hook surface).

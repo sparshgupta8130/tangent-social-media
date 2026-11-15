@@ -65,6 +65,33 @@ demographics once IG insights unlock (100+ followers). Revisit at 1K followers.
 tone reads as flat (low-arousal) rather than calm. The awe must survive the calm.
 **Status:** UNTESTED. Notes: —
 
+## LENS-2 — Plain first (the Clarity Doctrine; added 2026-11-15)
+**Hypothesis:** posts whose message a stranger can say back after one glance earn more watch
+time, likes per reach and sends per reach than stylized posts. This matters most for an
+account with no authority yet, because nothing else carries an unclear post.
+**Evidence base:** `research/clarity-2026-11/SYNTHESIS.md`:
+- about 115 posts and videos read slide by slide;
+- fluency and cognitive-load research;
+- a cold-read test that reproduced a first-time reader's verdict on the deleted Panditji
+  carousel.
+
+**Validation gate:** across the first 8 posts made under `knowledge/craft/clarity.md`,
+compare likes per reach, sends per reach and saves per reach with the pre-doctrine posts
+(`tools/metrics.py`), using medians, never one post. Log every post's cold-read RESTATED lines
+next to its numbers in the postmortem.
+**Kill/pivot trigger:** none for the doctrine itself, which is constitutional (CLAUDE.md #10).
+The three experiments below are decided on data:
+- **EXP-TONE:** person-direct against person-witty on comparable posts. The Message Brief logs
+  the tone. Decide after at least 4 posts each.
+- **EXP-LIGHT:** a light background against Tangent's dark one for text-heavy carousels (the
+  first-time reader asked for "more white, less black"; display-polarity research leans
+  light for reading). Decide after at least 3 each. **Sparsh has the final call, because the
+  dark look is part of the brand.**
+- **EXP-COVER:** a plain label cover against a plain label plus one stake line. Decide after
+  at least 4 each.
+
+**Status:** ADOPTED (doctrine) / experiments UNTESTED. Notes: —
+
 ## BET-5 — Param Vir Chakra web series (new lane — added 2026-07-31 at Sparsh's direction)
 **Hypothesis:** AI-generated web-series episodes on Param Vir Chakra recipients — produced
 by Sparsh's end-to-end AI pipeline — can carry a story-driven lane: YT-long-form-primary

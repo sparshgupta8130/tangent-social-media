@@ -42,8 +42,11 @@ verbal:
   disclosure_lines:
     instagram_caption:
       standard: >-
-        Claude drove every adjustment here -- I set the brief, the critic rejected two passes
-        before this one shipped.
+        Claude made every edit here. I set the brief, and my AI critic turned down two versions
+        before this one.
+      # Rewritten 2026-11-15 in plain words (`craft/clarity.md`); was "Claude drove every
+      # adjustment here -- I set the brief, the critic rejected two passes before this one
+      # shipped." ("passes" and "shipped" are insider words).
       # Verbatim example from `audience/positioning.md` Disclosure doctrine. Per-post specifics
       # (what actually got rejected, what the brief actually was) should replace the back half --
       # the doctrine wants a *real*, checkable claim, not this exact sentence reused blindly. The
@@ -55,14 +58,15 @@ verbal:
         first-125-char rule) -- never buried in a hashtag block
     youtube_description:
       standard: >-
-        Claude drove every edit in this video -- I set the brief, the critic gated what shipped,
-        and every frame is my own raw footage.
+        Claude made every edit in this video. I set the brief, my AI critic checked each
+        version, and every frame is my own footage.
       # Parallel construction of the IG caption line, sized for description-length copy. Same
       # anchor terms and same per-post-specifics caveat as above.
       required_keywords: ["Claude", "critic"]
       placement: "visible in the description body itself, not only in an end-card or pinned comment"
     on_screen:
-      standard: "Claude-driven edit -- human-graded, my own raws."
+      standard: "Edited by Claude. Picked by me. My own photos."
+      # 2026-11-15: was "Claude-driven edit -- human-graded, my own raws." (compressed jargon).
       # Condensed from the tangentideas.ai bio draft's "Every edit: Claude-driven, human-graded,
       # my own raws." (`brand/tangent-voice.md` Bio drafts), shortened for on-screen legibility.
       required_keywords: ["Claude"]
@@ -122,6 +126,19 @@ verbal:
       - >-
         the keyword-DM CTA, if this post carries one, sits on its own short line separate from the
         hook line, so truncation never hides it (`craft/reels/scripting-voice.md` Caption structure)
+      - "no URLs at all in Instagram captions: they are not clickable; say 'link in bio' (`craft/captions.md`)"
+
+  clarity:
+    # The Clarity Doctrine's machine-readable lists (`knowledge/craft/clarity.md`, added
+    # 2026-11-15). `tools/clarity_lint.py` merges these with its built-in defaults. Add a word
+    # here when a cold read flags it; never remove one without a cold-read reason.
+    voice: "plain, warm, personal, honest, calm: Sparsh talking to one person (`craft/clarity.md` Voice)"
+    audiences:
+      A: "AI-curious everyday viewer: wants the cool result and what it does for them; grade 5-7 English"
+      B: "tech enthusiast: wants the surprising problem or mechanism and a path to depth; still skims"
+    ai_tell_words: ["delve", "tapestry", "testament", "journey", "realm", "unlock", "elevate", "seamless", "leverage", "harness"]
+    jargon_watchlist: ["deterministic", "ephemeris", "arcsecond", "sidereal", "ayanamsa", "red-team", "llm", "inference", "pipeline", "model", "token", "context window", "agentic", "commit", "deploy"]
+    tone_options: ["person-direct", "person-warm", "person-witty"]
 
 visual:
   palette:
@@ -253,6 +270,15 @@ per_vertical:
       - >-
         PVC episodes additionally carry on-screen dramatization markers per
         `craft/longform/series-doctrine.md` -- tribute-integrity checklist is binding at G2
+  carousel:
+    status: "ACTIVE"   # pack built 2026-11-15 after the Panditji carousel failure -- knowledge/craft/carousels/
+    canvas: {width_px: 1080, height_px: 1350, aspect: "4:5", grid_crop: "3:4 -- keep all text in the central safe area"}
+    slide_words: {cover_max: 14, body_warn: 35, body_fail: 50}   # mirrors tools/clarity_lint.py LIMITS
+    slides: {typical_min: 4, typical_max: 7, hard_max: 20}
+    caption_rules:
+      - "line 1 = the one-line message or the plain question, under ~125 characters (`craft/captions.md`)"
+      - "no URLs; 'link in bio' (`craft/captions.md`)"
+      - "AI disclosure in plain words, visible before 'more' or right after line 1 (CLAUDE.md #2)"
   podcast:
     status: "pack pending activation"
     note: "craft pack built on lane activation, never speculatively (SYSTEM_DESIGN_V2_PROPOSAL.md §4.6 item 3)"

@@ -29,7 +29,7 @@ PILLARS = ("HERO", "WORKHORSE", "FILLER")
 
 PLATFORMS = ("ig", "yt", "yt-long")
 
-VERTICALS = ("reels", "longform", "podcast", "music", "app", "image", "newsletter")
+VERTICALS = ("reels", "carousel", "longform", "podcast", "music", "app", "image", "newsletter")
 
 # Forward-only legal sequence. KILLED is reachable from any stage but only
 # via `pipeline.py kill` (never via a bare `stage` transition) so a reason is

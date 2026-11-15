@@ -22,7 +22,16 @@ it — against the 8-lens scorecard, and writes a verdict nothing may bypass.
 2. **G2 only — run first, before any critic involvement:**
    `python tools/hygiene_check.py <path-to-cut>`. If overall result is FAIL, STOP here — do
    not invoke the critic. Return to `/produce` with the exact failing checks named (see On
-   failure).
+   failure). Carousels and stills have no video, so skip `hygiene_check.py` for them and
+   check the slide specs from `knowledge/craft/carousels/structure.md` instead.
+2b. **Clarity precondition, G1 only.**
+   - Run `python tools/clarity_lint.py check <copy file>`. FAILs (walls of text, URLs in
+     captions, banned words) go back to the author. WARNs are notes.
+   - Confirm `critiques/cold-read-script*.md` ends in `COLD-READ: PASS`. Run `/cold-read`
+     first if it is missing.
+
+   Pass the lint output and the cold-read file to the critic. At G2 the critic judges the
+   render; there is no second cold read.
 3. Invoke `critic` (Task, subagent_type `critic`) with the stripped work product
    (script.md+assets.md for G1; cut+assets.md+hygiene PASS confirmation for G2) plus:
    `templates/critique-scorecard.md`, `knowledge/craft/*`, `knowledge/virality/laws.md`,
@@ -30,15 +39,23 @@ it — against the 8-lens scorecard, and writes a verdict nothing may bypass.
    `knowledge/pattern-library.md`, `knowledge/audience/*`, `knowledge/brand/*`.
 4. Critic scores lenses 1-7 1-10 each, with cited evidence (a knowledge-file + law per
    deduction, never a vibe): HOOK, STRUCTURE & RETENTION, EMOTION & INTENSITY,
-   CLARITY & ONE-IDEA, CRAFT & AESTHETICS, AUDIENCE FIT & SHAREABILITY, DIFFERENTIATION. Lens 8
-   HYGIENE & COMPLIANCE is scored separately as binary PASS/FAIL per check (platform penalty
-   list, engagement-bait line, disclosure rules, brand non-negotiables) — it is NOT part of the
-   1-10 mean, any single FAIL blocks SHIP regardless of the mean.
-5. Compute gate math exactly as `templates/critique-scorecard.md` specifies (deterministic, not
-   the critic's call to fudge) — **only lenses 1-7 feed the mean, HOOK counted twice, divided
-   by 8** (not 9 — lens 8 is excluded, it's binary, not a score):
-   `weighted_mean = (2×HOOK + STRUCTURE + EMOTION + CLARITY + CRAFT + AUDIENCE + DIFFERENTIATION) / 8`
-   Eligible for SHIP only if: weighted_mean ≥ 7.5 AND HOOK ≥ 8 AND lens-8 ALL-PASS.
+   CLARITY & VOICE (the cold-read lens; `knowledge/craft/clarity.md`), CRAFT & AESTHETICS,
+   AUDIENCE FIT & SHAREABILITY, DIFFERENTIATION. Lens 8 HYGIENE & COMPLIANCE is scored
+   separately as binary PASS/FAIL per check (platform penalty list, engagement-bait line,
+   disclosure rules, brand non-negotiables) — it is NOT part of the 1-10 mean, any single
+   FAIL blocks SHIP regardless of the mean.
+5. Compute gate math exactly as `templates/critique-scorecard.md` specifies (deterministic,
+   not the critic's call to fudge). **Only lenses 1-7 feed the mean.** HOOK and CLARITY each
+   count twice, and the total is divided by 9. Lens 8 is excluded because it is binary, not
+   a score:
+   `weighted_mean = (2×HOOK + STRUCTURE + EMOTION + 2×CLARITY + CRAFT + AUDIENCE + DIFFERENTIATION) / 9`
+   Eligible for SHIP only if all of these hold:
+   - weighted_mean ≥ 7.5
+   - HOOK ≥ 8
+   - lens 8 is ALL-PASS
+
+   (CLARITY was raised to ×2 on 2026-11-15, after the Panditji carousel failure. It has no
+   separate floor; Sparsh asked for light gates, not strict ones.)
 6. Critic writes the verdict: **SHIP** / **FIX** (ranked, concrete fixes) / **KILL** (reason +
    salvage note) — plus, always, "what would make this a 10."
 7. Write the full scorecard + verdict to `NNN-slug/critiques/G1-script.md` or

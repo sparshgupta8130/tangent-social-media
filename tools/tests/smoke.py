@@ -37,6 +37,14 @@ Covers:
       banned word, catches a missing disclosure line, passes a clean caption
       (file and stdin input both exercised); export skeleton runs and never
       fakes a visual-check pass.
+    - pipeline.py clarity gates (2026-11-15, kept light): BRIEFED blocked without
+      a filled one-line message (and on the template placeholder); G1 blocked
+      without a cold-read file and on a COLD-READ: FAIL file; passing with PASS.
+      No cold-read gate at G2.
+    - clarity_lint.py: catches the failed-carousel patterns (aphorism template,
+      one-word fragment, metaphor noun, undefined jargon, caption URL, hashtag
+      count), passes clean copy, prints the headline-only read, exit 2 on no
+      slides / missing file, and honours + reports lint-ok exemptions.
 
 Usage: python tools\\tests\\smoke.py
 Exit codes: 0 all cases passed, 1 at least one FAIL.
@@ -87,19 +95,41 @@ def read_item(tmp_root: str, item_id: int):
     return data, matches[0].parent
 
 
+MESSAGE_LINE = ("\n**One-line message:** I built an app that edits my photos while I choose "
+                "the final one.\n")
+
+
+def write_message(folder: Path) -> None:
+    """Fills the Clarity Doctrine's one-line message so IDEA -> BRIEFED is legal."""
+    brief = folder / "brief.md"
+    existing = brief.read_text(encoding="utf-8") if brief.is_file() else "# Brief\n"
+    kept = "\n".join(l for l in existing.splitlines() if not l.strip().startswith("**One-line message:**"))
+    brief.write_text(kept + "\n" + MESSAGE_LINE, encoding="utf-8")
+
+
+def pass_cold_read(folder: Path, phase: str) -> None:
+    """Writes a /cold-read verdict file ending in the literal PASS line."""
+    critiques = folder / "critiques"
+    critiques.mkdir(parents=True, exist_ok=True)
+    (critiques / f"cold-read-{phase}.md").write_text(
+        "RESTATED (A): matches\nRESTATED (B): matches\nCOLD-READ: PASS\n", encoding="utf-8")
+
+
 def advance_to_ready(env: dict, tmp: str, item_id: int) -> None:
     """Fast-tracks an item from IDEA to READY+approved, writing the critique
     gate files it needs along the way. Used to set up the repost-guard test
     without repeating the full step-by-step gate assertions already covered
     for item 1."""
+    _, folder = read_item(tmp, item_id)
+    write_message(folder)
     for stage in ("BRIEFED", "SCRIPTED"):
         r = run("pipeline.py", ["stage", str(item_id), stage], env)
         check(f"item{item_id}_to_{stage}", r.returncode == 0, r.stderr)
 
-    _, folder = read_item(tmp, item_id)
     critiques = folder / "critiques"
     critiques.mkdir(parents=True, exist_ok=True)
     (critiques / "G1-script.md").write_text("VERDICT: SHIP\n", encoding="utf-8")
+    pass_cold_read(folder, "script")
 
     r = run("pipeline.py", ["stage", str(item_id), "PRODUCING"], env)
     check(f"item{item_id}_to_PRODUCING", r.returncode == 0, r.stderr)
@@ -134,6 +164,14 @@ def test_pipeline(env: dict, tmp: str) -> None:
     check("new_owner_default", item.get("next_action_owner") == "creative-director")
 
     r = run("pipeline.py", ["stage", "1", "BRIEFED"], env)
+    check("message_gate_blocks_without_message", r.returncode != 0, "expected non-zero, got 0")
+    check("message_gate_error_names_message", "Message gate not met" in r.stderr, r.stderr)
+    (folder / "brief.md").write_text(
+        "# Brief\n\n**One-line message:** <the sentence a viewer would say>\n", encoding="utf-8")
+    r = run("pipeline.py", ["stage", "1", "BRIEFED"], env)
+    check("message_gate_blocks_on_placeholder", r.returncode != 0, "expected non-zero, got 0")
+    write_message(folder)
+    r = run("pipeline.py", ["stage", "1", "BRIEFED"], env)
     check("legal_idea_to_briefed", r.returncode == 0, r.stderr)
     r = run("pipeline.py", ["stage", "1", "SCRIPTED"], env)
     check("legal_briefed_to_scripted", r.returncode == 0, r.stderr)
@@ -144,6 +182,13 @@ def test_pipeline(env: dict, tmp: str) -> None:
     critiques = folder / "critiques"
     critiques.mkdir(parents=True, exist_ok=True)
     (critiques / "G1-script.md").write_text("some notes\nVERDICT: SHIP\n", encoding="utf-8")
+    r = run("pipeline.py", ["stage", "1", "PRODUCING"], env)
+    check("g1_cold_read_gate_blocks_without_file", r.returncode != 0, "expected non-zero, got 0")
+    check("g1_cold_read_error_names_cold_read", "cold-read-script" in r.stderr, r.stderr)
+    (critiques / "cold-read-script.md").write_text("fix list...\nCOLD-READ: FAIL\n", encoding="utf-8")
+    r = run("pipeline.py", ["stage", "1", "PRODUCING"], env)
+    check("g1_cold_read_gate_blocks_on_fail", r.returncode != 0, "expected non-zero, got 0")
+    pass_cold_read(folder, "script")
     r = run("pipeline.py", ["stage", "1", "PRODUCING"], env)
     check("g1_gate_passes_with_ship_verdict", r.returncode == 0, r.stderr)
 
@@ -246,11 +291,13 @@ def test_pipeline(env: dict, tmp: str) -> None:
     r = run("pipeline.py", ["derive", "3", "--title", "From Killed Parent", "--platform", "ig"], env)
     check("derive_killed_parent_rejected", r.returncode != 0, "expected non-zero, got 0")
 
+    write_message(folder5)
     r = run("pipeline.py", ["stage", "5", "BRIEFED"], env)
     check("derivative_to_briefed", r.returncode == 0, r.stderr)
     r = run("pipeline.py", ["stage", "5", "SCRIPTED"], env)
     check("derivative_to_scripted", r.returncode == 0, r.stderr)
 
+    pass_cold_read(folder5, "script")  # derivatives face the clarity gate too
     r = run("pipeline.py", ["stage", "5", "PRODUCING"], env)
     check("derivative_g1_blocked_without_spec_or_ship", r.returncode != 0, "expected non-zero, got 0")
     check("derivative_gate_error_names_both_options",
@@ -270,11 +317,13 @@ def test_pipeline(env: dict, tmp: str) -> None:
     # derivative-spec.md must NOT unlock the gate when parent_id is null.
     r = run("pipeline.py", ["new", "Non Derivative Item", "--pillar", "FILLER", "--platform", "ig"], env)
     check("new_sixth_item", r.returncode == 0, r.stderr)
+    _, folder6 = read_item(tmp, 6)
+    write_message(folder6)
     r = run("pipeline.py", ["stage", "6", "BRIEFED"], env)
     check("item6_to_briefed", r.returncode == 0, r.stderr)
     r = run("pipeline.py", ["stage", "6", "SCRIPTED"], env)
     check("item6_to_scripted", r.returncode == 0, r.stderr)
-    _, folder6 = read_item(tmp, 6)
+    pass_cold_read(folder6, "script")
     (folder6 / "derivative-spec.md").write_text("not a real derivative\n", encoding="utf-8")
     r = run("pipeline.py", ["stage", "6", "PRODUCING"], env)
     check("non_derivative_ignores_derivative_spec", r.returncode != 0, "expected non-zero, got 0")
@@ -656,6 +705,79 @@ def test_brandkit(env_repo: dict, tmp: str) -> None:
         check("brandkit_export_skeleton_kit_validate_present", "kit_validate" in out, r.stdout)
 
 
+CLARITY_BAD = """# bad carousel (the 2026-11 Panditji failure pattern)
+### Slide 1
+H: The AI kept moving Saturn. So I took the maths away from it.
+### Slide 2
+H: One sky, two ways to count it.
+B: Planet positions within one arcsecond of the ephemeris, in deterministic code.
+### Slide 3
+H: 427 ways to ask the wrong thing. Tested.
+### Slide 4
+H: Checked against the sky's reference books.
+## Caption
+Read the full post at https://labs.tangentideas.ai/writing/ #a #b #c #d #e #f
+"""
+
+CLARITY_GOOD = """# good carousel
+### Slide 1
+H: I built an astrology app where the AI isn't allowed to guess.
+V: the app on a phone
+### Slide 2
+H: I asked an AI where Saturn was on my birthday.
+B: It gave me a different answer every time.
+### Slide 3
+H: So in my app, a normal program works out where the planets are.
+B: The AI only explains the result to you.
+### Slide 4
+H: I wrote up the whole story. Link in bio.
+## Caption
+I built an astrology app where the AI isn't allowed to guess. Here's how.
+
+I made it with Claude. The full story is in my bio.
+"""
+
+
+def test_clarity_lint(env_repo: dict, tmp: str) -> None:
+    print("\n-- clarity_lint.py --")
+    bad = Path(tmp) / "clarity_bad.md"
+    bad.write_text(CLARITY_BAD, encoding="utf-8")
+    good = Path(tmp) / "clarity_good.md"
+    good.write_text(CLARITY_GOOD, encoding="utf-8")
+
+    r = run("clarity_lint.py", ["check", str(bad), "--json"], env_repo)
+    check("clarity_bad_exit1", r.returncode == 1, f"exit={r.returncode} {r.stderr}")
+    if r.stdout.strip():
+        out = json.loads(r.stdout)
+        msgs = " | ".join(f["message"] for f in out["findings"])
+        check("clarity_catches_aphorism", "One X, two Y" in msgs, msgs)
+        check("clarity_catches_fragment", "one-word fragment" in msgs, msgs)
+        check("clarity_catches_metaphor_noun", "metaphor standing in" in msgs, msgs)
+        check("clarity_catches_undefined_jargon", "jargon \"ephemeris\"" in msgs, msgs)
+        check("clarity_catches_caption_url", "URL in an Instagram caption" in msgs, msgs)
+        check("clarity_catches_hashtag_count", "6 hashtags" in msgs, msgs)
+        check("clarity_prints_headline_read", len(out["headline_only_read"]) == 4, str(out))
+
+    r = run("clarity_lint.py", ["check", str(good)], env_repo)
+    check("clarity_good_exit0", r.returncode == 0, r.stdout + r.stderr)
+    check("clarity_good_prints_headline_read", "HEADLINE-ONLY READ" in r.stdout, r.stdout)
+
+    empty = Path(tmp) / "clarity_empty.md"
+    empty.write_text("# no slides here\n", encoding="utf-8")
+    r = run("clarity_lint.py", ["check", str(empty)], env_repo)
+    check("clarity_no_slides_exit2", r.returncode == 2, f"exit={r.returncode}")
+    r = run("clarity_lint.py", ["check", str(Path(tmp) / "missing.md")], env_repo)
+    check("clarity_missing_file_exit2", r.returncode == 2, f"exit={r.returncode}")
+
+    exempt = Path(tmp) / "clarity_exempt.md"
+    exempt.write_text(CLARITY_GOOD.replace(
+        "H: I wrote up the whole story. Link in bio.",
+        "H: Done. <!-- lint-ok: a deliberate one-word close Sparsh approved -->"), encoding="utf-8")
+    r = run("clarity_lint.py", ["check", str(exempt)], env_repo)
+    check("clarity_lint_ok_exempts_and_reports", r.returncode == 0 and "lint-ok exemption" in r.stdout,
+          r.stdout)
+
+
 def main() -> int:
     with tempfile.TemporaryDirectory(prefix="tangent_smoke_") as tmp:
         env = os.environ.copy()
@@ -674,6 +796,7 @@ def main() -> int:
         test_hygiene_check(env, tmp)
         test_calendar(env)
         test_brandkit(env_repo, tmp)
+        test_clarity_lint(env_repo, tmp)
 
     passed = sum(1 for _, status, _ in RESULTS if status == "PASS")
     failed = [r for r in RESULTS if r[1] == "FAIL"]

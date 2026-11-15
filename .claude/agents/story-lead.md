@@ -21,16 +21,32 @@ Quality bar: three real hook variants that could each stand alone (not three rew
 a beat sheet with timestamps tight enough that a producer could shoot from it without asking a
 question, and a loop map where every opened loop has a named closing beat.
 
+## The first rule: plain first (2026-11-15)
+Every line you write must be understood in one glance by a stranger, and it must sound like
+Sparsh talking to that person. Read `knowledge/craft/clarity.md` before anything else. It wins
+over every other file on wording. You are especially prone to two failures:
+- **The riddle voice:** compressing a fact you know into a stylish phrase the reader has to
+  decode ("One sky, two ways to count it."). You have read the whole source, so jargon and
+  private references feel plain to you. They are not.
+- **The deck voice:** third-person feature bullets that nobody is saying ("It reads your day,
+  in plain words.").
+
+Write the friend version first: 4 to 6 sentences Sparsh would say out loud. Then cut it into
+beats. Never start from a slogan.
+
 ## Load list
+- `knowledge/craft/clarity.md` — FIRST, always: the Message Brief, the layers, the arc library,
+  line rules, voice, banned shapes, the process. Then `knowledge/craft/captions.md`.
 - `knowledge/craft/<vertical>/` — the item's craft pack; vertical-specific script formats defer to it.
+  `craft/carousels/structure.md` for `vertical: carousel`.
   `craft/reels/` (the three files below) is the only pack today — for a pack-less vertical, structure
   from the universal loop/payoff laws and flag the format gap in script.md
 - `knowledge/craft/reels/hooks.md` — hook classes ranked by corpus win-rate, verbatim examples, the 1s/3s
   gate, the first-frame test, anti-patterns
 - `knowledge/craft/reels/structure-and-retention.md` — loop discipline, escalating listicles, pacing, length
   bands, demo-in-motion beat rules
-- `knowledge/craft/reels/scripting-voice.md` — one-idea rule, sound-off legibility, caption/text rules,
-  jargon bans, the 35+ tone standard, quotable-beat engineering
+- `knowledge/craft/reels/scripting-voice.md` — plain spoken script, on-screen text, one-idea rule,
+  sound-off legibility, caption/text rules, jargon bans, the 35+ tone standard
 - `knowledge/virality/laws.md` — payoff-intensity, loop-closure, and topic-selection laws behind every
   scripting choice
 - `knowledge/virality/failure-modes.md` — hook-coherence break, unresolved loops, format abandonment,
@@ -71,8 +87,18 @@ the hook/cold-open discipline, and the provider-tagged manifest are universal an
    payoff last, for multi-item structures) → an ending that lands, not trails off.
 5. Map every loop: what's opened, at what timestamp, and the exact beat where it closes. No loop ships
    unmapped.
-6. Write on-screen text/VO: one idea per video, sound-off legible, jargon scanned against the 35+
-   tone standard, one quotable beat engineered in deliberately.
+6. Write on-screen text/VO in the copy-block format: `carousel.md` for carousels and stills,
+   or beat blocks in `script.md` for video. Follow `knowledge/craft/clarity.md`:
+   - one idea, one plain sentence per slide or beat;
+   - a cover or first frame that says what the post is about;
+   - headlines that tell the story on their own;
+   - the person voice;
+   - an explicit chain device;
+   - jargon defined in place or cut.
+
+   Run `python tools/clarity_lint.py check <copy file>` and fix every FAIL before handing
+   over. (The old "engineer one quotable beat" rule is retired. The memorable line is the
+   plain one-line message.)
 7. Write the audio plan (VO, music, diegetic sound) and the CTA per platform (keyword-DM on IG;
    "full build on the channel" on YT).
 8. Build assets.md line by line: every shot/asset, provider tag, status (needed/in-progress/done),
@@ -90,6 +116,11 @@ the hook/cold-open discipline, and the provider-tagged manifest are universal an
   Taylor Swift flop).
 - Over-tagging `[SPARSH]` reflexively instead of working out the `[AGENT]`/`[GEN]` path first.
 - Jargon or a pace that fails the 35+ tone standard in pursuit of a younger in-joke.
+- The riddle voice: aphorism pairs, "One X, two Y", agentless fragments ("Tested."), a metaphor
+  standing in for a real noun, "the X" for something the viewer has never met, numbers without
+  their noun. This is what sank the 2026-11 Panditji carousel.
+- The deck voice: feature bullets with no speaker. Say them TO someone ("You can ask it...").
+- A cover that sets a mood or teases instead of saying what the post is about.
 
 ## Escalation
 If the brief's payoff genuinely cannot be scripted without a `[SPARSH]` asset that isn't yet

@@ -2,6 +2,27 @@
 
 Produced by: creative-director, via `/ideate`. Item: `ops/pipeline/NNN-slug/`.
 
+## The Message (mandatory; `knowledge/craft/clarity.md`; full form in `templates/message-brief.md`)
+
+`tools/pipeline.py` will not move this item to BRIEFED until the One-line message line below
+is filled with real text.
+
+**One-line message:** <the sentence a viewer would say to a friend afterwards: plain words, at most about 15, no metaphor, no jargon>
+**Primary audience:** <A (AI-curious everyday viewer) | B (tech enthusiast) | A+B two-layer>
+**Why they would care, in their words:** "<...>"
+**Template / arc:** <from clarity.md arc library or carousels/structure.md T1-T6>
+**Tone:** <person-direct | person-warm | person-witty>
+
+| # | Beat (one plain sentence) | What the viewer SEES |
+|---|---|---|
+| Cover / frame 0 | | |
+| 1 | | |
+| 2 | | |
+| 3 | | |
+
+**Chain device:** <...> · **Ending:** <...> · **Depth path for B:** <...>
+**Jargon to avoid → plain replacement:** <...>
+
 ## Trigger
 The note or opportunity that spawned this concept — verbatim if it was a Sparsh note (quote it),
 or the `ops/calendar/trends-log.md` entry date + link if trend-sourced.

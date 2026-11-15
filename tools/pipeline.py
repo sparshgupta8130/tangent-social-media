@@ -23,7 +23,10 @@ Subcommands
                     [--next-action-owner OWNER] [--plane-issue ID]
                     [--approved-by-sparsh [YYYY-MM-DD]]
         Validates and applies a legal stage transition (or a same-stage field
-        update — see README) and/or updates the given fields.
+        update — see README) and/or updates the given fields. Clarity gates
+        (knowledge/craft/clarity.md): IDEA->BRIEFED needs a filled
+        '**One-line message:**' line in brief.md; SCRIPTED->PRODUCING needs
+        critiques/cold-read-script*.md with 'COLD-READ: PASS' (plus G1).
 
     board
         Aligned status table of all open (non-CLOSED/KILLED) items: id, slug,
@@ -55,6 +58,7 @@ Exit codes: 0 success, 1 validation/user error, 2 not-found error.
 from __future__ import annotations
 
 import argparse
+import re
 import shutil
 import sys
 from pathlib import Path
@@ -245,6 +249,46 @@ def _g3_error(folder: Path) -> str | None:
              "recorded in a G3-brand-r2.md)")
 
 
+MESSAGE_LINE_RE = re.compile(r"^\s*\*\*One-line message:\*\*\s*(.*?)\s*$", re.M)
+COLD_READ_PASS = "COLD-READ: PASS"
+
+
+def _message_error(folder: Path) -> str | None:
+    """Clarity gate C0 (knowledge/craft/clarity.md, CLAUDE.md non-negotiable #10):
+    IDEA -> BRIEFED requires brief.md to carry a filled '**One-line message:**' line,
+    i.e. real text of at least 4 words that is not the template's <placeholder>."""
+    brief = folder / "brief.md"
+    if not brief.is_file():
+        return "Message gate not met: brief.md does not exist"
+    m = MESSAGE_LINE_RE.search(brief.read_text(encoding="utf-8", errors="replace"))
+    if not m:
+        return ("Message gate not met: brief.md has no '**One-line message:**' line "
+                "(see templates/brief.md 'The Message' section)")
+    text = m.group(1).strip()
+    if not text or text.startswith("<") or len(text.split()) < 4:
+        return ("Message gate not met: the '**One-line message:**' line in brief.md is empty or "
+                "still the template placeholder. Write the plain sentence a viewer would say to a "
+                "friend (knowledge/craft/clarity.md)")
+    return None
+
+
+def _cold_read_error(folder: Path, phase: str, gate: str) -> str | None:
+    """Clarity gates C1/C2: a critiques/cold-read-<phase>*.md file containing the literal
+    line 'COLD-READ: PASS' (written by /cold-read) must exist before G1 (phase 'script')
+    and G2 (phase 'cut') transitions."""
+    critiques_dir = folder / "critiques"
+    candidates = sorted(critiques_dir.glob(f"cold-read-{phase}*.md")) if critiques_dir.is_dir() else []
+    for cand in candidates:
+        text = cand.read_text(encoding="utf-8", errors="replace")
+        if any(line.strip() == COLD_READ_PASS for line in text.splitlines()):
+            return None
+    if not candidates:
+        return (f"{gate} clarity gate not met: no critiques/cold-read-{phase}*.md file exists "
+                f"(run /cold-read with phase '{phase}' first)")
+    return (f"{gate} clarity gate not met: no critiques/cold-read-{phase}*.md has a "
+            f"'{COLD_READ_PASS}' line (fix the copy per the cold-read fix list and re-run /cold-read)")
+
+
 def _gate_check(current: str, target: str, folder: Path, item: dict) -> str | None:
     """Returns an error message if the gate for current->target isn't met,
     else None.
@@ -257,8 +301,19 @@ def _gate_check(current: str, target: str, folder: Path, item: dict) -> str | No
     re-grammar applied, and the native changes made. A non-derivative item
     (parent_id is null) always needs the full G1 SHIP verdict; derivatives
     still face FULL G2 and G3/SHIP like any item (no change below for those
-    transitions)."""
+    transitions).
+
+    Clarity gates (2026-11-15, every item including derivatives; kept deliberately light):
+    IDEA -> BRIEFED needs a filled one-line message in brief.md; SCRIPTED -> PRODUCING needs
+    one cold-read-script PASS. There is no second cold read at G2: the critic judges the render."""
+    if current == "IDEA" and target == "BRIEFED":
+        msg = _message_error(folder)
+        if msg:
+            return msg
     if current == "SCRIPTED" and target == "PRODUCING":
+        cr = _cold_read_error(folder, "script", "G1")
+        if cr:
+            return cr
         g1 = folder / "critiques" / "G1-script.md"
         g1_ship = False
         if g1.is_file():

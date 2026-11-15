@@ -1,0 +1,16 @@
+clarity_lint: carousel.md (carousel, 6 slides/beats, reading grade 4.6)
+
+HEADLINE-ONLY READ (do these lines alone tell the story?):
+  1. My free astrology app won't let the AI make up where planets are.
+  2. At first, my app's AI gave two answers to one question.
+  3. That's because AI chatbots don't work things out. They repeat what they've read.
+  4. So now my app works out where each planet is.
+  5. Then I checked my app's answers against NASA's planet data. They match.
+  6. Try Panditji free, or read how I built it. Link in bio.
+
+[WARN] Slide 1: headline is 13 words (aim <= 12)
+[WARN] Slide 3: headline is 13 words (aim <= 12)
+[WARN] Slide 3: sentence of 18 words: "And millions of web pages mix up Western and Indian astrology, which p..."
+[WARN] Slide 4: sentence of 17 words: "Planets move every day, so it does the maths for your exact birth time..."
+
+0 FAIL, 4 WARN. PASS (mechanical checks only; now run /cold-read)

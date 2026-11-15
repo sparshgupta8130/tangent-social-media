@@ -35,11 +35,25 @@ payoff-intensity bar?
 - **Deductions (cite `knowledge/virality/laws.md` + law):**
 - **Notes:**
 
-### 4. CLARITY & ONE-IDEA
-Sound-off test (legible from visuals+text alone)? One-sentence takeaway? Jargon scan vs the
-35+ tone standard?
+### 4. CLARITY & VOICE (weight ×2): the cold-read lens
+Read `critiques/cold-read-script*.md` FIRST, and score the work against it
+(`knowledge/craft/clarity.md`). Judge as a real viewer would. Small snags a reader worked out
+are polish notes, not deductions. Check:
+- Does each cold reader's RESTATED line match the brief's one-line message?
+- Cover-only read: could a stranger say what the post is about?
+- Headline-only read: do the headlines or on-screen lines alone tell the story?
+- Is there one idea, with each slide or beat one plain sentence?
+- Is every "the X" introduced first, and every number given its noun?
+- Is jargon defined in place or cut?
+- Is there no riddle voice (aphorisms, fragments, metaphor nouns)?
+- Is there no deck voice (third-person feature bullets with no speaker)?
+- Is there an explicit chain device? Is the post sound-off legible (video)?
+- Did `clarity_lint.py` report zero FAIL? Paste its FAIL/WARN count below.
+
 - **Score:** /10
-- **Deductions (cite `knowledge/craft/reels/scripting-voice.md` + law):**
+- **clarity_lint result:** <n FAIL, n WARN>
+- **Cold-read verdicts:** A: <PASS/FAIL> · B: <PASS/FAIL>
+- **Deductions (cite `knowledge/craft/clarity.md` + rule):**
 - **Notes:**
 
 ### 5. CRAFT & AESTHETICS
@@ -82,15 +96,18 @@ too-niche (who outside the bubble cares?). Does it use OUR unfair advantages
 ## Gate math
 
 ```
-weighted_mean = (2 × HOOK + STRUCTURE + EMOTION + CLARITY + CRAFT + AUDIENCE + DIFFERENTIATION) / 8
+weighted_mean = (2 × HOOK + STRUCTURE + EMOTION + 2 × CLARITY + CRAFT + AUDIENCE + DIFFERENTIATION) / 9
 
 HOOK score:            __ /10
+CLARITY score:         __ /10
 Weighted mean:         __  (threshold: ≥ 7.5)
 HOOK ≥ 8?              yes/no
 Lens-8 ALL-PASS?       yes/no
 
 Eligible for SHIP only if: weighted_mean ≥ 7.5  AND  HOOK ≥ 8  AND  lens-8 ALL-PASS
 ```
+(Changed 2026-11-15: CLARITY now counts ×2 in the mean. There is no separate clarity floor.
+`tools/pipeline.py` requires one `COLD-READ: PASS` file at G1 only.)
 
 ## VERDICT: SHIP | FIX | KILL
 

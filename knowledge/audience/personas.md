@@ -4,6 +4,27 @@ Load-bearing for G1/G2 lens 6 (AUDIENCE FIT & SHAREABILITY) and for brief-writin
 `/ideate`. Grounded in `research/04_whitespace_demographics.md`; every sizing number stays
 honest about scope — we serve a small subset of a subset, not "everyone interested in AI."
 
+## The two primary audiences (set by Sparsh, 2026-11-15; every Message Brief names one)
+
+**A. The AI-curious everyday viewer.** Little interest in HOW AI works. Gets excited about
+the cool things AI can do, or that someone built with it. Gives a post about 2 seconds. Often
+reads English as a second language (much of the early audience is Indian), so aim for grade
+5-7 English and short sentences. Wants: the result, and what it does for them, said plainly
+by a person. Distrusts: hype, jargon, anything that feels like a presentation. Indian
+viewers are both excited (65%) and nervous (66%) about AI, and 67% want AI use disclosed
+(Ipsos AI Monitor 2025, `research/clarity-2026-11/cognition_platform_audience.md` §6).
+
+**B. The tech enthusiast.** Will tap "more", "link in bio" or the long video if a simple post
+makes them curious. Still skims, and still prefers plain words: NN/g found experts want
+succinct, scannable text too. Wants: a surprising problem or mechanism, honest numbers, and a
+path to depth. Gets the depth off the slide, through the caption, the article or the long
+video.
+
+**Two-layer design:** write the slides so A gets the whole point, and give B one door at the
+end or in the caption (`knowledge/craft/clarity.md`). The four personas below are finer
+segments inside A and B. (a), (b) and (d) sit mostly in A, and (c) sits in B. Use them for
+targeting nuance, never as a reason to add jargon to a slide.
+
 ## Sizing caveat (read first)
 
 Only ~12% of US adults have ever used AI to create/edit an image or video (24% of the ~49% who

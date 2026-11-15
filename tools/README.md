@@ -44,6 +44,7 @@ against a temp directory with no risk to the real `ops/` tree.
 | `hygiene_check.py` | Pre-publish export hygiene via ffprobe/ffmpeg (resolution, aspect, duration, codecs, black borders, repost guard). |
 | `calendar.py` | Renders a markdown week-grid from `ops/calendar/ROADMAP.md` + live pipeline state; flags cadence and HERO-drought. |
 | `brandkit_check.py` | Deterministic `brand/kit.yaml` validator + caption compliance (banned words, disclosure, footer). `export` is a documented skeleton — no visual checks yet. |
+| `clarity_lint.py` | Plain-language lint for social copy (`knowledge/craft/clarity.md`): words per slide, sentence length, agentless fragments, aphorism and metaphor-noun templates, AI-tell and hype words, undefined jargon, reading grade, caption URLs and hashtags. It prints the headline-only read. `check FILE [--format carousel|reel|auto] [--json]`; exit 0 = no FAIL, 1 = FAIL, 2 = input problem. Only hard rules FAIL (over 50 words a slide, empty slide, banned hype words, em dashes, caption URLs, more than 5 hashtags). Style smells are WARNs. Meaning is checked by a light `/cold-read`. |
 | `_common.py` | Shared helpers (repo root resolution, item.yaml I/O, hashing, date parsing). Not a CLI. |
 | `tests/smoke.py` | No-network smoke test covering every tool above. |
 
@@ -63,7 +64,7 @@ item's stage.
 | `slug` | str | matches the folder's `-slug` suffix |
 | `title` | str | |
 | `pillar` | str | one of `HERO`, `WORKHORSE`, `FILLER` |
-| `vertical` | str | one of `reels`, `longform`, `podcast`, `music`, `app`, `image`, `newsletter` — selects the craft pack (default `reels`) |
+| `vertical` | str | one of `reels`, `carousel`, `longform`, `podcast`, `music`, `app`, `image`, `newsletter` — selects the craft pack (default `reels`) |
 | `platforms` | list[str] | any of `ig`, `yt`, `yt-long` |
 | `parent_id` | int\|null | set by `derive`; points at the item this one was fanned out from (Repurposing Engine — see below). `null` for everything created by `new`. |
 | `stage` | str | `IDEA`\|`BRIEFED`\|`SCRIPTED`\|`PRODUCING`\|`CUT`\|`READY`\|`PUBLISHED`\|`POSTMORTEM`\|`CLOSED`\|`KILLED` |
@@ -85,6 +86,14 @@ Legal forward sequence (one step at a time, no skipping):
 recorded.
 
 Gated edges:
+- Clarity gates (2026-11-15; every item, derivatives included; `knowledge/craft/clarity.md`):
+  - `IDEA -> BRIEFED` requires `brief.md` to contain a filled
+    `**One-line message:**` line: at least 4 words, and not the `<placeholder>`.
+  - `SCRIPTED -> PRODUCING` additionally requires a `critiques/cold-read-script*.md` with a
+    line reading exactly `COLD-READ: PASS`.
+  - There is no cold-read gate at G2. The checks are kept deliberately light.
+
+  `/cold-read` writes these files.
 - `SCRIPTED -> PRODUCING` requires `critiques/G1-script.md` to exist with a
   line reading exactly `VERDICT: SHIP` — **unless** the item has `parent_id`
   set (a derivative, created via `derive`), in which case a `derivative-spec.md`

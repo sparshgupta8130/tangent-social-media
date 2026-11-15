@@ -11,6 +11,35 @@ Produced by: story-lead, via `/script`. Item: `ops/pipeline/NNN-slug/`. Brief: `
 - **Asset manifest:** see `assets.md` (every asset referenced below must have a matching line
   there with a provider tag)
 
+## The message (from brief.md; `knowledge/craft/clarity.md`)
+- **One-line message:** <copied from brief.md>
+- **Audience:** <A | B | A+B> · **Tone:** <person-direct | person-warm | person-witty>
+
+## Copy blocks (the input to `python tools/clarity_lint.py check script.md`)
+
+For carousels and stills, use `templates/carousel.md` instead of this file. For reels, write
+one block per beat. `H:` is the on-screen text (2-6 words at a time; list the cards),
+`S:` is the spoken line(s), and `V:` is what is shown. The lint reads these blocks; the beat
+sheet table below is for the producer.
+
+### Beat 1
+H: <on-screen text, frame 0>
+S: <first spoken line: says what the thing is or does, plainly>
+V: <the thing itself in frame 0>
+
+### Beat 2
+H:
+S:
+V:
+
+### Beat 3
+H:
+S:
+V:
+
+## Caption
+<line 1 = the one-line message; then 2-4 short lines; disclosure; no URLs; 0-5 hashtags>
+
 ## Hook variants (≥3, ranked)
 
 For each variant: frame-0 visual description, the exact first line (VO or on-screen text), and
@@ -49,10 +78,7 @@ closes (or: "deliberately left open as a series hook — see brief.md format fie
   (`knowledge/craft/reels/scripting-voice.md`)
 
 ## Caption draft & hashtags
-> <full caption draft, in Tangent voice — `knowledge/brand/tangent-voice.md` — 35+/jargon-free
-> tone per LENS-1>
-
-Hashtags: <list>
+Written in the `## Caption` block above, so the lint checks it (`knowledge/craft/captions.md`).
 
 ## Disclosure line placement
 Exact wording and exact location (on-screen + caption) per

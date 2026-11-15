@@ -40,9 +40,22 @@ in writing so the reasoning isn't lost.
    change +2, new platform +1, format/tone stretch +1). Write `BTS: <n> — flags: <list>` into
    the brief. **BTS ≥ 3 ⇒ `/consult` is mandatory before `/script`** (route per RUNBOOK §9);
    BTS 1–2 ⇒ Showrunner decides, decision noted in the brief; BTS 0 ⇒ proceed.
-7. Fill `templates/brief.md` into `NNN-slug/brief.md`: concept, the five selector scores,
-   target emotion, payoff, references (research/synthesis citations), and a "Killed
-   Alternatives (this batch)" section listing every concept killed in step 5.
+7. Fill `templates/brief.md` into `NNN-slug/brief.md`. **Start with The Message section**
+   (`knowledge/craft/clarity.md`):
+   - the one-line message, plain, about 15 words at most;
+   - the primary audience (A, B or A+B), and why they would care, in their words;
+   - the template or arc;
+   - the tone;
+   - 3 to 5 beats, each one plain sentence with what the viewer sees;
+   - the chain device, the ending and the depth path.
+
+   If the creative-director cannot write the one-line message plainly, the concept is not
+   ready. Kill it or rework it; never brief around it. `pipeline.py` refuses BRIEFED while
+   the One-line message line is still the template placeholder.
+
+   Then fill the rest: concept, the five selector scores, target emotion, payoff, references
+   (research/synthesis citations), and a "Killed Alternatives (this batch)" section listing
+   every concept killed in step 5.
 8. Create the Plane work item for NNN in project TANSOC (label = pillar name, lowercase). Do
    not add the `sparsh-input` label here — brief.md carries no asset tags yet; that label is
    added later, the moment the item's `next_action_owner` first becomes `sparsh` (per
@@ -79,7 +92,8 @@ in writing so the reasoning isn't lost.
 ## Interaction checkpoints (INTERACTIVE mode — RUNBOOK §1)
 - **Concept slate review (before any brief is written):** present ALL surviving concepts with
   their selector scores AND the kill list with one-line reasons — Sparsh sees what was killed,
-  not just what survived. Lead with a recommendation (top 1-3, ranked, why).
+  not just what survived. Lead with a recommendation (top 1-3, ranked, why). Lead each
+  concept with its one-line message, in the plain words a viewer would use.
 - **Iterate inline:** he kills/merges/redirects/adds; respin with creative-director in the same
   conversation. New/changed concepts still face the full 5-point selector — his enthusiasm
   doesn't waive a failing point; name the failure and say so.

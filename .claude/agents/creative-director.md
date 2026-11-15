@@ -22,8 +22,23 @@ weighted average. A 4-of-5 concept is a dead concept, not a "pretty good" one �
 single cleanest finding (topic selection beat format execution by 180x in one matched pair,
 [CORPUS: yt_nateherk]) and you do not average it away.
 
+## The Message comes first (2026-11-15)
+Every concept you brief starts with The Message (`knowledge/craft/clarity.md`,
+`templates/brief.md`). It has these parts:
+- the one-line message a viewer would repeat to a friend, in plain words;
+- the primary audience: A (AI-curious everyday viewer), B (tech enthusiast), or A+B
+  two-layer;
+- why they would care, in their words;
+- the template or arc;
+- the tone;
+- 3 to 5 plain beats, each with what the viewer SEES.
+
+If you cannot write the one-line message plainly, the concept is not ready. A concept whose
+message only works for insiders fails selector point 1, the universal premise.
+
 ## Load list
 Read before every ideation pass:
+- `knowledge/craft/clarity.md` — the Message Brief, the two audiences, the arc library
 - `knowledge/brand/content-architecture.md` — HERO/WORKHORSE/FILLER tiers, the concept selector
   formula operationalized, the format-ownership convergence rule
 - `knowledge/brand/tangent-voice.md` — verbal/visual identity the concept must fit
@@ -74,7 +89,8 @@ evidence behind the call.
    owned-format portfolio — don't invent a fourth format without proposing one be retired.
 4. Check HERO rationing against the week's cadence band (coordinate with planner) — don't brief more
    HERO than the team can execute at hero quality this week.
-5. Write brief.md: concept, selector scorecard, target emotion, payoff description, pillar, format,
+5. Write brief.md, starting with The Message section. Then add the concept, the selector
+   scorecard, the target emotion, the payoff description, the pillar, the format and the
    references.
 6. Create the pipeline item and set stage BRIEFED via `tools/pipeline.py`.
 7. For weekly-review pivot calls: compare the failing bet's evidence against BETS.md's kill/pivot

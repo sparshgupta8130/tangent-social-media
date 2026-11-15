@@ -15,11 +15,19 @@ discipline, and an asset manifest that minimizes what only Sparsh can supply.
 ## Protocol
 1. Confirm stage: `python tools/pipeline.py board`, locate NNN, confirm stage is BRIEFED. If
    not, stop (see On failure).
-2. Invoke `story-lead` (Task, subagent_type `story-lead`) with inputs: `NNN-slug/brief.md`,
-   `knowledge/craft/reels/hooks.md`, `knowledge/craft/reels/structure-and-retention.md`,
-   `knowledge/craft/reels/scripting-voice.md`, `knowledge/brand/tangent-voice.md`, and whichever of
-   `knowledge/platform/instagram.md` / `knowledge/platform/youtube.md` match the brief's
-   platform(s).
+2. Invoke `story-lead` (Task, subagent_type `story-lead`) with these inputs:
+   - `NNN-slug/brief.md`, which holds The Message;
+   - **`knowledge/craft/clarity.md` (first, always)** and `knowledge/craft/captions.md`;
+   - the vertical's pack: `knowledge/craft/carousels/structure.md` for
+     `vertical: carousel`, or `knowledge/craft/reels/hooks.md`,
+     `knowledge/craft/reels/structure-and-retention.md` and
+     `knowledge/craft/reels/scripting-voice.md` for reels;
+   - `knowledge/brand/tangent-voice.md`;
+   - whichever of `knowledge/platform/instagram.md` / `knowledge/platform/youtube.md` match
+     the brief's platform(s).
+
+   Carousels and stills write `templates/carousel.md` into `NNN-slug/carousel.md` as well as
+   a short `script.md`, which holds the hook variants and the production notes.
 3. Scriptwriter writes `templates/script.md` into `NNN-slug/script.md` containing: ≥3 hook
    variants, a beat sheet with timestamps, on-screen text, VO, audio plan, and a loop map
    (every loop opened must show where it closes).
@@ -30,6 +38,15 @@ discipline, and an asset manifest that minimizes what only Sparsh can supply.
 5. Skill-level check before advancing (not a critic pass): loop map has zero unclosed loops,
    hook variants ≥3, no asset row missing a provider tag or status. If `[SPARSH]` count is
    high (>2) for the item, ask story-lead to re-attempt substitutions before accepting it.
+5b. **Clarity checks** (`knowledge/craft/clarity.md`):
+   - Run `python tools/clarity_lint.py check <copy file>`. The copy file is
+     `NNN-slug/carousel.md` for carousels and stills, or `script.md` beat blocks for video.
+     Any FAIL goes back to story-lead.
+   - Read the headline-only read aloud. Does it tell the story, in a person's voice?
+   - Run `/cold-read` once with phase `script`. On FAIL, fix the real problem and read once
+     more. Don't chase small snags.
+
+   `pipeline.py` will not pass G1 without `COLD-READ: PASS`.
 6. Advance stage and hand off to G1 in one call:
    `python tools/pipeline.py stage NNN SCRIPTED --next-action "Run G1 critique" --next-action-owner critic`
 7. `[SPARSH]` lines in assets.md are not chased individually here — full consolidation into one

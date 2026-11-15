@@ -9,6 +9,9 @@ this file is the map.
 
 | File | What's in it | Read before |
 |---|---|---|
+| `craft/clarity.md` | **The Clarity Doctrine (constitutional, CLAUDE.md #10):** the Message Brief, audiences A/B, the layer model (cover → headlines → body → caption → depth), the arc library, line rules, voice (person, not deck or riddle), banned shapes, the lint + cold-read process | FIRST, before writing any copy in any format; G1/G2 lens 4 |
+| `craft/carousels/structure.md` | Carousel and still-post pack: slide grammar, word budgets, the cover as a label, chaining devices, slide count, last slide, visual and contrast rules, templates T1-T6 | Any `vertical: carousel` item or ad-hoc still post |
+| `craft/captions.md` | Captions, YouTube titles and Story text: line 1 = the message, modes, no URLs, one CTA, plain disclosure, hashtags | Writing any caption or title |
 | `craft/reels/hooks.md` | Hook classes ranked by corpus win-rate, verbatim examples, the 1s/3s gate, first-frame test, anti-patterns | Scripting any hook; G1 critique lens 1 |
 | `craft/reels/structure-and-retention.md` | Loop discipline, escalating listicles, pacing, length bands, demo-in-motion beat rules | Scripting the body of any piece; G1 lens 2 |
 | `craft/reels/scripting-voice.md` | One-idea rule, sound-off legibility, caption/text rules, jargon bans, 35+ tone standard | Scripting VO/captions; G1 lens 4 |

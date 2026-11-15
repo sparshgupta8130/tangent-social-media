@@ -25,7 +25,9 @@ generic creator-economy visual language is strongest.
 
 Display/hook text on-screen: **Fraunces** (serif, the gallery's display face) — used sparingly,
 for the single load-bearing line per beat (a hook statement, a critic verdict), never for dense
-captions. Supporting text (captions, UI labels, disclosure lines): **Inter** — legible at small
+captions. Whatever the face, that line is a plain sentence (`craft/clarity.md`). Body text
+that must be read is white or near-white on dark, or near-black on light: never dim grey, and
+never coloured text (`craft/carousels/structure.md` visual rules). Supporting text (captions, UI labels, disclosure lines): **Inter** — legible at small
 sizes, sound-off-test-friendly (`craft/scripting-voice.md`). Background default: gallery-white
 or the graded photograph itself — never a colored gradient template behind text. Accent color
 comes from the photograph in frame, not a fixed brand-color chip; the image is always the
@@ -49,12 +51,24 @@ largely moot (the in-video hook does the work, `craft/hooks.md`), so do not spen
 effort there. Long-form thumbnails follow the same never-use list above — a still from the
 gallery-grade footage itself, Fraunces title text if any, no shocked face, no red arrow.
 
-## Voice attributes
+## Voice attributes (rewritten 2026-11-15)
 
-Calm. Precise. Quietly confident. A dry wit — never a joke that undercuts the craft, but the
-critic's blunt one-liners are allowed to be funny because they're true, not because they're
-performing for laughs (`craft/scripting-voice.md` — quotable-beat engineering). The voice never
-raises its volume to compensate for a weak payoff; if the payoff needs volume, fix the payoff.
+**Plain. Warm. Personal. Honest. Calm.** Sparsh talking to one person who has never heard of
+Tangent, the way he would explain it to a friend over chai. "I" and "you". Every line is
+understood in one glance. A light, human aside is welcome when it lands instantly.
+
+Retired: "a dry wit" and "quotable-beat engineering" as goals. Agents read them as "be
+clever", and that produced the riddle voice ("One sky, two ways to count it.") and the deck
+voice ("It reads your day, in plain words.") that a first-time reader said made no sense and
+felt like a presentation. The full rules, with examples, are in `knowledge/craft/clarity.md`
+(Voice, and Line rules), which wins on any wording question.
+
+Still true: the voice never raises its volume to make up for a weak payoff. If the payoff
+needs volume, fix the payoff. No hype words.
+
+**The look stays premium. The words stay plain.** Tangent's classiness comes from the
+photograph, the type, the space and the restraint, never from compressed or decorative
+wording.
 
 ## Bio drafts — tangentideas.ai
 
