@@ -12,11 +12,12 @@ said no slide made sense. Made with `/post` on 2026-11-15.
 | `lint.txt` | `tools/clarity_lint.py` output (0 FAIL) |
 | `critiques/cold-read-adhoc*.md` | The cold-read rounds. Rounds 1-3 were judged under a strict rule that was later retired as overfitting; round 4 passed under the light rule |
 
-**Status:** COPY READY. Cold read PASS (`critiques/cold-read-adhoc-r4.md`).
-- Next:
-  1. Optional: show it to a first-time human reader.
-  2. Render the slides to `knowledge/craft/carousels/structure.md`.
-  3. Sparsh approves.
+**Status:** SLIDES READY FOR SPARSH'S REVIEW.
+- `slides/slide-01.png` to `slide-07.png`, 1080x1350, rebuilt with `python build.py`.
+- The build uses real assets in `assets/`: the Panditji answer screen, the app icon and the
+  Tangent mark.
+- Cold read on the render: PASS (`critiques/cold-read-render.md`).
+- Next: Sparsh approves, then posts with the caption in `carousel.md` and the Story below.
 - Nothing has been posted.
 
 Lesson from this run: the first plain rewrite fixed the real problems (the lecture-style

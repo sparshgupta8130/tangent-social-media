@@ -1,0 +1,11 @@
+My free astrology app won't let the AI make up where planets are.
+
+When I first let the AI answer on its own, it put Saturn in one sign and then another. So now my app calculates the planets itself, and the AI only explains the result to you.
+
+I also tested it with 427 tricky questions in English, Hindi and Hinglish. It kindly says no to things it shouldn't answer, like predicting death or giving stock tips.
+
+The full story, with every number, is on Medium. Link in bio. Panditji is free to try too.
+
+I made it with help from Claude, and the guide inside it is an AI too. Follow along for more things I build with AI.
+
+#Panditji #Astrology #AI
