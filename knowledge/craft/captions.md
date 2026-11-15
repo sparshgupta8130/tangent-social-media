@@ -46,7 +46,9 @@ One per post, and it must fit the post:
 - "Save this" for reference posts.
 - "Send this to someone who..." only when there is a real someone.
 
-Never "follow for more". Never keyword-DM bait unless it delivers a real deliverable (the
+A plain follow line naming what people will get ("Follow along for more things I build with
+AI.") is welcome; carousels also carry it on the standard end slide
+(`craft/carousels/structure.md`). Never keyword-DM bait unless it delivers a real deliverable (the
 engagement-bait line in `knowledge/platform/instagram.md`).
 
 ## Disclosure

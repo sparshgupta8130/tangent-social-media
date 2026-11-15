@@ -77,15 +77,32 @@ As many as the one idea needs, usually 4 to 7. Lists can run 8 to 12 only when e
 one short item with one picture. There is no reliable best count in the data, so never pad.
 A slide that does not move the one-line message forward gets cut.
 
-## The last slide
+## The ending: story close, then Tangent's end slides
 
-One ending, chosen in the Message Brief:
+The story's last beat ends the story in one of three ways, chosen in the Message Brief:
 - the payoff (the last true fact, the result),
 - a question the reader can actually answer ("What would you build?"),
-- or one next step ("The full story is on my blog. Link in bio.").
+- or one next step.
 
-One call to action, never three. No "follow for more": none of the strongest posts or videos
-used it. No list of three URLs (the deleted carousel's slide 6).
+Then come **Tangent's standard end slides**. Sparsh's rule: every carousel has them.
+1. **Read or try more (when there is something):** the full article, with its plain place
+   ("Read the full story, with every number, on Medium.") and a short, typeable link on the
+   slide (medium.com/p/..., labs.tangentideas.ai/...). Add "Link in bio". If there is an app
+   to try, add one line for it.
+2. **Follow (always):** one plain line ("Follow along for more things I build with AI.") and
+   every channel, written in full, one per row with its icon:
+   - Instagram @tangentideas.ai
+   - YouTube @tangentideasai
+   - Medium @tangentideasai
+   - tangentideas.ai
+
+The end slides are a brand fixture, so the "one idea" and "one ending" rules don't apply to
+them. Keep them plain, large and identical in layout from post to post, so viewers learn them.
+Links typed on a slide are fine, because people can type them. Links in the caption are not
+clickable, so the caption says "Link in bio" instead.
+
+(Corrected 2026-11-15. An earlier version said "one CTA, never follow-for-more" and dropped
+these slides from the Panditji rebuild. Sparsh wants them on every post.)
 
 ## Visual rules (Tangent look, plain words)
 

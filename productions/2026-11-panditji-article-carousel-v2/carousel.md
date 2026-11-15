@@ -34,8 +34,14 @@ B: Every answer also shows which planets it looked at, so you can check too.
 V: One row of a NASA table next to Panditji's number for the same planet, with a tick.
 
 ### Slide 6
-H: Try Panditji free, or read how I built it. Link in bio.
-V: The Panditji app icon and "Free · works in your browser".
+H: Read the full story, with every number, on Medium.
+B: medium.com/p/26370dd5be48 (link in bio). Try Panditji free at labs.tangentideas.ai/panditji
+V: The article's cover image as a small card with the Medium logo, and the Panditji app icon under it.
+
+### Slide 7
+H: Follow along for more things I build with AI.
+B: Instagram @tangentideas.ai · YouTube @tangentideasai · Medium @tangentideasai · tangentideas.ai
+V: The Tangent mark, then one row per channel with its icon and handle, large enough to read.
 
 ## Caption
 My free astrology app won't let the AI make up where planets are.
@@ -44,6 +50,8 @@ When I first let the AI answer on its own, it put Saturn in one sign and then an
 
 I also tested it with 427 tricky questions in English, Hindi and Hinglish. It kindly says no to things it shouldn't answer, like predicting death or giving stock tips.
 
-Panditji is free. Link in bio to try it, or to read how I built it. I made it with help from Claude, and the guide inside it is an AI too.
+The full story, with every number, is on Medium. Link in bio. Panditji is free to try too.
+
+I made it with help from Claude, and the guide inside it is an AI too. Follow along for more things I build with AI.
 
 #Panditji #Astrology #AI

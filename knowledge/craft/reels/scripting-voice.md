@@ -27,7 +27,9 @@ by frame).
   hilarious").
 - **Show the thing in the first frame:** the device, the app screen, the photograph. If you
   made it, show it finished in the first 3 seconds and say "I built this".
-- **Ending:** a next-video tease, a real question, or the last fact. Never "follow for more".
+- **Ending:** a next-video tease, a real question, or the last fact. Then Tangent's short
+  end card: where to read or try more, and the channels to follow
+  (`craft/carousels/structure.md` end slides).
 
 ## On-screen text (sound-off)
 

@@ -37,8 +37,18 @@ B:
 V:
 
 ### Slide 5
-H: <the ending: the payoff, a real question, or one next step>
+H: <the story's close: the payoff, a real question, or one next step>
 V:
+
+### Slide 6
+H: <read or try more, e.g. "Read the full story, with every number, on Medium."> (omit if there is nothing)
+B: <short typeable link(s). Link in bio.>
+V: <the article card / app icon>
+
+### Slide 7
+H: Follow along for more things I build with AI.
+B: Instagram @tangentideas.ai · YouTube @tangentideasai · Medium @tangentideasai · tangentideas.ai
+V: The Tangent mark, one row per channel with its icon (identical on every post)
 
 ## Caption
 <Line 1: the one-line message or the plain question, under ~125 characters.>
