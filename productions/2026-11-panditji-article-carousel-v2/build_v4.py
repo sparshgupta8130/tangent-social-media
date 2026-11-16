@@ -27,7 +27,7 @@ SMALL_H1 = "h1{font-size:68px}"
 S = []
 
 # 1 cover
-S.append(page(1, "Why my astrology app doesn&rsquo;t let AI <em>decide the signs</em>",
+S.append(page(1, "Why my astrology app doesn&rsquo;t let AI <em>do the maths</em>",
     '<div class="phone"><img src="../assets/ask-top.webp"></div>',
     f""".viz{{flex:none;height:600px;align-items:flex-start;overflow:hidden;margin:44px -84px auto;position:relative}}
 .phone{{width:560px;height:1180px;border-radius:58px;border:14px solid #2b2722;background:#fff8ec;

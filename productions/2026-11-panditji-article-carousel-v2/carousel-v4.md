@@ -4,13 +4,13 @@ Message Brief: `message-brief-v4.md`. One beat sentence per slide. The chat answ
 and 3 are illustrative mock-ups (Sparsh's call). The signs shown are the real 2026 values from
 Panditji's engine (`saturn_check_output.txt`).
 
-**One-line message:** My astrology app doesn't let AI mix up Vedic and Western astrology.
+**One-line message:** My astrology app doesn't let AI do the maths.
 **Audience:** A · **Kind of post:** a short build story · **Tone:** person-direct
 
 ## Slides
 
 ### Slide 1
-H: Why my astrology app doesn't let AI decide the signs
+H: Why my astrology app doesn't let AI do the maths
 V: Panditji's answer screen on a phone
 
 ### Slide 2
@@ -48,7 +48,7 @@ B: Instagram @tangentideas.ai · YouTube @tangentideasai · Medium @tangentideas
 V: Channels, one per row
 
 ## Caption
-Why my astrology app doesn't let AI decide the signs.
+Why my astrology app doesn't let AI do the maths.
 
 Right now, Saturn is in Pisces in Vedic astrology and in Aries in Western astrology. Both are correct: the two zodiacs sit about 24 degrees apart. AI chatbots learned from pages that mix them up, so they can give you either answer.
 
