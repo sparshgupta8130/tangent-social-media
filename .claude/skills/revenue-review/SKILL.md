@@ -1,6 +1,6 @@
 ---
 name: revenue-review
-description: Use monthly (first working session of each month) — the ritual where revenue-lead reviews the month's metrics against strategy/REVENUE.md §2 thresholds, checks the product pipeline, flags threshold crossings, and proposes REVENUE.md changes for Sparsh + Showrunner sign-off. The ONLY skill allowed to change REVENUE.md §2 thresholds/stream statuses. Output: ops/revenue/review-YYYY-MM.md.
+description: "Use monthly (first working session of each month) — the ritual where revenue-lead reviews the month's metrics against strategy/REVENUE.md §2 thresholds, checks the product pipeline, flags threshold crossings, and proposes REVENUE.md changes for Sparsh + Showrunner sign-off. The ONLY skill allowed to change REVENUE.md §2 thresholds/stream statuses. Output: ops/revenue/review-YYYY-MM.md."
 ---
 
 ## Purpose

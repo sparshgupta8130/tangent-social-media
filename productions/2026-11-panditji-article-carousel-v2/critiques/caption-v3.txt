@@ -1,0 +1,7 @@
+Why my astrology app doesn't let AI do the maths.
+
+I asked an AI the same astrology question twice and got Saturn in two different signs. So in Panditji, the app works out where the planets are, and the AI only explains them.
+
+I also tested it with 427 tricky questions in English, Hindi and Hinglish. The full story is on Medium. Link in bio.
+
+Made with help from Claude. #Panditji #Astrology #AI

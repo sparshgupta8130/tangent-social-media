@@ -12,13 +12,15 @@ said no slide made sense. Made with `/post` on 2026-11-15.
 | `lint.txt` | `tools/clarity_lint.py` output (0 FAIL) |
 | `critiques/cold-read-adhoc*.md` | The cold-read rounds. Rounds 1-3 were judged under a strict rule that was later retired as overfitting; round 4 passed under the light rule |
 
-**Status:** SLIDES READY FOR SPARSH'S REVIEW.
-- `slides/slide-01.png` to `slide-07.png`, 1080x1350, rebuilt with `python build.py`.
-- The build uses real assets in `assets/`: the Panditji answer screen, the app icon and the
-  Tangent mark.
-- Cold read on the render: PASS (`critiques/cold-read-render.md`).
-- Next: Sparsh approves, then posts with the caption in `carousel.md` and the Story below.
-- Nothing has been posted.
+**Status:** v3 READY FOR REVIEW (supersedes v2).
+- `slides-v3/slide-01.png` to `slide-08.png`, built with `python build_v3.py` from
+  `carousel-v3.md`.
+- Message and arc: `message-brief-v3.md`, approved by Sparsh on 2026-11-16.
+- Skim cold read: PASS (`critiques/cold-read-v3.md`).
+- Caption: in `carousel-v3.md`.
+- Next: a first-time human read, then Sparsh posts.
+- The v2 files (`carousel.md`, `slides/`) are kept as the record of what a second reader
+  rejected.
 
 Lesson from this run: the first plain rewrite fixed the real problems (the lecture-style
 zodiac slide and the unclear cover). The next two rounds chased small snags that no reader

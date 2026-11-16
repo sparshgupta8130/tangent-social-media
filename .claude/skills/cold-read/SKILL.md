@@ -1,6 +1,6 @@
 ---
 name: cold-read
-description: A light sanity check before a post reaches Sparsh. Two context-free cold-reader agents (persona A everyday viewer, persona B tech-curious) read the post once, the way a viewer would, and say it back. It catches posts that strangers don't get. It is not a line-by-line polish pass. Runs once per item (on the copy in the pipeline, on the rendered post or the copy for ad-hoc pieces). Writes critiques/cold-read-<phase>.md ending in COLD-READ: PASS or FAIL.
+description: "A light sanity check before a post reaches Sparsh. Two context-free cold-reader agents (persona A everyday viewer, persona B tech-curious) read the post once, the way a viewer would, and say it back. It catches posts that strangers don't get. It is not a line-by-line polish pass. Runs once per item (on the copy in the pipeline, on the rendered post or the copy for ad-hoc pieces). Writes critiques/cold-read-<phase>.md ending in COLD-READ: PASS or FAIL."
 ---
 
 ## Purpose
