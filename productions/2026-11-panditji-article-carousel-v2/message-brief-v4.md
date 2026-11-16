@@ -19,31 +19,41 @@ There are two deterministic steps, kept apart in the caption so it stays accurat
 
 **Audience:** A. **Tone:** person-direct.
 
-## The arc (story check: read only these lines)
+## The arc (story check: read only these lines). Revised after Sparsh's notes and the engine test.
 
 | Slide | Beat (the only text on the slide) | Words | Picture |
 |---|---|---|---|
 | 1 | Why my astrology app doesn't let AI decide the signs | 10 | The app on a phone |
-| 2 | I asked an AI the same astrology question twice. | 8 | The same question, twice |
-| 3 | It put Saturn in two different signs. | 7 | Pisces ≠ Aries |
-| 4 | It was mixing up Western and Vedic astrology. | 8 | Two zodiac rings, offset, labelled Western and Vedic |
-| 5 | So my app uses only the astrology you choose. | 9 | A Vedic / Western switch; Saturn lands in one sign |
-| 6 | Now the same question gets the same sign, every time. | 10 | The question twice → the same sign twice ✓ |
+| 2 | I asked an AI the same astrology question twice. | 8 | "Which sign is Saturn in right now?" typed twice |
+| 3 | It said Pisces. Then it said Aries. | 7 | Two replies: Pisces ≠ Aries |
+| 4 | Both were right, in two different astrologies. The AI mixed them up. | 11 | Vedic: Saturn in Pisces · Western: Saturn in Aries · the zodiacs sit about 24° apart |
+| 5 | So my app uses the established rules of Vedic or Western astrology, whichever you pick. | 14 | A Vedic / Western switch → Saturn placed in its sign and house |
+| 6 | Now the same question gets the same answer, every time. | 10 | The question twice → Pisces, Pisces ✓ (Vedic chosen) |
 | 7 | (End slide) Read the full story on Medium. | | Medium card + "Try it free" |
 | 8 | (End slide) Follow along for more things I build with AI. | | Channels |
 
-The logic: problem (two signs) → cause (two astrologies mixed) → fix (only the one you choose)
-→ proof (the same sign every time). Every step answers the problem as stated.
+The logic: problem (two signs) → reveal and cause (both were right, in two astrologies, and
+the AI mixed them) → fix (the established rules of the one you pick) → proof (the same answer
+every time). Each step answers the stated problem.
 
-**A sharper slide 4, if Sparsh confirms the fact:** "Both answers were right, in two different
-astrologies." This is the stronger reveal. It is true only if, in that test, Pisces was the
-Vedic placement and Aries the Western one. The deleted v1 slide labelled them that way, but the
-article only says "the neighboring sign". Use it only on Sparsh's confirmation.
+**Values checked with the app's own engine** (`saturn_check.ts`, `saturn_check_output.txt`):
+Saturn on 2026-11-16 is Aries 8.47° (Western, tropical) and Pisces 14.23° (Vedic, Lahiri),
+24.24° apart. It is the same pair all through 2026. So "Both were right" is true for a question
+about Saturn now. The question in the picture is "Which sign is Saturn in right now?".
+
+**One thing for Sparsh to confirm:** the article's prototype test asked about career timing,
+and its two answers are not logged anywhere I can see. Slide 2 says "I asked an AI...". It is
+literally true only if an AI really answered Pisces and then Aries. The quickest honest route:
+ask a chatbot "Which sign is Saturn in right now?" in two fresh chats, and screenshot the two
+answers for slide 3. If it gives one answer consistently, we change slide 2 to "Ask an AI which
+sign Saturn is in, and you may get two answers" and keep the rest.
 
 ## Caption (draft)
 Why my astrology app doesn't let AI decide the signs.
 
-I asked an AI the same astrology question twice and got Saturn in two different signs. It was mixing up Western and Vedic astrology, which count the signs about 24 degrees apart. So Panditji works out where each planet is on your phone (checked against NASA's data), then places it using only the rules of the astrology you choose.
+Right now, Saturn is in Pisces in Vedic astrology and in Aries in Western astrology. Both are correct: the two zodiacs sit about 24 degrees apart. AI chatbots learned from pages that mix them up, so they can give you either answer.
+
+So Panditji works out where each planet is on your phone (checked against NASA's data), then uses the established rules of the astrology you choose to place it in its sign and house.
 
 The full story is on Medium. Link in bio.
 

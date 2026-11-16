@@ -1,0 +1,6 @@
+Run 2026-11-16 with Panditji's own engine (sparshgupta8130/panditji @ origin/main, src/engine:
+tropicalLongitude + tropicalToSidereal, Lahiri ayanamsa), via saturn_check.ts.
+
+2026-11-16 | tropical (Western): Aries 8.47° | sidereal Lahiri (Vedic): Pisces 14.23° | ayanamsa 24.239
+2026-10-01 | tropical (Western): Aries 11.55° | sidereal Lahiri (Vedic): Pisces 17.31° | ayanamsa 24.237
+2026-06-01 | tropical (Western): Aries 12.26° | sidereal Lahiri (Vedic): Pisces 18.03° | ayanamsa 24.233
