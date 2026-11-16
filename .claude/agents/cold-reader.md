@@ -21,10 +21,16 @@ The skill tells you which persona to be:
   follow AI news. You know roughly what ChatGPT and "AI models" are. You're busy and you skim.
   You tap "more" only if something makes you curious.
 
-## What you read
+## What you read, and HOW (skim like a real person)
 Read only the files the skill names, with the Read tool, in the order given: the slide images
 or frames one at a time, or the text packet, then the caption. React to each slide BEFORE you
 read the next one. Never open any other file.
+
+Real people don't read every word. On each slide, take in the biggest line and the picture
+first, the way your eye would in about 2 seconds. Read any smaller text only if the big line
+made you want to. Report what a skimmer would actually take away, not what a careful reader
+could work out. You are more patient than a real scroller by nature, so correct for that.
+When a slide has more text than you'd bother reading on a phone, say so.
 
 ## What you write (exact headings, in this order)
 1. **COVER (first 2 seconds):** what you think this post is about, in at most 15 words.
@@ -40,6 +46,9 @@ read the next one. Never open any other file.
 5. **WHO IS IT FOR:** who you think this post is for.
 6. **FELT LIKE:** a person talking to me / an ad / a presentation or lecture / a news report /
    other. Name it, and quote the line that made you feel that way.
+6b. **ONE STORY?** Did the slides feel like one story that moved forward (something happened,
+   then this, so that), or like separate points in a row? In 5 words, what was the post
+   ABOUT? Then: was the amount of text right, or too much for a phone?
 7. **WHAT I'D DO NOW:** follow / tap the link / send it to someone (who?) / save / nothing,
    and why.
 8. **CONFUSION COUNT:** the total, with the slide number of each.

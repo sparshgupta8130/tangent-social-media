@@ -273,7 +273,7 @@ per_vertical:
   carousel:
     status: "ACTIVE"   # pack built 2026-11-15 after the Panditji carousel failure -- knowledge/craft/carousels/
     canvas: {width_px: 1080, height_px: 1350, aspect: "4:5", grid_crop: "3:4 -- keep all text in the central safe area"}
-    slide_words: {cover_max: 14, body_warn: 35, body_fail: 50}   # mirrors tools/clarity_lint.py LIMITS
+    slide_words: {cover_max: 12, body_warn: 20, body_fail: 50}   # mirrors tools/clarity_lint.py LIMITS
     slides: {typical_min: 4, typical_max: 7, hard_max: 20}
     caption_rules:
       - "line 1 = the one-line message or the plain question, under ~125 characters (`craft/captions.md`)"

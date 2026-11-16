@@ -7,32 +7,42 @@ counts below come from about 90 still posts read slide by slide.
 
 ## The slide grammar
 
-Every slide has the same three parts, in this order of importance:
+Every slide has the same parts, in this order of importance:
 
-1. **The headline:** the slide's whole point as one plain sentence. 4 to 12 words (the cover:
-   6 to 14). A skimmer who reads only this line gets the message. Never a label ("The fix"),
-   never a riddle ("One sky, two ways to count it"), never a fragment ("Tested.").
-2. **The picture:** the thing the headline talks about. A real screenshot, the app, the
+1. **One sentence: the slide's beat.** One short, plain sentence that is the slide's whole
+   point, about 6 to 14 words. The beat sentences, read in order, are the story. Never a label
+   ("The fix"), never a riddle ("One sky, two ways to count it"), never a fragment ("Tested.").
+2. **The picture:** the thing the sentence talks about. A real screenshot, the app, the
    photograph, a simple drawing of the action, or one big number with its noun. Labels sit ON
    the picture, next to what they name.
-3. **The body (optional):** one or two short sentences of depth for the interested.
+3. **Usually nothing else.** A second line is the exception, not the default. Use it only
+   when it explains the SAME idea as the beat (a definition, the number's noun). It never adds
+   a new idea. Extra ideas break the thread between slides; on the second Panditji carousel,
+   every slide's second line added a new fact, and a first-time reader could no longer follow
+   the story.
 
-Word budgets (headline plus body), from the strong posts in the corpus:
+Text budget per slide, by kind of post:
 
-| Slide type | Words | Notes |
+| Kind of post | Words a slide | Evidence |
 |---|---|---|
-| Cover | 6 to 14 | The lightest slide in every high-clarity post |
-| Story or explainer slide | 12 to 35 | The clear band across all four harvests |
-| Glossary or list slide | 2 to 12 | One item, one picture each (the 41.7K-like "12 habits" post) |
-| Never | over 45 to 50 | Unless one plain headline leads it and the body is genuinely optional |
+| Story, announcement, builder post (most of ours) | 6 to 15: one sentence | @openai's "legend built an app" 9-17; DeepMind use-case posts 8-14; Aashish Pahwa's most-shared post 2-5 |
+| Cover | 4 to 12 | The lightest slide in every high-clarity post |
+| Essay or explainer the audience opts in to read | up to about 30, one idea | The School of Life 22-33; Finshots and Warikoo run heavier, with one idea per card |
+| Never | over 45 | Walls of text were the weakest posts in every harvest |
 
-`tools/clarity_lint.py` warns over 35 words a slide and fails over 50.
+A senior communications professional reading our second Panditji carousel found a headline plus
+a body line on every slide "a LOT of text". The data agrees: our story post carried
+essay-account density. Depth goes in the caption and the article, not on the slides.
+
+`tools/clarity_lint.py` warns over 20 words a slide (carousels) and fails over 50.
 
 ## The cover
 
 The cover is a label, not a mood and not a teaser. A stranger who sees only the cover must be
-able to say what the post is about. That is the first-time reader's first rule, and the cover
-is what decides whether anyone swipes.
+able to say what the post is about, and what kind of post it is: a story, a tip, an
+explainer, a before-and-after. Keep it short, about 4 to 12 words; the first-time reader found
+a 13-word cover "too verbose". That is her first rule, and the cover is what decides whether
+anyone swipes.
 
 Strong cover shapes from the corpus:
 - **Person plus what they made plus what it does:** "This legend built an app to help your

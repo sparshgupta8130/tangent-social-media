@@ -101,15 +101,23 @@ NN/g; CORPUS: Axios, Kurzgesagt, @openai builder carousels]
 
 ## The Message Brief (mandatory, before any copy is written)
 
-Fill `templates/message-brief.md` for every artifact. It has five parts:
+Fill `templates/message-brief.md` for every artifact. It has six parts:
 
-1. **The one-line message.** The sentence a viewer would say to a friend after seeing the
-   post. Plain words, at most about 15 words, no metaphor, no jargon. Example: "Sparsh built an
-   astrology app where a normal program does the maths, so the AI can't guess."
+0. **What kind of post this is, and its one job.** A story, a tip, an explainer, an
+   announcement, a before-and-after. Pick ONE. A post that is an app pitch, a build story, an
+   AI lesson and an article plug at once has no clear point. That was the second Panditji
+   carousel's failure: every slide was clear, and the post as a whole wasn't.
+1. **The one-line message.** Strictly ONE statement, the sentence a viewer would say to a
+   friend afterwards. Plain words, about 12 words at most, no metaphor, no jargon, and no
+   "and/so/where" chaining of two ideas into one sentence. Too complex: "I built a free
+   astrology app where the AI can't make up where the planets are." One statement: "My
+   astrology app doesn't let AI do the maths."
 2. **Primary audience: A, B, or both (two-layer).** And why they would care, in their words:
    "So my horoscope is actually calculated, not made up."
-3. **The arc: 3-5 beats.** One plain sentence per beat. Read in order, the beats alone must
-   tell the whole story to a 12-year-old. Pick a shape from the arc library below.
+3. **The arc: 3-5 beats.** One short plain sentence per beat. Read in order, the beats alone
+   must tell the whole story to a 12-year-old: someone, a problem, a turn, a result. Each beat
+   follows from the one before ("then", "because", "so", "now"). Pick a shape from the arc
+   library below. **Then do the story check (process step 2) before writing any copy.**
 4. **The picture for each beat.** What the viewer SEES. Plan the visual before the line
    (Cleo Abram's method). A beat with nothing to show is a beat to cut or rethink.
 5. **The depth path.** Where B goes for more (article, long video, link in bio) and the one
@@ -286,19 +294,37 @@ Not from compressed, riddle-like lines.
 
 ## The process (every artifact, pipeline or ad-hoc)
 
-1. **Message Brief** (`templates/message-brief.md`).
-2. **Say it out loud first.** Write the 4-6 sentence version you would say to a friend.
-   Then cut that into beats. Never start from a slogan and decompress.
+This order comes from a senior communications professional's feedback on our carousels:
+message first, then the arc, then a check that the arc reads as a story, and only then the
+content.
+
+1. **Message Brief** (`templates/message-brief.md`): the post's one job, the one-line
+   message, the audience, and a 3-5 beat arc. Say the beats out loud as the version you'd tell
+   a friend. Never start from a slogan and decompress.
+2. **Story check on the arc ALONE, before any copy.** Read only the beat sentences, top to
+   bottom.
+   - Do they read as one story, with someone, a problem, a turn and a result?
+   - Does each beat follow from the last?
+   - Could a stranger say what the post is about after hearing just these lines?
+
+   If not, fix the arc, not the wording. In INTERACTIVE mode, show Sparsh the message and the
+   beats and get his nod here. It is far cheaper to fix the story now than after the slides
+   exist.
 3. **Write the copy** in the copy format (`templates/carousel.md` for carousels and stills;
-   `templates/script.md` beat blocks for reels).
+   `templates/script.md` beat blocks for reels). Each slide or beat carries its beat sentence,
+   and usually nothing else (see the text budget in `craft/carousels/structure.md`).
 4. **Lint:** `python tools/clarity_lint.py check <copy file>`. Fix every FAIL. Read the
    headline-only read: do the headlines alone tell the story? Read every line aloud: does it
    sound like Sparsh talking to one person, or like a slide in a deck?
 5. **One light cold read:** `/cold-read`. Two fresh readers (persona A and persona B) who
-   know nothing see the post and say it back. It passes when they get the point, would stop,
-   and nothing on the cover or in a headline was misread.
-6. **Show Sparsh:** the one-line message, the headline-only read, and both cold readers'
-   restatements, next to the post.
+   know nothing skim the post like real scrollers and say it back. It passes when they:
+   - got the point;
+   - felt it was one story;
+   - would stop;
+   - misread nothing on the cover or in a headline.
+6. **Show Sparsh:** the one-line message, the beats, and both cold readers' restatements, next
+   to the post. AI readers are more patient than people: they read every word and still
+   restate correctly. A real first-time reader's verdict outranks theirs.
 
 **Keep the checks light.** They exist to catch a post strangers don't get, like the deleted
 carousel. They are not a polish loop. Readers always flag something, so take the fixes that

@@ -44,6 +44,11 @@ post that both readers understood and would share. Sparsh called it overfitting.
      message. The wording can differ; the point can't be missing or wrong.
    - **Would stop and keep going:** the reader would stop on the cover and didn't bail out
      partway.
+   - **One story:** the reader felt the slides as one story moving forward, not separate
+     points, and could say in a few words what the post was about. "Each slide was clear but I
+     couldn't tell what the post was about" is a FAIL. Fix the arc, not the wording.
+   - **Text load:** if a reader says there was too much text for a phone, treat it as a fix,
+     not polish. Cut to one sentence a slide.
    - **No real misunderstanding:** nothing on the cover or in a headline was misread or left
      the reader with no idea. Phrases they had to think about but worked out are fine.
      List them as optional polish.
@@ -65,6 +70,9 @@ post that both readers understood and would share. Sparsh called it overfitting.
    reports and let him decide. Never grind out rounds on small snags.
 
 ## Rules
+- AI readers are more patient and more generous than people, so their PASS is a floor, not a
+  verdict. When a real first-time reader (Sparsh's wife, a friend) has read the post, their
+  verdict wins.
 - Never coach the readers or tell them the topic.
 - Optional polish stays optional. The author or Sparsh may take it or leave it.
 - In INTERACTIVE mode, show Sparsh the two RESTATED lines next to the one-line message. That

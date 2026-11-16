@@ -62,7 +62,7 @@ except ImportError:  # pragma: no cover - yaml is in requirements.txt
 LIMITS = {
     "carousel": {
         "headline_warn": 12, "headline_fail": 16,
-        "slide_words_warn": 35, "slide_words_fail": 50,
+        "slide_words_warn": 20, "slide_words_fail": 50,   # story slides: one sentence (structure.md)
         "sentence_warn": 16, "sentence_fail": 22,
         "slides_min": 3, "slides_max": 10,
     },
