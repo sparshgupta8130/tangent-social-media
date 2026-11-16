@@ -1,0 +1,197 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Panditji New Year reel</title>
+<style>
+  @font-face { font-family: 'Baloo'; src: url(assets/baloo.woff2) format('woff2'); font-weight: 400 800; }
+  @font-face { font-family: 'Baloo'; src: url(assets/baloo-guj.woff2) format('woff2'); font-weight: 400 800; unicode-range: U+0964-0965, U+0A80-0AFF, U+200C-200D, U+25CC; }
+  @font-face { font-family: 'Nunito'; src: url(assets/nunito.woff2) format('woff2'); font-weight: 200 1000; }
+  :root { --ink: #2b2140; --ink2: #5f5675; --saffron: #e07c1a; }
+  * { box-sizing: border-box; margin: 0; }
+  html, body { background: #000; }
+  #stage { position: relative; overflow: hidden; width: 1080px; height: 1920px; font-family: 'Baloo', sans-serif; color: var(--ink); }
+  .abs { position: absolute; left: 0; top: 0; transform-origin: 50% 50%; }
+  .full { position: absolute; inset: 0; }
+  #sky { background: linear-gradient(180deg, #ffd7a8 0%, #ffe9c9 38%, #fff7ea 70%, #fff7ea 100%); }
+  #skyDawn { background: linear-gradient(180deg, #4a3a78 0%, #c9708a 45%, #ffb98a 75%, #ffe3bf 100%); }
+  #rays { width: 2400px; height: 2400px; border-radius: 50%;
+          background: repeating-conic-gradient(from 0deg, rgba(255, 176, 32, 0.16) 0deg 8deg, rgba(255, 176, 32, 0) 8deg 16deg);
+          -webkit-mask-image: radial-gradient(circle, #000 0%, #000 30%, transparent 60%); mask-image: radial-gradient(circle, #000 0%, #000 30%, transparent 60%); }
+  #sun { width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle at 42% 38%, #fff3c4 0%, #ffd166 45%, #ffb020 100%);
+         box-shadow: 0 0 120px 40px rgba(255, 190, 70, 0.55); }
+  #rangoli { width: 1000px; height: 1000px; }
+  .label { font-family: 'Nunito'; font-weight: 900; font-size: 46px; color: var(--ink2); letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  #counter { display: flex; gap: 22px; }
+  .tile { position: relative; width: 168px; height: 236px; border-radius: 34px; overflow: hidden; background: #fff;
+          box-shadow: 0 10px 0 #f0c98a, 0 26px 50px rgba(160, 90, 20, 0.25); }
+  .tile .strip { position: absolute; left: 0; top: 0; width: 100%; }
+  .tile .d { height: 236px; display: grid; place-items: center; font-weight: 800; font-size: 190px; line-height: 1; padding-top: 18px; color: var(--ink); }
+  .tile.hot { background: #ffb020; box-shadow: 0 10px 0 #e08e00, 0 26px 50px rgba(224, 142, 0, 0.45); }
+  .tile.hot .d { color: #fff; }
+  .t1 { font-weight: 800; font-size: 150px; line-height: 1; white-space: nowrap; letter-spacing: -0.015em; color: var(--ink); }
+  .t1 b { color: var(--saffron); }
+  .t2 { font-family: 'Nunito'; font-weight: 900; font-size: 58px; color: var(--ink2); white-space: nowrap; }
+  .t3 { font-weight: 800; font-size: 86px; line-height: 1.25; color: #d9541e; white-space: nowrap; }
+  .foot { font-family: 'Nunito'; font-weight: 800; color: rgba(43, 33, 64, 0.8); font-size: 40px; white-space: nowrap; }
+  .foot2 { font-family: 'Nunito'; font-weight: 700; color: rgba(43, 33, 64, 0.5); font-size: 28px; white-space: nowrap; letter-spacing: 0.02em; }
+  #mascotWrap { width: 680px; height: 680px; transform-origin: 50% 94%; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="sky" class="full"></div>
+  <div id="skyDawn" class="full"></div>
+  <div id="rays" class="abs"></div>
+  <svg id="rangoli" class="abs" viewBox="-250 -250 500 500" overflow="visible"></svg>
+  <div id="sun" class="abs"></div>
+  <canvas id="petals" class="full" width="1080" height="1920"></canvas>
+
+  <div id="cLabel" class="abs label">Vikram Samvat</div>
+  <div id="counter" class="abs">
+    <div class="tile"><div class="strip"><div class="d">2</div></div></div>
+    <div class="tile"><div class="strip"><div class="d">0</div></div></div>
+    <div class="tile"><div class="strip"><div class="d">8</div></div></div>
+    <div class="tile" id="last"><div class="strip" id="roll"></div></div>
+  </div>
+
+  <div id="tSaal" class="abs t1">Happy <b>New Year!</b></div>
+  <div id="tEng" class="abs t2">Wishing you a prosperous year</div>
+  <div id="tGuj" class="abs t3">નૂતન વર્ષાભિનંદન</div>
+
+  <div id="mascotWrap" class="abs"></div>
+  <canvas id="confetti" class="full" width="1080" height="1920"></canvas>
+
+  <div id="foot" class="abs foot">with love, Panditji</div>
+  <div id="foot2" class="abs foot2">@tangentideas.ai · animated with Claude</div>
+</div>
+<script src="lib.js"></script>
+<script>
+const W = 1080, H = 1920;
+const mascot = makeMascot($('mascotWrap'), 'pj');
+const MS = 680, MX = (W - MS) / 2, MY = 760;
+const CX = 540, CY = 1120; // sun / rangoli centre, behind Panditji
+
+// the rolling digit: 2 → 3 by way of a full spin (2 3 4 … 9 0 1 2 3)
+// The Gujarati (Kartikadi) Vikram year that begins on Bestu Varas. 10 Nov 2026 begins VS 2083
+// (panditji src/engine/panchang/calendar.ts vikramKartikadi: VS 2082 began 2025-10-22). Override with ?year=NNNN.
+const YEAR = Number(new URLSearchParams(location.search).get('year') || 2083);
+const K = 1.5; // timeline stretch: the beats were laid out at 120 BPM; ×1.5 puts them at 80 BPM (13.5 s)
+const DIG = String(YEAR).split('').map(Number), PREV = (DIG[3] + 9) % 10;
+document.querySelectorAll('#counter .tile .d').forEach((el, i) => { el.textContent = DIG[i]; });
+const SEQ = Array.from({ length: 12 }, (_, i) => (PREV + i) % 10); // a full spin, then one more
+$('roll').innerHTML = SEQ.map((d) => `<div class="d">${d}</div>`).join('');
+
+// rangoli: rings of petals that bloom outward from the sun
+const RINGS = [
+  { r: 226, n: 24, len: 60, wid: 34, c: '#e8407a', dir: 1 },
+  { r: 178, n: 18, len: 56, wid: 36, c: '#ff9933', dir: -1 },
+  { r: 132, n: 14, len: 50, wid: 34, c: '#1f9d74', dir: 1 },
+  { r: 92, n: 10, len: 40, wid: 30, c: '#ffd166', dir: -1 },
+];
+const petal = (len, wid) => `M0 ${-len / 2} C${wid / 2} ${-len / 4} ${wid / 2} ${len / 4} 0 ${len / 2} C${-wid / 2} ${len / 4} ${-wid / 2} ${-len / 4} 0 ${-len / 2}Z`;
+$('rangoli').innerHTML = `<circle id="rBase" r="268" fill="#fff3dc" stroke="#ffd9a0" stroke-width="6"/>` + RINGS.map((ring, i) => {
+  let g = `<g id="ring${i}">`;
+  for (let k = 0; k < ring.n; k++) {
+    const a = (k / ring.n) * 360;
+    g += `<g transform="rotate(${a}) translate(0 ${-ring.r})"><path d="${petal(ring.len, ring.wid)}" fill="${ring.c}"/><circle cy="${-ring.len / 2 - 12}" r="5" fill="#fff"/></g>`;
+  }
+  return g + `<circle r="${ring.r + ring.len / 2 + 22}" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="2 12" stroke-linecap="round" opacity="0.8"/></g>`;
+}).join('');
+
+// fit the title to the frame (960 px max)
+{ const el = $('tSaal'); document.fonts.ready.then(() => { const w = el.offsetWidth; if (w > 960) el.style.fontSize = (150 * 960 / w) + 'px'; }); }
+const PETALS = makePetals(16, W, H, 9);
+const pctx = $('petals').getContext('2d');
+const cctx = $('confetti').getContext('2d');
+const R2 = rnd(13);
+const CONF = Array.from({ length: 70 }, () => ({ a: -Math.PI / 2 + (R2() - 0.5) * 2.6, v: 500 + R2() * 900, r: 7 + R2() * 9, c: ['#ffb020', '#e8407a', '#1f9d74', '#ff9933', '#7aa7ff'][Math.floor(R2() * 5)], spin: R2() * 2 - 1 }));
+
+function render(T) {
+  const t = T / K; // t: the schedule (beats); T: real seconds, for idle motion and physics
+  // ---- dawn → morning
+  const day = eIO(seg(t, 0.2, 1.9));
+  $('skyDawn').style.opacity = 1 - day;
+  const sunRise = eOut(seg(t, 0.0, 1.8));
+  const bloom = (i) => eBack(seg(t, 2.0 + i * 0.08, 2.45 + i * 0.08));
+  const sunScale = lerp(1, 0.5, eIO(seg(t, 2.0, 2.4)));
+  place($('sun'), { x: CX - 210, y: CY - 210 + (1 - sunRise) * 520, s: sunScale * (1 + 0.015 * Math.sin(T * 4)) });
+  place($('rays'), { x: CX - 1200, y: CY - 1200 + (1 - sunRise) * 520, r: T * 7, o: sunRise * (1 - 0.6 * bloom(0)) });
+  // rangoli blooms on the drop, ring by ring from the inside out, then turns slowly
+  [3, 2, 1, 0].forEach((ri, k) => {
+    const b = bloom(k); const ring = RINGS[ri];
+    const el = $('ring' + ri);
+    el.setAttribute('transform', `rotate(${ring.dir * (T - 2 * K) * 9 + (1 - b) * ring.dir * 40}) scale(${b})`);
+    el.setAttribute('opacity', clamp(b * 1.5));
+  });
+  $('rBase').setAttribute('transform', `scale(${eBack(seg(t, 1.95, 2.3))})`);
+  place($('rangoli'), { x: CX - 500, y: CY - 500, s: 0.8, o: t >= 1.95 ? 1 : 0 });
+
+  // ---- the counter: in, the last digit spins 2 → 3, then it flies away into confetti
+  const cIn = eBack(seg(t, 0.25, 0.55));
+  const cOut = eIn(seg(t, 2.35, 2.6));
+  const counter = $('counter');
+  const cw = 4 * 168 + 3 * 22;
+  place(counter, { x: (W - cw) / 2, y: 330 - cOut * 120, s: lerp(0.5, 1, cIn) * (1 + cOut * 0.25) * (t >= 2.0 && t < 2.15 ? 1 + 0.08 * Math.sin(Math.PI * (t - 2.0) / 0.15) : 1), o: (cIn > 0 ? 1 : 0) * (1 - cOut) });
+  place($('cLabel'), { x: centreX($('cLabel'), W), y: 250 - cOut * 120, o: eOut(seg(t, 0.4, 0.6)) * (1 - cOut) });
+  const roll = eIO(seg(t, 0.95, 2.0)) ; // 0 → 1 over the spin, ending exactly on the drop
+  const steps = SEQ.length - 1;
+  const settle = t >= 2.0 ? Math.sin((t - 2.0) * 30) * Math.exp(-(t - 2.0) * 12) * 0.12 : 0;
+  $('roll').style.transform = `translateY(${-(roll * steps + settle) * 236}px)`;
+  $('last').classList.toggle('hot', t >= 2.0);
+
+  // ---- Panditji: thinking while the year turns, a gasp, joy on the drop, a wave, then namaste
+  const rise = eSpring(seg(t, 0.35, 1.05));
+  let st = { arms: 'down', eyes: 'open', brows: 'normal', mouth: 'smile', px: 0, py: 0, tilt: 0, sparkle: 0, t: T };
+  if (t < 0.95) { st.px = 0; st.py = -2; }
+  else if (t < 1.75) { st.arms = 'chin'; st.brows = 'think'; st.mouth = 'small'; st.px = 3; st.py = -6; st.tilt = 3; }
+  else if (t < 2.0) { st.brows = 'up'; st.mouth = 'o'; st.px = 0; st.py = -6; }
+  else if (t < 4.0) { st.arms = 'up'; st.eyes = 'happy'; st.brows = 'up'; st.mouth = 'open'; st.sparkle = eOut(seg(t, 2.0, 2.3)); st.blush = 1; }
+  else if (t < 6.5) { st.arms = 'wave'; st.wave = Math.sin((T - 4.0 * K) * 8) * 14; st.mouth = 'open'; st.brows = 'up'; st.blush = 0.6; st.tilt = Math.sin((T - 4.0 * K) * 4) * 3; }
+  else { st.arms = 'namaste'; st.tilt = -5; st.eyes = t > 7.0 ? 'happy' : 'open'; st.blush = 0.5; }
+  st.blink = blinkAt(T, [1.3, 4.9, 6.85, 8.4].map((x) => x * K));
+  mascot(st);
+  const hit = (a, d = 0.18) => (t >= a && t < a + d ? Math.sin(Math.PI * (t - a) / d) : 0);
+  const sq = hit(0.95) * 0.05 + hit(1.75) * 0.06 + hit(2.0, 0.24) * 0.12 + hit(4.0) * 0.05 + hit(6.5) * 0.06;
+  // garba hops: two small hops per beat-pair while celebrating
+  const bounce = t > 2.0 && t < 4.0 ? Math.abs(Math.sin((t - 2.0) * Math.PI * 2)) * 18 : 0;
+  const idle = Math.sin(T * 3) * 5;
+  place($('mascotWrap'), { x: MX, y: MY + (1 - rise) * 1200 + idle - bounce, sx: 1 + sq, sy: 1 - sq, o: t >= 0.35 ? 1 : 0 });
+
+  // ---- confetti burst out of the counter on the drop
+  cctx.clearRect(0, 0, W, H);
+  if (t > 2.0) {
+    const k = T - 2.0 * K;
+    for (const p of CONF) {
+      const d = p.v * (1 - Math.exp(-k * 3));
+      const x = W / 2 + Math.cos(p.a) * d * 0.9, y = 450 + Math.sin(p.a) * d * 0.5 + k * k * 260;
+      if (y > H + 40) continue;
+      cctx.globalAlpha = clamp(1.6 - k * 0.6); cctx.fillStyle = p.c;
+      cctx.save(); cctx.translate(x, y); cctx.rotate(k * 7 * p.spin); cctx.scale(1, Math.cos(k * 9 * p.spin)); cctx.fillRect(-p.r, -p.r / 2, p.r * 2, p.r); cctx.restore();
+    }
+    cctx.globalAlpha = 1;
+  }
+  // ---- marigold petals drift down after the drop
+  pctx.clearRect(0, 0, W, H);
+  drawPetals(pctx, PETALS, T, 2.3 * K, H, 0.9);
+
+  // ---- titles
+  const sIn = eBack(seg(t, 2.6, 2.85)); // after the counter has flown off (2.35–2.6)
+  const tS = $('tSaal');
+  place(tS, { x: centreX(tS, W), y: 250, s: lerp(1.8, 1, sIn) * (1 + 0.01 * Math.sin(T * 6)), r: (1 - sIn) * -5, o: sIn > 0 ? 1 : 0, filter: 'drop-shadow(0 8px 0 rgba(255, 255, 255, 0.9)) drop-shadow(0 18px 30px rgba(160, 90, 20, 0.22))' });
+  const eIn2 = eOut(seg(t, 3.0, 3.3));
+  place($('tEng'), { x: centreX($('tEng'), W), y: 425 + (1 - eIn2) * 30, o: eIn2 });
+  const gIn = eBack(seg(t, 3.5, 3.75));
+  place($('tGuj'), { x: centreX($('tGuj'), W), y: 500, s: lerp(1.3, 1, gIn), o: gIn > 0 ? 1 : 0 });
+
+  // ---- sign-off
+  const f1 = eOut(seg(t, 6.6, 6.9)), f2 = eOut(seg(t, 6.8, 7.1));
+  place($('foot'), { x: centreX($('foot'), W), y: 1580 + (1 - f1) * 20, o: f1 });
+  place($('foot2'), { x: centreX($('foot2'), W), y: 1640 + (1 - f2) * 20, o: f2 });
+}
+window.render = render;
+window.ready = document.fonts.ready.then(() => new Promise((r) => setTimeout(r, 300)));
+render(0);
+</script>
+</body>
+</html>
