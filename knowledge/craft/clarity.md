@@ -306,6 +306,10 @@ content.
    - Do they read as one story, with someone, a problem, a turn and a result?
    - Does each beat follow from the last?
    - Could a stranger say what the post is about after hearing just these lines?
+   - **Do the cause, the fix and the proof answer the exact problem the story states?** If
+     the problem is "two different signs", the proof must be about signs, not about something
+     nearby such as planet positions. A true fact that answers a different question breaks
+     the logic, and an attentive reader notices. (Caught by Sparsh on the Panditji v3 arc.)
 
    If not, fix the arc, not the wording. In INTERACTIVE mode, show Sparsh the message and the
    beats and get his nod here. It is far cheaper to fix the story now than after the slides
