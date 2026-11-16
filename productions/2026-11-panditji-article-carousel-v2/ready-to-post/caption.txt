@@ -1,0 +1,9 @@
+Why my astrology app doesn't let AI do the maths.
+
+Right now, Saturn is in Pisces in Vedic astrology and in Aries in Western astrology. Both are correct: the two zodiacs sit about 24 degrees apart. AI chatbots learned from pages that mix them up, so they can give you either answer.
+
+So Panditji works out where each planet is on your phone (checked against NASA's data), then uses the established rules of the astrology you choose to place it in its sign and house. Only then does the AI read your chart and explain it.
+
+The full story is on Medium. Link in bio.
+
+Made with help from Claude. #Panditji #Astrology #AI

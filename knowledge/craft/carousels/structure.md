@@ -126,8 +126,10 @@ these slides from the Panditji rebuild. Sparsh wants them on every post.)
   and that choice is a live test (`strategy/BETS.md`, the first-time reader's "more white,
   less black").
 - **Whitespace over shrinking.** If the words do not fit at size, cut words.
-- **Safe area.** Use 1080x1350 (4:5) and keep every word inside the central area, so the 3:4
-  grid crop keeps it.
+- **Canvas: 1:1 square, 1080x1080. Always.** Sparsh's standing rule (2026-11-16): Tangent
+  carousels are posted as squares, because Instagram's carousel upload put the 4:5 slides into
+  a square frame. Never render a carousel at 1080x1350. Design in the square from the start,
+  with every word inside the frame (frame padding about 64 px top, 76 px sides).
 - **Real things.** Real screenshots, real before and after, real numbers. No fake dashboards.
 
 ## Templates (pick one in the Message Brief)
