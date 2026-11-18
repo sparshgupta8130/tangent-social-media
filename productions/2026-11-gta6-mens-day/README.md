@@ -44,3 +44,10 @@ Copy linted. Image session and cold read running.
 - 2026-11-19: style test → Sparsh picked **S2 "geometric poster"**. `image-prompts.md` BASE was
   updated, and image 2's lungi became pyjama shorts (the model never drew a lungi). Full redraw
   is running.
+- 2026-11-19: Sparsh stopped the S2 redraw and shared 6 brand GTA-6 posts (BK, Dunkin', KFC,
+  Rapido, Axe via exchange4media; Haldiram's) as the target look. The analysis is in
+  `STYLE-REFERENCE.md`. The S2 session (session_01ETPVMPkzdHmWug71rrty2F) was interrupted.
+  - Prompts are now v3: semi-realistic key-art, clean lines, cel and airbrush shading, rim light,
+    violet sunset, wet reflections, a Marine Drive-style coast.
+  - The cover became a three-men key-art shot.
+  - Not copied: the GTA logo and font, the bandana couple (GTA VI's leads), brand logos.
