@@ -55,3 +55,8 @@ Copy: lint 0 FAIL, cold read PASS (`critiques/cold-read-copy.md`). Next: generat
 - 2026-11-18: cold read PASS. Both readers flagged the almirah (no joke, repeats the keys), so it
   was swapped for the TV remote in its plastic cover. Both said the end slide gives no reason to
   follow; that is optional polish for Sparsh.
+- 2026-11-18: images are generated in a separate cloud session on the "Default and Testing"
+  environment, which has a Gemini key (session_01ETPVMQJ5AeMPPkRDQ271nH). Output goes to
+  `assets/gen/`, with a provenance README.
+- 2026-11-18: Sparsh wants an end-slide line that links Men's Day to what he builds with AI.
+  Options proposed; waiting on his pick.
