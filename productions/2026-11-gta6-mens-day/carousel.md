@@ -17,7 +17,7 @@ V: Illustrated Indian city street at sunset, poster style
 
 ### Slide 2
 H: The Men's Day cheat code: LEAVEMEALONE
-B: A real Vice City cheat code.
+B: A real Vice City cheat. It made the police leave you alone.
 V: A man in a banian lounging on a terrace chair with a controller, sunset
 
 ### Slide 3
@@ -46,7 +46,7 @@ V: Sunset skyline, with the maker card
 ## Caption
 Happy Men's Day. Or, as men call it, GTA 6 Day. 🎮
 
-Before you press Start, do the missions on poster 6.
+Before you press Start, swipe for your Men's Day missions.
 
 (LEAVEMEALONE really was a Vice City cheat code. It cleared your wanted level.)
 

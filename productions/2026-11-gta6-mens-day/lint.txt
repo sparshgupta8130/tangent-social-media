@@ -1,4 +1,4 @@
-clarity_lint: carousel.md (carousel, 7 slides/beats, reading grade 3.2)
+clarity_lint: carousel.md (carousel, 7 slides/beats, reading grade 3.1)
 
 HEADLINE-ONLY READ (do these lines alone tell the story?):
   1. Happy Men's Day. Or, as men call it, GTA 6 Day.
