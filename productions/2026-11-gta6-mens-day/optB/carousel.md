@@ -21,7 +21,7 @@ V: Five HUD stars (code); the man surrounded by smiling aunties and uncles at a 
 
 ### Slide 3
 H: Health: back pain at 32.
-B: Doesn't refill.
+B: Resting doesn’t fix it.
 V: A HUD health bar almost empty (code); the man at an office desk holding his lower back
 
 ### Slide 4
