@@ -34,3 +34,9 @@ Message Brief drafted. Waiting on Sparsh: beats, exhibit list, photographed or g
   - the turn becomes the "all good 👍" text (men's wellbeing, from idea #5);
   - the memory slide stays, as one man among them, and its call to action widens to
     "check on the men in your life".
+- 2026-11-18: Sparsh: the exhibits felt disconnected, with no end-to-end story. Showrunner
+  proposed a "what men say vs what they mean" thread.
+- 2026-11-18: Sparsh rejected "say vs mean" as an old idea. Objects stay as the exhibits. Drop
+  his dad's angle if it overfits; Showrunner recommends dropping it from this post.
+  - New proposal: one thread, "things men never throw away". It escalates from silly keeping to
+    what he keeps inside (an empty plinth). Waiting on Sparsh.
