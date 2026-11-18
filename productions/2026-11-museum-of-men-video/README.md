@@ -57,3 +57,12 @@ is b-roll only. Here it is the subject.
     and Testing" (session_01ETPVMLx25AFBqSuyBf3GjT).
   - Optional upgrade: true Veo camera moves made by Sparsh in Flow on his Ultra credits, from a
     frame-pair kit we prepare, then swapped into the same edit.
+- 2026-11-19: Sparsh has an RTX 3060 laptop and asked for a prompt kit for a Claude session there.
+  - `gpu-kit/PROMPT.md` written. It covers 8 first/last-frame camera-move clips (C0-C7), a VRAM
+    check first, candidate open-weights routes (LTX-Video / Wan via ComfyUI, to be verified on
+    the official repos), and hand-back as `clips/C0..C7.mp4` plus a REPORT.
+  - Drive: folder Post 6/video-gpu-kit (1HVt1pZwmJ3708Dxg4RrhWMH4lwUYapml) holds PROMPT.md and an
+    empty frames/ subfolder.
+  - The 8 frame PNGs (3.7-5.2 MB each) were NOT uploaded: they exceed the connector's ~3.1 MB per
+    call limit. Waiting on Sparsh. Frame sources in the repo: F0 = museum assets/gen/pick/slide-09,
+    F1..F7 = slide-02..slide-08.
