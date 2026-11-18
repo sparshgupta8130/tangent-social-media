@@ -45,3 +45,15 @@ is b-roll only. Here it is the subject.
 - Why the exception: the piece is AI art presented as AI art. It is disclosed on screen and in the
   caption, uses no real people, and claims no photography or pipeline output it isn't.
 - Logged here. Critic agreement is still to be obtained before publish.
+
+## Decision log
+- 2026-11-19: Sparsh approved the opening title and the gen-video exception. He asked for
+  open-source tools, since he has Google AI Ultra.
+  - Showrunner: this container has no GPU, and Hugging Face is blocked here. The Ultra
+    subscription covers Veo in **Flow** (the web app). As far as we know it does not cover the
+    API key, and the credit details are [UNVERIFIED] in `genvideo-playbook.md`.
+  - Decision: build v1 now with **open-source 2.5D** (Depth Anything V2 depth maps, OpenCV
+    parallax, Playwright type, ffmpeg, a synthesized score). It runs in a session on "Default
+    and Testing" (session_01ETPVMPYyRN4CLWDEmGT8rC).
+  - Optional upgrade: true Veo camera moves made by Sparsh in Flow on his Ultra credits, from a
+    frame-pair kit we prepare, then swapped into the same edit.
