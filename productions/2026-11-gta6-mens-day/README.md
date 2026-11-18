@@ -86,3 +86,5 @@ Copy linted. Image session and cold read running.
 - Option B landed in Anton (session_01ETPVMNND9cfbvARXBJ5N6g could not download the font: 406)
   and still had the old slide-3 line. The A session was asked to re-render B in Pricedown with
   "Resting doesn't fix it."
+- 2026-11-19: Option B re-rendered in Pricedown with "Resting doesn't fix it." (commit a0b9c37,
+  by the Option A session). Both A and B are final, waiting on Sparsh's pick and his wife's read.
