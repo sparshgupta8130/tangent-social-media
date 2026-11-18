@@ -28,3 +28,8 @@ Made with `/post`. Posts 6-8 h after the Museum of Men carousel.
 
 ## Status
 Copy linted. Image session and cold read running.
+- 2026-11-19: images landed (session_01ETPVMNaYJvUyTDvD8Uz5Ko; provenance in `assets/gen/README.md`).
+  Slides v1 rendered with `build.mjs` → `slides/` (Anton + Inter type, our own).
+- 2026-11-19: Sparsh: the style is close to GTA but the drawing could be better, "more straight
+  line strokes". The current images use sketchy comic hatching and wobbly ink. A style test is
+  running on 2 images × 3 cleaner styles (`assets/style-test/`) before a full regeneration.
