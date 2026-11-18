@@ -58,8 +58,7 @@ const S = [];
 
 // 1 cover
 S.push(page(1, `<div class="cov"><h1 class="t">The Museum of Men</h1>
-<div class="sub">Things men never throw away</div>
-<div class="ex">An exhibition for International Men&rsquo;s Day, 19 November</div></div>`,
+<div class="sub">Things men never throw away</div></div>`,
   bg(1), `.cov{margin-top:24px;text-align:center}
 .t{max-width:none;margin:0;font:500 96px/1.02 Fraunces,Georgia,serif;letter-spacing:-.02em}
 .sub{margin-top:16px;font:400 50px/1.15 Fraunces,Georgia,serif}
@@ -103,7 +102,7 @@ S.push(page(9, `<h1 class="close">Men keep a lot to themselves. Today, ask one h
 
 // 10 the maker: label card only (Sparsh's call: no photo)
 const C10 = [560, 0, 736];
-S.push(page(10, `<div class="card">
+S.push(page(10, `<div class="wall">Happy International<br>Men&rsquo;s Day</div><div class="card">
   <div class="cl">Exhibit 8 &middot; The maker</div>
   <div class="ct">The man who made this museum, with AI.</div>
   <div class="cs">Follow him for more art, apps and stories.</div>
@@ -115,7 +114,8 @@ S.push(page(10, `<div class="card">
     <div><span>Web</span>tangentideas.ai</div>
   </div>
 </div>`, bg(3, C10),
-  `.card{margin:44px auto 0;width:800px;background:#fbfaf7;border-radius:6px;padding:44px 56px 38px;
+  `.wall{margin-top:40px;text-align:center;font:400 60px/1.08 Fraunces,Georgia,serif;letter-spacing:-.01em;color:#2a241d}
+.card{margin:34px auto 0;width:800px;background:#fbfaf7;border-radius:6px;padding:44px 56px 38px;
   box-shadow:0 18px 50px rgba(60,45,30,.18),0 2px 6px rgba(60,45,30,.10)}
 .cl{font:600 24px Inter;letter-spacing:.14em;text-transform:uppercase;color:${MUTED}}
 .ct{margin-top:14px;font:400 50px/1.12 Fraunces,Georgia,serif;letter-spacing:-.01em;text-wrap:balance}

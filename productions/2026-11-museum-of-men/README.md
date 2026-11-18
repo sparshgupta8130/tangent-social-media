@@ -90,3 +90,10 @@ last two exhibits turn warm: what he gives up, and his phone, so call him.
 - 2026-11-19: Sparsh kept the end card as it is. SHIP reconfirmed.
 - 2026-11-19: uploaded to Google Drive folder "Post 6" (1ZVuaqY1jfNxs3Ei7RInOgJmEbe-Erj_7):
   slide-01..10.png (square; byte sizes match the local files) and caption.txt.
+- 2026-11-19: Sparsh's edits:
+  - cover: the "An exhibition for International Men's Day, 19 November" subtitle is removed;
+  - end card: "Happy International Men's Day" added as Fraunces wall lettering above the label
+    card.
+  Both builds re-rendered.
+  - Drive "Post 6": the old slide-01/slide-10 were moved to Drive trash (recoverable) and the new
+    ones uploaded. Sizes match: 1651671 and 880977 bytes.
