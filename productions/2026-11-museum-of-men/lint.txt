@@ -1,4 +1,4 @@
-clarity_lint: carousel.md (carousel, 10 slides/beats, reading grade 6.3)
+clarity_lint: carousel.md (carousel, 10 slides/beats, reading grade 6.0)
 
 HEADLINE-ONLY READ (do these lines alone tell the story?):
   1. The Museum of Men: things men never throw away
@@ -7,12 +7,12 @@ HEADLINE-ONLY READ (do these lines alone tell the story?):
   4. Nobody knows what these keys open. Nobody can throw them away.
   5. His chappals are twelve years old. He says they're still fine.
   6. His college T-shirt became his gym T-shirt. Next, a car cloth.
-  7. His steel almirah is always locked. Only he knows where the key is.
+  7. The TV remote is still in its plastic cover. The TV is nine years old.
   8. One message he typed, but never sent.
   9. Men keep a lot to themselves. Today, ask one how he's really doing.
   10. Follow along for more things I make with AI.
 
-[WARN] Slide 7: headline is 13 words (aim <= 12)
+[WARN] Slide 7: headline is 15 words (aim <= 12)
 [WARN] Slide 9: headline is 13 words (aim <= 12)
 
 0 FAIL, 2 WARN. PASS (mechanical checks only; now run /cold-read)

@@ -45,9 +45,9 @@ B: Exhibit 5 · The T-shirt
 V: A faded, folded college-fest T-shirt with a cracked print, on a plinth
 
 ### Slide 7
-H: His steel almirah is always locked. Only he knows where the key is.
-B: Exhibit 6 · The almirah
-V: A classic grey Indian steel almirah, locked, under the spotlight
+H: The TV remote is still in its plastic cover. The TV is nine years old.
+B: Exhibit 6 · The remote
+V: A TV remote sealed in a clear, slightly yellowed plastic cover, on a plinth
 
 ### Slide 8
 H: One message he typed, but never sent.

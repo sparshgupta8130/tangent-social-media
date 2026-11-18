@@ -14,7 +14,8 @@ last two exhibits turn warm: what he gives up, and his phone, so call him.
 | `message-brief.md` | First Message Brief. Its arc and exhibits are superseded by `carousel.md` (see the log) |
 | `carousel.md` | The copy: 10 slides, picture notes, caption |
 | `lint.txt` | `clarity_lint` output |
-| `critiques/` | Cold-read packet and reports |
+| `critiques/` | Cold-read packet and reports (copy phase: PASS) |
+| `image-prompts.md` | Nano Banana prompts for the 9 image slides |
 
 ## Decision log
 - 2026-11-18: Sparsh picked idea #1 (Museum of Men) from the slate.
@@ -30,7 +31,7 @@ last two exhibits turn warm: what he gives up, and his phone, so call him.
 - 2026-11-18: the last slide is the standard "follow us" channels slide (Sparsh).
 
 ## Status
-Copy written and linted (0 FAIL). Cold read running.
+Copy: lint 0 FAIL, cold read PASS (`critiques/cold-read-copy.md`). Next: generate the images, then build the slides in code.
 - 2026-11-18: Sparsh: with the dad anchor and the memory slide, the post reads like Father's
   Day, not Men's Day. Showrunner agrees. Proposed fix, waiting on Sparsh:
   - exhibits come from different men (dad, brother, nana, best friend, husband, colleague);
@@ -51,3 +52,6 @@ Copy written and linted (0 FAIL). Cold read running.
     exploding).
   - The almirah line was made plain ("always locked") so the phone carries the turn alone.
   - New one-line message: "Men keep everything, even how they really feel. Ask them."
+- 2026-11-18: cold read PASS. Both readers flagged the almirah (no joke, repeats the keys), so it
+  was swapped for the TV remote in its plastic cover. Both said the end slide gives no reason to
+  follow; that is optional polish for Sparsh.
