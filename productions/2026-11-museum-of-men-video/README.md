@@ -54,6 +54,6 @@ is b-roll only. Here it is the subject.
     API key, and the credit details are [UNVERIFIED] in `genvideo-playbook.md`.
   - Decision: build v1 now with **open-source 2.5D** (Depth Anything V2 depth maps, OpenCV
     parallax, Playwright type, ffmpeg, a synthesized score). It runs in a session on "Default
-    and Testing" (session_01ETPVMPYyRN4CLWDEmGT8rC).
+    and Testing" (session_01ETPVMLx25AFBqSuyBf3GjT).
   - Optional upgrade: true Veo camera moves made by Sparsh in Flow on his Ultra credits, from a
     frame-pair kit we prepare, then swapped into the same edit.
