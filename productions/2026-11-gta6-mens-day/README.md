@@ -78,3 +78,11 @@ Copy linted. Image session and cold read running.
   - Still not used: the GTA logo or "grand theft" wordmark, characters, brand logos.
   - Copy: `optA/carousel.md` and `optB/carousel.md` (lint 0 FAIL each). Two build sessions
     produce images and slides; a cold read runs on both.
+- 2026-11-19: Option A slides landed (session_01ETPVMNAgrWUka4sohQFQn4, Pricedown via Typodermic's
+  free desktop pack; EULA v260817 §2.2 permits rendered images).
+  - Licence caveat from that session: §2.1 ties install to a personal "Workstation", and the
+    render ran in a cloud container. For the cleanest compliance Sparsh can re-render on his own
+    laptop.
+- Option B landed in Anton (session_01ETPVMNND9cfbvARXBJ5N6g could not download the font: 406)
+  and still had the old slide-3 line. The A session was asked to re-render B in Pricedown with
+  "Resting doesn't fix it."
