@@ -69,3 +69,12 @@ Copy linted. Image session and cold read running.
     image (the voucher or the couch). Waiting on Sparsh.
   - Verified release years: GTA V on 17 Sep 2013 (Giant Bomb release list; HEXUS); Vice City on
     PC in May 2003. GTA IV's year was not verified, so it is not used.
+- 2026-11-19: Sparsh asked for final outputs of BOTH A and B, set in GTA's font as other brands
+  did.
+  - Font: Pricedown Black. Typodermic's free desktop licence covers advertising and rendered
+    graphics but not sharing font files (per a web search, 2026-11-19; the build session
+    verifies the bundled licence). So the font is downloaded at build time and git-ignored,
+    never committed.
+  - Still not used: the GTA logo or "grand theft" wordmark, characters, brand logos.
+  - Copy: `optA/carousel.md` and `optB/carousel.md` (lint 0 FAIL each). Two build sessions
+    produce images and slides; a cold read runs on both.
