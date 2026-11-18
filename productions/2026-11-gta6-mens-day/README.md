@@ -51,3 +51,8 @@ Copy linted. Image session and cold read running.
     violet sunset, wet reflections, a Marine Drive-style coast.
   - The cover became a three-men key-art shot.
   - Not copied: the GTA logo and font, the bandana couple (GTA VI's leads), brand logos.
+- 2026-11-19: v3 key-art images landed (session_01ETPVMPQ62xUQ4kXWnZYX7j; `assets/gen-v3/README.md`).
+  Slides re-rendered with v2 copy → `slides/`. Weak spots, per the image session and the Showrunner:
+  - the img-02 face leans cartoon;
+  - the img-05 boy has big cartoon eyes;
+  - img-03's top band is wall plus window, not sky.
