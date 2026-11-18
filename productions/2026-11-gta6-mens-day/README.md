@@ -56,3 +56,7 @@ Copy linted. Image session and cold read running.
   - the img-02 face leans cartoon;
   - the img-05 boy has big cartoon eyes;
   - img-03's top band is wall plus window, not sky.
+- 2026-11-19: Sparsh: regenerate slides 2 and 5, then upload to Post 7.
+  - Regen session: session_01ETPVMPmryYn8kMYyniWtki → `assets/gen-v3b/`.
+  - Drive Post 7 (1YCmknRLuqMvpSy3lzrFW-QyN_TRnsSIR): slide-01, 03, 04, 06, 07 and caption.txt
+    are uploaded. Slides 02 and 05 follow after the regen.
