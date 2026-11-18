@@ -26,11 +26,13 @@ small museum label card.
 | Cover | The Museum of Men: things every Indian dad refuses to throw away. | A gallery wall, the first exhibit on a plinth, the title on the wall |
 | Exhibits | One object per slide, one plain funny-and-true line each (list below) | The object, museum-lit, with an "Exhibit N" label |
 | Turn | His old shirt: he wears it again so you can have new ones. | A folded, faded shirt under a spotlight |
-| Ending | His phone: he won't say he misses you. He'll ask if you've eaten. Call him today. | An old phone on a plinth |
+| Ending (proposed) | His phone. He won't say he misses you. He'll say "call when you reach". | An old phone on a plinth |
+| In memory (proposed, Sparsh deciding) | This museum is for my papa. He passed away in [year]. If yours is here, call him today. | A real photo of his dad, or one real object of his. Never an AI image of his dad. |
+| End slide | Follow along: our channels (the standard end slide, like the Panditji v4 end slides) | Channel handles |
 
 - **Chain device:** a fixed frame. The same museum layout, with "Exhibit 1", "Exhibit 2" and so
   on, in the same place every time.
-- **Ending:** one next step, "Call him today."
+- **Ending:** one next step, "call him today", on the in-memory slide. Then the standard follow slide.
 - **Depth path:** none needed. The caption repeats the message and adds the IMD date.
 
 ## Exhibit shortlist (draft lines; Sparsh picks 6 to 7)

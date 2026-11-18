@@ -15,6 +15,16 @@ last two exhibits turn warm: what he gives up, and his phone, so call him.
 
 ## Decision log
 - 2026-11-18: Sparsh picked idea #1 (Museum of Men) from the slate.
+- 2026-11-18: Sparsh: "He'll ask if you've eaten" is not true for Indian dads, so the line is
+  cut. Proposed replacement: "He'll say 'call when you reach'". Better still, a line his own
+  dad actually said.
+- 2026-11-18: Sparsh's dad passed away a few years ago. He asked whether a second-last slide
+  "in memory of my dad" is appropriate. Showrunner view: yes, under conditions:
+  - it is one quiet slide, never the cover or the hook;
+  - no AI image of his dad;
+  - his family is okay with it.
+  Waiting on Sparsh.
+- 2026-11-18: the last slide is the standard "follow us" channels slide (Sparsh).
 
 ## Status
 Message Brief drafted. Waiting on Sparsh: beats, exhibit list, photographed or generated.
