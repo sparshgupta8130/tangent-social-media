@@ -60,3 +60,12 @@ Copy linted. Image session and cold read running.
   - Regen session: session_01ETPVMPmryYn8kMYyniWtki → `assets/gen-v3b/`.
   - Drive Post 7 (1YCmknRLuqMvpSy3lzrFW-QyN_TRnsSIR): slide-01, 03, 04, 06, 07 and caption.txt
     are uploaded. Slides 02 and 05 follow after the regen.
+- 2026-11-19: **First-time reader (Sparsh's wife) failed v2.** It read as "a random set of
+  images", with no connection between slides and no hint that each slide is a separate pun; the
+  check-up slide in the middle made no sense. A real reader's verdict beats the AI cold-read PASS
+  (cold-read skill rule). Sparsh asked for a rethink.
+  - Proposed: A, one man's life told through three GTA releases (Vice City → GTA V → GTA 6) as a
+    single story (recommended); B, "If a man's life were GTA" with game mechanics; C, a single
+    image (the voucher or the couch). Waiting on Sparsh.
+  - Verified release years: GTA V on 17 Sep 2013 (Giant Bomb release list; HEXUS); Vice City on
+    PC in May 2003. GTA IV's year was not verified, so it is not used.
