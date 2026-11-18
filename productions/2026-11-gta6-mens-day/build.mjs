@@ -12,7 +12,7 @@ const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const OUT = path.join(ROOT, 'slides');
 const HTML = path.join(OUT, 'html');
 fs.mkdirSync(HTML, { recursive: true });
-const IMG = (n) => 'file://' + path.join(ROOT, 'assets/gen/pick', `img-0${n}.png`);
+const IMG = (n) => 'file://' + path.join(ROOT, 'assets/gen-v3/pick', `img-0${n}.png`);
 
 const mark = (size) =>
   `<svg viewBox="0 0 120 120" fill="none" width="${size}" height="${size}">` +
@@ -39,46 +39,38 @@ ${foot ? `<div class="foot">${mark(34)}<span>@tangentideas.ai</span></div>` : ''
 
 const S = [];
 // 1 cover
-S.push(page(1, `<h1 class="t">It&rsquo;s Men&rsquo;s Day and GTA&nbsp;6 release day.</h1><div class="t2">So I made 5 posters.</div>`,
-  `.t{margin-top:10px;font-size:88px;text-align:center} .t2{margin-top:10px;text-align:center;font:400 54px Anton,Impact,sans-serif;color:#ffd166;text-shadow:${SH}}
+S.push(page(1, `<h1 class="t">Happy Men&rsquo;s Day.</h1><div class="t2">Or, as men call it, GTA&nbsp;6 Day.</div>`,
+  `.t{margin-top:6px;font-size:104px;text-align:center} .t2{margin-top:6px;text-align:center;font:400 64px/1.05 Anton,Impact,sans-serif;color:#ffd166;text-shadow:${SH}}
    .foot:before{content:"Swipe \\2192";margin-right:auto}`));
 // 2 cheat code
-S.push(page(2, `<div class="chip">1 of 5 &middot; A real Vice City cheat code</div>
-<h1>The Men&rsquo;s Day cheat code every man wants today:</h1><div class="code">LEAVEMEALONE</div>`,
-  `h1{font-size:58px;max-width:900px} .code{margin-top:10px;font:400 96px Anton,Impact,sans-serif;letter-spacing:.04em;color:#ffd166;text-shadow:${SH}}`));
+S.push(page(2, `<h1>The Men&rsquo;s Day cheat code:</h1><div class="code">LEAVEMEALONE</div>`,
+  `h1{font-size:62px} .code{margin-top:6px;font:400 112px Anton,Impact,sans-serif;letter-spacing:.03em;color:#ffd166;text-shadow:${SH}}`));
 // 3 check-up
-S.push(page(3, `<div class="chip">2 of 5</div>
-<h1>In GTA, you get a second life. In real life, you don&rsquo;t. Book that health check-up.</h1>`,
-  `h1{font-size:58px;max-width:960px}`));
-// 4 main characters (sky band is only ~20%: keep the headline compact)
-S.push(page(4, `<div class="chip">3 of 5</div>
-<h1>Happy Men&rsquo;s Day to every man. Today, you&rsquo;re all main characters.</h1>`,
-  `.s{padding-top:26px} h1{margin-top:8px;font-size:46px;max-width:none}`));
+S.push(page(3, `<h1>Real life has no respawn.</h1><div class="y">Book the check-up.</div>`,
+  `h1{font-size:76px} .y{margin-top:6px;font:400 64px Anton,Impact,sans-serif;color:#ffd166;text-shadow:${SH}}`));
+// 4 main characters (sky band is narrow: keep it compact)
+S.push(page(4, `<h1>No NPCs today.</h1><div class="y">Every man is a main character.</div>`,
+  `.s{padding-top:30px} h1{margin-top:0;font-size:70px} .y{margin-top:2px;font:400 44px Anton,Impact,sans-serif;color:#ffd166;text-shadow:${SH}}`));
 // 5 then & now
-S.push(page(5, `<div class="chip">4 of 5</div>
-<h1>He played Vice City in a cyber caf&eacute; at 12. Now he has a job, EMIs and a kid.</h1>
-<div class="sub">And today, GTA 6 is finally out.</div>`,
-  `.s{padding-top:30px} h1{margin-top:10px;font-size:44px;max-width:none} .sub{margin-top:6px;color:#ffd166;font-size:27px}`));
+S.push(page(5, `<h1>Same player. Harder level.</h1><div class="y">From Vice City to GTA 6.</div>`,
+  `h1{font-size:80px} .y{margin-top:6px;font:400 46px Anton,Impact,sans-serif;color:#ffd166;text-shadow:${SH}}`));
 // 6 missions (card on the open-sky left side)
-S.push(page(6, `<div class="chip">5 of 5</div>
-<div class="card"><div class="ct">Your Men&rsquo;s Day missions</div>
+S.push(page(6, `<div class="card"><div class="ct">Before you press Start:</div>
 <div class="m"><span class="bx"></span>Call your dad.</div>
 <div class="m"><span class="bx"></span>Text the friend who went quiet.</div>
-<div class="m"><span class="bx"></span>Tell a man you&rsquo;re proud of him.</div>
-<div class="then">Then play GTA 6. You&rsquo;ve earned it.</div></div>`,
-  `.card{margin-top:22px;width:560px;background:rgba(26,15,34,.82);border:3px solid #ffd166;border-radius:14px;padding:30px 32px;
+<div class="m"><span class="bx"></span>Tell a man you&rsquo;re proud of him.</div></div>`,
+  `.card{margin-top:10px;width:560px;background:rgba(26,15,34,.82);border:3px solid #ffd166;border-radius:14px;padding:30px 32px;
    box-shadow:0 14px 40px rgba(0,0,0,.4)}
-   .ct{font:400 50px/1.05 Anton,Impact,sans-serif;color:#ffd166;margin-bottom:18px}
-   .m{display:flex;gap:16px;align-items:center;font:700 31px/1.2 Inter;padding:10px 0}
-   .bx{flex:none;width:30px;height:30px;border:3px solid #fff;border-radius:6px}
-   .then{margin-top:16px;padding-top:16px;border-top:2px solid rgba(255,209,102,.5);font:400 40px/1.1 Anton,Impact,sans-serif}`));
+   .ct{font:400 54px/1.05 Anton,Impact,sans-serif;color:#ffd166;margin-bottom:16px}
+   .m{display:flex;gap:16px;align-items:center;font:700 32px/1.2 Inter;padding:11px 0}
+   .bx{flex:none;width:32px;height:32px;border:3px solid #fff;border-radius:6px}`));
 // 7 maker card
-S.push(page(7, `<div class="card"><div class="ct">I made these posters with AI.</div>
-<div class="cs">Follow me for more art, apps and stories.</div>
+S.push(page(7, `<div class="card"><div class="ct">Made with AI by a guy who should be playing GTA 6 right now.</div>
+<div class="cs">Follow for more art, apps and stories.</div>
 <div class="rows"><div><span>Instagram</span>@tangentideas.ai</div><div><span>YouTube</span>@tangentideasai</div>
 <div><span>Medium</span>@tangentideasai</div><div><span>Web</span>tangentideas.ai</div></div></div>`,
-  `.card{margin:110px auto 0;width:820px;background:rgba(26,15,34,.85);border:3px solid #ffd166;border-radius:14px;padding:44px 52px}
-   .ct{font:400 58px/1.05 Anton,Impact,sans-serif;text-wrap:balance} .cs{margin-top:12px;font:700 32px/1.3 Inter;color:#ffd166}
+  `.card{margin:90px auto 0;width:840px;background:rgba(26,15,34,.85);border:3px solid #ffd166;border-radius:14px;padding:44px 52px}
+   .ct{font:400 54px/1.08 Anton,Impact,sans-serif;text-wrap:balance} .cs{margin-top:14px;font:700 32px/1.3 Inter;color:#ffd166}
    .rows{margin-top:28px;display:grid;gap:10px;font:600 30px Inter} .rows span{display:inline-block;width:190px;color:#c9b8d8}`, false));
 
 const browser = await chromium.launch();
