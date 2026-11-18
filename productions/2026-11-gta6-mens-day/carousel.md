@@ -15,7 +15,7 @@ V: An illustrated Indian city street at sunset, poster style, sky space for the 
 
 ### Slide 2
 H: The Men's Day cheat code every man wants today: LEAVEMEALONE
-B: 1 of 5
+B: 1 of 5 · A real Vice City cheat code
 V: A man in a banian lounging on a plastic chair on a terrace at sunset, game controller in hand
 
 ### Slide 3
@@ -39,14 +39,14 @@ B: 5 of 5 · Then play GTA 6. You've earned it.
 V: A man on a motorbike at a sunset overlook above the city; the three missions on a mission card
 
 ### Slide 7
-H: The man who made these posters, with AI. Follow him for more art, apps and stories.
+H: I made these posters with AI. Follow me for more art, apps and stories.
 B: Instagram @tangentideas.ai · YouTube @tangentideasai · Medium @tangentideasai · tangentideas.ai
 V: A sunset city skyline, with the maker card
 
 ## Caption
 It's International Men's Day. It's also GTA 6 release day. So I made 5 posters. 🎮
 
-Swipe to the last one before you start playing.
+Swipe to poster 5 before you start playing.
 
 Happy Men's Day to every man, and to every boy who grew up on Vice City. (LEAVEMEALONE really was a Vice City cheat code. It cleared your wanted level.)
 
