@@ -1,0 +1,47 @@
+# The Museum of Men: the video (YouTube Short + LinkedIn native)
+
+**Request, verbatim (Sparsh, 2026-11-19):** "for linkedin and youtube, should we create a full video
+(not a slide show of existing slides but a full animated video) of the various exhibits? Maybe we
+just open with the image of slide 9 without the text, and just 'travel in' to the image, exhibit
+by exhibit where for each exhibit the corresponding text from its standalone slide appears, till
+the end after all exhibits have been traversed through and the final frame is basically the last
+slide exhibit 8? Note that this should render as a high production quality video." He also asked
+whether to post natively on both platforms, or on YouTube with LinkedIn pointing to it.
+
+## Proposed build (waiting on Sparsh: spend approval and two choices)
+
+**Why not just zoom into slide 9:** zooming into one 2K still turns to mush. The far plinths in
+that image are tiny, and they don't match the hero images.
+
+**Instead:** Veo 3.1 Frames-to-Video camera moves between our existing stills.
+- Start frame = the row (slide 9's image). End frame = exhibit 1's image.
+- Then exhibit N → exhibit N+1, as a dolly along the gallery.
+- Each move lands exactly on the original still. We hold there 3-4 s with a slow code push-in
+  while the line fades in, so the text and the phone chat stay razor-sharp.
+
+**Shot order:**
+1. Open on the row, with the label: The Museum of Men / Things men never throw away.
+2. Travel in through exhibits 1 to 7, holding longest on the phone (the turn).
+3. Pull back out to the full row: "Men keep a lot to themselves. Today, ask one how he's really
+   doing."
+4. End on the exhibit 8 wall: Happy International Men's Day plus the maker card.
+
+**Specs:**
+- Master is 9:16 (YouTube Short). Derive a 4:5 for LinkedIn.
+- The 4:5 stills get outpainted to 9:16 (extra wall and floor) before Veo.
+- Target length about 60 s.
+- Captions are burned in, because most people watch muted.
+
+**Audio:** gallery room tone from Veo, plus an original, quiet score (Lyria if the key allows,
+else synthesized in code). Never trending or licensed audio.
+
+**Disclosure:**
+- The end card says "made… with AI".
+- YouTube's altered/synthetic toggle is on.
+- The caption states that the images and video are AI-made.
+
+**Knowledge-law exception (CLAUDE.md last line):** `genvideo-playbook.md` §2 says generated video
+is b-roll only. Here it is the subject.
+- Why the exception: the piece is AI art presented as AI art. It is disclosed on screen and in the
+  caption, uses no real people, and claims no photography or pipeline output it isn't.
+- Logged here. Critic agreement is still to be obtained before publish.
