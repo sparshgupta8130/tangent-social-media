@@ -11,7 +11,10 @@ last two exhibits turn warm: what he gives up, and his phone, so call him.
 
 | File | What |
 |---|---|
-| `message-brief.md` | One-line message, audience, arc, tone, open decisions |
+| `message-brief.md` | First Message Brief. Its arc and exhibits are superseded by `carousel.md` (see the log) |
+| `carousel.md` | The copy: 10 slides, picture notes, caption |
+| `lint.txt` | `clarity_lint` output |
+| `critiques/` | Cold-read packet and reports |
 
 ## Decision log
 - 2026-11-18: Sparsh picked idea #1 (Museum of Men) from the slate.
@@ -27,7 +30,7 @@ last two exhibits turn warm: what he gives up, and his phone, so call him.
 - 2026-11-18: the last slide is the standard "follow us" channels slide (Sparsh).
 
 ## Status
-Message Brief drafted. Waiting on Sparsh: beats, exhibit list, photographed or generated.
+Copy written and linted (0 FAIL). Cold read running.
 - 2026-11-18: Sparsh: with the dad anchor and the memory slide, the post reads like Father's
   Day, not Men's Day. Showrunner agrees. Proposed fix, waiting on Sparsh:
   - exhibits come from different men (dad, brother, nana, best friend, husband, colleague);
@@ -40,3 +43,11 @@ Message Brief drafted. Waiting on Sparsh: beats, exhibit list, photographed or g
   his dad's angle if it overfits; Showrunner recommends dropping it from this post.
   - New proposal: one thread, "things men never throw away". It escalates from silly keeping to
     what he keeps inside (an empty plinth). Waiting on Sparsh.
+- 2026-11-18: Sparsh: use AI images. The empty plinth is not clear without text, so find another
+  visual for "men hiding something inside".
+  - Showrunner picked: his phone, with a message typed but never sent ("Honestly bro, I'm not
+    doing okay").
+  - Considered: a sealed, unsent letter (less current) and a pressure cooker (reads as men
+    exploding).
+  - The almirah line was made plain ("always locked") so the phone carries the turn alone.
+  - New one-line message: "Men keep everything, even how they really feel. Ask them."
