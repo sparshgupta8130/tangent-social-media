@@ -51,3 +51,38 @@ Copy linted. Image session and cold read running.
     violet sunset, wet reflections, a Marine Drive-style coast.
   - The cover became a three-men key-art shot.
   - Not copied: the GTA logo and font, the bandana couple (GTA VI's leads), brand logos.
+- 2026-11-19: v3 key-art images landed (session_01ETPVMPQ62xUQ4kXWnZYX7j; `assets/gen-v3/README.md`).
+  Slides re-rendered with v2 copy → `slides/`. Weak spots, per the image session and the Showrunner:
+  - the img-02 face leans cartoon;
+  - the img-05 boy has big cartoon eyes;
+  - img-03's top band is wall plus window, not sky.
+- 2026-11-19: Sparsh: regenerate slides 2 and 5, then upload to Post 7.
+  - Regen session: session_01ETPVMPmryYn8kMYyniWtki → `assets/gen-v3b/`.
+  - Drive Post 7 (1YCmknRLuqMvpSy3lzrFW-QyN_TRnsSIR): slide-01, 03, 04, 06, 07 and caption.txt
+    are uploaded. Slides 02 and 05 follow after the regen.
+- 2026-11-19: **First-time reader (Sparsh's wife) failed v2.** It read as "a random set of
+  images", with no connection between slides and no hint that each slide is a separate pun; the
+  check-up slide in the middle made no sense. A real reader's verdict beats the AI cold-read PASS
+  (cold-read skill rule). Sparsh asked for a rethink.
+  - Proposed: A, one man's life told through three GTA releases (Vice City → GTA V → GTA 6) as a
+    single story (recommended); B, "If a man's life were GTA" with game mechanics; C, a single
+    image (the voucher or the couch). Waiting on Sparsh.
+  - Verified release years: GTA V on 17 Sep 2013 (Giant Bomb release list; HEXUS); Vice City on
+    PC in May 2003. GTA IV's year was not verified, so it is not used.
+- 2026-11-19: Sparsh asked for final outputs of BOTH A and B, set in GTA's font as other brands
+  did.
+  - Font: Pricedown Black. Typodermic's free desktop licence covers advertising and rendered
+    graphics but not sharing font files (per a web search, 2026-11-19; the build session
+    verifies the bundled licence). So the font is downloaded at build time and git-ignored,
+    never committed.
+  - Still not used: the GTA logo or "grand theft" wordmark, characters, brand logos.
+  - Copy: `optA/carousel.md` and `optB/carousel.md` (lint 0 FAIL each). Two build sessions
+    produce images and slides; a cold read runs on both.
+- 2026-11-19: Option A slides landed (session_01ETPVMNAgrWUka4sohQFQn4, Pricedown via Typodermic's
+  free desktop pack; EULA v260817 §2.2 permits rendered images).
+  - Licence caveat from that session: §2.1 ties install to a personal "Workstation", and the
+    render ran in a cloud container. For the cleanest compliance Sparsh can re-render on his own
+    laptop.
+- Option B landed in Anton (session_01ETPVMNND9cfbvARXBJ5N6g could not download the font: 406)
+  and still had the old slide-3 line. The A session was asked to re-render B in Pricedown with
+  "Resting doesn't fix it."
