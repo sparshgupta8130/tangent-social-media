@@ -28,3 +28,9 @@ last two exhibits turn warm: what he gives up, and his phone, so call him.
 
 ## Status
 Message Brief drafted. Waiting on Sparsh: beats, exhibit list, photographed or generated.
+- 2026-11-18: Sparsh: with the dad anchor and the memory slide, the post reads like Father's
+  Day, not Men's Day. Showrunner agrees. Proposed fix, waiting on Sparsh:
+  - exhibits come from different men (dad, brother, nana, best friend, husband, colleague);
+  - the turn becomes the "all good 👍" text (men's wellbeing, from idea #5);
+  - the memory slide stays, as one man among them, and its call to action widens to
+    "check on the men in your life".
