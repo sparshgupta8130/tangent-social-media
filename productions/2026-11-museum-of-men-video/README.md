@@ -143,3 +143,8 @@ paid API calls, the same pipeline as the carousel, a few calls only). No paid vi
   lowered and `-tune film` dropped, CRF stays 18.
 - Not yet done: G2 critique, G3 brand review, cold-read, Sparsh's SHIP. Critic agreement on the
   gen-video exception is still owed (see above).
+- 2026-11-19: v1 delivered to Sparsh (`out/museum-of-men-9x16.mp4`, 1080x1920, and
+  `out/museum-of-men-4x5.mp4`, 1080x1350; 59.3 s, H.264/AAC, -14 LUFS).
+  - The Showrunner reviewed the contact sheet and the artefact notes. One open point: the video
+    end card still carries "Images made with AI", which Sparsh removed from the carousel end card.
+    Asked whether to match.
