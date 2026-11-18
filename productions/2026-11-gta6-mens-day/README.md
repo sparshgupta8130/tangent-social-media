@@ -41,3 +41,6 @@ Copy linted. Image session and cold read running.
   Lint 0 FAIL; v2 cold read running.
 - 2026-11-19: Sparsh: no explanation line under LEAVEMEALONE on slide 2. Removed; the caption
   still explains it.
+- 2026-11-19: style test → Sparsh picked **S2 "geometric poster"**. `image-prompts.md` BASE was
+  updated, and image 2's lungi became pyjama shorts (the model never drew a lungi). Full redraw
+  is running.
