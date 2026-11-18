@@ -43,6 +43,8 @@ html,body{margin:0;width:1080px;height:1080px;overflow:hidden;color:#fff}
 .o{paint-order:stroke fill;-webkit-text-stroke:var(--sw,12px) #000;filter:${DROP}}
 h1{margin:0;font:400 var(--hs,66px)/1.02 ${HEAD};letter-spacing:.01em;text-wrap:balance}
 .b{margin-top:8px;font:400 var(--bs,40px)/1.08 ${HEAD};color:#ffd166;--sw:9px;letter-spacing:.01em;text-wrap:balance}
+/* With Pricedown, small B lines switch to Inter 800 (Pricedown's 1 reads as I at small sizes; same call as optA). */
+${PRICEDOWN ? `.b:not(.pd){font:800 calc(var(--bs,40px) * 1.0)/1.14 Inter,sans-serif;--sw:8px;letter-spacing:-.005em}` : ''}
 .spacer{flex:1}
 .foot{display:flex;align-items:flex-end;gap:10px}
 .handle{margin-left:auto;display:flex;gap:9px;align-items:center;font:700 22px Inter;text-shadow:0 2px 0 #000,0 0 3px #000,0 3px 12px rgba(0,0,0,.6)}
@@ -58,7 +60,7 @@ const star = (s) => `<svg width="${s}" height="${s}" viewBox="0 0 100 100"><poly
 const stars = `<div class="stars">${star(62).repeat(5)}</div>`;
 const health = `<div class="hp"><svg width="44" height="40" viewBox="0 0 100 90"><path d="M50 86 C10 58 2 38 8 22 C16 2 42 4 50 22 C58 4 84 2 92 22 C98 38 90 58 50 86Z" fill="#ff3b3b" stroke="#000" stroke-width="9" stroke-linejoin="round"/></svg>
   <div class="bar"><div class="fill"></div></div></div>`;
-const money = `<div class="money"><div class="in o">+&#8377; salary</div><div class="out o">&minus;&#8377; EMI</div></div>`;
+const money = `<div class="money"><div class="in o">+<span class="rs">&#8377;</span> salary</div><div class="out o">&minus;<span class="rs">&#8377;</span> EMI</div></div>`;
 const box = (done) => `<span class="bx">${done ? '<svg viewBox="0 0 24 24" width="26" height="26"><path d="M4 12.5l5 5L20 6" fill="none" stroke="#7CFC8A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>' : ''}</span>`;
 const cheat = `<div class="cheat"><span class="code">LEAVEMEALONE</span><span class="cur"></span></div>`;
 
@@ -68,21 +70,21 @@ S.push(page(1, `<h1 class="o" style="text-align:center">If an Indian man&rsquo;s
   `.s{padding-top:30px} h1{--hs:${PRICEDOWN ? 86 : 84}px;line-height:.98;max-width:900px;margin:0 auto}
    .swipe{font:800 30px Inter;text-shadow:0 2px 0 #000,0 0 3px #000,0 3px 12px rgba(0,0,0,.6);margin-left:auto;margin-right:22px}
    .handle{margin-left:0}`,
-  `<div class="b o" style="--bs:46px;margin:0">A Men&rsquo;s Day special</div><span class="swipe">Swipe &rarr;</span>`));
+  `<div class="b o pd" style="--bs:46px;margin:0">A Men&rsquo;s Day special</div><span class="swipe">Swipe &rarr;</span>`));
 // 2 wanted level: stars top-right on the headline row
 S.push(page(2, `<div class="row"><h1 class="o">Wanted level: 5&nbsp;stars.</h1>${stars}</div>
 <div class="b o">Relatives asking when he&rsquo;s getting married.</div>`,
   `.row{display:flex;align-items:center;gap:20px} .row h1{--hs:62px;white-space:nowrap} .stars{margin-left:auto;display:flex;gap:2px;filter:${DROP}}
    .b{--bs:36px}`));
 // 3 health
-S.push(page(3, `<h1 class="o">Health: back pain at&nbsp;32.</h1><div class="b o">Doesn&rsquo;t refill.</div>${health}`,
+S.push(page(3, `<h1 class="o">Health: back pain at&nbsp;32.</h1><div class="b o">Resting doesn&rsquo;t fix&nbsp;it.</div>${health}`,
   `h1{--hs:68px} .hp{margin-top:18px;display:flex;align-items:center;gap:12px;filter:${DROP}}
    .bar{width:380px;height:34px;border:5px solid #000;border-radius:6px;background:rgba(40,10,20,.75);padding:3px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.25)}
    .fill{width:9%;height:100%;background:linear-gradient(#ff6b6b,#d61f1f);border-radius:2px}`));
 // 4 money: readout on the open left side, below the headline
 S.push(page(4, `<h1 class="o">Money: salary in, EMI&nbsp;out.<br>Same minute.</h1>${money}`,
   `h1{--hs:64px;max-width:960px} .money{margin-top:22px;font:400 54px/1.08 ${HEAD};--sw:10px}
-   .in{color:#5ef08a} .out{color:#ff5050}`));
+   .in{color:#5ef08a} .out{color:#ff5050} .rs{font-family:Inter,sans-serif;font-weight:900;font-size:.9em} /* display faces lack the rupee glyph */`));
 // 5 side missions: B line rendered as the mission checklist (same words, split per item)
 S.push(page(5, `<h1 class="o">Side missions: never&#8209;ending.</h1>
 <div class="card"><div class="m">${box(true)}<span>Drop Mummy at the temple.</span></div>
