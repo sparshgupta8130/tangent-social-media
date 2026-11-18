@@ -33,3 +33,9 @@ Copy linted. Image session and cold read running.
 - 2026-11-19: Sparsh: the style is close to GTA but the drawing could be better, "more straight
   line strokes". The current images use sketchy comic hatching and wobbly ink. A style test is
   running on 2 images × 3 cleaner styles (`assets/style-test/`) before a full regeneration.
+- 2026-11-19: Sparsh: the cover "sucks" and every title is too verbose, so the carousel reads
+  like a flat slide deck. v2 copy (`carousel.md`; v1 kept as `carousel-v1.md`):
+  - one short line per poster, in game language (respawn, NPCs, level, press Start);
+  - counter chips dropped;
+  - end card made self-aware.
+  Lint 0 FAIL; v2 cold read running.
