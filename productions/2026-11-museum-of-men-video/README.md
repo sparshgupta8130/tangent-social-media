@@ -57,3 +57,80 @@ is b-roll only. Here it is the subject.
     and Testing" (session_01ETPVMLx25AFBqSuyBf3GjT).
   - Optional upgrade: true Veo camera moves made by Sparsh in Flow on his Ultra credits, from a
     frame-pair kit we prepare, then swapped into the same edit.
+
+## v1 build (open-source 2.5D), 2026-11-19
+
+**Outputs (`out/`, 59.3 s; 9:16 = 25.1 MB, 4:5 = 18.2 MB):** `museum-of-men-9x16.mp4` (1080x1920 master, YouTube Short),
+`museum-of-men-4x5.mp4` (1080x1350, LinkedIn/IG feed, re-composited, not a crop),
+`cover-9x16.jpg` (the title frame), `contact-sheet.jpg` (16 moments). 30 fps, H.264 High CRF 18,
+yuv420p, AAC 192 kb/s 48 kHz stereo, `+faststart`. The repo's `.gitignore` excludes `*.mp4`, so the two
+files were added with `git add -f`.
+
+**Re-render (in order, from this folder):**
+1. `python outpaint.py` – Nano Banana Pro (`gemini-3-pro-image`, Gemini API, `GEMINI_API_KEY`)
+   extends each 4:5 still (slides 02-09) to a 3300x3300 stage: wall above, floor below, gallery to
+   each side (side room is what the lateral glides travel through). Raw returns in `work/gen/`.
+2. `python seamscore.py` – scores how visible the photo's rectangle is in each outpaint. 05 and 07
+   failed on the first call (score 21 / 17, a visible box); re-rolled, picks are pinned in
+   `stage.py` `PICK` (05 → o6, 07 → o2). 13 image calls in all.
+3. `python stage.py` – registers each outpaint to the original (ECC affine; all within ±7 px),
+   pulls the outpaint's edge onto the original's edge values, pastes the **original pixels 1:1**
+   (every exhibit pixel is the approved still), then Depth Anything V2 Small → disparity maps.
+4. `node overlays.mjs` – Playwright renders every text layer per format (9:16 `v`, 4:5 `p`) and
+   the phone screen (all 34 typing states x cursor on/off) as transparent PNGs, Google Fonts.
+5. `python build.py v` / `python build.py p` – renders + encodes the picture (`--check` reports any
+   camera that would leave the canvas; `--frames a,b --out DIR` renders stills for review).
+6. `python score.py work/score.wav` – the score. 7. `python mux.py` – out/ files.
+`work/` is gitignored (canvases, depth, overlays, intermediates); everything regenerates from the
+scripts plus the picks in `../2026-11-museum-of-men/assets/gen/pick/`.
+
+**The edit (59.3 s):** 0–5.4 the row (slide 09), slow dolly with depth parallax, title fades in at
+0.1 s and out by 4.5 s → 5.4–6.2 match-dissolve into exhibit 1 (the drawer is aligned by size and
+position: same frame spot, zoom ratio 704/748 from the measured drawer widths) → exhibits 1–6,
+4.2 s holds with a slow parallax push-in, label + line fade in 0.2 s after landing → 1.1 s lateral
+glides between them (cubic in-out, 700 px travel, extra depth parallax, 5-sample 180° motion blur,
+crossfade only in the middle 26%) → exhibit 7 holds 6.8 s: push-in from the gallery framing to the
+phone (3.85x in 9:16, 3.3x in 4:5); the chat is drawn in code and tracked exactly to the screen
+rect; the draft types itself out at 2.6 s, then the cursor blinks; send is never pressed → hard
+cut to the row, slow pull-back, the close line in light type with shadow → 1.2 s cross-dissolve to
+the gallery wall (slide 03's top) with "Happy International Men's Day" and the maker card →
+0.5 s fade out. Copy is verbatim from `../2026-11-museum-of-men/carousel.md`; only line breaks
+were added (at sentence ends) for the narrow frame. The maker card also carries "Images made with
+AI" (that line is in carousel.md slide 10 B). Text sits between y 262 and ~1500 in 9:16 (outside
+the top 220 / bottom 380 Shorts UI).
+
+**Audio:** original, synthesised in `score.py` (no samples): felt-piano model + detuned-saw pad,
+70 BPM in D (Dmaj9–Bm9–Gmaj7–Aadd4), a lift at the phone (Em9–F#m7–Gadd9–Asus, higher voicing,
+pad swell), space on the return to the row, resolve to D on the end card; synthetic-IR reverb;
+room tone = filtered noise; a faint air movement under each glide. No footsteps, no meme audio.
+Mastered: −14.0 LUFS integrated, −1.3 dBTP (ffmpeg ebur128 confirms).
+
+**Tools and licences:** Python 3, NumPy (BSD), SciPy (BSD), OpenCV (Apache-2.0), PyTorch (BSD),
+Hugging Face transformers (Apache-2.0), Depth Anything V2 **Small** weights (Apache-2.0; the Base/
+Large weights are CC-BY-NC and were not used), pyloudnorm (MIT), soundfile (BSD), Playwright
+(Apache-2.0) + Chromium, FFmpeg/libx264 (GPL; used as a tool, not distributed), Fraunces + Inter
+(SIL OFL, Google Fonts). Images: Nano Banana Pro (the original picks + border-only outpaints;
+paid API calls, the same pipeline as the carousel, a few calls only). No paid video generation.
+
+**Honest notes on artefacts (self-review, frame by frame at every transition):**
+- It is 2.5D, not real camera motion: the depth map is heavily smoothed so nothing tears, which
+  means the parallax is gentle and the wall right behind an object moves very slightly with it.
+  No tearing, folding or stretched edges were found in the review frames.
+- The glides cross-fade two different rooms in their middle third; with motion blur it reads as a
+  fast move, but on a paused frame you see a double exposure. That is by design.
+- The phone push-in ends at ~2.2x upsampling of the 2K still, so the phone body/stand is soft at
+  full zoom; the chat itself is rendered at frame resolution and is sharp.
+- The end-card wall is slide 03's wall upscaled ~1.2x: plain wall, soft by nature.
+- Outpainted margins are Nano Banana's; they show mostly during glides and at the frame edges.
+  Slide 04's side walls have faint specks at full resolution (not noticeable in motion).
+- Retouch: the small ceiling downlight in the row image (slide 09) sat exactly between "lot" and
+  "to" in the close line and read like a hyphen; it is cloned out of the video canvas
+  (`stage.py` `RETOUCH`). The carousel's slide 9 is unchanged.
+- Two exhibit lines wrap with a one-word last line in 9:16 ("…throw them / away.") — left as is; it reads fine.
+- A light film grain is added to every frame so the wall gradients don't band in H.264.
+- Disclosure: on-screen on the end card ("with AI", "Images made with AI"); the caption should
+  also say the images and the camera moves are AI/code-made; tick YouTube's altered/synthetic toggle.
+- File sizes: the first 9:16 encode was 47.8 MB (over the 45 MB cap) because of the grain; grain was
+  lowered and `-tune film` dropped, CRF stays 18.
+- Not yet done: G2 critique, G3 brand review, cold-read, Sparsh's SHIP. Critic agreement on the
+  gen-video exception is still owed (see above).
