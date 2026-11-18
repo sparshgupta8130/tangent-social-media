@@ -68,3 +68,9 @@ Copy: lint 0 FAIL, cold read PASS. All 10 slides rendered in `slides/`. Waiting 
 - 2026-11-18: slides built. Slide 8 is a zoomed crop so the chat is readable. A small added detail:
   Rahul's incoming "Kaisa hai bhai? 🙂" gives the unsent draft its context. Disclosure
   "Images made with AI" is on the cover and the end card, and in the caption.
+- 2026-11-19: Sparsh asked for a 1:1 version. `build_square.mjs` renders it to `slides-square/`
+  (1080×1080): a per-slide square crop of the same images, with type scaled down. The 4:5 set in
+  `slides/` is kept.
+- 2026-11-19: GTA 6 tie-in: Sparsh doesn't want "Exhibit 9" framing in the feed, because the
+  order of feed posts isn't fixed. It works only in Stories. He liked the leave application and
+  the calendar; more ideas were requested. It will be a separate production.
