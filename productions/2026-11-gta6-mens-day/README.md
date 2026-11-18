@@ -88,3 +88,9 @@ Copy linted. Image session and cold read running.
   "Resting doesn't fix it."
 - 2026-11-19: Option B re-rendered in Pricedown with "Resting doesn't fix it." (commit a0b9c37,
   by the Option A session). Both A and B are final, waiting on Sparsh's pick and his wife's read.
+- 2026-11-19: **Sparsh picked Option B.** Drive Post 7: the 5 void v2 slides and the old caption
+  were moved to Drive trash. The 8 Option B slides and the B caption.txt were uploaded (sizes
+  match local).
+- 2026-11-19: post order: the Showrunner recommends Post 7 (GTA) first, in the IST morning, and
+  Post 6 (Museum) in the evening. This flips the earlier plan; reasons in chat. There is no
+  own-data on best times yet (benchmarks empty).
