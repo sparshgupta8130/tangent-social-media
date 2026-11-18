@@ -59,9 +59,9 @@ H: Men keep a lot to themselves. Today, ask one how he's really doing.
 V: The empty gallery, the plinths in a row, all lights soft
 
 ### Slide 10
-H: Follow along for more things I make with AI.
-B: Instagram @tangentideas.ai · YouTube @tangentideasai · Medium @tangentideasai · tangentideas.ai
-V: Channels, one per row
+H: The man who made this museum, with AI. Follow him for more art, apps and stories.
+B: Exhibit 8 · The maker · Instagram @tangentideas.ai · YouTube @tangentideasai · Medium @tangentideasai · tangentideas.ai · Images made with AI
+V: A museum label card on the gallery wall (no photo, Sparsh's call). The handles are listed on the card.
 
 ## Caption
 The Museum of Men: things men never throw away. 😄

@@ -16,6 +16,8 @@ last two exhibits turn warm: what he gives up, and his phone, so call him.
 | `lint.txt` | `clarity_lint` output |
 | `critiques/` | Cold-read packet and reports (copy phase: PASS) |
 | `image-prompts.md` | Nano Banana prompts for the 9 image slides |
+| `assets/gen/` | Generated images, picks, contact sheet, provenance README |
+| `build.mjs` → `slides/` | Renders the 10 final slides (1080×1350) |
 
 ## Decision log
 - 2026-11-18: Sparsh picked idea #1 (Museum of Men) from the slate.
@@ -31,7 +33,7 @@ last two exhibits turn warm: what he gives up, and his phone, so call him.
 - 2026-11-18: the last slide is the standard "follow us" channels slide (Sparsh).
 
 ## Status
-Copy: lint 0 FAIL, cold read PASS (`critiques/cold-read-copy.md`). Next: generate the images, then build the slides in code.
+Copy: lint 0 FAIL, cold read PASS. All 10 slides rendered in `slides/`. Waiting on Sparsh's review and SHIP.
 - 2026-11-18: Sparsh: with the dad anchor and the memory slide, the post reads like Father's
   Day, not Men's Day. Showrunner agrees. Proposed fix, waiting on Sparsh:
   - exhibits come from different men (dad, brother, nana, best friend, husband, colleague);
@@ -60,3 +62,9 @@ Copy: lint 0 FAIL, cold read PASS (`critiques/cold-read-copy.md`). Next: generat
   `assets/gen/`, with a provenance README.
 - 2026-11-18: Sparsh wants an end-slide line that links Men's Day to what he builds with AI.
   Options proposed; waiting on his pick.
+- 2026-11-18: end slide: Sparsh picked option 1, as a label card only with no photo. The card
+  reads "Exhibit 8 · The maker: The man who made this museum, with AI. Follow him for more art,
+  apps and stories", with a disclosure line.
+- 2026-11-18: slides built. Slide 8 is a zoomed crop so the chat is readable. A small added detail:
+  Rahul's incoming "Kaisa hai bhai? 🙂" gives the unsent draft its context. Disclosure
+  "Images made with AI" is on the cover and the end card, and in the caption.
