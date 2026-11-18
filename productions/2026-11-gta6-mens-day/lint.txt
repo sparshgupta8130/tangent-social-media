@@ -1,0 +1,22 @@
+clarity_lint: carousel.md (carousel, 7 slides/beats, reading grade 3.6)
+
+HEADLINE-ONLY READ (do these lines alone tell the story?):
+  1. It's Men's Day and GTA 6 release day. So I made 5 posters.
+  2. The Men's Day cheat code every man wants today: LEAVEMEALONE
+  3. In GTA, you get a second life. In real life, you don't. Book that health check-up.
+  4. Happy Men's Day to every man. Today, you're all main characters.
+  5. He played Vice City in a cyber café at 12. Now he has a job, EMIs and a kid.
+  6. Your Men's Day missions: call your dad, text the friend who went quiet, tell a man you're proud of him.
+  7. The man who made these posters, with AI. Follow him for more art, apps and stories.
+
+[WARN] Slide 1: headline is 13 words (aim <= 12)
+[WARN] Slide 3: headline is 16 words (aim <= 12)
+[WARN] Slide 5: headline is 19 words: long for a glance (aim <= 12)
+[WARN] Slide 5: 29 on-screen words (aim <= 20)
+[WARN] Slide 6: headline is 20 words: long for a glance (aim <= 12)
+[WARN] Slide 6: 30 on-screen words (aim <= 20)
+[WARN] Slide 6: sentence of 20 words: "Your Men's Day missions: call your dad, text the friend who went quiet..."
+[WARN] Slide 7: headline is 16 words (aim <= 12)
+[WARN] Slide 7: 23 on-screen words (aim <= 20)
+
+0 FAIL, 9 WARN. PASS (mechanical checks only; now run /cold-read)

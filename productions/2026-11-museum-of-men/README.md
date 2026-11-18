@@ -33,7 +33,7 @@ last two exhibits turn warm: what he gives up, and his phone, so call him.
 - 2026-11-18: the last slide is the standard "follow us" channels slide (Sparsh).
 
 ## Status
-Copy: lint 0 FAIL, cold read PASS. All 10 slides rendered in `slides/`. Waiting on Sparsh's review and SHIP.
+**SHIP approved by Sparsh, 2026-11-19.** Post `ready-to-post/` (10 square slides, in order) with `ready-to-post/caption.txt`. Tick Instagram's AI label at upload. Waiting on the post time and URL.
 - 2026-11-18: Sparsh: with the dad anchor and the memory slide, the post reads like Father's
   Day, not Men's Day. Showrunner agrees. Proposed fix, waiting on Sparsh:
   - exhibits come from different men (dad, brother, nana, best friend, husband, colleague);
@@ -83,3 +83,7 @@ Copy: lint 0 FAIL, cold read PASS. All 10 slides rendered in `slides/`. Waiting 
   made this museum, with AI") and in the caption ("Images made with AI"). Also tick Instagram's
   AI label at upload, which also covers India's IT Rules 2026 labelling for realistic synthetic
   media. Do not remove the end-card line without adding another on-screen statement.
+- 2026-11-19: **SHIP** (Sparsh). Plan for the day:
+  - this carousel goes first, in the morning;
+  - the GTA 6 x Men's Day carousel goes 6-8 h later (`productions/2026-11-gta6-mens-day/`);
+  - both sets drip as Stories through the day.
