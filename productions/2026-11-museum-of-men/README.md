@@ -87,3 +87,6 @@ last two exhibits turn warm: what he gives up, and his phone, so call him.
   - this carousel goes first, in the morning;
   - the GTA 6 x Men's Day carousel goes 6-8 h later (`productions/2026-11-gta6-mens-day/`);
   - both sets drip as Stories through the day.
+- 2026-11-19: Sparsh kept the end card as it is. SHIP reconfirmed.
+- 2026-11-19: uploaded to Google Drive folder "Post 6" (1ZVuaqY1jfNxs3Ei7RInOgJmEbe-Erj_7):
+  slide-01..10.png (square; byte sizes match the local files) and caption.txt.
