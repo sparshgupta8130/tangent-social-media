@@ -17,7 +17,6 @@ V: Illustrated Indian city street at sunset, poster style
 
 ### Slide 2
 H: The Men's Day cheat code: LEAVEMEALONE
-B: A real Vice City cheat. It made the police leave you alone.
 V: A man in a banian lounging on a terrace chair with a controller, sunset
 
 ### Slide 3
