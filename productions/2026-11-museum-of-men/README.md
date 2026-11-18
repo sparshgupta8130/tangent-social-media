@@ -74,3 +74,12 @@ Copy: lint 0 FAIL, cold read PASS. All 10 slides rendered in `slides/`. Waiting 
 - 2026-11-19: GTA 6 tie-in: Sparsh doesn't want "Exhibit 9" framing in the feed, because the
   order of feed posts isn't fixed. It works only in Stories. He liked the leave application and
   the calendar; more ideas were requested. It will be a separate production.
+- 2026-11-19: Sparsh's edits, applied to both builds:
+  - removed the "The Museum of Men" / "n/10" header from every slide;
+  - removed the "Images made with AI…" line from the end card;
+  - removed the "Images made with AI" cover footer;
+  - lifted the slide 9 headline clear of the exhibits.
+- Disclosure check (CLAUDE.md #2): AI is still stated on-screen on the end card ("The man who
+  made this museum, with AI") and in the caption ("Images made with AI"). Also tick Instagram's
+  AI label at upload, which also covers India's IT Rules 2026 labelling for realistic synthetic
+  media. Do not remove the end-card line without adding another on-screen statement.

@@ -37,7 +37,7 @@ const BASE = `
 html,body{margin:0;width:1080px;height:1350px;overflow:hidden;color:${INK}}
 .slide{position:relative;width:1080px;height:1350px;padding:64px 80px 56px;display:flex;flex-direction:column}
 .top{display:flex;justify-content:space-between;font:600 22px Inter;letter-spacing:.18em;text-transform:uppercase;opacity:.62}
-.lbl{margin-top:54px;font:600 24px Inter;letter-spacing:.14em;text-transform:uppercase;color:${MUTED}}
+.lbl{margin-top:14px;font:600 24px Inter;letter-spacing:.14em;text-transform:uppercase;color:${MUTED}}
 h1{margin:18px 0 0;max-width:920px;font:400 66px/1.13 Fraunces,Georgia,serif;letter-spacing:-.012em;text-wrap:balance}
 .spacer{flex:1}
 .foot{display:flex;justify-content:space-between;align-items:center;font:500 24px Inter;opacity:.8}
@@ -47,7 +47,6 @@ h1{margin:18px 0 0;max-width:920px;font:400 66px/1.13 Fraunces,Georgia,serif;let
 
 const page = (n, inner, style, css = '', cls = '', footRight = '') => `<!doctype html><html><head><meta charset="utf-8">
 <style>${BASE}${css}</style></head><body style="${style}"><div class="slide ${cls}">
-<div class="top"><span>The Museum of Men</span><span>${n} / ${TOTAL}</span></div>
 ${inner}<div class="spacer"></div>
 <div class="foot"><span class="me">${mark(36)}<span>@tangentideas.ai</span></span><span>${footRight}</span></div>
 </div></body></html>`;
@@ -61,11 +60,11 @@ const S = [];
 S.push(page(1, `<div class="cov"><h1 class="t">The Museum of Men</h1>
 <div class="sub">Things men never throw away</div>
 <div class="ex">An exhibition for International Men&rsquo;s Day, 19 November</div></div>`,
-  bg(1), `.cov{margin-top:70px;text-align:center}
+  bg(1), `.cov{margin-top:40px;text-align:center}
 .t{max-width:none;margin:0;font:500 112px/1.02 Fraunces,Georgia,serif;letter-spacing:-.02em}
 .sub{margin-top:22px;font:400 58px/1.15 Fraunces,Georgia,serif}
 .ex{margin-top:30px;font:500 26px Inter;color:${MUTED}}`, '',
-  'Images made with AI &nbsp;&middot;&nbsp; Swipe &rarr;'));
+  'Swipe &rarr;'));
 
 // 2-7 exhibits
 S.push(exhibit(2, 1, 'The cable drawer', 'Chargers for phones nobody has used in years. Just in case.'));
@@ -100,7 +99,7 @@ S.push(exhibit(8, 7, 'His phone', 'One message he typed, but never sent.', C8, s
 
 // 9 the close (dark image, light text)
 S.push(page(9, `<h1 class="close">Men keep a lot to themselves. Today, ask one how he&rsquo;s really doing.</h1>`,
-  bg(9), `.close{margin-top:70px;font-size:70px;text-shadow:0 2px 18px rgba(0,0,0,.35)}`, 'dark'));
+  bg(9), `.close{margin-top:20px;font-size:70px;text-shadow:0 2px 18px rgba(0,0,0,.35)}`, 'dark'));
 
 // 10 the maker: label card only (Sparsh's call: no photo)
 const C10 = [560, 0, 736];
@@ -115,7 +114,6 @@ S.push(page(10, `<div class="card">
     <div><span>Medium</span>@tangentideasai</div>
     <div><span>Web</span>tangentideas.ai</div>
   </div>
-  <div class="disc">Images made with AI. Idea and words by a human.</div>
 </div>`, bg(3, C10),
   `.card{margin:110px auto 0;width:820px;background:#fbfaf7;border-radius:6px;padding:56px 60px 48px;
   box-shadow:0 18px 50px rgba(60,45,30,.18),0 2px 6px rgba(60,45,30,.10)}
