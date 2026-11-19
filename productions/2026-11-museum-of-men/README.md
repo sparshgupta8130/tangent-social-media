@@ -115,3 +115,11 @@ last two exhibits turn warm: what he gives up, and his phone, so call him.
     - the end card was renamed from slide-10 to slide-11;
     - new caption.txt uploaded.
   - `ready-to-post/` refreshed to match.
+- 2026-11-19: Sparsh caught that the row image (slide 10 in the carousel; the video's opening and
+  closing row shots) shows objects that don't match the individual exhibits. It was generated on
+  its own, and the Showrunner missed it in review.
+  - The fix is running: session_01ETPVMMMxjR4p8A7NSyhkYB regenerates the row with Nano Banana Pro,
+    using the 7 exhibit images as references. Outputs: `assets/gen/row-v2/` (4:5 and 9:16), plus a
+    new 9:16 `F0-row.jpg` for the video.
+  - The video edit session was told to swap it in.
+  - Drive slide-10 gets replaced after review.
