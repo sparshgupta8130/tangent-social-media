@@ -123,3 +123,9 @@ last two exhibits turn warm: what he gives up, and his phone, so call him.
     new 9:16 `F0-row.jpg` for the video.
   - The video edit session was told to swap it in.
   - Drive slide-10 gets replaced after review.
+- 2026-11-19: row-v2 landed (same objects, order and colours). Showrunner review against the
+  comparison:
+  - still not identical: phone box (clean vs scuffed), T-shirt print, keys count, drawer density;
+  - in the square crop, the far plinths (phone, remote) collide with the headline.
+  - Asked for row-v3: a 1:1 version with headroom, plus closer object fidelity in all versions.
+  - Slide 10 is not changed in Drive yet.
