@@ -47,7 +47,18 @@ H: Made with AI by a guy who should be playing GTA 6 right now.
 B: Follow for more art, apps and stories. · Instagram @tangentideas.ai · YouTube @tangentideasai · Medium @tangentideasai · tangentideas.ai
 V: Sunset skyline, maker card
 
-## Caption
+## Caption (v2, 2026-11-19; Sparsh didn't like v1, which is kept below)
+GTA 6 is finally here. Most Indian men have been playing on hard mode for years. 🎮
+
+Wanted level from relatives. Health bar from back pain. Money gone the minute the salary lands.
+
+We all know one man on 5 stars right now. Happy Men's Day to every man still playing.
+
+Posters made with AI. Idea and words are mine. Not affiliated with Rockstar Games.
+
+#GTA6 #InternationalMensDay #MensDay
+
+## Caption v1 (rejected)
 If an Indian man's life were GTA. 🎮 Happy Men's Day, and happy GTA 6 day.
 
 (LEAVEMEALONE really was a Vice City cheat code. It cleared your wanted level.)

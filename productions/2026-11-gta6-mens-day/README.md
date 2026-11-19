@@ -94,3 +94,9 @@ Copy linted. Image session and cold read running.
 - 2026-11-19: post order: the Showrunner recommends Post 7 (GTA) first, in the IST morning, and
   Post 6 (Museum) in the evening. This flips the earlier plan; reasons in chat. There is no
   own-data on best times yet (benchmarks empty).
+- 2026-11-19 (IST morning): Sparsh is posting Option B first and rejected caption v1. Caption v2
+  is in `optB/carousel.md`. Promotion plan given in chat:
+  - a story share with a poll;
+  - a collab invite or story from his personal handle;
+  - a few personal DMs;
+  - no pin (off-pillar).
