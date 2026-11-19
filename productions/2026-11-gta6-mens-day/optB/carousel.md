@@ -48,7 +48,7 @@ B: Follow for more art, apps and stories. · Instagram @tangentideas.ai · YouTu
 V: Sunset skyline, maker card
 
 ## Caption (v2, 2026-11-19; Sparsh didn't like v1, which is kept below)
-GTA 6 is finally here. Most Indian men have been playing on hard mode for years. 🎮
+GTA 6 is out today. For most Indian men, real life has been on hard mode for years. 🎮
 
 Wanted level from relatives. Health bar from back pain. Money gone the minute the salary lands.
 

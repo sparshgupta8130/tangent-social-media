@@ -100,3 +100,6 @@ Copy linted. Image session and cold read running.
   - a collab invite or story from his personal handle;
   - a few personal DMs;
   - no pin (off-pillar).
+- 2026-11-19: Sparsh: "playing GTA on hard mode for years" reads as literally playing the game on
+  hard difficulty. Caption line 1 now makes the life = game mapping explicit: "For most Indian
+  men, real life has been on hard mode for years."
