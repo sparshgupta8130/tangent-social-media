@@ -170,3 +170,6 @@ paid API calls, the same pipeline as the carousel, a few calls only). No paid vi
   no grain, no parallax. `F0-row` (slide 09, the video's opening framing), `F1-exhibit1` ...
   `F7-exhibit7` (slides 02-08 at each exhibit's landed framing; F7 = phone, screen blank, no chat),
   `F8-endwall` (the end-card wall from slide 03, without the card).
+- 2026-11-19: 9:16 Flow frames F0-F8 uploaded to Drive video-gpu-kit/flow-frames (sizes match
+  local). Sparsh doesn't want to read the guide; the Showrunner walks him through Flow
+  step by step in chat.
