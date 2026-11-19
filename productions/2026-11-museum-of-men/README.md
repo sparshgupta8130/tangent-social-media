@@ -131,3 +131,13 @@ last two exhibits turn warm: what he gives up, and his phone, so call him.
   - Slide 10 is not changed in Drive yet.
 - 2026-11-19: Sparsh: don't over-perfect the row image; fine details are OK to miss. Row-v3 limited to one round, with the priority on square headroom and recognisably the same objects.
 - 2026-11-19: row-v3 accepted: all 7 objects match their exhibits, and the square has clear space above the row. Slide 10 re-rendered from row-v3/pick-1x1.png. Drive Post 6: old slide-10 moved to trash, new one uploaded (1863020 bytes). The video's F0-row.jpg (9:16) was updated by the same session.
+
+## 2026-11-19 (afternoon): portrait re-render for Instagram
+- Sparsh: the 1:1 slides don't fit Instagram's current post frame. Checked first: ready-to-post was
+  the latest content (hashes identical to slides-square); the issue was the ratio, not the version.
+- Instagram's app and profile grid now default to 3:4 (1080x1440); 4:5 is the safe max for API/ads
+  (vendor guides: Buffer, Inro, Oktopost, Metricool, Sked; Meta docs not verified).
+- New `build_portrait.mjs` (same content as build_square.mjs, 3:4 frame, row-v3 4:5 source for the
+  close slide, end card centred) → `slides-portrait/`, copied into `ready-to-post/` (now 1080x1440).
+- Drive Post 6: old square slide-01 (1mSsvrtIiuytIk6M4eFBHt1RPuSqoC71d) is in the Drive trash; Sparsh
+  stopped the other trash calls. Squares 02-11 still in Drive. Waiting on Sparsh: replace / subfolder / 4:5.
