@@ -47,12 +47,12 @@ H: Made with AI by a guy who should be playing GTA 6 right now.
 B: Follow for more art, apps and stories. · Instagram @tangentideas.ai · YouTube @tangentideasai · Medium @tangentideasai · tangentideas.ai
 V: Sunset skyline, maker card
 
-## Caption (v2, 2026-11-19; Sparsh didn't like v1, which is kept below)
-GTA 6 is out today. For most Indian men, real life has been on hard mode for years. 🎮
+## Caption (v3, 2026-11-19; v2's "GTA 6 is out today. For most Indian men, real life…" had no bridge between its two sentences, per Sparsh)
+If an Indian man's life were a GTA game, this is what his screen would show. 🎮
 
-Wanted level from relatives. Health bar from back pain. Money gone the minute the salary lands.
+Wanted level: relatives asking about marriage. Health: back pain at 32. Money: salary in, EMI out.
 
-We all know one man on 5 stars right now. Happy Men's Day to every man still playing.
+We all know one man on 5 stars right now. Happy Men's Day, and happy GTA 6 launch day.
 
 Posters made with AI. Idea and words are mine. Not affiliated with Rockstar Games.
 
