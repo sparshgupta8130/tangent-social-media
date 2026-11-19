@@ -76,25 +76,37 @@ S.push(exhibit(7, 6, 'The remote', 'The TV remote is still in its plastic cover.
 // 8 the phone: zoomed crop so the screen is readable; chat drawn in code
 const C8 = [648, 994, 560], s8 = 1080 / C8[2];
 const scr = { x: (847 - C8[0]) * s8, y: (1156 - C8[1]) * s8, w: (1010 - 847) * s8, h: (1485 - 1156) * s8 };
-const screen = `<div class="scr">
-  <div class="hd"><div class="av">R</div><div><div class="nm">Rahul</div><div class="st">online</div></div></div>
-  <div class="body"><div class="in">Kaisa hai bhai? 🙂</div></div>
-  <div class="bar"><div class="draft">Honestly bro, I&rsquo;m not doing okay.<span class="cur"></span></div><div class="send">&#10148;</div></div>
+const hdr = `<div class="hd"><div class="av">R</div><div><div class="nm">Rahul</div><div class="st">online</div></div></div>`;
+const incoming = `<div class="in">How are you, bro? 🙂</div>`;
+// 8a: what he typed (draft in the box, not sent)
+const screenTyped = `<div class="scr">${hdr}
+  <div class="body">${incoming}</div>
+  <div class="bar"><div class="draft">Honestly bro, I&rsquo;m not doing good.<span class="cur"></span></div><div class="send">&#10148;</div></div>
 </div>`;
-S.push(exhibit(8, 7, 'His phone', 'One message he typed, but never sent.', C8, screen,
-  `h1{font-size:54px}
+// 8b: what he sent (draft deleted, "All good, bro" sent)
+const screenSent = `<div class="scr">${hdr}
+  <div class="body">${incoming}<div class="out">All good, bro 👍<span class="tk">&#10003;&#10003;</span></div></div>
+  <div class="bar"><div class="draft empty">Message<span class="cur"></span></div><div class="send">&#10148;</div></div>
+</div>`;
+const PHONE_CSS = `h1{font-size:54px}
 .scr{position:absolute;left:${scr.x}px;top:${scr.y}px;width:${scr.w}px;height:${scr.h}px;border-radius:34px;overflow:hidden;
   background:#efeae2;display:flex;flex-direction:column;font-family:Inter;box-shadow:inset 0 0 0 1px rgba(0,0,0,.05)}
 .scr:after{content:"";position:absolute;inset:0;background:linear-gradient(155deg,rgba(255,255,255,.22),rgba(255,255,255,0) 45%);pointer-events:none}
 .hd{display:flex;gap:12px;align-items:center;padding:34px 14px 12px;background:#f7f5f1;border-bottom:1px solid #ddd6cb}
 .av{width:38px;height:38px;border-radius:50%;background:#9db7a8;color:#fff;font:600 19px Inter;display:grid;place-items:center}
 .nm{font:600 20px Inter;color:#1d1a16} .st{font:400 14px Inter;color:#6f8f7c}
-.body{flex:1;padding:16px 12px}
+.body{flex:1;padding:16px 12px;display:flex;flex-direction:column;align-items:flex-start;gap:12px}
 .in{display:inline-block;background:#fff;border-radius:4px 16px 16px 16px;padding:10px 15px;font:400 22px/1.3 Inter;color:#1d1a16;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+.out{align-self:flex-end;background:#d9f2c9;border-radius:16px 4px 16px 16px;padding:10px 14px;font:500 24px/1.3 Inter;color:#1d1a16;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+.tk{margin-left:8px;font-size:15px;color:#4f9fd6;letter-spacing:-3px}
 .bar{display:flex;gap:8px;align-items:flex-end;padding:10px 10px 22px}
 .draft{flex:1;background:#fff;border-radius:22px;padding:12px 15px;font:500 26px/1.25 Inter;color:#1d1a16}
+.draft.empty{color:#a39c92;font-weight:400}
 .cur{display:inline-block;width:3px;height:28px;margin-left:2px;vertical-align:-4px;background:#2f7d5b}
-.send{width:46px;height:46px;border-radius:50%;background:#c9c3b9;color:#fff;font-size:20px;display:grid;place-items:center}`));
+.send{width:46px;height:46px;border-radius:50%;background:#c9c3b9;color:#fff;font-size:20px;display:grid;place-items:center}`;
+const phone = (h1, sc) => page(8, `<div class="lbl">Exhibit 7 &middot; His phone</div><h1>${h1}</h1>${sc}`, bg(8, C8), PHONE_CSS);
+S.push(phone('What he typed.', screenTyped));
+S.push(phone('What he sent.', screenSent));
 
 // 9 the close (dark image, light text)
 S.push(page(9, `<h1 class="close">Men keep a lot to themselves. Today, ask one how he&rsquo;s really doing.</h1>`,

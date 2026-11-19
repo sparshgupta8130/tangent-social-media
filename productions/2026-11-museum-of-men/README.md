@@ -97,3 +97,12 @@ last two exhibits turn warm: what he gives up, and his phone, so call him.
   Both builds re-rendered.
   - Drive "Post 6": the old slide-01/slide-10 were moved to Drive trash (recoverable) and the new
     ones uploaded. Sizes match: 1651671 and 880977 bytes.
+- 2026-11-19 (after SHIP, before posting): Sparsh's changes.
+  - Chat messages in English only (global audience). Rahul's message is now "How are you, bro? 🙂".
+  - The phone exhibit is now two slides: 8 "What he typed." (draft "Honestly bro, I'm not doing
+    good.") and 9 "What he sent." (sent bubble "All good, bro 👍"). The swipe plays the delete. 11
+    slides total.
+  - His wife: the closing line ties only to the phone and drops the humour. Options offered; the
+    Showrunner's pick is "Let him keep the chargers. Just don't let him keep everything to
+    himself." Waiting on Sparsh.
+  - Drive Post 6 is NOT yet updated; it waits for the closing-line decision.

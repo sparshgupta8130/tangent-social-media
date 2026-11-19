@@ -50,9 +50,14 @@ B: Exhibit 6 · The remote
 V: A TV remote sealed in a clear, slightly yellowed plastic cover, on a plinth
 
 ### Slide 8
-H: One message he typed, but never sent.
+H: What he typed.
 B: Exhibit 7 · His phone
-V: A phone on a plinth. On screen, a chat with "Rahul" and a typed, unsent draft in the text box: "Honestly bro, I'm not doing okay." The send button is not pressed.
+V: The phone on a plinth. A chat with "Rahul": incoming "How are you, bro? 🙂"; typed in the box, not sent: "Honestly bro, I'm not doing good."
+
+### Slide 8b
+H: What he sent.
+B: Exhibit 7 · His phone
+V: The same phone. The draft is gone; a sent green bubble reads "All good, bro 👍" (delivered ticks)
 
 ### Slide 9
 H: Men keep a lot to themselves. Today, ask one how he's really doing.
