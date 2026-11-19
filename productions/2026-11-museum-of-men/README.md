@@ -130,3 +130,4 @@ last two exhibits turn warm: what he gives up, and his phone, so call him.
   - Asked for row-v3: a 1:1 version with headroom, plus closer object fidelity in all versions.
   - Slide 10 is not changed in Drive yet.
 - 2026-11-19: Sparsh: don't over-perfect the row image; fine details are OK to miss. Row-v3 limited to one round, with the priority on square headroom and recognisably the same objects.
+- 2026-11-19: row-v3 accepted: all 7 objects match their exhibits, and the square has clear space above the row. Slide 10 re-rendered from row-v3/pick-1x1.png. Drive Post 6: old slide-10 moved to trash, new one uploaded (1863020 bytes). The video's F0-row.jpg (9:16) was updated by the same session.
