@@ -148,3 +148,12 @@ paid API calls, the same pipeline as the carousel, a few calls only). No paid vi
   - The Showrunner reviewed the contact sheet and the artefact notes. One open point: the video
     end card still carries "Images made with AI", which Sparsh removed from the carousel end card.
     Asked whether to match.
+- 2026-11-19: Sparsh: remove "Images made with AI" from the video end card. The v1 session was
+  asked to re-render both cuts.
+- 2026-11-19: Sparsh: v1 feels like "amateur animation over a slide show", not production
+  quality. His reference: the Panditji New Year reel (`productions/2026-11-panditji-festive`).
+  - Showrunner diagnosis: that reel is native motion graphics, where every element is drawn and
+    animated in code and synced to the score. v1 animates flat raster stills in 2.5D, which
+    always reads as "moving photos".
+  - Options proposed: Veo 3.1 camera moves (Flow on Ultra credits, or the API with a spend cap),
+    or a real 3D gallery in code (Three.js; risk: cut-out "cardboard" look). v1 is the backup.
