@@ -103,3 +103,16 @@ Copy linted. Image session and cold read running.
 - 2026-11-19: Sparsh: "playing GTA on hard mode for years" reads as literally playing the game on
   hard difficulty. Caption line 1 now makes the life = game mapping explicit: "For most Indian
   men, real life has been on hard mode for years."
+
+## Published
+- **2026-11-19, about 07:57 IST (logged when Sparsh shared the link):** Option B carousel (8
+  slides, 1:1) posted on Instagram @tangentideas.ai: https://www.instagram.com/p/Df5-C-mCsnR/
+- Caption: Sparsh's own. The text is not recorded here; add it for the postmortem.
+- Promotion plan given:
+  - Tangent story share with a poll ("Which one is you right now?": Marriage questions / EMI
+    stress);
+  - a second story frame (slide 6) about 2-3 h later;
+  - reply to comments in the first 1-2 h;
+  - personal handle: a collab check, a personal story share, and 5-10 genuine DMs;
+  - no pin, no paid boost.
+- T+72h check: 2026-11-22 morning IST (metrics second-sourced per CLAUDE.md #4).
