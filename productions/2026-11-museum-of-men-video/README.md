@@ -69,7 +69,7 @@ is b-roll only. Here it is the subject.
 
 ## v1 build (open-source 2.5D), 2026-11-19
 
-**Outputs (`out/`, 59.3 s; 9:16 = 25.1 MB, 4:5 = 18.2 MB):** `museum-of-men-9x16.mp4` (1080x1920 master, YouTube Short),
+**Outputs (`out/`, 59.3 s; 9:16 = 25.2 MB, 4:5 = 18.1 MB; re-rendered 2026-11-19 without the "Images made with AI" line):** `museum-of-men-9x16.mp4` (1080x1920 master, YouTube Short),
 `museum-of-men-4x5.mp4` (1080x1350, LinkedIn/IG feed, re-composited, not a crop),
 `cover-9x16.jpg` (the title frame), `contact-sheet.jpg` (16 moments). 30 fps, H.264 High CRF 18,
 yuv420p, AAC 192 kb/s 48 kHz stereo, `+faststart`. The repo's `.gitignore` excludes `*.mp4`, so the two
