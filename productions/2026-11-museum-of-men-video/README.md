@@ -280,3 +280,8 @@ picture's beat grid.
   - closing line on row-v3; end card has no AI line;
   - 4:5 sampled.
   Sent to Sparsh with `out/CAPTIONS.md` (YouTube + LinkedIn).
+
+## Published
+- **YouTube Shorts, 2026-11-19 (link shared ~12:30 IST):** https://youtube.com/shorts/4TskqktlDtI.
+  The 9:16 v2 file with the captions from `out/CAPTIONS.md` (assumed; confirm at the review).
+- LinkedIn: pending.
