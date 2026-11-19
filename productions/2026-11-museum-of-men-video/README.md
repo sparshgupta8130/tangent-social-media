@@ -158,6 +158,13 @@ paid API calls, the same pipeline as the carousel, a few calls only). No paid vi
     always reads as "moving photos".
   - Options proposed: Veo 3.1 camera moves (Flow on Ultra credits, or the API with a spend cap),
     or a real 3D gallery in code (Three.js; risk: cut-out "cardboard" look). v1 is the backup.
+- 2026-11-19: Sparsh chose **option B (Veo 3.1 in Flow on his Ultra credits)**.
+  - `gpu-kit/FLOW-GUIDE.md` (8 clips C0-C7, first/last frame, prompts, settings, pick rules) is
+    uploaded to Drive Post 6/video-gpu-kit. New subfolders: `flow-frames` (for 9:16 JPEG frames)
+    and `flow-clips` (Sparsh drops C0-C7.mp4). The empty `frames` folder was moved to trash.
+  - The 9:16 outpainted frames are being exported by the v1 session to `gpu-kit/flow-frames/`,
+    then uploaded.
+  - Fallback deadline: about 4 pm IST, after which the backup is posted.
 - 2026-11-19: Flow start/end frames for Veo 3.1 Frames-to-Video exported to `gpu-kit/flow-frames/`
   by `export_flow.py`: 1080x1920 JPEG q92 (0.14-0.23 MB each), the outpainted 9:16 stage, no text,
   no grain, no parallax. `F0-row` (slide 09, the video's opening framing), `F1-exhibit1` ...
