@@ -109,8 +109,8 @@ S.push(phone('What he typed.', screenTyped));
 S.push(phone('What he sent.', screenSent));
 
 // 9 the close (dark image, light text)
-S.push(page(9, `<h1 class="close">Men keep a lot to themselves. Today, ask one how he&rsquo;s really doing.</h1>`,
-  bg(9), `.close{margin-top:0;font-size:54px;max-width:860px;text-shadow:0 2px 18px rgba(0,0,0,.35)}`, 'dark'));
+S.push(page(9, `<h1 class="close">Some things men keep are worth throwing out. Start with &ldquo;All good, bro.&rdquo;</h1><div class="csub">Today, ask one how he&rsquo;s really doing.</div>`,
+  bg(9), `.close{margin-top:0;font-size:52px;max-width:900px;text-shadow:0 2px 18px rgba(0,0,0,.35)} .csub{margin-top:14px;font:500 30px/1.3 Inter;color:#f3e6d2;text-shadow:0 2px 12px rgba(0,0,0,.45)}`, 'dark'));
 
 // 10 the maker: label card only (Sparsh's call: no photo)
 const C10 = [560, 0, 736];

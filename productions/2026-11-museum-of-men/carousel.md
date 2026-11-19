@@ -60,7 +60,8 @@ B: Exhibit 7 · His phone
 V: The same phone. The draft is gone; a sent green bubble reads "All good, bro 👍" (delivered ticks)
 
 ### Slide 9
-H: Men keep a lot to themselves. Today, ask one how he's really doing.
+H: Some things men keep are worth throwing out. Start with "All good, bro."
+B: Today, ask one how he's really doing.
 V: The empty gallery, the plinths in a row, all lights soft
 
 ### Slide 10
@@ -75,7 +76,7 @@ Old chargers. Phone boxes. Keys that open nothing. Chappals that are "still fine
 
 Men keep everything, including how they really feel. This International Men's Day, ask one man in your life how he's really doing. Then ask again.
 
-And if you're the one who isn't okay, send that message.
+And if you're the one who isn't okay, send the real message, not "all good."
 
 Images made with AI. The idea and words are mine.
 

@@ -106,3 +106,12 @@ last two exhibits turn warm: what he gives up, and his phone, so call him.
     Showrunner's pick is "Let him keep the chargers. Just don't let him keep everything to
     himself." Waiting on Sparsh.
   - Drive Post 6 is NOT yet updated; it waits for the closing-line decision.
+- 2026-11-19: Sparsh chose the closing line **"Some things men keep are worth throwing out. Start
+  with "All good, bro.""**, with a small line "Today, ask one how he's really doing." (slide 10).
+  - Caption: "send that message" became "send the real message, not "all good."".
+  - Drive Post 6 now holds 11 slides:
+    - old slide-08 and 09 and the old caption moved to trash;
+    - new slide-08 (typed), 09 (sent) and 10 (close) uploaded;
+    - the end card was renamed from slide-10 to slide-11;
+    - new caption.txt uploaded.
+  - `ready-to-post/` refreshed to match.
