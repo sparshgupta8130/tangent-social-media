@@ -12,3 +12,6 @@ All 720x1280 at 24 fps, about 7.9 s, Flow's default download.
 | C0-trim | (from C0) | **REJECTED by Sparsh** ("got worse") | C0 cut at 6.30 s, before the swing, with no synthetic transition. In the edit it hard-cuts to the exhibit 1 frontal shot (C1's opening). Preview: `C0-cut-preview.mp4` |
 
 **Decision (Sparsh, 2026-11-19): use the RAW C0 from Flow, untouched. No more fixes to C0.** C0-fixed, C0-trim and C0-cut-preview are rejected experiments; ignore them in the edit.
+**Clarification (Sparsh):** "use clips as they are" was an over-correction. Normal editing
+applies to every clip: trims (e.g. C2 at ~5.6 s), speed-ups of empty stretches, holds, text,
+music. The only constraint: no attempts to repair C0's generated motion. Raw C0 stays.
