@@ -274,3 +274,9 @@ picture's beat grid.
 - File-size fix: the first full encode had heavier grain and came out 95 MB / 68 MB, over the 45 MB cap. Grain was lowered after a 6x-contrast
   banding check showed no visible difference; CRF stays 18.
 - Not done (out of scope for this task): G2 critique, G3 brand review, cold-read, Sparsh's SHIP.
+- 2026-11-19 (~10:35 IST): v2 verified by the Showrunner (commit 57d4688):
+  - opens on the row-v3 still with the title, then a hard cut to exhibit 1 at 3.33 s; no C0 frames;
+  - phone sequence types, deletes and sends "All good, bro";
+  - closing line on row-v3; end card has no AI line;
+  - 4:5 sampled.
+  Sent to Sparsh with `out/CAPTIONS.md` (YouTube + LinkedIn).
