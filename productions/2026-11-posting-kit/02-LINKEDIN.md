@@ -4,20 +4,37 @@
 
 - **Upload the video file itself (native).** Don't post a YouTube link; link posts get far less in-feed reach.
 
-## Caption (copy)
-For International Men's Day, I built a museum.
+## Caption (short; Sparsh asked for no long how-it-was-made text). Pick one.
 
-It holds the things men never throw away: chargers for phones nobody owns anymore, a phone box kept "for resale", keys that open nothing, chappals that are "still fine".
+**A (recommended):**
 
-The last exhibit is his phone. On it, the message he typed and deleted, and the one he sent instead: "All good, bro."
+    Happy Men's Day.
 
-Some things men keep are worth throwing out. Start with that one.
+    I made a 1-minute museum of the things men never throw away. Stay for the last exhibit; it's the one that matters.
 
-How I made it: I'm an engineer who makes art with AI. The exhibits are images from Nano Banana Pro, the camera moves through the gallery are Veo 3.1 clips I generated in Google Flow, and the edit, typography and original score were built in code with Claude. My part was the idea, the words, and rejecting a lot of takes.
+    (Made with AI.)
 
-Today, ask one man in your life how he's really doing.
+    #InternationalMensDay
 
-#InternationalMensDay #AI #CreativeAI
+**B (list hook):**
+
+    Happy Men's Day.
+
+    A 1-minute museum of things men never throw away: old chargers, phone boxes, chappals that are "still fine"... and one more thing.
+
+    (Made with AI.)
+
+    #InternationalMensDay
+
+**C (message-first):**
+
+    Happy Men's Day to every man who says "all good" when it isn't.
+
+    I made a 1-minute museum about it, with AI.
+
+    #InternationalMensDay
+
+Keep the "(Made with AI.)" bit (or "with AI" in C). Our rule is that AI use is stated in every caption.
 
 ## Steps (LinkedIn app)
 1. Tap **Post** → the media/video icon → pick `museum-of-men-v2-4x5.mp4`.
