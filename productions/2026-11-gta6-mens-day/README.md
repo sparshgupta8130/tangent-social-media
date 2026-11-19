@@ -107,7 +107,13 @@ Copy linted. Image session and cold read running.
 ## Published
 - **2026-11-19, about 07:57 IST (logged when Sparsh shared the link):** Option B carousel (8
   slides, 1:1) posted on Instagram @tangentideas.ai: https://www.instagram.com/p/Df5-C-mCsnR/
-- Caption: Sparsh's own. The text is not recorded here; add it for the postmortem.
+- Caption (Sparsh's own, as posted):
+  > For every man who has been playing Life on hard mode / Happy Men's Day! 🎮 /
+  > @claudeai @googlegemini @chatgptricks @rockstargames / #gta6 #builtwithclaude #mensday
+- Showrunner flags, sent to Sparsh and waiting on his edit:
+  - no AI disclosure line in the caption (CLAUDE.md #2; the end card covers on-screen);
+  - tagging @rockstargames without "Not affiliated with Rockstar Games" can imply affiliation;
+  - @chatgptricks is tagged, but ChatGPT was not used.
 - Promotion plan given:
   - Tangent story share with a poll ("Which one is you right now?": Marriage questions / EMI
     stress);
