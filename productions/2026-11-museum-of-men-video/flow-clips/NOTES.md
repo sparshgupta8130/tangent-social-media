@@ -17,3 +17,4 @@ applies to every clip: trims (e.g. C2 at ~5.6 s), speed-ups of empty stretches, 
 music. The only constraint: no attempts to repair C0's generated motion. Raw C0 stays.
 | C4 | F4 chappals → F5 T-shirt | good | Clean glide; settles on the T-shirt by ~5.5 s |
 | C5 | F5 T-shirt → F6 remote | good | Angled pan that turns a corner (Sparsh likes the change of angle); settles on the remote by ~5.5 s |
+| C6 | F6 remote → F7 phone | good | Slow glide; the phone screen stays blank throughout; settles by ~5 s (good for the chat overlay) |
