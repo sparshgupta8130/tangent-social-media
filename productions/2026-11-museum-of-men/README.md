@@ -129,3 +129,4 @@ last two exhibits turn warm: what he gives up, and his phone, so call him.
   - in the square crop, the far plinths (phone, remote) collide with the headline.
   - Asked for row-v3: a 1:1 version with headroom, plus closer object fidelity in all versions.
   - Slide 10 is not changed in Drive yet.
+- 2026-11-19: Sparsh: don't over-perfect the row image; fine details are OK to miss. Row-v3 limited to one round, with the priority on square headroom and recognisably the same objects.
