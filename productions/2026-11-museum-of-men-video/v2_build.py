@@ -9,7 +9,7 @@ Motion comes from the Flow clips. Code only adds: 24->30 fps (DIS optical-flow i
 speed-ups of empty-wall middles (v2_timeline.py), the holds (freeze of the landed frame + very slow
 push-in, eased back out during the next move), the push-in to the phone (switching, at the freeze, to the
 registered + colour-matched original still slide-08.png for resolution), the chat (Playwright PNGs warped
-onto the screen), the close (F0-row.jpg, slow push-out) and the end card (F8-endwall.jpg).
+onto the screen), the open + close (F0-row.jpg still: push-in under the title, push-out under the close line) and the end card (F8-endwall.jpg).
 Single resample per frame: source -> output with Lanczos4, then a light unsharp and light grain.
 """
 import os, sys, json, subprocess
@@ -23,8 +23,8 @@ OV = os.path.join(HERE, 'work', 'v2', 'overlays')
 S8 = os.path.join(HERE, '..', '2026-11-museum-of-men', 'assets', 'gen', 'pick', 'slide-08.png')
 F0 = os.path.join(HERE, 'gpu-kit', 'flow-frames', 'F0-row.jpg')
 F8 = os.path.join(HERE, 'gpu-kit', 'flow-frames', 'F8-endwall.jpg')
-FMT = {'v': dict(W=1080, H=1920, c0=(540.0, 960.0), scr_w=430, scr_c=(540.0, 1000.0)),
-       'p': dict(W=1080, H=1350, c0=(540.0, 1050.0), c0_row=(540.0, 900.0), scr_w=400, scr_c=(540.0, 760.0))}
+FMT = {'v': dict(W=1080, H=1920, c0=(540.0, 960.0), c0_row=(540.0, 960.0), scr_w=430, scr_c=(540.0, 1000.0)),
+       'p': dict(W=1080, H=1350, c0=(540.0, 1050.0), c0_row=(540.0, 675.0), scr_w=400, scr_c=(540.0, 760.0))}
 # F-space = the 1080x1920 frame of a Flow clip upscaled 1.5x. Hold push-in anchor (the exhibit) in F-space:
 ANCHOR = (540.0, 1215.0)
 HOLD_PUSH = 1.04
@@ -243,11 +243,20 @@ def phone_frame(t):
 
 
 # ---------------------------------------------------------------- close + end
+def row_frame(z):
+    """The row still (F0-row.jpg, swappable input), zoomed about its top edge so the row only grows downward,
+    away from the text on the wall above it."""
+    A = np.array([540.0, 0.0]); c0 = np.array(FMT[G['fmt']]['c0_row'])
+    return warp(G['f0'], M_of(z, A - (A - c0) / z, 1.0)).astype(np.float32)
+
+
+def open_frame(t):
+    return row_frame(1.0 + 0.03 * ease(t / T.SEGS[0].t1))          # very slow push-in under the title
+
+
 def close_frame(t):
     u = (t - T.CUT) / (T.END0 + T.DISSOLVE - T.CUT)
-    z = 1.075 - 0.075 * (1 - (1 - min(1, u)) ** 2)
-    c = np.array(FMT[G['fmt']].get('c0_row', FMT[G['fmt']]['c0']))   # 4:5 sits lower so the line clears the row
-    return warp(G['f0'], M_of(z, c, 1.0)).astype(np.float32)
+    return row_frame(1.12 - 0.08 * (1 - (1 - min(1, u)) ** 2))       # slow push-out 1.12 -> 1.04
 
 
 def end_frame(t):
@@ -262,6 +271,11 @@ def picture(t):
         tau = float(np.interp(t - s.t0, ts, taus))
         z, c = cam_at(t)
         return warp(CL.at(s.clip, tau), M_of(z, c)).astype(np.float32)
+    if s.kind == 'open':
+        return open_frame(t)
+    if s.kind == 'hold' and s.clip is None:     # exhibit 1: C1's first frame, after the hard cut from the row
+        z, c = cam_at(t)
+        return warp(CL.first(s.first), M_of(z, c)).astype(np.float32)
     if s.kind == 'hold':
         z, c = cam_at(t)
         src = CL.at(s.clip, T.CLIPS[s.clip]['src_end'])

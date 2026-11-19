@@ -2,7 +2,7 @@
 
     python v2_score.py work/v2/score.wav
 Felt piano + warm pad, 72 BPM in D, on the same beat grid as the picture (v2_timeline.py: every landing and
-every move starts on a beat). Opening on the row -> exhibits 1-6 (a chord lands with each exhibit, quiet
+every move starts on a beat). Opening on the row still (hard cut to exhibit 1 on the beat) -> exhibits 1-6 (a chord lands with each exhibit, quiet
 8th-note arpeggio) -> the phone (a lift: Em9 F#m7 Gadd9 Asus, higher voicing, pad swell; the arpeggio drops
 out while he deletes the draft; synthesised key clicks under typing and deleting, a soft tap on send) ->
 the cut to the row (space: low bass + a few single notes) -> the end card (resolves to D).
@@ -90,11 +90,11 @@ Gadd9 = (31, [57, 62, 67, 71]); Asus = (33, [62, 64, 69, 74]); D6 = (38, [62, 66
 g0 = T.GRID0
 grid = lambda t: g0 + round((t - g0) / (BEAT / 2)) * (BEAT / 2)     # snap to the 8th-note grid
 
-# ---- 0 -> exhibit 1: the row. Pad in, a few spaced notes on the grid, title.
-add(pad_b, pad([50, 57, 62, 66], T.LAND[1] + 1.5, att=2.5, rel=2.0), 0.0, 1.0)
-add(piano_b, piano(38, 7, 0.45), grid(0.4))
-for b, m, v in ((0, 74, 0.45), (2, 69, 0.36), (4, 73, 0.40), (6, 66, 0.34), (7.5, 71, 0.32)):
-    add(piano_b, piano(m, 5, v), grid(0.4) + b * BEAT)
+# ---- 0 -> exhibit 1: the row still + title (4 beats). Pad in, three spaced notes; the cut lands on beat 4.
+add(pad_b, pad([50, 57, 62, 66], T.LAND[1] + 1.5, att=1.8, rel=2.0), 0.0, 1.0)
+add(piano_b, piano(38, 6, 0.40), 0.12)
+for b, m, v in ((0, 74, 0.42), (1.5, 69, 0.34), (2.5, 73, 0.36)):
+    add(piano_b, piano(m, 5, v), 0.12 + b * BEAT)
 
 # ---- exhibits 1-6: one chord per exhibit, landing on its arrival; arpeggio on 8ths until the next landing
 prog = [Dmaj9, Bm9, Gmaj7, Aadd4, Dmaj9, Bm9]
@@ -169,7 +169,7 @@ room = lp(hp(rng.normal(0, 1, N), 70), 900, 4)
 room = room * (1 + 0.15 * np.sin(2 * np.pi * 0.05 * np.arange(N) / SR)) * 0.010
 amb += room
 for s in T.SEGS:
-    if s.kind == 'clip' and s.clip != 'C0':
+    if s.kind == 'clip':
         n = int((s.t1 - s.t0) * SR); tt = np.arange(n) / n
         sw = hp(lp(rng.normal(0, 1, n), 1500), 250) * np.sin(np.pi * tt) ** 2 * 0.010
         add(amb, sw, s.t0)

@@ -3,7 +3,7 @@
     python v2_timeline.py      # prints the timeline
 
 Units: seconds of OUTPUT time unless a name says src (seconds inside a Flow clip, 24 fps).
-Musical grid: 72 BPM. Everything after the first landing (end of C0) sits on that beat grid:
+Musical grid: 72 BPM. Everything sits on that beat grid (beat 0 = the hard cut from the row to exhibit 1):
 each clip's playback length is solved to a whole number of half-beats by its eased speed-up factor
 (1.0-1.6x, only inside the clip's empty-wall middle), and every hold is a whole number of beats.
 """
@@ -14,6 +14,8 @@ SRC_FPS = 24
 BPM = 72
 BEAT = 60 / BPM
 
+OPEN_BEATS = 4         # the row still + title (3.33 s), then a hard cut to exhibit 1
+HOLD1_BEATS = 4        # exhibit 1 hold on C1's first frame (3.33 s)
 HOLD_BEATS = 3.5       # freeze on each landed exhibit (2.92 s; text is up ~3.6 s) with a very slow push-in
 PHONE_BEATS = 12       # exhibit 7: push-in + the chat, then the hard cut to the row
 CLOSE_BEATS = 6        # the row + close line, then the dissolve to the end card
@@ -24,9 +26,8 @@ FADE_OUT = 1.0
 # Per clip: src_end = where playback stops (the landed frame that is then held);
 # fast = src window of the empty-wall middle that may be sped up; decel = src seconds eased to a stop
 # (unused now). C2 is cut mid-zoom at 5.58 s (Sparsh); its hold continues that zoom in code (v2_build.py).
-# C0 plays raw at 1x.
+# C0 is not used (spec change, Sparsh 2026-11-19).
 CLIPS = {
-    'C0': dict(src_end=189 / 24, fast=None, decel=0.0),
     'C1': dict(src_end=189 / 24, fast=(1.4, 6.0), decel=0.0),
     'C2': dict(src_end=134 / 24, fast=(1.0, 4.0), decel=0.0),
     'C3': dict(src_end=6.0, fast=(1.0, 4.4), decel=0.0),
@@ -81,7 +82,7 @@ def clip_len(c, k):
 
 
 def solve_k(c):
-    """Speed factor so the clip's output length is a whole number of beats (C0: raw, k = 1)."""
+    """Speed factor so the clip's output length is a whole number of beats ."""
     if not CLIPS[c]['fast']:
         return 1.0, clip_len(c, 1.0)
     lo, hi = clip_len(c, KMAX), clip_len(c, 1.0)
@@ -109,16 +110,22 @@ class Seg:
 
 
 def build():
+    """Spec change (Sparsh, 2026-11-19): C0 is dropped. Open on the row still, hard cut to exhibit 1
+    (C1's first frame, held), then C1 carries the move on."""
     segs, t = [], 0.0
-    land = {}
-    for i, c in enumerate(['C0', 'C1', 'C2', 'C3', 'C4', 'C5', 'C6']):
+    segs.append(Seg('open', 0.0, OPEN_BEATS * BEAT))
+    t = OPEN_BEATS * BEAT
+    land = {1: t}             # the hard cut lands on exhibit 1
+    segs.append(Seg('hold', t, t + HOLD1_BEATS * BEAT, ex=1, clip=None, first='C1'))
+    t += HOLD1_BEATS * BEAT
+    for i, c in enumerate(['C1', 'C2', 'C3', 'C4', 'C5', 'C6']):
         k, L = solve_k(c)
         ts, taus = src_curve(c, k)
         segs.append(Seg('clip', t, t + ts[-1], clip=c, k=round(k, 3), curve=(ts, taus)))
         t += ts[-1]
-        land[i + 1] = t       # exhibit i+1 has landed (C0 lands on exhibit 1, ... C6 on exhibit 7)
-        if i < 6:
-            segs.append(Seg('hold', t, t + HOLD_BEATS * BEAT, ex=i + 1, clip=c))
+        land[i + 2] = t       # C1 lands on exhibit 2, ... C6 on exhibit 7
+        if i < 5:
+            segs.append(Seg('hold', t, t + HOLD_BEATS * BEAT, ex=i + 2, clip=c))
             t += HOLD_BEATS * BEAT
     segs.append(Seg('phone', t, t + PHONE_BEATS * BEAT, ex=7))
     t += PHONE_BEATS * BEAT
@@ -137,9 +144,11 @@ GRID0 = LAND[1]                      # beat 0 of the musical grid = exhibit 1 la
 
 # ---- text cues: (layer, t_in, fade_in, t_out, fade_out)
 TEXT_IN_LEAD = 0.55   # exhibit text starts fading in this long before the landing
-TEXT = [('title', 0.45, 0.8, 3.05, 0.7)]
+TEXT = [('title', 0.3, 0.7, 2.45, 0.65)]   # gone by 3.10, before the cut at 3.33
 for s in SEGS:
-    if s.kind == 'hold':
+    if s.kind == 'hold' and s.ex == 1:   # arrives just after the hard cut
+        TEXT.append(('ex1', LAND[1] + 0.2, 0.5, s.t1 + 0.15, 0.5))
+    elif s.kind == 'hold':
         nxt = s.t1   # next clip starts moving here; the text leaves as the camera starts to move
         if s.clip == 'C2':   # C2 -> C3 is a real cut: the text leaves before it
             TEXT.append((f'ex{s.ex}', LAND[s.ex] - TEXT_IN_LEAD, 0.6, nxt - 0.55, 0.45))

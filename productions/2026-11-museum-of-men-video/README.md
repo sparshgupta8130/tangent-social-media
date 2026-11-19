@@ -176,12 +176,12 @@ paid API calls, the same pipeline as the carousel, a few calls only). No paid vi
 
 ## v2 (Flow), 2026-11-19
 
-Built to `EDIT-SPEC-v2.md` from Sparsh's seven Veo 3.1 Frames-to-Video clips (`flow-clips/C0..C6.mp4`,
+Built to `EDIT-SPEC-v2.md` from Sparsh's Veo 3.1 Frames-to-Video clips C1-C6 (`flow-clips/`, C0 dropped per the spec change;
 720x1280, 24 fps). Autonomous run for this task only; no paid APIs, no new generation.
 
 **Outputs (`out/`):** `museum-of-men-v2-9x16.mp4` (1080x1920, YouTube Shorts) and `museum-of-men-v2-4x5.mp4`
-(1080x1350, LinkedIn), both 79.97 s, 30 fps, H.264 High CRF 18 yuv420p, AAC 192 kb/s 48 kHz, `+faststart`;
-`contact-sheet-v2.jpg` (24 moments). 9:16 = 39.7 MB, 4:5 = 29.9 MB; both −14.0 LUFS integrated, −1.3 dBTP
+(1080x1350, LinkedIn), both 75.84 s, 30 fps, H.264 High CRF 18 yuv420p, AAC 192 kb/s 48 kHz, `+faststart`;
+`contact-sheet-v2.jpg` (24 moments). 9:16 = 35.9 MB, 4:5 = 26.3 MB; both −14.0 LUFS integrated, −2.4 dBTP
 (ffmpeg ebur128). v1 files are kept. Render time ≈ 7 min (9:16) + 5.5 min (4:5) on 3 CPU workers.
 
 **Re-render (from this folder):**
@@ -193,36 +193,42 @@ Built to `EDIT-SPEC-v2.md` from Sparsh's seven Veo 3.1 Frames-to-Video clips (`f
 4. `python v2_score.py work/v2/score.wav` – the score. 5. `python v2_mux.py` – out/ files + contact sheet.
 `v2_timeline.py` holds every cue (prints the timeline when run). `work/` is gitignored.
 
-**Timeline (s; 72 BPM grid: every landing and every move start falls on an 8th-note):**
+**Spec change applied (Sparsh, 2026-11-19, `EDIT-SPEC-v2.md` "Change"): C0 is dropped entirely.** No C0 frame
+appears anywhere. The film opens on the row still and hard-cuts to exhibit 1. Row still = `gpu-kit/flow-frames/F0-row.jpg`
+from commit **f2e9053** (row-v3, objects matching the exhibits: dark-wood drawer with black/white chargers, scuffed
+phone box with its tray). It is a single swappable input: replace the file and re-run steps 3-5.
+
+**Timeline (s; 72 BPM grid, beat 0 = the cut to exhibit 1; every landing and move start is on an 8th-note):**
 
 | Time | What |
 |---|---|
-| 0.00–7.88 | C0 **raw, 1x, untouched motion** (the row → exhibit 1). Title in 0.45–1.25, out 3.05–3.75 |
-| 7.88–10.80 | Hold, exhibit 1 (text in from 7.33) |
-| 10.80–17.47 | C1 (middle 1.4–6.0 s src sped up, eased, peak 1.43x) |
-| 17.47–20.38 | Hold, exhibit 2 |
-| 20.38–25.38 | C2, played to **5.58 s** (frame 134) only, peak 1.32x |
-| 25.38–28.30 | Hold, exhibit 3: C2's zoom carried on in code (ease-out) to C3's opening framing; text out before the cut |
-| 28.30 | **Hard cut** C2 → C3 (matched framing and wall colour) |
-| 28.30–33.30 | C3 (peak 1.54x) · 33.30–36.22 hold, exhibit 4 |
-| 36.22–42.47 | C4 (peak 1.60x) · 42.47–45.38 hold, exhibit 5 |
-| 45.38–51.22 | C5 (peak 1.31x) · 51.22–54.14 hold, exhibit 6 |
-| 54.14–59.97 | C6 (peak 1.49x), lands on the phone |
-| 59.97–69.97 | Exhibit 7: push-in 0–3 s to the screen; UI wakes +0.55; "How are you, bro? 🙂" +1.35; types "Honestly bro, I'm not doing good." +2.25–4.71; holds 1 s; backspaces +5.71–6.91 (accelerating, like a held key); types "All good, bro 👍" +7.33–8.50; send +8.92 → green bubble with ticks, "What he typed." crossfades to "What he sent." |
-| 69.97 | **Hard cut** to the row (`F0-row.jpg`), slow push-out 1.075 → 1.0; close line in at 70.42, sub-line with it |
-| 74.42–74.97 | Close text fades out (so it never overlaps the end-card text) |
-| 74.97–76.17 | Dissolve to `F8-endwall.jpg`; wall lettering + maker card fade in 75.72–76.62 (no "Images made with AI" line) |
-| 78.97–79.97 | Fade to black |
+| 0.00–3.33 | Row still, very slow push-in (1.00 → 1.03, about its top edge). Title in 0.30–1.00, out 2.45–3.10 |
+| 3.33 | **Hard cut** to exhibit 1 = C1's first frame (on the beat) |
+| 3.33–6.67 | Hold, exhibit 1 (label + line in from 3.53) |
+| 6.67–13.34 | C1 (middle 1.4–6.0 s src sped up, eased, peak 1.43x) |
+| 13.34–16.25 | Hold, exhibit 2 |
+| 16.25–21.25 | C2, played to **5.58 s** (frame 134) only, peak 1.32x |
+| 21.25–24.17 | Hold, exhibit 3: C2's zoom carried on in code (ease-out) to C3's opening framing; text out before the cut |
+| 24.17 | **Hard cut** C2 → C3 (matched framing and wall colour) |
+| 24.17–29.17 | C3 (peak 1.54x) · 29.17–32.09 hold, exhibit 4 |
+| 32.09–38.34 | C4 (peak 1.60x) · 38.34–41.25 hold, exhibit 5 |
+| 41.25–47.09 | C5 (peak 1.31x) · 47.09–50.01 hold, exhibit 6 |
+| 50.01–55.84 | C6 (peak 1.49x), lands on the phone |
+| 55.84–65.84 | Exhibit 7: push-in 0–3 s to the screen; UI wakes +0.55; "How are you, bro? 🙂" +1.35; types "Honestly bro, I'm not doing good." +2.25–4.71; holds 1 s; backspaces +5.71–6.91 (accelerating, like a held key); types "All good, bro 👍" +7.33–8.50; send +8.92 → green bubble with ticks, "What he typed." crossfades to "What he sent." |
+| 65.84 | **Hard cut** to the row still, slow push-out 1.12 → 1.04 (about its top edge); close line in at 66.29 |
+| 70.29–70.84 | Close text fades out (it never overlaps the end-card text) |
+| 70.84–72.04 | Dissolve to `F8-endwall.jpg`; wall lettering + maker card fade in 71.59–72.49 (no "Images made with AI" line) |
+| 74.84–75.84 | Fade to black |
 
 **How the motion is handled (settings):**
 - **All camera motion is Veo's.** Code adds only: speed-ups of the empty-wall middles (≤1.6x, 0.6 s eased
   ramps; each clip's factor solved so its length is a whole number of 8th-notes), holds, and the phone push-in.
 - **24 → 30 fps:** DIS optical-flow in-betweens (flow at 360x640, bidirectional warp + blend). The jump scan
-  over every frame of the 9:16 master finds only the two intended hard cuts. Each move keeps an even frame cadence,
+  over every frame of the 9:16 master finds only the three intended hard cuts (3.33, 24.17, 65.84 s), in both formats. Each move keeps an even frame cadence,
   with no duplicate frames and no judder.
 - **Holds:** freeze on the clip's landed frame (Veo's tails are static by then) with a 1.00 → 1.04 eased
   push-in about the exhibit. The push eases back out across the next move, so nothing jumps. Clip N's landed frame and clip N+1's first
-  frame are the same framing (mean abs diff 1.3–2.9/255; C0→C1 8.0, cable details). Inside the hold the two
+  frame are the same framing (mean abs diff 1.3–2.9/255; ). Inside the hold the two
   are blended over 0.6 s while static, so the next move starts from its own first frame. That blend is between
   the same framing, never between camera angles.
 - **C2 → C3:** C2 is cut at 5.58 s, mid-zoom (Sparsh's call: before the zoom and the lighting snap). Freezing there would
@@ -246,15 +252,17 @@ picture's beat grid.
   deletes the draft, leaving one low note.
 - Synthesised key clicks under typing and deleting, about 16 dB under the music's peaks, and a soft tap on send.
 - Space on the cut to the row; resolves to D on the end card. Room tone throughout, plus faint air under each move.
-- Master: −14.0 LUFS integrated, −1.3 dBTP. The Veo clips' own audio tracks are not used.
+- Master: −14.0 LUFS integrated, −2.4 dBTP. The Veo clips' own audio tracks are not used.
 
 **Honest notes:**
-- **Length is ~80 s, over the spec's ~60–75 s.** The spec's own parts add up to this: C0 is raw (7.9 s), six
-  ~3 s holds, a 10 s phone, 5 s close and 5 s end, and speed-ups are capped at 1.6x in the empty middles.
-  Shorter needs one of: 2 s holds, more than 1.6x, or trimming exhibits. That is Sparsh's call.
-- **C0's "break" (≈6.6–7.6 s) is in the film as generated:** the swing round the drawer, a soft double
-  image for a few frames, and the lighting jump. That follows the RAW decision. My frame-rate in-betweens don't add to it
-  (checked: the ghosting is on whole source frames).
+- **Length is 75.8 s,** a hair over the spec's ~60–75 s. It is set by ~3 s holds, a 10 s phone, a 5 s close
+  and a 5 s end, with speed-ups capped at 1.6x in the empty middles.
+- **Row layout (new row image):** the row-v3 still has a short wall (the row starts ~y 530 of 1920), so the
+  title and close sit high: 9:16 text from y 232/240, inside the 220 px Shorts margin. The row camera zooms
+  about the image's top edge, so the row only grows downward, away from the text. In 4:5 the window shows the
+  top of the row (phone → keys/box), and the drawer at the front is cropped out of the open and close shots.
+- **The opening hard cut** goes from the dark, warm row to the bright exhibit-1 wall. That is a big
+  brightness change by design (the spec's hard cut); it lands on beat 4 with the first chord.
 - **The C2→C3 cut is the one visible edit inside the gallery.** The keys stay put, but the wall/floor line
   behind them jumps up, because Veo's F3 framing has a different camera height. It reads as a cut, not a glitch, at
   normal speed. During the hold the C2 frame is magnified up to 1.22x (≈1.8x from 720p), so it is

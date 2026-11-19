@@ -19,7 +19,7 @@ for fmt, name in (('v', 'museum-of-men-v2-9x16.mp4'), ('p', 'museum-of-men-v2-4x
     print('wrote', name, round(os.path.getsize(os.path.join(OUT, name)) / 1e6, 1), 'MB')
 
 L, L7 = T.LAND, T.L7
-ts = [1.6, 5.0, L[1] + 1.2, (L[1] + L[2]) / 2 + 2, L[2] + 1.2, L[3] - 1.5, L[3] + 1.2, L[4] + 1.2,
+ts = [1.6, 3.6, L[1] + 1.2, (L[1] + L[2]) / 2 + 2, L[2] + 1.2, L[3] - 1.5, L[3] + 1.2, L[4] + 1.2,
       (L[4] + L[5]) / 2, L[5] + 1.2, L[6] + 1.2, (L[6] + L7) / 2 + 1, L7 + 0.2, L7 + 1.6, L7 + 3.6, L7 + 5.4,
       L7 + 6.4, L7 + 8.2, L7 + 9.6, T.CUT + 1.0, T.CUT + 3.5, T.END0 + 0.6, T.END0 + 2.5, T.TOTAL - 1.4]
 cap = cv2.VideoCapture(os.path.join(OUT, 'museum-of-men-v2-9x16.mp4'))

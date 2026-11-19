@@ -24,10 +24,10 @@ const EXHIBITS = [
 
 // v = 9:16 master (text below the top 220 px, above the bottom 380 px); p = 4:5.
 const F = {
-  v: { w: 1080, h: 1920, padT: 262, padX: 84, lbl: 30, h1: 76, title: 116, sub: 60, titleT: 330,
-       close: 76, csub: 40, wallT: 300, wall: 84, cardT: 56, cardS: 1.06 },
-  p: { w: 1080, h: 1350, padT: 72, padX: 80, lbl: 27, h1: 68, title: 108, sub: 56, titleT: 118,
-       close: 68, csub: 36, wallT: 96, wall: 72, cardT: 50, cardS: 1.0 },
+  v: { w: 1080, h: 1920, padT: 262, padX: 84, lbl: 30, h1: 76, title: 116, sub: 60, titleT: 240,
+       close: 66, csub: 36, closeT: 232, wallT: 300, wall: 84, cardT: 56, cardS: 1.06 },
+  p: { w: 1080, h: 1350, padT: 72, padX: 80, lbl: 27, h1: 68, title: 108, sub: 56, titleT: 100,
+       close: 60, csub: 32, closeT: 66, wallT: 96, wall: 72, cardT: 50, cardS: 1.0 },
 };
 
 const css = (g) => `
@@ -54,8 +54,9 @@ const layers = (k) => {
   L.ex7lbl = doc(g, `<div class="wrap"><div class="lbl">Exhibit 7 &middot; His phone</div><h1 class="ghost">What he typed.</h1></div>`);
   L.ex7typed = doc(g, `<div class="wrap"><div class="lbl ghost">Exhibit 7 &middot; His phone</div><h1>What he typed.</h1></div>`);
   L.ex7sent = doc(g, `<div class="wrap"><div class="lbl ghost">Exhibit 7 &middot; His phone</div><h1>What he sent.</h1></div>`);
-  L.close = doc(g, `<div class="wrap dark sh"><h1 style="font-size:${g.close}px;margin-top:0">Some things men keep are worth throwing out.<br>Start with &ldquo;All good, bro.&rdquo;</h1>
-    <div style="margin-top:22px;font:500 ${g.csub}px/1.3 Inter;color:#f3e6d2;text-shadow:0 2px 12px rgba(0,0,0,.45)">Today, ask one how he&rsquo;s really doing.</div></div>`);
+  // the row's wall is short (the new row image starts ~y 530 of 1920): the close sits high, inside the safe area
+  L.close = doc(g, `<div class="wrap dark sh" style="top:${g.closeT}px"><h1 style="font-size:${g.close}px;margin-top:0">Some things men keep are worth throwing out.<br>Start with &ldquo;All good, bro.&rdquo;</h1>
+    <div style="margin-top:14px;font:500 ${g.csub}px/1.3 Inter;color:#f3e6d2;text-shadow:0 2px 12px rgba(0,0,0,.45)">Today, ask one how he&rsquo;s really doing.</div></div>`);
   L.end = doc(g, `<div class="wall">Happy International<br>Men&rsquo;s Day</div><div class="card">
   <div class="cl">Exhibit 8 &middot; The maker</div>
   <div class="ct">The man who made this museum, with AI.</div>
