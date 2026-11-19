@@ -158,3 +158,8 @@ paid API calls, the same pipeline as the carousel, a few calls only). No paid vi
     always reads as "moving photos".
   - Options proposed: Veo 3.1 camera moves (Flow on Ultra credits, or the API with a spend cap),
     or a real 3D gallery in code (Three.js; risk: cut-out "cardboard" look). v1 is the backup.
+- 2026-11-19: Flow start/end frames for Veo 3.1 Frames-to-Video exported to `gpu-kit/flow-frames/`
+  by `export_flow.py`: 1080x1920 JPEG q92 (0.14-0.23 MB each), the outpainted 9:16 stage, no text,
+  no grain, no parallax. `F0-row` (slide 09, the video's opening framing), `F1-exhibit1` ...
+  `F7-exhibit7` (slides 02-08 at each exhibit's landed framing; F7 = phone, screen blank, no chat),
+  `F8-endwall` (the end-card wall from slide 03, without the card).
