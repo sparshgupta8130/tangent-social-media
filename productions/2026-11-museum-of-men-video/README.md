@@ -173,3 +173,96 @@ paid API calls, the same pipeline as the carousel, a few calls only). No paid vi
 - 2026-11-19: 9:16 Flow frames F0-F8 uploaded to Drive video-gpu-kit/flow-frames (sizes match
   local). Sparsh doesn't want to read the guide; the Showrunner walks him through Flow
   step by step in chat.
+
+## v2 (Flow), 2026-11-19
+
+Built to `EDIT-SPEC-v2.md` from Sparsh's seven Veo 3.1 Frames-to-Video clips (`flow-clips/C0..C6.mp4`,
+720x1280, 24 fps). Autonomous run for this task only; no paid APIs, no new generation.
+
+**Outputs (`out/`):** `museum-of-men-v2-9x16.mp4` (1080x1920, YouTube Shorts) and `museum-of-men-v2-4x5.mp4`
+(1080x1350, LinkedIn), both 79.97 s, 30 fps, H.264 High CRF 18 yuv420p, AAC 192 kb/s 48 kHz, `+faststart`;
+`contact-sheet-v2.jpg` (24 moments). 9:16 = 39.7 MB, 4:5 = 29.9 MB; both −14.0 LUFS integrated, −1.3 dBTP
+(ffmpeg ebur128). v1 files are kept. Render time ≈ 7 min (9:16) + 5.5 min (4:5) on 3 CPU workers.
+
+**Re-render (from this folder):**
+1. `python v2_register.py` – SIFT+RANSAC: `v2_s8_homography.npy` (slide-08.png -> C6's landed frame) and
+   `v2_c2c3.npy` (C2 at 5.58 s -> C3's first frame: zoom 1.216 about (516, 560), per-channel wall gain).
+2. `node v2_overlays.mjs` – Playwright: text layers per format (`v`, `p`) + 87 chat-screen states.
+3. `python v2_build.py v` / `python v2_build.py p` – picture -> `work/v2/video-{v,p}.mp4`
+   (`--stills 12.0,61.5 --out DIR` for review stills; env `GRAIN`, `CRF`).
+4. `python v2_score.py work/v2/score.wav` – the score. 5. `python v2_mux.py` – out/ files + contact sheet.
+`v2_timeline.py` holds every cue (prints the timeline when run). `work/` is gitignored.
+
+**Timeline (s; 72 BPM grid: every landing and every move start falls on an 8th-note):**
+
+| Time | What |
+|---|---|
+| 0.00–7.88 | C0 **raw, 1x, untouched motion** (the row → exhibit 1). Title in 0.45–1.25, out 3.05–3.75 |
+| 7.88–10.80 | Hold, exhibit 1 (text in from 7.33) |
+| 10.80–17.47 | C1 (middle 1.4–6.0 s src sped up, eased, peak 1.43x) |
+| 17.47–20.38 | Hold, exhibit 2 |
+| 20.38–25.38 | C2, played to **5.58 s** (frame 134) only, peak 1.32x |
+| 25.38–28.30 | Hold, exhibit 3: C2's zoom carried on in code (ease-out) to C3's opening framing; text out before the cut |
+| 28.30 | **Hard cut** C2 → C3 (matched framing and wall colour) |
+| 28.30–33.30 | C3 (peak 1.54x) · 33.30–36.22 hold, exhibit 4 |
+| 36.22–42.47 | C4 (peak 1.60x) · 42.47–45.38 hold, exhibit 5 |
+| 45.38–51.22 | C5 (peak 1.31x) · 51.22–54.14 hold, exhibit 6 |
+| 54.14–59.97 | C6 (peak 1.49x), lands on the phone |
+| 59.97–69.97 | Exhibit 7: push-in 0–3 s to the screen; UI wakes +0.55; "How are you, bro? 🙂" +1.35; types "Honestly bro, I'm not doing good." +2.25–4.71; holds 1 s; backspaces +5.71–6.91 (accelerating, like a held key); types "All good, bro 👍" +7.33–8.50; send +8.92 → green bubble with ticks, "What he typed." crossfades to "What he sent." |
+| 69.97 | **Hard cut** to the row (`F0-row.jpg`), slow push-out 1.075 → 1.0; close line in at 70.42, sub-line with it |
+| 74.42–74.97 | Close text fades out (so it never overlaps the end-card text) |
+| 74.97–76.17 | Dissolve to `F8-endwall.jpg`; wall lettering + maker card fade in 75.72–76.62 (no "Images made with AI" line) |
+| 78.97–79.97 | Fade to black |
+
+**How the motion is handled (settings):**
+- **All camera motion is Veo's.** Code adds only: speed-ups of the empty-wall middles (≤1.6x, 0.6 s eased
+  ramps; each clip's factor solved so its length is a whole number of 8th-notes), holds, and the phone push-in.
+- **24 → 30 fps:** DIS optical-flow in-betweens (flow at 360x640, bidirectional warp + blend). The jump scan
+  over every frame of the 9:16 master finds only the two intended hard cuts. Each move keeps an even frame cadence,
+  with no duplicate frames and no judder.
+- **Holds:** freeze on the clip's landed frame (Veo's tails are static by then) with a 1.00 → 1.04 eased
+  push-in about the exhibit. The push eases back out across the next move, so nothing jumps. Clip N's landed frame and clip N+1's first
+  frame are the same framing (mean abs diff 1.3–2.9/255; C0→C1 8.0, cable details). Inside the hold the two
+  are blended over 0.6 s while static, so the next move starts from its own first frame. That blend is between
+  the same framing, never between camera angles.
+- **C2 → C3:** C2 is cut at 5.58 s, mid-zoom (Sparsh's call: before the zoom and the lighting snap). Freezing there would
+  stop a fast zoom dead, so the hold continues that zoom in code (ease-out, starting near C2's own rate) and
+  lands exactly on C3's opening framing, while the wall colour eases to C3's (gain B 0.975, G 0.944, R 0.924).
+  The hard cut then keeps the plinth and keys in place. Only the back wall/floor line shifts.
+- **The phone:** at the C6 freeze the picture switches, invisibly, to the original still `slide-08.png`,
+  registered to C6's frame (homography) and colour-matched at low frequencies. It has 1.6x the pixels of the
+  Flow frame, so the push-in (screen 106 px → 430 px wide in 9:16, 400 px in 4:5) stays clean. The chat
+  is rendered by Playwright at 2.2x and warped onto the screen quad every frame, so it is pixel-sharp. Notch redrawn.
+- **Scaling:** one Lanczos4 resample per frame (720p → 1080 x camera), unsharp 0.35 @ σ1.1, luma grain
+  (σ≈0.4 levels after blur) against banding.
+- **4:5** is a re-composite, not a crop of the 9:16: its own text layout and margins, its own vertical window,
+  its own phone framing, and the row sits lower in the close so the line clears the far plinths.
+- Text safe area (9:16): all text between y 262 and ~1460 (outside the top 220 / bottom 380 px).
+
+**Audio (`v2_score.py`, original, synthesised, no samples):** felt piano + pad, 72 BPM in D, on the
+picture's beat grid.
+- Each exhibit's chord lands with it (Dmaj9 Bm9 Gmaj7 Aadd4 Dmaj9 Bm9), with a quiet 8th-note arpeggio.
+- The lift at the phone: Em9 F#m7 Gadd9 Asus, higher voicing, pad swell. The arpeggio drops out while he
+  deletes the draft, leaving one low note.
+- Synthesised key clicks under typing and deleting, about 16 dB under the music's peaks, and a soft tap on send.
+- Space on the cut to the row; resolves to D on the end card. Room tone throughout, plus faint air under each move.
+- Master: −14.0 LUFS integrated, −1.3 dBTP. The Veo clips' own audio tracks are not used.
+
+**Honest notes:**
+- **Length is ~80 s, over the spec's ~60–75 s.** The spec's own parts add up to this: C0 is raw (7.9 s), six
+  ~3 s holds, a 10 s phone, 5 s close and 5 s end, and speed-ups are capped at 1.6x in the empty middles.
+  Shorter needs one of: 2 s holds, more than 1.6x, or trimming exhibits. That is Sparsh's call.
+- **C0's "break" (≈6.6–7.6 s) is in the film as generated:** the swing round the drawer, a soft double
+  image for a few frames, and the lighting jump. That follows the RAW decision. My frame-rate in-betweens don't add to it
+  (checked: the ghosting is on whole source frames).
+- **The C2→C3 cut is the one visible edit inside the gallery.** The keys stay put, but the wall/floor line
+  behind them jumps up, because Veo's F3 framing has a different camera height. It reads as a cut, not a glitch, at
+  normal speed. During the hold the C2 frame is magnified up to 1.22x (≈1.8x from 720p), so it is
+  softer than the C3 shot it cuts to.
+- The empty-wall stretches are Veo's soft 720p walls and floor upscaled 1.5x. They are clean, but not 1080-native detail.
+- At full zoom the phone and stand are the original still at ~2.6x, slightly soft. The chat is sharp.
+- The chat keeps the carousel's styling (grey send button). Additions: a notch, a pressed state on the
+  send button, and a cursor that blinks only while idle.
+- File-size fix: the first full encode had heavier grain and came out 95 MB / 68 MB, over the 45 MB cap. Grain was lowered after a 6x-contrast
+  banding check showed no visible difference; CRF stays 18.
+- Not done (out of scope for this task): G2 critique, G3 brand review, cold-read, Sparsh's SHIP.
