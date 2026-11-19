@@ -141,3 +141,8 @@ last two exhibits turn warm: what he gives up, and his phone, so call him.
   close slide, end card centred) → `slides-portrait/`, copied into `ready-to-post/` (now 1080x1440).
 - Drive Post 6: old square slide-01 (1mSsvrtIiuytIk6M4eFBHt1RPuSqoC71d) is in the Drive trash; Sparsh
   stopped the other trash calls. Squares 02-11 still in Drive. Waiting on Sparsh: replace / subfolder / 4:5.
+- Sparsh chose to try them: portrait slides uploaded to Drive Post 6 subfolder "portrait-3x4 (use these)"
+  (12KFUHxASbSbGI0hYz_csG0mxbmLFydhV), slide-01..11. Squares 02-11 left in Post 6 untouched.
+- Dates (from search results; article pages blocked here, so not read in full): profile grid went
+  3:4 in January 2025 (Business Today, 2025-01-21); 3:4 photo uploads supported from late May 2025
+  (9to5Mac, 2025-05-29, citing Mosseri on Threads).
