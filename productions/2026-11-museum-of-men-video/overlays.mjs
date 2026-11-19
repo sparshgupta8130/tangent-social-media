@@ -70,7 +70,6 @@ const layers = (k) => {
     <div><span>Medium</span>@tangentideasai</div>
     <div><span>Web</span>tangentideas.ai</div>
   </div>
-  <div class="disc"><span class="mk">${mark(30)}</span>Images made with AI</div>
 </div>`, `.wall{position:absolute;left:0;right:0;top:${g.wallT}px;text-align:center;font:400 ${g.wall}px/1.08 Fraunces,Georgia,serif;letter-spacing:-.01em;color:#2a241d}
 .card{position:absolute;left:50%;top:${g.wallT + g.wall * 2.16 + g.cardT}px;width:820px;transform:translateX(-50%) scale(${g.cardS});transform-origin:top center;
   background:#fbfaf7;border-radius:6px;padding:56px 60px 44px;box-shadow:0 18px 50px rgba(60,45,30,.18),0 2px 6px rgba(60,45,30,.10)}
@@ -79,9 +78,7 @@ const layers = (k) => {
 .cs{margin-top:18px;font:400 36px/1.25 Fraunces,Georgia,serif;color:#3a332b}
 .rule{height:1px;background:#d9d2c6;margin:36px 0 26px}
 .rows{display:grid;gap:14px;font:500 30px Inter}
-.rows span{display:inline-block;width:190px;color:${MUTED};font-weight:500}
-.disc{margin-top:30px;display:flex;align-items:center;gap:12px;font:400 24px Inter;color:${MUTED}}
-.mk{display:inline-flex;color:${INK};opacity:.8}`);
+.rows span{display:inline-block;width:190px;color:${MUTED};font-weight:500}`);
   return L;
 };
 
