@@ -18,3 +18,5 @@ music. The only constraint: no attempts to repair C0's generated motion. Raw C0 
 | C4 | F4 chappals → F5 T-shirt | good | Clean glide; settles on the T-shirt by ~5.5 s |
 | C5 | F5 T-shirt → F6 remote | good | Angled pan that turns a corner (Sparsh likes the change of angle); settles on the remote by ~5.5 s |
 | C6 | F6 remote → F7 phone | good | Slow glide; the phone screen stays blank throughout; settles by ~5 s (good for the chat overlay) |
+
+**Update (Sparsh):** C0 is DROPPED. The opening is the row still plus the title, then a hard cut to exhibit 1. Two C0 retakes in Flow were worse.
