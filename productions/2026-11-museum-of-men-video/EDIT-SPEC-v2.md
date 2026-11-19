@@ -19,6 +19,12 @@ Masters: 9:16 1080x1920 (YouTube Shorts) and 4:5 1080x1350 (LinkedIn), 30 fps, H
   the carousel (`../2026-11-museum-of-men/build_square.mjs`): Fraunces headlines, Inter small-caps
   exhibit label, muted #7a6650, ink #1d1a16.
 
+## Change (Sparsh, 2026-11-19, after a failed C0 retake): DROP C0 ENTIRELY
+F0 and F1 show contradictory rooms (a row vs a lone plinth), so no Veo move connects them.
+- New opening: the row still (F0) with a subtle push-in plus the title for about 3 s.
+- Then a hard cut to exhibit 1 (C1's opening frames), held 3-3.5 s with its label and line.
+- Then C1 carries the move to exhibit 2.
+
 ## Timeline
 1. **Open (~3 s):** C0's opening (the row) with the title fading in and out: "The Museum of Men" /
    "Things men never throw away". Then C0 continues (raw) into exhibit 1.

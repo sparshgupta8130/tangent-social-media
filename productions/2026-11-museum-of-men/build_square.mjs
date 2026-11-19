@@ -26,6 +26,7 @@ const mark = (size, color = 'currentColor') =>
 
 // background crop: [x0, y0, w] in source px (square window); null = default square crop
 const bg = (n, crop = null) => {
+  if (n === 9) return `background:url('file://${path.join(ROOT, 'assets/gen/row-v3/pick-1x1.png')}') center/cover no-repeat #222`; // row-v3: square, objects matched to exhibits
   const [x0, y0, w] = crop || [0, Y0[n] ?? 300, SRC_W], s = 1080 / w;
   return `background:url('${IMG(n)}') no-repeat;background-size:${SRC_W * s}px ${SRC_H * s}px;` +
     `background-position:${-x0 * s}px ${-y0 * s}px`;

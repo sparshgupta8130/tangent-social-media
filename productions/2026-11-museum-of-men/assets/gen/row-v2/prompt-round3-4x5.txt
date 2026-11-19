@@ -1,0 +1,11 @@
+Image 1 is the scene reference. Images 2 to 8 are the exact objects, one per image, in order.
+Recreate the scene of Image 1 exactly: same camera position and lens, same symmetrical one-point perspective down the same single straight row of white plinths receding down the centre of the same empty gallery, same warm-white walls and pale concrete floor, same dimmed, dark, moody 'closing time' light with a soft warm spotlight pool on each plinth. Composed as a 4:5 portrait frame. The top quarter of the frame is plain empty wall with nothing on it.
+There are exactly 7 plinths in the row. Each plinth holds exactly one object, copied from the reference images with the same appearance, colour, material, proportions and shape, nearest to farthest:
+1 (nearest, largest): the object in Image 2 — an open old wooden drawer of tangled black and white chargers and cables.
+2: the object in Image 3 — an empty glossy white phone retail box with its white lid leaning against it.
+3: the object in Image 4 — a steel key ring with mismatched brass, silver and dark iron keys fanned flat.
+4: the object in Image 5 — a pair of worn blue rubber chappals (white footbeds, blue straps) side by side, toes forward.
+5: the object in Image 6 — a folded faded navy T-shirt with a cracked photographic print.
+6: the object in Image 7 — a dark TV remote sealed in a yellowed, creased clear plastic sleeve.
+7 (farthest, smallest): the object in Image 8 — a black smartphone standing upright on a clear acrylic stand with a plain blank light-grey screen.
+Do not copy the objects from Image 1; use only Images 2-8 for the objects. Objects stay in this order and scale down naturally with distance but remain recognisable. Nothing else on any plinth, no extra plinths, no duplicates. No people, no text, no letters, no logos, no signage, no labels. Photorealistic. Image 1 already has the correct 7 objects in the correct order: keep every object exactly as it appears in Image 1 (same drawer, same white box with lid, same keys, same white-footbed blue-strap chappals, same navy printed T-shirt, same remote in its yellowed sleeve, same phone with blank light-grey screen), only reframe the same scene as a 4:5 portrait. Exactly 7 plinths, each object once, no empty plinths. Keep the top quarter plain wall.

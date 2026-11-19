@@ -1,0 +1,10 @@
+Image 1 is the scene, layout AND object reference: its 7 objects are already correct, so copy each object from Image 1 as closely as possible. Keep its camera, gallery, single straight row of exactly 7 white plinths, dark moody warm 'closing time' light with a soft pool on each plinth, and its object order. Compose as a square 1:1 frame. Make the whole row a little smaller and lower in the frame than in Image 1: the top 30% of the square is completely clear plain wall above the farthest phone, and the nearest drawer and its plinth top stay fully inside the frame at the bottom.
+Images 2 to 8 are the exhibit references, one object each, nearest to farthest. Make every object a faithful copy of its reference (same shape, colour, materials, wear, count of parts), in this order:
+1 (nearest): Image 2 — the old open wooden drawer packed with a DENSE tangle of many black and white chargers, adapters and cables, as full and messy as in Image 2.
+2: Image 3 — the old phone box exactly as in Image 3: scuffed white box with yellowed, worn edges and a visible moulded white inner tray, its lid leaning against it. Plain lid, no camera hole, no dot, no logo.
+3: Image 4 — the key ring exactly as in Image 4: about 9 mismatched keys fanned flat on a steel ring, including two small brass keys, a key with a black plastic head, silver keys and one long dark old iron key.
+4: Image 5 — the worn chappals: white rubber footbeds, blue straps, side by side, toes forward (keep as in Image 1).
+5: Image 6 — the folded faded navy T-shirt with exhibit 5's print look: a cracked, peeling, faded brownish printed graphic exactly like Image 6, not a landscape photo.
+6: Image 7 — the dark TV remote inside its yellowed creased clear plastic sleeve (keep as in Image 1).
+7 (farthest): Image 8 — the black phone on a clear acrylic stand with a plain blank light-grey screen (keep as in Image 1).
+Each object appears once; no empty or extra plinths; nothing else on the plinths. No people, no text, no letters, no logos, no labels. Photorealistic.

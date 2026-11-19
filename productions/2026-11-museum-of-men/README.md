@@ -115,3 +115,19 @@ last two exhibits turn warm: what he gives up, and his phone, so call him.
     - the end card was renamed from slide-10 to slide-11;
     - new caption.txt uploaded.
   - `ready-to-post/` refreshed to match.
+- 2026-11-19: Sparsh caught that the row image (slide 10 in the carousel; the video's opening and
+  closing row shots) shows objects that don't match the individual exhibits. It was generated on
+  its own, and the Showrunner missed it in review.
+  - The fix is running: session_01ETPVMMMxjR4p8A7NSyhkYB regenerates the row with Nano Banana Pro,
+    using the 7 exhibit images as references. Outputs: `assets/gen/row-v2/` (4:5 and 9:16), plus a
+    new 9:16 `F0-row.jpg` for the video.
+  - The video edit session was told to swap it in.
+  - Drive slide-10 gets replaced after review.
+- 2026-11-19: row-v2 landed (same objects, order and colours). Showrunner review against the
+  comparison:
+  - still not identical: phone box (clean vs scuffed), T-shirt print, keys count, drawer density;
+  - in the square crop, the far plinths (phone, remote) collide with the headline.
+  - Asked for row-v3: a 1:1 version with headroom, plus closer object fidelity in all versions.
+  - Slide 10 is not changed in Drive yet.
+- 2026-11-19: Sparsh: don't over-perfect the row image; fine details are OK to miss. Row-v3 limited to one round, with the priority on square headroom and recognisably the same objects.
+- 2026-11-19: row-v3 accepted: all 7 objects match their exhibits, and the square has clear space above the row. Slide 10 re-rendered from row-v3/pick-1x1.png. Drive Post 6: old slide-10 moved to trash, new one uploaded (1863020 bytes). The video's F0-row.jpg (9:16) was updated by the same session.
