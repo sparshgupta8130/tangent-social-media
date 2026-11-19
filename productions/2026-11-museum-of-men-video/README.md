@@ -105,7 +105,7 @@ cut to the row, slow pull-back, the close line in light type with shadow → 1.2
 the gallery wall (slide 03's top) with "Happy International Men's Day" and the maker card →
 0.5 s fade out. Copy is verbatim from `../2026-11-museum-of-men/carousel.md`; only line breaks
 were added (at sentence ends) for the narrow frame. The maker card also carries "Images made with
-AI" (that line is in carousel.md slide 10 B). Text sits between y 262 and ~1500 in 9:16 (outside
+AI" in v1 (removed 2026-11-19, Sparsh's call, matching the carousel end card). Text sits between y 262 and ~1500 in 9:16 (outside
 the top 220 / bottom 380 Shorts UI).
 
 **Audio:** original, synthesised in `score.py` (no samples): felt-piano model + detuned-saw pad,
@@ -137,7 +137,8 @@ paid API calls, the same pipeline as the carousel, a few calls only). No paid vi
   (`stage.py` `RETOUCH`). The carousel's slide 9 is unchanged.
 - Two exhibit lines wrap with a one-word last line in 9:16 ("…throw them / away.") — left as is; it reads fine.
 - A light film grain is added to every frame so the wall gradients don't band in H.264.
-- Disclosure: on-screen on the end card ("with AI", "Images made with AI"); the caption should
+- Disclosure: on-screen on the end card ("The man who made this museum, with AI."; the small
+  "Images made with AI" line was removed on 2026-11-19 to match the carousel); the caption should
   also say the images and the camera moves are AI/code-made; tick YouTube's altered/synthetic toggle.
 - File sizes: the first 9:16 encode was 47.8 MB (over the 45 MB cap) because of the grain; grain was
   lowered and `-tune film` dropped, CRF stays 18.
