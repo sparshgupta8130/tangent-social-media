@@ -15,3 +15,4 @@ All 720x1280 at 24 fps, about 7.9 s, Flow's default download.
 **Clarification (Sparsh):** "use clips as they are" was an over-correction. Normal editing
 applies to every clip: trims (e.g. C2 at ~5.6 s), speed-ups of empty stretches, holds, text,
 music. The only constraint: no attempts to repair C0's generated motion. Raw C0 stays.
+| C4 | F4 chappals → F5 T-shirt | good | Clean glide; settles on the T-shirt by ~5.5 s |
